@@ -6,12 +6,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.special.ResideMenu.ResideMenu;
 import com.special.ResideMenu.ResideMenuItem;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    @BindView(R2.id.textSpacerNoTitle)
+    TextView username;
+    @OnClick(R2.id.textSpacerNoTitle)
+    public void sd(){
+        resideMenu.openMenu(ResideMenu.DIRECTION_LEFT);
+    }
 
     private ResideMenu resideMenu;
     private ResideMenuItem itemHome;
@@ -19,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
         setUpMenu();
     }
 
@@ -52,12 +64,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // You can disable a direction by setting ->
         // resideMenu.setSwipeDirectionDisable(ResideMenu.DIRECTION_RIGHT);
 
-        findViewById(R.id.textSpacerNoTitle).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                resideMenu.openMenu(ResideMenu.DIRECTION_LEFT);
-            }
-        });
+//        findViewById(R.id.textSpacerNoTitle).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                resideMenu.openMenu(ResideMenu.DIRECTION_LEFT);
+//            }
+//        });
 
     }
 
