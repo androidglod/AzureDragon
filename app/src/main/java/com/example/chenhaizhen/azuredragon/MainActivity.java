@@ -9,14 +9,17 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.chenhaizhen.azuredragon.Bean.BookShelfBean;
 import com.special.ResideMenu.ResideMenu;
 import com.special.ResideMenu.ResideMenuItem;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends  MBaseActivity<IMainPresenter> implements IMainView , View.OnClickListener {
     @BindView(R2.id.textSpacerNoTitle)
     TextView username;
     @OnClick(R2.id.textSpacerNoTitle)
@@ -32,6 +35,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         setUpMenu();
+    }
+
+    @Override
+    protected IMainPresenter initInjector() {
+        return null;
+    }
+
+    @Override
+    protected void onCreateActivity() {
+
+    }
+
+    @Override
+    protected void initData() {
+
     }
 
     private void setUpMenu() {
@@ -110,6 +128,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     // What good method is to access resideMenu？
     public ResideMenu getResideMenu(){
         return resideMenu;
+    }
+
+    @Override
+    public void refreshBookShelf(List<BookShelfBean> bookShelfBeanList) {
+
+    }
+
+    @Override
+    public void activityRefreshView() {
+
+    }
+
+    @Override
+    public void refreshFinish() {
+
+    }
+
+    @Override
+    public void refreshError(String error) {
+
+    }
+
+    @Override
+    public void refreshRecyclerViewItemAdd() {
+
+    }
+
+    @Override
+    public void setRecyclerMaxProgress(int x) {
+
     }
 }
 

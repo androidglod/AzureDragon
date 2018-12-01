@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.jakewharton.butterknife'
+apply plugin: 'org.greenrobot.greendao'
 android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -38,7 +39,14 @@ dependencies {
 
     implementation 'com.trello.rxlifecycle2:rxlifecycle-android:2.0.1'
     implementation 'com.trello.rxlifecycle2:rxlifecycle-components:2.0.1'
-
+    implementation 'org.greenrobot:greendao:3.2.0'
     compile project(':ResideMenu')
 
+}
+greendao {
+    schemaVersion 1//数据库版本号
+    daoPackage 'com.com.sky.downloader.greendao'//设置DaoMaster、DaoSession、Dao包名
+    targetGenDir 'src/main/java'//设置DaoMaster、DaoSession、Dao目录
+    //targetGenDirTest：设置生成单元测试目录
+    //generateTests：设置自动生成单元测试用例
 }
