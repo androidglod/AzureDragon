@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @BindView(R2.id.textSpacerNoTitle)
     TextView username;
     @OnClick(R2.id.textSpacerNoTitle)
-    public void sd(){
+    public void open(){
         resideMenu.openMenu(ResideMenu.DIRECTION_LEFT);
     }
 
