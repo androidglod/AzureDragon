@@ -1,12 +1,12 @@
-//Copyright (c) 2017. 章钦豪. All rights reserved.
-package com.example.chenhaizhen.azuredragon;
+package com.example.azuredragon;//Copyright (c) 2017. 章钦豪. All rights reserved.
 
 
-import com.example.chenhaizhen.azuredragon.Bean.BookShelfBean;
+import com.example.azuredragon.Bean.BookShelfBean;
+import com.example.azuredragon.IView;
 
 import java.util.List;
 
-public interface IMainView extends IView{
+public interface IMainView extends IView {
 
     /**
      * 刷新书架书籍小说信息 更新UI

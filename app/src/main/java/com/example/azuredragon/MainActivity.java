@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.chenhaizhen.azuredragon.Bean.BookShelfBean;
+import com.example.azuredragon.Bean.BookShelfBean;
 import com.special.ResideMenu.ResideMenu;
 import com.special.ResideMenu.ResideMenuItem;
 

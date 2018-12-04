@@ -80,15 +80,15 @@
                 android:src="@drawable/selector_iv_add" />
         </LinearLayout>
 
-        <com.monke.monkeybook.widget.refreshview.RefreshRecyclerView
-            android:id="@+id/rf_rv_shelf"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:bg_color="#00000000"
-            app:font_color="#767676"
-            app:second_color="#c1c1c1"
-            app:second_max_progress="80dp"
-            app:speed="2dp" />
+        <!--<com.monke.monkeybook.widget.refreshview.RefreshRecyclerView-->
+            <!--android:id="@+id/rf_rv_shelf"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--app:bg_color="#00000000"-->
+            <!--app:font_color="#767676"-->
+            <!--app:second_color="#c1c1c1"-->
+            <!--app:second_max_progress="80dp"-->
+            <!--app:speed="2dp" />-->
     </LinearLayout>
     <FrameLayout
         android:id="@+id/fl_warn"
@@ -105,13 +105,13 @@
             android:textColor="#ffffff"
             android:singleLine="true"
             android:ellipsize="marquee"/>
-        <ImageView
-            android:id="@+id/iv_warn_close"
-            android:layout_width="35dp"
-            android:layout_height="match_parent"
-            android:paddingLeft="13dp"
-            android:paddingRight="8dp"
-            android:layout_gravity="center_vertical|right"
-            android:src="@drawable/icon_close"/>
+        <!--<ImageView-->
+            <!--android:id="@+id/iv_warn_close"-->
+            <!--android:layout_width="35dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:paddingLeft="13dp"-->
+            <!--android:paddingRight="8dp"-->
+            <!--android:layout_gravity="center_vertical|right"-->
+            <!--android:src="@drawable/icon_close"/>-->
     </FrameLayout>
 </android.support.constraint.ConstraintLayout>

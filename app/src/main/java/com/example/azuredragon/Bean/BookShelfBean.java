@@ -1,11 +1,11 @@
 //Copyright (c) 2017. 章钦豪. All rights reserved.
-package com.example.chenhaizhen.azuredragon.Bean;
+package com.example.azuredragon.Bean;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
 
-import com.example.chenhaizhen.azuredragon.BookContentView;
+import com.example.azuredragon.BookContentView;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
