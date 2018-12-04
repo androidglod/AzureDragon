@@ -1,37 +1,37 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Administrator\AndroidStudioProjects\AzureDragon\ResideMenu\AndroidManifest.xml:2:1-5:48
-INJECTED from C:\Users\Administrator\AndroidStudioProjects\AzureDragon\ResideMenu\AndroidManifest.xml:2:1-5:48
-INJECTED from C:\Users\Administrator\AndroidStudioProjects\AzureDragon\ResideMenu\AndroidManifest.xml:2:1-5:48
-INJECTED from C:\Users\Administrator\AndroidStudioProjects\AzureDragon\ResideMenu\AndroidManifest.xml:2:1-5:48
-INJECTED from C:\Users\Administrator\AndroidStudioProjects\AzureDragon\ResideMenu\AndroidManifest.xml:2:1-5:48
-INJECTED from C:\Users\Administrator\AndroidStudioProjects\AzureDragon\ResideMenu\AndroidManifest.xml:2:1-5:48
-INJECTED from C:\Users\Administrator\AndroidStudioProjects\AzureDragon\ResideMenu\AndroidManifest.xml:2:1-5:48
+ADDED from /Users/chenhaizhen/StudioProjects/AzureDragon/ResideMenu/AndroidManifest.xml:2:1-5:48
+INJECTED from /Users/chenhaizhen/StudioProjects/AzureDragon/ResideMenu/AndroidManifest.xml:2:1-5:48
+INJECTED from /Users/chenhaizhen/StudioProjects/AzureDragon/ResideMenu/AndroidManifest.xml:2:1-5:48
+INJECTED from /Users/chenhaizhen/StudioProjects/AzureDragon/ResideMenu/AndroidManifest.xml:2:1-5:48
+INJECTED from /Users/chenhaizhen/StudioProjects/AzureDragon/ResideMenu/AndroidManifest.xml:2:1-5:48
+INJECTED from /Users/chenhaizhen/StudioProjects/AzureDragon/ResideMenu/AndroidManifest.xml:2:1-5:48
+INJECTED from /Users/chenhaizhen/StudioProjects/AzureDragon/ResideMenu/AndroidManifest.xml:2:1-5:48
 	package
-		ADDED from C:\Users\Administrator\AndroidStudioProjects\AzureDragon\ResideMenu\AndroidManifest.xml:3:11-43
-		INJECTED from C:\Users\Administrator\AndroidStudioProjects\AzureDragon\ResideMenu\AndroidManifest.xml
-		INJECTED from C:\Users\Administrator\AndroidStudioProjects\AzureDragon\ResideMenu\AndroidManifest.xml
+		ADDED from /Users/chenhaizhen/StudioProjects/AzureDragon/ResideMenu/AndroidManifest.xml:3:11-43
+		INJECTED from /Users/chenhaizhen/StudioProjects/AzureDragon/ResideMenu/AndroidManifest.xml
+		INJECTED from /Users/chenhaizhen/StudioProjects/AzureDragon/ResideMenu/AndroidManifest.xml
 	android:versionName
-		ADDED from C:\Users\Administrator\AndroidStudioProjects\AzureDragon\ResideMenu\AndroidManifest.xml:5:11-36
-		INJECTED from C:\Users\Administrator\AndroidStudioProjects\AzureDragon\ResideMenu\AndroidManifest.xml
-		INJECTED from C:\Users\Administrator\AndroidStudioProjects\AzureDragon\ResideMenu\AndroidManifest.xml
+		ADDED from /Users/chenhaizhen/StudioProjects/AzureDragon/ResideMenu/AndroidManifest.xml:5:11-36
+		INJECTED from /Users/chenhaizhen/StudioProjects/AzureDragon/ResideMenu/AndroidManifest.xml
+		INJECTED from /Users/chenhaizhen/StudioProjects/AzureDragon/ResideMenu/AndroidManifest.xml
 	xmlns:android
-		ADDED from C:\Users\Administrator\AndroidStudioProjects\AzureDragon\ResideMenu\AndroidManifest.xml:2:11-69
+		ADDED from /Users/chenhaizhen/StudioProjects/AzureDragon/ResideMenu/AndroidManifest.xml:2:11-69
 	android:versionCode
-		ADDED from C:\Users\Administrator\AndroidStudioProjects\AzureDragon\ResideMenu\AndroidManifest.xml:4:11-34
-		INJECTED from C:\Users\Administrator\AndroidStudioProjects\AzureDragon\ResideMenu\AndroidManifest.xml
-		INJECTED from C:\Users\Administrator\AndroidStudioProjects\AzureDragon\ResideMenu\AndroidManifest.xml
+		ADDED from /Users/chenhaizhen/StudioProjects/AzureDragon/ResideMenu/AndroidManifest.xml:4:11-34
+		INJECTED from /Users/chenhaizhen/StudioProjects/AzureDragon/ResideMenu/AndroidManifest.xml
+		INJECTED from /Users/chenhaizhen/StudioProjects/AzureDragon/ResideMenu/AndroidManifest.xml
 uses-sdk
-INJECTED from C:\Users\Administrator\AndroidStudioProjects\AzureDragon\ResideMenu\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from C:\Users\Administrator\AndroidStudioProjects\AzureDragon\ResideMenu\AndroidManifest.xml
-INJECTED from C:\Users\Administrator\AndroidStudioProjects\AzureDragon\ResideMenu\AndroidManifest.xml
-INJECTED from C:\Users\Administrator\AndroidStudioProjects\AzureDragon\ResideMenu\AndroidManifest.xml
-INJECTED from C:\Users\Administrator\AndroidStudioProjects\AzureDragon\ResideMenu\AndroidManifest.xml
+INJECTED from /Users/chenhaizhen/StudioProjects/AzureDragon/ResideMenu/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/chenhaizhen/StudioProjects/AzureDragon/ResideMenu/AndroidManifest.xml
+INJECTED from /Users/chenhaizhen/StudioProjects/AzureDragon/ResideMenu/AndroidManifest.xml
+INJECTED from /Users/chenhaizhen/StudioProjects/AzureDragon/ResideMenu/AndroidManifest.xml
+INJECTED from /Users/chenhaizhen/StudioProjects/AzureDragon/ResideMenu/AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from C:\Users\Administrator\AndroidStudioProjects\AzureDragon\ResideMenu\AndroidManifest.xml
-		ADDED from C:\Users\Administrator\AndroidStudioProjects\AzureDragon\ResideMenu\AndroidManifest.xml
-		INJECTED from C:\Users\Administrator\AndroidStudioProjects\AzureDragon\ResideMenu\AndroidManifest.xml
+		INJECTED from /Users/chenhaizhen/StudioProjects/AzureDragon/ResideMenu/AndroidManifest.xml
+		ADDED from /Users/chenhaizhen/StudioProjects/AzureDragon/ResideMenu/AndroidManifest.xml
+		INJECTED from /Users/chenhaizhen/StudioProjects/AzureDragon/ResideMenu/AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from C:\Users\Administrator\AndroidStudioProjects\AzureDragon\ResideMenu\AndroidManifest.xml
-		ADDED from C:\Users\Administrator\AndroidStudioProjects\AzureDragon\ResideMenu\AndroidManifest.xml
-		INJECTED from C:\Users\Administrator\AndroidStudioProjects\AzureDragon\ResideMenu\AndroidManifest.xml
+		INJECTED from /Users/chenhaizhen/StudioProjects/AzureDragon/ResideMenu/AndroidManifest.xml
+		ADDED from /Users/chenhaizhen/StudioProjects/AzureDragon/ResideMenu/AndroidManifest.xml
+		INJECTED from /Users/chenhaizhen/StudioProjects/AzureDragon/ResideMenu/AndroidManifest.xml

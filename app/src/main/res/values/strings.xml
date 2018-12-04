@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AzureDragon</string>
+    <string name="allow_input">.@0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLIMNOPQRSTUVWXYZ</string>
+
 </resources>
