@@ -29,5 +29,7 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.nineoldandroids:library:2.4.0'
+
 }
 
