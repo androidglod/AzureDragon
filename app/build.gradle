@@ -7,7 +7,7 @@ android {
 
 
     defaultConfig {
-        applicationId "com.example.chenhaizhen.azuredragon"
+        applicationId "com.example.azuredragon"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

@@ -1,5 +1,5 @@
 //Copyright (c) 2017. 章钦豪. All rights reserved.
-package com.example.chenhaizhen.azuredragon;
+package com.example.azuredragon;
 
 import android.animation.Animator;
 import android.animation.ValueAnimator;

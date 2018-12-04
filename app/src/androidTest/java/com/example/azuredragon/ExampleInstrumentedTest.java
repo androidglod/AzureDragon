@@ -1,4 +1,4 @@
-package com.example.chenhaizhen.azuredragon;
+package com.example.azuredragon;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.chenhaizhen.azuredragon", appContext.getPackageName());
+        assertEquals("com.example.azuredragon", appContext.getPackageName());
     }
 }

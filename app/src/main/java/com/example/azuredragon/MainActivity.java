@@ -1,4 +1,4 @@
-package com.example.chenhaizhen.azuredragon;
+package com.example.azuredragon;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;

@@ -1,4 +1,4 @@
-package com.example.chenhaizhen.azuredragon;
+package com.example.azuredragon;
 
 import android.app.Activity;
 
