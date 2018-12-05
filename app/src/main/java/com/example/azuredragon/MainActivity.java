@@ -5,8 +5,10 @@ import android.view.MotionEvent;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.azuredragon.adapter.BookShelfAdapter;
 import com.example.azuredragon.http.bean.BookShelfBean;
 import com.example.azuredragon.login.activity.LoginActivity;
+import com.example.azuredragon.refreshview.RefreshRecyclerView;
 import com.special.ResideMenu.ResideMenu;
 import com.special.ResideMenu.ResideMenuItem;
 
@@ -30,7 +32,8 @@ public class MainActivity extends  MBaseActivity<IMainPresenter> implements IMai
     }
     private ResideMenu resideMenu;
     private ResideMenuItem itemHome;
-
+    private RefreshRecyclerView rfRvShelf;
+    private BookShelfAdapter bookShelfAdapter;
 
     @Override
     protected IMainPresenter initInjector() {
