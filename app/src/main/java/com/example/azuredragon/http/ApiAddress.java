@@ -7,8 +7,8 @@ package com.example.azuredragon.http;
  */
 
 public class ApiAddress {
-
-    public final static String scoreUrl = "http://www.188bifen.com/";
+    //生成环境
+    public final static String apis = "http://www.tv188.com/";
 
     //生成环境
     public final static String api = "http://www.qinglongread.com/app/";
@@ -20,7 +20,7 @@ public class ApiAddress {
     //获取直播数据
     public final static String getLivesList = "mobile/listLives.do";
     //最新资讯
-    public final static String getZixunList = "mobile/listArticles.do";
+    public final static String getZixunList = "works/findWorksList.do";
 
 
 

@@ -119,7 +119,7 @@
         android:layout_toEndOf="@+id/email"
         android:layout_toRightOf="@+id/email"
         android:layout_marginTop="10dp"
-        android:hint="请输入电子邮箱"
+        android:hint="请输入手机号或电子邮箱"
         app:met_clearButton="true"
         app:met_singleLineEllipsis="true"/>
 
@@ -181,8 +181,8 @@
         android:layout_height="@dimen/px120"
         android:layout_below="@+id/group_sex"
         android:textColor="#FFFFFF"
-        android:textSize="@dimen/px36"
+        android:textSize="@dimen/px40"
         android:gravity="center"
-        android:text="注册"
+        android:text="注 册"
         android:background="@drawable/bg_login_btn"/>
 </RelativeLayout>

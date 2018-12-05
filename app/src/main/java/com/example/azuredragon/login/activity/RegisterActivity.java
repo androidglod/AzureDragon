@@ -1,5 +1,6 @@
 package com.example.azuredragon.login.activity;
 
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -13,6 +14,7 @@ import com.example.azuredragon.login.validator.PasswordValidator;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by zhuyst on 2017/7/11.
@@ -21,7 +23,7 @@ import butterknife.BindView;
 public class RegisterActivity extends MBaseActivity {
 
     @BindView(R.id.text_username)
-    MaterialEditText textUsername;
+    public MaterialEditText textUsername;
 
     @BindView(R.id.text_password)
     MaterialEditText textPassword;
@@ -84,18 +86,19 @@ public class RegisterActivity extends MBaseActivity {
 //        button_register.setProgress(1);
 //    }
 //
-//    @OnClick(R.id.button_register)
-//    public void register() {
+    @OnClick(R.id.tv_register)
+    public void register() {
 //        //如果注册按钮状态为Error，则进行归位
 //        if(button_register.getProgress() == -1){
 //            button_register.setProgress(0);
 //        }
 //        //先进行表单验证
-//        else if(textUsername.validate() &&
-//                textPassword.validate() &&
-//                textPasswordRetry.validate() &&
-//                (textEmail.getText().toString().equals("") || textEmail.validate())){
-//
+//        else
+            if(textUsername.validate() &&
+                 textPassword.validate()&&
+                 textPasswordRetry.validate() &&
+                 (textEmail.getText().toString().equals("") || textEmail.validate())){
+
 //            //包装表单数据并进行注册
 //            User user = new User(textUsername.getText().toString(),textPassword.getText().toString());
 //
@@ -104,6 +107,6 @@ public class RegisterActivity extends MBaseActivity {
 //            user.setSex(radioButton.getText().toString());
 //
 //            registerPresenter.register(user);
-//        }
+        }
 //    }
 }

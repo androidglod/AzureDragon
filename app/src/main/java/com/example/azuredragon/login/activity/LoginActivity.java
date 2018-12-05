@@ -8,12 +8,14 @@ import com.example.azuredragon.IPresenter;
 import com.example.azuredragon.MBaseActivity;
 import com.example.azuredragon.R;
 import com.example.azuredragon.R2;
+import com.example.azuredragon.http.contract.LoginContract;
+import com.example.azuredragon.http.presenter.LoginPresenter;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class LoginActivity extends MBaseActivity {
+public class LoginActivity extends MBaseActivity implements LoginContract.View {
 
     @BindView(R2.id.text_username)
     MaterialEditText textUsername;
@@ -27,7 +29,7 @@ public class LoginActivity extends MBaseActivity {
     @BindView(R2.id.tv_register)
     TextView mTvRegister;
 
-
+    private LoginPresenter presenter;
     @Override
     protected IPresenter initInjector() {
         return null;
@@ -40,7 +42,7 @@ public class LoginActivity extends MBaseActivity {
 
     @Override
     protected void initData() {
-
+        presenter = new LoginPresenter(this,this);
     }
 
     @Override
@@ -95,6 +97,7 @@ public class LoginActivity extends MBaseActivity {
 
     @OnClick(R.id.tv_login)
     public void login() {
+        presenter.getBookList();
         //如果登陆按钮状态为Error，则进行归位
 //        if(mTvLogin.getProgress() == -1){
 //            mTvLogin.setProgress(0);
@@ -108,6 +111,7 @@ public class LoginActivity extends MBaseActivity {
 
     @OnClick(R.id.tv_register)
     public void register() {
+        presenter.getLiveData();
 //        //如果注册按钮状态为Success，则进行归位
 //        if(button_register.getProgress() == 100){
 //            button_register.setProgress(0);
@@ -117,6 +121,16 @@ public class LoginActivity extends MBaseActivity {
             Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
             startActivityForResult(intent, 1);
 //        }
+    }
+
+    @Override
+    public void success(String content) {
+
+    }
+
+    @Override
+    public void fail(String content) {
+
     }
 //
 //    @OnClick(R.id.remember_password)

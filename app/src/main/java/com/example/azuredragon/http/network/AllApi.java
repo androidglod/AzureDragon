@@ -33,9 +33,14 @@ public interface AllApi {
     /**
      * 最新资讯
      */
-    @GET(ApiAddress.getZixunList)
-    Observable<BaseEntry<List<ZiXunAll>>> getZixunData();
+    @GET("works/findWorksList.do")
+    Observable<BaseEntry<List<ZiXunAll>>> getBookListData();
 
+    /**
+     * 最新资讯
+     */
+    @GET("mobile/listArticles.do")
+    Observable<BaseEntry<List<ZiXunAll>>> getZixunData();
     /**
      * 获取图片验证码
      */

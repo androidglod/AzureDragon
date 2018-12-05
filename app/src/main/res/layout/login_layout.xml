@@ -67,10 +67,10 @@
         android:layout_height="@dimen/px120"
         android:layout_width="match_parent"
         android:textColor="#FFFFFF"
-        android:textSize="@dimen/px36"
+        android:textSize="@dimen/px40"
         android:layout_marginBottom="20dp"
         android:gravity="center"
-        android:text="登陆"
+        android:text="登 陆"
         android:background="@drawable/bg_login_btn"/>
 
     <TextView
@@ -78,8 +78,8 @@
         android:layout_height="@dimen/px120"
         android:layout_width="match_parent"
         android:textColor="#FFFFFF"
-        android:textSize="@dimen/px36"
+        android:textSize="@dimen/px40"
         android:gravity="center"
-        android:text="注册"
+        android:text="注 册"
         android:background="@drawable/bg_login_btn"/>
 </LinearLayout>
