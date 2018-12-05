@@ -110,26 +110,26 @@
             android:text="未知" />
     </RadioGroup>
 
-    <com.dd.CircularProgressButton
-        android:id="@+id/button_update"
+    <TextView
+        android:id="@+id/tv_update"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/px80"
         android:layout_below="@+id/group_sex"
         android:layout_marginBottom="20dp"
         android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        app:cpb_textIdle="更新信息"
-        app:cpb_textComplete="更新信息成功"
-        app:cpb_cornerRadius="32dp" />
+        android:textSize="@dimen/px36"
+        android:gravity="center"
+        android:text="登陆"
+        android:background="@drawable/bg_login_btn"/>
 
-    <com.dd.CircularProgressButton
-        android:id="@+id/button_logoff"
+    <TextView
+        android:id="@+id/tv_logoff"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/button_update"
+        android:layout_height="@dimen/px80"
+        android:layout_below="@+id/tv_update"
         android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        app:cpb_textIdle="登出账户"
-        app:cpb_textError="登出账户"
-        app:cpb_cornerRadius="32dp" />
+        android:textSize="@dimen/px36"
+        android:gravity="center"
+        android:text="登陆"
+        android:background="@drawable/bg_login_btn"/>
 </RelativeLayout>

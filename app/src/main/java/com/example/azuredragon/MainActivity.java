@@ -1,41 +1,36 @@
 package com.example.azuredragon;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.content.Intent;
 import android.view.MotionEvent;
-import android.view.View;
-import android.widget.TextView;
+import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.azuredragon.Bean.BookShelfBean;
+import com.example.azuredragon.http.bean.BookShelfBean;
+import com.example.azuredragon.login.activity.LoginActivity;
 import com.special.ResideMenu.ResideMenu;
 import com.special.ResideMenu.ResideMenuItem;
 
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends  MBaseActivity<IMainPresenter> implements IMainView , View.OnClickListener {
-    @BindView(R2.id.textSpacerNoTitle)
-    TextView username;
-    @OnClick(R2.id.textSpacerNoTitle)
-    public void open(){
+public class MainActivity extends  MBaseActivity<IMainPresenter> implements IMainView  {
+    @BindView(R2.id.iv_add)
+    ImageView username;
+    @OnClick(R2.id.iv_add)
+    public void addItem(){
+        resideMenu.closeMenu();
+        startActivityByAnim(new Intent(MainActivity.this, LoginActivity.class), android.R.anim.fade_in, android.R.anim.fade_out);
+
+    }
+    @OnClick(R2.id.iv_logo)
+    public void openMenu(){
         resideMenu.openMenu(ResideMenu.DIRECTION_LEFT);
     }
-
     private ResideMenu resideMenu;
     private ResideMenuItem itemHome;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
-        setUpMenu();
-    }
+
 
     @Override
     protected IMainPresenter initInjector() {
@@ -44,12 +39,12 @@ public class MainActivity extends  MBaseActivity<IMainPresenter> implements IMai
 
     @Override
     protected void onCreateActivity() {
-
+        setContentView(R.layout.activity_main);
     }
 
     @Override
     protected void initData() {
-
+        setUpMenu();
     }
 
     private void setUpMenu() {
@@ -64,20 +59,10 @@ public class MainActivity extends  MBaseActivity<IMainPresenter> implements IMai
         resideMenu.setScaleValue(0.6f);
 
         // create menu items;
-        itemHome     = new ResideMenuItem(this, R.drawable.icon_home,     "Home");
-//        itemProfile  = new ResideMenuItem(this, R.drawable.icon_profile,  "Profile");
-//        itemCalendar = new ResideMenuItem(this, R.drawable.icon_calendar, "Calendar");
-//        itemSettings = new ResideMenuItem(this, R.drawable.icon_settings, "Settings");
+        itemHome  = new ResideMenuItem(this, R.drawable.icon_home,     "Home");
 
-        itemHome.setOnClickListener(this);
-//        itemProfile.setOnClickListener(this);
-//        itemCalendar.setOnClickListener(this);
-//        itemSettings.setOnClickListener(this);
 
         resideMenu.addMenuItem(itemHome, ResideMenu.DIRECTION_LEFT);
-//        resideMenu.addMenuItem(itemProfile, ResideMenu.DIRECTION_LEFT);
-//        resideMenu.addMenuItem(itemCalendar, ResideMenu.DIRECTION_RIGHT);
-//        resideMenu.addMenuItem(itemSettings, ResideMenu.DIRECTION_RIGHT);
 
         // You can disable a direction by setting ->
         // resideMenu.setSwipeDirectionDisable(ResideMenu.DIRECTION_RIGHT);
@@ -96,14 +81,6 @@ public class MainActivity extends  MBaseActivity<IMainPresenter> implements IMai
         return resideMenu.dispatchTouchEvent(ev);
     }
 
-    @Override
-    public void onClick(View view) {
-//        if (view == itemHome){
-//            changeFragment(new HomeFragment());
-//        }
-
-        resideMenu.closeMenu();
-    }
     private ResideMenu.OnMenuListener menuListener = new ResideMenu.OnMenuListener() {
         @Override
         public void openMenu() {

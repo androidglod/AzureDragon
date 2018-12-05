@@ -175,13 +175,14 @@
             android:text="未知" />
     </RadioGroup>
 
-    <com.dd.CircularProgressButton
-        android:id="@+id/button_register"
+    <TextView
+        android:id="@+id/tv_register"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/px120"
         android:layout_below="@+id/group_sex"
         android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        app:cpb_textIdle="注册"
-        app:cpb_cornerRadius="32dp" />
+        android:textSize="@dimen/px36"
+        android:gravity="center"
+        android:text="注册"
+        android:background="@drawable/bg_login_btn"/>
 </RelativeLayout>

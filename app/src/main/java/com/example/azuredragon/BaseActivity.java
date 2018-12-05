@@ -10,6 +10,8 @@ import android.view.View;
 
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
+import butterknife.ButterKnife;
+
 
 public abstract class BaseActivity<T extends IPresenter> extends RxAppCompatActivity implements IView {
     public final static String start_share_ele= "start_with_share_ele";
@@ -26,12 +28,14 @@ public abstract class BaseActivity<T extends IPresenter> extends RxAppCompatActi
         ActivityManager.getInstance().add(this);
         initSDK();
         onCreateActivity();
+        ButterKnife.bind(this);
         mPresenter = initInjector();
         attachView();
         initData();
         bindView();
         bindEvent();
         firstRequest();
+
     }
 
     /**

@@ -1,5 +1,5 @@
 //Copyright (c) 2017. 章钦豪. All rights reserved.
-package com.example.azuredragon.Bean;
+package com.example.azuredragon.http.bean;
 
 import android.os.Parcel;
 import android.os.Parcelable;

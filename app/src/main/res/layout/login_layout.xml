@@ -62,25 +62,24 @@
         <!--android:textSize="18sp"-->
         <!--app:cbd_animDuration="150"/>-->
 
-    <com.dd.CircularProgressButton
-        android:id="@+id/button_login"
-        android:layout_height="wrap_content"
+    <TextView
+        android:id="@+id/tv_login"
+        android:layout_height="@dimen/px120"
         android:layout_width="match_parent"
         android:textColor="#FFFFFF"
-        android:textSize="18sp"
+        android:textSize="@dimen/px36"
         android:layout_marginBottom="20dp"
-        app:cpb_textComplete="登陆成功"
-        app:cpb_textError="登陆失败"
-        app:cpb_textIdle="登陆"
-        app:cpb_cornerRadius="32dp"/>
+        android:gravity="center"
+        android:text="登陆"
+        android:background="@drawable/bg_login_btn"/>
 
-    <com.dd.CircularProgressButton
-        android:id="@+id/button_register"
-        android:layout_height="wrap_content"
+    <TextView
+        android:id="@+id/tv_register"
+        android:layout_height="@dimen/px120"
         android:layout_width="match_parent"
         android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        app:cpb_textIdle="注册"
-        app:cpb_textComplete="注册成功，请登陆"
-        app:cpb_cornerRadius="32dp"/>
+        android:textSize="@dimen/px36"
+        android:gravity="center"
+        android:text="注册"
+        android:background="@drawable/bg_login_btn"/>
 </LinearLayout>

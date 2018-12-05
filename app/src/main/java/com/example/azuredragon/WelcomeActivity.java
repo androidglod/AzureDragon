@@ -7,15 +7,15 @@ import android.content.Intent;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class WelcomeActivity extends MBaseActivity {
 
-    @BindView(R2.id.iv_welcome_intro)
+    @BindView(R.id.iv_welcome_intro)
     ImageView mIvWelcomeIntro;
 
-    @BindView(R2.id.tv_welcome_intro)
+    @BindView(R.id.tv_welcome_intro)
     TextView mTvWelcomeIntro;
 
 
@@ -29,6 +29,7 @@ public class WelcomeActivity extends MBaseActivity {
     @Override
     protected void onCreateActivity() {
         setContentView(R.layout.activity_welcome);
+        ButterKnife.bind(this);
     }
 
     @Override

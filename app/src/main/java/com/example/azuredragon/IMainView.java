@@ -1,8 +1,7 @@
 package com.example.azuredragon;//Copyright (c) 2017. 章钦豪. All rights reserved.
 
 
-import com.example.azuredragon.Bean.BookShelfBean;
-import com.example.azuredragon.IView;
+import com.example.azuredragon.http.bean.BookShelfBean;
 
 import java.util.List;
 
