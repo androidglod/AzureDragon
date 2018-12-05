@@ -1,6 +1,5 @@
 package com.example.azuredragon.login.activity;
 
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -108,5 +107,5 @@ public class RegisterActivity extends MBaseActivity {
 //
 //            registerPresenter.register(user);
         }
-//    }
+    }
 }
