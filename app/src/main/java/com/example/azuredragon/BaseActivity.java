@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
@@ -22,6 +23,7 @@ public abstract class BaseActivity<T extends IPresenter> extends RxAppCompatActi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.savedInstanceState = savedInstanceState;
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         if(getIntent()!=null){
             startShareAnim = getIntent().getBooleanExtra(start_share_ele,false);
         }
@@ -31,8 +33,8 @@ public abstract class BaseActivity<T extends IPresenter> extends RxAppCompatActi
         ButterKnife.bind(this);
         mPresenter = initInjector();
         attachView();
-        initData();
         bindView();
+        initData();
         bindEvent();
         firstRequest();
 

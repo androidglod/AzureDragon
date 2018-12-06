@@ -46,5 +46,7 @@ public class MyApp extends Application {
         }
         return mOkHttpClient;
     }
-
+    public static MyApp getInstance() {
+        return myApp;
+    }
 }
