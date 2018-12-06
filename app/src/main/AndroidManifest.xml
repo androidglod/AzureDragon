@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.azuredragon">
 
     <uses-permission android:name="android.permission.BLUETOOTH" />
@@ -10,6 +11,7 @@
    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
+        tools:replace="android:icon, android:theme"
         android:name="com.example.azuredragon.http.app.MyApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -56,6 +58,14 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateVisible">
         </activity>
+
+        <!--MainActivity-->
+        <activity
+            android:name=".business.search.SearchActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateVisible">
+        </activity>
+
     </application>
 
 </manifest>

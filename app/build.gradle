@@ -70,6 +70,20 @@ dependencies {
 
     //JSOUP
     compile 'org.jsoup:jsoup:1.10.2'
+
+    //删除粒子效果
+    compile 'tyrantgit:explosionfield:1.0.1'
+
+    //沉浸式状态栏
+    compile 'com.zhangmonke:ImmerseLayout:1.1.1'
+
+    //View简易动画
+    compile 'com.daimajia.easing:library:2.0@aar'
+    compile 'com.daimajia.androidanimations:library:2.2@aar'
+    //RxBus
+    compile ('com.hwangjr.rxbus:rxbus:2.0.0-beta') {
+        exclude group: 'com.jakewharton.timber', module: 'timber'
+    }
 }
 greendao {
     schemaVersion 1//数据库版本号

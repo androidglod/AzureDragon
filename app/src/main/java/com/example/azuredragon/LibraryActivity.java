@@ -1,6 +1,7 @@
 //Copyright (c) 2017. 章钦豪. All rights reserved.
 package com.example.azuredragon;
 
+import android.content.Intent;
 import android.view.Gravity;
 import android.view.View;
 import android.view.animation.Animation;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 
 import com.example.azuredragon.booklistview.LibraryKindBookListView;
 import com.example.azuredragon.booklistview.LibraryNewBooksView;
+import com.example.azuredragon.business.search.SearchActivity;
 import com.example.azuredragon.http.bean.LibraryBean;
 import com.example.azuredragon.http.bean.LibraryNewBookBean;
 import com.example.azuredragon.http.bean.SearchBookBean;
@@ -167,7 +169,7 @@ public class LibraryActivity extends MBaseActivity<ILibraryPresenter> implements
             @Override
             public void onClick(View v) {
                 //点击搜索
-//                startActivityByAnim(new Intent(LibraryActivity.this, SearchActivity.class), flSearch, "to_search", android.R.anim.fade_in, android.R.anim.fade_out);
+                startActivityByAnim(new Intent(LibraryActivity.this, SearchActivity.class), flSearch, "to_search", android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
 
