@@ -9,6 +9,9 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.azuredragon.adapter.BookShelfAdapter;
+import com.example.azuredragon.business.bookdetail.BitIntentDataManager;
+import com.example.azuredragon.business.bookdetail.BookDetailActivity;
+import com.example.azuredragon.business.bookdetail.BookDetailPresenterImpl;
 import com.example.azuredragon.http.bean.BookShelfBean;
 import com.example.azuredragon.login.activity.LoginActivity;
 import com.example.azuredragon.refreshview.OnRefreshWithProgressListener;
@@ -104,12 +107,12 @@ public class MainActivity extends  MBaseActivity<IMainPresenter> implements IMai
 
             @Override
             public void onLongClick(View animView, BookShelfBean bookShelfBean, int index) {
-//                Intent intent = new Intent(MainActivity.this, BookDetailActivity.class);
-//                intent.putExtra("from", BookDetailPresenterImpl.FROM_BOOKSHELF);
-//                String key = String.valueOf(System.currentTimeMillis());
-//                intent.putExtra("data_key", key);
-//                BitIntentDataManager.getInstance().putData(key, bookShelfBean);
-//                startActivityByAnim(intent, animView, "img_cover", android.R.anim.fade_in, android.R.anim.fade_out);
+                Intent intent = new Intent(MainActivity.this, BookDetailActivity.class);
+                intent.putExtra("from", BookDetailPresenterImpl.FROM_BOOKSHELF);
+                String key = String.valueOf(System.currentTimeMillis());
+                intent.putExtra("data_key", key);
+                BitIntentDataManager.getInstance().putData(key, bookShelfBean);
+                startActivityByAnim(intent, animView, "img_cover", android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
         rfRvShelf.setRefreshRecyclerViewAdapter(bookShelfAdapter, new LinearLayoutManager(this));

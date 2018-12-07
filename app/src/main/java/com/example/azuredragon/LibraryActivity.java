@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import com.example.azuredragon.booklistview.LibraryKindBookListView;
 import com.example.azuredragon.booklistview.LibraryNewBooksView;
+import com.example.azuredragon.business.bookdetail.BookDetailActivity;
+import com.example.azuredragon.business.bookdetail.BookDetailPresenterImpl;
 import com.example.azuredragon.business.search.SearchActivity;
 import com.example.azuredragon.http.bean.LibraryBean;
 import com.example.azuredragon.http.bean.LibraryNewBookBean;
@@ -197,15 +199,15 @@ public class LibraryActivity extends MBaseActivity<ILibraryPresenter> implements
         lavHotauthor.updateData(library.getLibraryNewBooks(), new LibraryNewBooksView.OnClickAuthorListener() {
             @Override
             public void clickNewBook(LibraryNewBookBean libraryNewBookBean) {
-//                SearchBookBean searchBookBean = new SearchBookBean();
-//                searchBookBean.setName(libraryNewBookBean.getName());
-//                searchBookBean.setNoteUrl(libraryNewBookBean.getUrl());
-//                searchBookBean.setTag(libraryNewBookBean.getTag());
-//                searchBookBean.setOrigin(libraryNewBookBean.getOrgin());
-//                Intent intent = new Intent(LibraryActivity.this, BookDetailActivity.class);
-//                intent.putExtra("from", BookDetailPresenterImpl.FROM_SEARCH);
-//                intent.putExtra("data", searchBookBean);
-//                startActivityByAnim(intent, android.R.anim.fade_in, android.R.anim.fade_out);
+                SearchBookBean searchBookBean = new SearchBookBean();
+                searchBookBean.setName(libraryNewBookBean.getName());
+                searchBookBean.setNoteUrl(libraryNewBookBean.getUrl());
+                searchBookBean.setTag(libraryNewBookBean.getTag());
+                searchBookBean.setOrigin(libraryNewBookBean.getOrgin());
+                Intent intent = new Intent(LibraryActivity.this, BookDetailActivity.class);
+                intent.putExtra("from", BookDetailPresenterImpl.FROM_SEARCH);
+                intent.putExtra("data", searchBookBean);
+                startActivityByAnim(intent, android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
         lkbvKindbooklist.updateData(library.getKindBooks(), new LibraryKindBookListView.OnItemListener() {
@@ -216,10 +218,10 @@ public class LibraryActivity extends MBaseActivity<ILibraryPresenter> implements
 
             @Override
             public void onClickBook(ImageView animView, SearchBookBean searchBookBean) {
-//                Intent intent = new Intent(LibraryActivity.this, BookDetailActivity.class);
-//                intent.putExtra("from", BookDetailPresenterImpl.FROM_SEARCH);
-//                intent.putExtra("data", searchBookBean);
-//                startActivityByAnim(intent, animView, "img_cover", android.R.anim.fade_in, android.R.anim.fade_out);
+                Intent intent = new Intent(LibraryActivity.this, BookDetailActivity.class);
+                intent.putExtra("from", BookDetailPresenterImpl.FROM_SEARCH);
+                intent.putExtra("data", searchBookBean);
+                startActivityByAnim(intent, animView, "img_cover", android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
     }

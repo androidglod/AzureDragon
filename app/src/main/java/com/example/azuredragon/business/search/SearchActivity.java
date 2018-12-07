@@ -3,6 +3,7 @@ package com.example.azuredragon.business.search;
 
 import android.animation.Animator;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Build;
 import android.os.Handler;
@@ -30,6 +31,8 @@ import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.example.azuredragon.MBaseActivity;
 import com.example.azuredragon.R;
+import com.example.azuredragon.business.bookdetail.BookDetailActivity;
+import com.example.azuredragon.business.bookdetail.BookDetailPresenterImpl;
 import com.example.azuredragon.http.bean.SearchBookBean;
 import com.example.azuredragon.http.bean.SearchHistoryBean;
 import com.example.azuredragon.http.utils.NetworkUtil;
@@ -97,10 +100,10 @@ public class SearchActivity extends MBaseActivity<ISearchPresenter> implements I
 
             @Override
             public void clickItem(View animView, int position, SearchBookBean searchBookBean) {
-//                Intent intent = new Intent(SearchActivity.this, BookDetailActivity.class);
-//                intent.putExtra("from", BookDetailPresenterImpl.FROM_SEARCH);
-//                intent.putExtra("data", searchBookBean);
-//                startActivityByAnim(intent, animView, "img_cover", android.R.anim.fade_in, android.R.anim.fade_out);
+                Intent intent = new Intent(SearchActivity.this, BookDetailActivity.class);
+                intent.putExtra("from", BookDetailPresenterImpl.FROM_SEARCH);
+                intent.putExtra("data", searchBookBean);
+                startActivityByAnim(intent, animView, "img_cover", android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
     }

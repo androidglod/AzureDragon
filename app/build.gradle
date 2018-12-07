@@ -27,8 +27,14 @@ android {
     }
 }
 
+repositories{
+    flatDir{
+        dirs 'libs'
+    }
+}
+
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:design:27.1.0'
     implementation "com.android.support:appcompat-v7:${SUPPORT_VERSION}"
     implementation "com.android.support:support-v4:${SUPPORT_VERSION}"
@@ -39,10 +45,10 @@ dependencies {
     implementation 'com.jakewharton:butterknife:9.0.0-rc2'
     annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-rc2'
     implementation 'org.greenrobot:greendao:3.2.0'
-
     compile 'com.trello.rxlifecycle2:rxlifecycle:2.1.0'
     compile 'com.trello.rxlifecycle2:rxlifecycle-components:2.1.0'
-    compile 'com.trello.rxlifecycle2:rxlifecycle-navi:2.0.1'  // If you want to use Navi for providers
+    compile 'com.trello.rxlifecycle2:rxlifecycle-navi:2.0.1'
+    // If you want to use Navi for providers
     // //Retrofit2库
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
@@ -67,23 +73,20 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:3.7.0'
     //ProgressBar
     compile 'com.zhangmonke:MProgressBar:1.0.1'
-
     //JSOUP
     compile 'org.jsoup:jsoup:1.10.2'
-
     //删除粒子效果
     compile 'tyrantgit:explosionfield:1.0.1'
-
     //沉浸式状态栏
     compile 'com.zhangmonke:ImmerseLayout:1.1.1'
-
     //View简易动画
     compile 'com.daimajia.easing:library:2.0@aar'
     compile 'com.daimajia.androidanimations:library:2.2@aar'
     //RxBus
-    compile ('com.hwangjr.rxbus:rxbus:2.0.0-beta') {
+    compile('com.hwangjr.rxbus:rxbus:2.0.0-beta') {
         exclude group: 'com.jakewharton.timber', module: 'timber'
     }
+    compile files('libs/juniversalchardet-1.0.3.jar')
 }
 greendao {
     schemaVersion 1//数据库版本号
