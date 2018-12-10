@@ -87,6 +87,11 @@ dependencies {
         exclude group: 'com.jakewharton.timber', module: 'timber'
     }
     compile files('libs/juniversalchardet-1.0.3.jar')
+    compile files('libs/utdid4all-1.0.4.jar')
+    //CircleImageView
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+    //SwitchButton
+    compile 'com.kyleduo.switchbutton:library:1.4.4'
 }
 greendao {
     schemaVersion 1//数据库版本号
