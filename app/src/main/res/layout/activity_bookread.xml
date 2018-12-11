@@ -249,7 +249,7 @@
         </LinearLayout>
     </FrameLayout>
 
-    <com.monke.monkeybook.widget.ChapterListView
+    <com.example.azuredragon.business.read.ChapterListView
         android:id="@+id/clp_chapterlist"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

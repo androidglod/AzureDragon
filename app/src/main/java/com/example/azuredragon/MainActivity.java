@@ -12,6 +12,8 @@ import com.example.azuredragon.adapter.BookShelfAdapter;
 import com.example.azuredragon.business.bookdetail.BitIntentDataManager;
 import com.example.azuredragon.business.bookdetail.BookDetailActivity;
 import com.example.azuredragon.business.bookdetail.BookDetailPresenterImpl;
+import com.example.azuredragon.business.bookdetail.ReadBookPresenterImpl;
+import com.example.azuredragon.business.read.ReadBookActivity;
 import com.example.azuredragon.http.bean.BookShelfBean;
 import com.example.azuredragon.login.activity.LoginActivity;
 import com.example.azuredragon.refreshview.OnRefreshWithProgressListener;
@@ -92,17 +94,17 @@ public class MainActivity extends  MBaseActivity<IMainPresenter> implements IMai
 
             @Override
             public void onClick(BookShelfBean bookShelfBean, int index) {
-//                Intent intent = new Intent(MainActivity.this, ReadBookActivity.class);
-//                intent.putExtra("from", ReadBookPresenterImpl.OPEN_FROM_APP);
-//                String key = String.valueOf(System.currentTimeMillis());
-//                intent.putExtra("data_key", key);
-//                try {
-//                    BitIntentDataManager.getInstance().putData(key, bookShelfBean.clone());
-//                } catch (CloneNotSupportedException e) {
-//                    BitIntentDataManager.getInstance().putData(key, bookShelfBean);
-//                    e.printStackTrace();
-//                }
-//                startActivityByAnim(intent, android.R.anim.fade_in, android.R.anim.fade_out);
+                Intent intent = new Intent(MainActivity.this, ReadBookActivity.class);
+                intent.putExtra("from", ReadBookPresenterImpl.OPEN_FROM_APP);
+                String key = String.valueOf(System.currentTimeMillis());
+                intent.putExtra("data_key", key);
+                try {
+                    BitIntentDataManager.getInstance().putData(key, bookShelfBean.clone());
+                } catch (CloneNotSupportedException e) {
+                    BitIntentDataManager.getInstance().putData(key, bookShelfBean);
+                    e.printStackTrace();
+                }
+                startActivityByAnim(intent, android.R.anim.fade_in, android.R.anim.fade_out);
             }
 
             @Override

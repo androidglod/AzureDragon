@@ -42,8 +42,8 @@ public class MoProgressView extends LinearLayout {
             msgTv.setText(text);
         }
 
-        RotateLoading rlLoading = (RotateLoading) findViewById(R.id.rl_loading);
-        rlLoading.start();
+//        RotateLoading rlLoading = (RotateLoading) findViewById(R.id.rl_loading);
+//        rlLoading.start();
     }
 
     //单个按钮的信息提示框

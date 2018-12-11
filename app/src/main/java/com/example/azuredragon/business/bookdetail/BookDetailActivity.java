@@ -1,6 +1,7 @@
 //Copyright (c) 2017. 章钦豪. All rights reserved.
 package com.example.azuredragon.business.bookdetail;
 
+import android.content.Intent;
 import android.os.Build;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
@@ -14,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.azuredragon.MBaseActivity;
 import com.example.azuredragon.R;
+import com.example.azuredragon.business.read.ReadBookActivity;
 
 public class BookDetailActivity extends MBaseActivity<IBookDetailPresenter> implements IBookDetailView {
     private FrameLayout iflContent;
@@ -226,17 +228,17 @@ public class BookDetailActivity extends MBaseActivity<IBookDetailPresenter> impl
             @Override
             public void onClick(View v) {
                 //进入阅读
-//                Intent intent = new Intent(BookDetailActivity.this, ReadBookActivity.class);
-//                intent.putExtra("from", ReadBookPresenterImpl.OPEN_FROM_APP);
-//                String key = String.valueOf(System.currentTimeMillis());
-//                intent.putExtra("data_key", key);
-//                try {
-//                    BitIntentDataManager.getInstance().putData(key, mPresenter.getBookShelf().clone());
-//                } catch (CloneNotSupportedException e) {
-//                    BitIntentDataManager.getInstance().putData(key, mPresenter.getBookShelf());
-//                    e.printStackTrace();
-//                }
-//                startActivityByAnim(intent, android.R.anim.fade_in, android.R.anim.fade_out);
+                Intent intent = new Intent(BookDetailActivity.this, ReadBookActivity.class);
+                intent.putExtra("from", ReadBookPresenterImpl.OPEN_FROM_APP);
+                String key = String.valueOf(System.currentTimeMillis());
+                intent.putExtra("data_key", key);
+                try {
+                    BitIntentDataManager.getInstance().putData(key, mPresenter.getBookShelf().clone());
+                } catch (CloneNotSupportedException e) {
+                    BitIntentDataManager.getInstance().putData(key, mPresenter.getBookShelf());
+                    e.printStackTrace();
+                }
+                startActivityByAnim(intent, android.R.anim.fade_in, android.R.anim.fade_out);
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     if(getStart_share_ele()){

@@ -14,6 +14,8 @@ import android.widget.TextView;
 import com.example.azuredragon.R;
 import com.example.azuredragon.business.bookdetail.ReadBookControl;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 
 public class FontPop extends PopupWindow {
     private Context mContext;

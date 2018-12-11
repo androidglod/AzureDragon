@@ -39,7 +39,7 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateVisible">
         </activity>
-        <!--MainActivity-->
+        <!--注册-->
         <activity
             android:name=".login.activity.RegisterActivity"
             android:screenOrientation="portrait"
@@ -59,16 +59,23 @@
             android:windowSoftInputMode="stateVisible">
         </activity>
 
-        <!--MainActivity-->
+        <!--搜索书籍-->
         <activity
             android:name=".business.search.SearchActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateVisible">
         </activity>
 
-        <!--MainActivity-->
+        <!--书籍详情-->
         <activity
             android:name=".business.bookdetail.BookDetailActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateVisible">
+        </activity>
+
+        <!--阅读-->
+        <activity
+            android:name=".business.read.ReadBookActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateVisible">
         </activity>

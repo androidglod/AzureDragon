@@ -10,6 +10,7 @@ import android.widget.PopupWindow;
 
 import com.example.azuredragon.R;
 import com.example.azuredragon.business.bookdetail.ReadBookControl;
+import com.kyleduo.switchbutton.SwitchButton;
 
 
 public class MoreSettingPop extends PopupWindow {

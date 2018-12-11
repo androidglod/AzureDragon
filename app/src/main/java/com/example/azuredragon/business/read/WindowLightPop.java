@@ -13,8 +13,7 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
-import com.monke.monkeybook.R;
-import com.monke.monkeybook.widget.checkbox.SmoothCheckBox;
+import com.example.azuredragon.R;
 import com.monke.mprogressbar.MHorProgressBar;
 import com.monke.mprogressbar.OnProgressListener;
 
