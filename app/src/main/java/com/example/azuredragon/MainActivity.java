@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.azuredragon.adapter.BookShelfAdapter;
+import com.example.azuredragon.business.BookList.LibraryActivity;
 import com.example.azuredragon.business.bookdetail.BitIntentDataManager;
 import com.example.azuredragon.business.bookdetail.BookDetailActivity;
 import com.example.azuredragon.business.bookdetail.BookDetailPresenterImpl;

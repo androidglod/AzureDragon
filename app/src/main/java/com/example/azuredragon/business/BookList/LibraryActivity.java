@@ -1,5 +1,5 @@
 //Copyright (c) 2017. 章钦豪. All rights reserved.
-package com.example.azuredragon;
+package com.example.azuredragon.business.BookList;
 
 import android.content.Intent;
 import android.view.Gravity;
@@ -12,6 +12,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.azuredragon.IPresenter;
+import com.example.azuredragon.MBaseActivity;
+import com.example.azuredragon.R;
 import com.example.azuredragon.booklistview.LibraryKindBookListView;
 import com.example.azuredragon.booklistview.LibraryNewBooksView;
 import com.example.azuredragon.business.bookdetail.BookDetailActivity;
@@ -20,16 +23,16 @@ import com.example.azuredragon.business.search.SearchActivity;
 import com.example.azuredragon.http.bean.LibraryBean;
 import com.example.azuredragon.http.bean.LibraryNewBookBean;
 import com.example.azuredragon.http.bean.SearchBookBean;
-import com.example.azuredragon.http.impl.LibraryPresenterImpl;
 import com.example.azuredragon.http.utils.DensityUtil;
 import com.example.azuredragon.refreshview.BaseRefreshListener;
 import com.example.azuredragon.refreshview.RefreshProgressBar;
 import com.example.azuredragon.refreshview.RefreshScrollView;
 
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class LibraryActivity extends MBaseActivity<ILibraryPresenter> implements ILibraryView {
+public class LibraryActivity extends MBaseActivity implements BookListContract.View {
     private RefreshScrollView rscvContent;
     private RefreshProgressBar rpbProgress;
 
@@ -45,10 +48,8 @@ public class LibraryActivity extends MBaseActivity<ILibraryPresenter> implements
     private LibraryNewBooksView lavHotauthor;
     private LibraryKindBookListView lkbvKindbooklist;
 
-    @Override
-    protected ILibraryPresenter initInjector() {
-        return new LibraryPresenterImpl();
-    }
+    private BookListPresenter presenter;
+
 
     @Override
     protected void onCreateActivity() {
@@ -83,9 +84,16 @@ public class LibraryActivity extends MBaseActivity<ILibraryPresenter> implements
         lkbvKindbooklist = (LibraryKindBookListView) findViewById(R.id.lkbv_kindbooklist);
     }
 
+    @Override
+    protected IPresenter initInjector() {
+        return null;
+    }
+
     private void initKind() {
+
+        presenter = new BookListPresenter(this,this);
         int columnCout = 4;
-        Iterator iterator = mPresenter.getKinds().entrySet().iterator();
+        Iterator iterator = presenter.bookListTabelPresenterImpl().entrySet().iterator();
         int temp = 0;
         LinearLayout.LayoutParams l = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         LinearLayout linearLayout = null;
@@ -116,7 +124,7 @@ public class LibraryActivity extends MBaseActivity<ILibraryPresenter> implements
             linearLayout.addView(textView);
             temp++;
         }
-        int viewCount = mPresenter.getKinds().size() % columnCout == 0?0:(columnCout-mPresenter.getKinds().size() % columnCout);
+        int viewCount = presenter.bookListTabelPresenterImpl().size() % columnCout == 0?0:(columnCout-presenter.bookListTabelPresenterImpl().size() % columnCout);
         for(int i=0;i<viewCount;i++){
             View v = new View(this);
             v.setLayoutParams(tvLp);
@@ -178,7 +186,7 @@ public class LibraryActivity extends MBaseActivity<ILibraryPresenter> implements
         rscvContent.setBaseRefreshListener(new BaseRefreshListener() {
             @Override
             public void startRefresh() {
-                mPresenter.getLibraryData();
+                presenter.getBookList();
             }
         });
     }
@@ -193,7 +201,7 @@ public class LibraryActivity extends MBaseActivity<ILibraryPresenter> implements
         }
     }
 
-    @Override
+
     public void updateUI(final LibraryBean library) {
         //获取数据后刷新UI
         lavHotauthor.updateData(library.getLibraryNewBooks(), new LibraryNewBooksView.OnClickAuthorListener() {
@@ -226,8 +234,20 @@ public class LibraryActivity extends MBaseActivity<ILibraryPresenter> implements
         });
     }
 
+
     @Override
-    public void finishRefresh() {
+    public void success(LibraryBean library) {
         rscvContent.finishRefresh();
+        updateUI(library);
+    }
+
+    @Override
+    public void fail(String content) {
+
+    }
+
+    @Override
+    public LinkedHashMap<String, String> getLinked() {
+        return null;
     }
 }

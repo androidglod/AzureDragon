@@ -54,7 +54,7 @@
 
         <!--MainActivity-->
         <activity
-            android:name=".LibraryActivity"
+            android:name=".business.BookList.LibraryActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateVisible">
         </activity>

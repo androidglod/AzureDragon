@@ -4,6 +4,7 @@ package com.example.azuredragon.http.network;
 import com.example.azuredragon.http.ApiAddress;
 import com.example.azuredragon.http.base.BaseEntry;
 import com.example.azuredragon.http.bean.Banner;
+import com.example.azuredragon.http.bean.LibraryBean;
 import com.example.azuredragon.http.bean.Login;
 import com.example.azuredragon.http.bean.ZiXunAll;
 
@@ -31,11 +32,16 @@ public interface AllApi {
     Observable<BaseEntry<List<Banner>>> getBanner();
 
     /**
-     * 最新资讯
+     * 最新书籍列表
      */
     @GET("works/findWorksList.do")
-    Observable<BaseEntry<List<ZiXunAll>>> getBookListData();
+    Observable<BaseEntry<List<LibraryBean>>> getBookListData();
 
+    /**
+     * ces
+     */
+    @GET("works/findWorksList.do")
+    Observable<BaseEntry<List<ZiXunAll>>> getBooData();
     /**
      * 最新资讯
      */

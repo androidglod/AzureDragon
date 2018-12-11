@@ -33,7 +33,7 @@ public class LoginPresenter implements LoginContract.presenter {
 
     @Override
     public void getBookList() {
-                RetrofitUtil.getInstance().initRetrofit().getBookListData()
+                RetrofitUtil.getInstance().initRetrofit().getBooData()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new BaseObserver<List<ZiXunAll>>(context,MainUtil.loadTxt) {
