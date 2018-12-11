@@ -1,4 +1,3 @@
-//Copyright (c) 2017. 章钦豪. All rights reserved.
 package com.example.azuredragon.business.read;
 
 import android.content.Context;
@@ -12,6 +11,11 @@ import com.example.azuredragon.R;
 import com.example.azuredragon.business.bookdetail.ReadBookControl;
 import com.kyleduo.switchbutton.SwitchButton;
 
+/**
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:
+ */
 
 public class MoreSettingPop extends PopupWindow {
     private Context mContext;

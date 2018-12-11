@@ -1,6 +1,9 @@
-//Copyright (c) 2017. 章钦豪. All rights reserved.
 package com.example.azuredragon.cache;
-
+/**
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:本地缓存
+ */
 public class RxBusTag {
 
     public final static String HAD_ADD_BOOK = "rxbus_add_book";

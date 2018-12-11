@@ -4,9 +4,9 @@ package com.example.azuredragon.http.base;
 import com.example.azuredragon.http.utils.MainUtil;
 
 /**
- * @author: Allen.
- * @date: 2018/7/25
- * @description:
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:application
  */
 
 public class BaseEntry<T> {

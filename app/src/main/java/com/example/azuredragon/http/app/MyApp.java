@@ -11,11 +11,10 @@ import java.util.concurrent.TimeUnit;
 import okhttp3.OkHttpClient;
 
 /**
- * @author: Allen.
- * @date: 2018/7/25
- * @description: application
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:application
  */
-
 public class MyApp extends Application {
     public static MyApp myApp;
     public static final int TIMEOUT = 60;

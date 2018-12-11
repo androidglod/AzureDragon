@@ -13,12 +13,12 @@ import java.util.concurrent.TimeoutException;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
-/**
- * @author: Allen.
- * @date: 2018/7/25
- * @description: 自定义Observer
- */
 
+/**
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:自定义Observer
+ */
 public abstract class BaseObserver<T> implements Observer<BaseEntry<T>> {
     protected Context mContext;
     private KProgressHUD progressHUD;

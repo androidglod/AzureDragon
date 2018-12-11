@@ -1,4 +1,3 @@
-//Copyright (c) 2017. 章钦豪. All rights reserved.
 package com.example.azuredragon.business.read;
 
 import android.Manifest;
@@ -45,7 +44,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.grantland.widget.AutofitTextView;
-
+/**
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:
+ */
 public class ReadBookActivity extends MBaseActivity<IBookReadPresenter> implements IBookReadView {
 
     private FrameLayout flContent;

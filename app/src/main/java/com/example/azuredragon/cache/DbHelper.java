@@ -1,4 +1,3 @@
-//Copyright (c) 2017. 章钦豪. All rights reserved.
 package com.example.azuredragon.cache;
 
 import android.database.sqlite.SQLiteDatabase;
@@ -6,7 +5,11 @@ import android.database.sqlite.SQLiteDatabase;
 import com.com.sky.downloader.greendao.DaoMaster;
 import com.com.sky.downloader.greendao.DaoSession;
 import com.example.azuredragon.http.app.MyApp;
-
+/**
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:本地缓存
+ */
 public class DbHelper {
     private DaoMaster.DevOpenHelper mHelper;
     private SQLiteDatabase db;

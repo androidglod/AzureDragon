@@ -1,4 +1,3 @@
-//Copyright (c) 2017. 章钦豪. All rights reserved.
 package com.example.azuredragon.cache;
 
 import android.content.Context;
@@ -35,7 +34,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
- * 本地缓存
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:本地缓存
  */
 public class ACache {
 	public static final int TIME_HOUR = 60 * 60;

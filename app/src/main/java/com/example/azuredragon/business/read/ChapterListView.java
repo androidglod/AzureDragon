@@ -21,6 +21,11 @@ import android.widget.TextView;
 import com.example.azuredragon.R;
 import com.example.azuredragon.http.bean.BookShelfBean;
 
+/**
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:
+ */
 public class ChapterListView extends FrameLayout {
     private TextView tvName;
     private TextView tvListCount;
@@ -133,11 +138,11 @@ public class ChapterListView extends FrameLayout {
         rvbSlider = (RecyclerViewBar) findViewById(R.id.rvb_slider);
     }
 
-    public void setData(BookShelfBean bookShelfBean,OnItemClickListener clickListener) {
+    public void setData(BookShelfBean bookShelfBean, OnItemClickListener clickListener) {
         this.itemClickListener = clickListener;
         this.bookShelfBean = bookShelfBean;
         tvName.setText(bookShelfBean.getBookInfoBean().getName());
-        tvListCount.setText("共"+bookShelfBean.getBookInfoBean().getChapterlist().size()+"章");
+        tvListCount.setText("共"+ bookShelfBean.getBookInfoBean().getChapterlist().size()+"章");
         chapterListAdapter = new ChapterListAdapter(bookShelfBean, new OnItemClickListener() {
             @Override
             public void itemClick(int index) {

@@ -20,7 +20,11 @@ import android.widget.Checkable;
 import com.example.azuredragon.R;
 import com.example.azuredragon.http.utils.DensityUtil;
 
-
+/**
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:
+ */
 public class SmoothCheckBox extends View implements Checkable {
     private static final String KEY_INSTANCE_STATE = "InstanceState";
 

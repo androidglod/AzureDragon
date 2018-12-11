@@ -1,4 +1,3 @@
-//Copyright (c) 2017. 章钦豪. All rights reserved.
 package com.example.azuredragon.business.search;
 
 import android.support.v7.widget.RecyclerView;
@@ -18,7 +17,11 @@ import com.example.azuredragon.refreshview.RefreshRecyclerViewAdapter;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:
+ */
 public class SearchBookAdapter extends RefreshRecyclerViewAdapter {
     private List<SearchBookBean> searchBooks;
 

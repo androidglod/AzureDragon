@@ -1,4 +1,3 @@
-//Copyright (c) 2017. 章钦豪. All rights reserved.
 package com.example.azuredragon.adapter;
 
 import android.os.Handler;
@@ -28,17 +27,19 @@ import java.util.List;
 
 import me.grantland.widget.AutofitTextView;
 
+/**
+ * @author: chz
+ * @date: 2018/11/25
+ * @description: 书架adapter
+ */
 
-public class BookShelfAdapter extends RefreshRecyclerViewAdapter {
+public class BookRackAdapter extends RefreshRecyclerViewAdapter {
     private final int TYPE_LASTEST = 1;
     private final int TYPE_OTHER = 2;
-
-    private final long DURANIMITEM = 130;   //item动画启动间隔
-
+    /**item动画启动间隔*/
+    private final long DURANIMITEM = 150;
     private List<BookShelfBean> books;
-
     private Boolean needAnim = true;
-
     private OnItemClickListener itemClickListener;
 
     public interface OnItemClickListener {
@@ -49,7 +50,7 @@ public class BookShelfAdapter extends RefreshRecyclerViewAdapter {
         void onLongClick(View view, BookShelfBean bookShelfBean, int index);
     }
 
-    public BookShelfAdapter() {
+    public BookRackAdapter() {
         super(false);
         books = new ArrayList<>();
     }

@@ -1,4 +1,3 @@
-//Copyright (c) 2017. 章钦豪. All rights reserved.
 package com.example.azuredragon.http.bean;
 
 import android.os.Parcel;
@@ -6,10 +5,12 @@ import android.os.Parcelable;
 
 import java.util.ArrayList;
 import java.util.List;
-
 /**
- * 下载章节列表
+ * @author: chz
+ * @date: 2018/11/25
+ * @description: 下载章节列表
  */
+
 public class DownloadChapterListBean implements Parcelable {
     private List<DownloadChapterBean> data;
 

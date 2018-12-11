@@ -1,9 +1,9 @@
 package com.example.azuredragon.http.bean;
 
 /**
- * @author: Allen.
- * @date: 2018/7/25
- * @description:
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:  login
  */
 
 public class Login {

@@ -78,7 +78,7 @@ public class ImportBookModelImpl extends BaseModelImpl implements IImportBookMod
                     DbHelper.getInstance().getmDaoSession().getBookShelfBeanDao().insertOrReplace(bookShelfBean);
                 }
                 bookShelfBean.getBookInfoBean().setChapterlist(DbHelper.getInstance().getmDaoSession().getChapterListBeanDao().queryBuilder().where(ChapterListBeanDao.Properties.NoteUrl.eq(bookShelfBean.getNoteUrl())).orderAsc(ChapterListBeanDao.Properties.DurChapterIndex).build().list());
-                e.onNext(new LocBookShelfBean(isNew,bookShelfBean));
+                e.onNext(new LocBookShelfBean(isNew, bookShelfBean));
                 e.onComplete();
             }
         });

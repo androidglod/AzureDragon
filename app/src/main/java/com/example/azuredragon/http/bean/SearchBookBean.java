@@ -1,9 +1,12 @@
-//Copyright (c) 2017. 章钦豪. All rights reserved.
 package com.example.azuredragon.http.bean;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-
+/**
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:  搜索bean
+ */
 public class SearchBookBean implements Parcelable {
 
     private String noteUrl;

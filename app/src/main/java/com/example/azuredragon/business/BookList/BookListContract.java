@@ -6,24 +6,25 @@ import com.example.azuredragon.http.bean.LibraryBean;
 
 import java.util.LinkedHashMap;
 
-
 /**
  * @author: chz
  * @date: 2018/11/25
- * @description:
+ * @description:书籍列表
  */
 
 public interface BookListContract {
     LinkedHashMap<String,String> kinds = new LinkedHashMap<>();
     interface View extends BaseView<presenter> {
-        void success(LibraryBean library);  //获取书籍列表
-        void fail(String content);  //获取书籍列表
+        //获取书籍列表成功
+        void success(LibraryBean library);
+        //获取书籍列表失败
+        void fail(String content);
         LinkedHashMap<String,String> getLinked();
     }
 
     interface presenter extends BasePresenter {
-
-        void getBookList(); //获取书籍列表
+        //获取书籍列表
+        void getBookList();
 
     }
 

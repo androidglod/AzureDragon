@@ -1,4 +1,3 @@
-//Copyright (c) 2017. 章钦豪. All rights reserved.
 package com.example.azuredragon.business.search;
 
 
@@ -31,7 +30,11 @@ import io.reactivex.ObservableSource;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
-
+/**
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:
+ */
 public class LingdiankanshuStationBookModelImpl extends BaseModelImpl implements IStationBookModel {
     public static final String TAG = "http://www.lingdiankanshu.co";
 

@@ -14,7 +14,9 @@ import android.widget.Toast;
 import com.example.azuredragon.R;
 
 /**
- * Created by ZQH on 2016/7/24.
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:书籍列表
  */
 public class MoProgressView extends LinearLayout {
     private Context context;

@@ -1,4 +1,3 @@
-//Copyright (c) 2017. 章钦豪. All rights reserved.
 package com.example.azuredragon.business.search;
 
 import android.view.LayoutInflater;
@@ -11,7 +10,11 @@ import com.example.azuredragon.widget.flowlayout.FlowLayout;
 import com.example.azuredragon.widget.flowlayout.TagAdapter;
 
 import java.util.ArrayList;
-
+/**
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:
+ */
 public class SearchHistoryAdapter extends TagAdapter<SearchHistoryBean> {
     public SearchHistoryAdapter() {
         super(new ArrayList<SearchHistoryBean>());

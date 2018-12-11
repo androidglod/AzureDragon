@@ -1,14 +1,15 @@
-//Copyright (c) 2017. 章钦豪. All rights reserved.
 package com.example.azuredragon.http.api;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.Url;
-
 /**
- * 宜搜小说API (质量太差  废弃)
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:宜搜小说API (质量太差  废弃)
  */
+
 public interface IEasouApi {
     @GET
     @Headers({"Accept:text/html,application/xhtml+xml,application/xml",

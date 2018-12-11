@@ -1,10 +1,13 @@
-//Copyright (c) 2017. 章钦豪. All rights reserved.
 package com.example.azuredragon.http.bean;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
-
+/**
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:  搜索历史bean
+ */
 @Entity
 public class SearchHistoryBean {
     @Id(autoincrement = true)

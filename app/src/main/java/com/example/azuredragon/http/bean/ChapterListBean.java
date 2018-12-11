@@ -1,4 +1,3 @@
-//Copyright (c) 2017. 章钦豪. All rights reserved.
 package com.example.azuredragon.http.bean;
 
 import android.os.Parcel;
@@ -8,10 +7,12 @@ import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Transient;
-
 /**
- * 章节列表
+ * @author: chz
+ * @date: 2018/11/25
+ * @description: 章节列表
  */
+
 @Entity
 public class ChapterListBean implements Parcelable,Cloneable {
 

@@ -1,4 +1,3 @@
-//Copyright (c) 2017. 章钦豪. All rights reserved.
 package com.example.azuredragon.business.search;
 
 import android.support.annotation.NonNull;
@@ -31,7 +30,11 @@ import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
-
+/**
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:
+ */
 public class SearchPresenterImpl extends BasePresenterImpl<ISearchView> implements ISearchPresenter {
     public static final String TAG_KEY = "tag";
     public static final String HASMORE_KEY = "hasMore";

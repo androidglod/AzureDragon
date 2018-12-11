@@ -21,7 +21,11 @@ import android.widget.LinearLayout;
 import com.example.azuredragon.R;
 import com.example.azuredragon.http.utils.DensityUtil;
 
-
+/**
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:
+ */
 public class RecyclerViewBar extends LinearLayout {
     public static long SLIDE_ANIM_TIME = 800;
 

@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.azuredragon.adapter.BookShelfAdapter;
-import com.example.azuredragon.business.BookList.LibraryActivity;
+import com.example.azuredragon.adapter.BookRackAdapter;
+import com.example.azuredragon.business.BookList.BookListActivity;
 import com.example.azuredragon.business.bookdetail.BitIntentDataManager;
 import com.example.azuredragon.business.bookdetail.BookDetailActivity;
 import com.example.azuredragon.business.bookdetail.BookDetailPresenterImpl;
@@ -46,7 +46,7 @@ public class MainActivity extends  MBaseActivity<IMainPresenter> implements IMai
     private ResideMenuItem itemHome;
 
 
-    private BookShelfAdapter bookShelfAdapter;
+    private BookRackAdapter bookRackAdapter;
 
 
     @Override
@@ -85,12 +85,12 @@ public class MainActivity extends  MBaseActivity<IMainPresenter> implements IMai
     }
 
     private void bindRvShelfEvent() {
-        bookShelfAdapter = new BookShelfAdapter();
-        bookShelfAdapter.setItemClickListener(new BookShelfAdapter.OnItemClickListener() {
+        bookRackAdapter = new BookRackAdapter();
+        bookRackAdapter.setItemClickListener(new BookRackAdapter.OnItemClickListener() {
             @Override
             public void toSearch() {
                 //点击去选书
-                startActivityByAnim(new Intent(MainActivity.this, LibraryActivity.class), 0, 0);
+                startActivityByAnim(new Intent(MainActivity.this, BookListActivity.class), 0, 0);
             }
 
             @Override
@@ -118,11 +118,11 @@ public class MainActivity extends  MBaseActivity<IMainPresenter> implements IMai
                 startActivityByAnim(intent, animView, "img_cover", android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
-        rfRvShelf.setRefreshRecyclerViewAdapter(bookShelfAdapter, new LinearLayoutManager(this));
+        rfRvShelf.setRefreshRecyclerViewAdapter(bookRackAdapter, new LinearLayoutManager(this));
         rfRvShelf.setBaseRefreshListener(new OnRefreshWithProgressListener() {
             @Override
             public int getMaxProgress() {
-                return bookShelfAdapter.getBooks().size();
+                return bookRackAdapter.getBooks().size();
             }
 
             @Override
@@ -165,7 +165,7 @@ public class MainActivity extends  MBaseActivity<IMainPresenter> implements IMai
 
     @Override
     public void refreshBookShelf(List<BookShelfBean> bookShelfBeanList) {
-        bookShelfAdapter.replaceAll(bookShelfBeanList);
+        bookRackAdapter.replaceAll(bookShelfBeanList);
     }
 
     @Override

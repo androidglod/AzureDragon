@@ -1,4 +1,3 @@
-//Copyright (c) 2017. 章钦豪. All rights reserved.
 package com.example.azuredragon.business.search;
 
 import android.widget.EditText;
@@ -8,7 +7,11 @@ import com.example.azuredragon.http.bean.SearchBookBean;
 import com.example.azuredragon.http.bean.SearchHistoryBean;
 
 import java.util.List;
-
+/**
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:
+ */
 public interface ISearchView extends IView {
 
     /**

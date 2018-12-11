@@ -1,4 +1,3 @@
-//Copyright (c) 2017. 章钦豪. All rights reserved.
 package com.example.azuredragon.http.bean;
 
 import android.os.Parcel;
@@ -14,7 +13,9 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * 书本信息
+ * @author: chz
+ * @date: 2018/11/25
+ * @description: 书本信息
  */
 @Entity
 public class BookInfoBean implements Parcelable,Cloneable {

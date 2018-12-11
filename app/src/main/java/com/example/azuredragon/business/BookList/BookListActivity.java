@@ -32,7 +32,7 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class LibraryActivity extends MBaseActivity implements BookListContract.View {
+public class BookListActivity extends MBaseActivity implements BookListContract.View {
     private RefreshScrollView rscvContent;
     private RefreshProgressBar rpbProgress;
 
@@ -118,7 +118,7 @@ public class LibraryActivity extends MBaseActivity implements BookListContract.V
             textView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    ChoiceBookActivity.startChoiceBookActivity(LibraryActivity.this, resultTemp.getKey(),resultTemp.getValue());
+//                    ChoiceBookActivity.startChoiceBookActivity(BookListActivity.this, resultTemp.getKey(),resultTemp.getValue());
                 }
             });
             linearLayout.addView(textView);
@@ -158,7 +158,7 @@ public class LibraryActivity extends MBaseActivity implements BookListContract.V
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                LibraryActivity.super.finish();
+                BookListActivity.super.finish();
                 overridePendingTransition(0, 0);
                 isExiting = false;
             }
@@ -179,7 +179,7 @@ public class LibraryActivity extends MBaseActivity implements BookListContract.V
             @Override
             public void onClick(View v) {
                 //点击搜索
-                startActivityByAnim(new Intent(LibraryActivity.this, SearchActivity.class), flSearch, "to_search", android.R.anim.fade_in, android.R.anim.fade_out);
+                startActivityByAnim(new Intent(BookListActivity.this, SearchActivity.class), flSearch, "to_search", android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
 
@@ -212,7 +212,7 @@ public class LibraryActivity extends MBaseActivity implements BookListContract.V
                 searchBookBean.setNoteUrl(libraryNewBookBean.getUrl());
                 searchBookBean.setTag(libraryNewBookBean.getTag());
                 searchBookBean.setOrigin(libraryNewBookBean.getOrgin());
-                Intent intent = new Intent(LibraryActivity.this, BookDetailActivity.class);
+                Intent intent = new Intent(BookListActivity.this, BookDetailActivity.class);
                 intent.putExtra("from", BookDetailPresenterImpl.FROM_SEARCH);
                 intent.putExtra("data", searchBookBean);
                 startActivityByAnim(intent, android.R.anim.fade_in, android.R.anim.fade_out);
@@ -221,12 +221,12 @@ public class LibraryActivity extends MBaseActivity implements BookListContract.V
         lkbvKindbooklist.updateData(library.getKindBooks(), new LibraryKindBookListView.OnItemListener() {
             @Override
             public void onClickMore(String title, String url) {
-//                ChoiceBookActivity.startChoiceBookActivity(LibraryActivity.this,title,url);
+//                ChoiceBookActivity.startChoiceBookActivity(BookListActivity.this,title,url);
             }
 
             @Override
             public void onClickBook(ImageView animView, SearchBookBean searchBookBean) {
-                Intent intent = new Intent(LibraryActivity.this, BookDetailActivity.class);
+                Intent intent = new Intent(BookListActivity.this, BookDetailActivity.class);
                 intent.putExtra("from", BookDetailPresenterImpl.FROM_SEARCH);
                 intent.putExtra("data", searchBookBean);
                 startActivityByAnim(intent, animView, "img_cover", android.R.anim.fade_in, android.R.anim.fade_out);

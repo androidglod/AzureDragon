@@ -1,4 +1,3 @@
-//Copyright (c) 2017. 章钦豪. All rights reserved.
 package com.example.azuredragon.business.search;
 
 import android.animation.Animator;
@@ -44,7 +43,11 @@ import com.monke.immerselayout.StatusBarUtils;
 import java.util.List;
 
 import tyrantgit.explosionfield.ExplosionField;
-
+/**
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:
+ */
 public class SearchActivity extends MBaseActivity<ISearchPresenter> implements ISearchView {
     private FrameLayout flSearchContent;
     private EditText edtContent;

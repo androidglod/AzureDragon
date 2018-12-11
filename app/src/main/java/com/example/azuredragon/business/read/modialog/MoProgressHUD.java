@@ -16,14 +16,18 @@ import com.example.azuredragon.R;
 
 
 /**
- * Created by ZQH on 2016/7/24.
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:d
  */
 public class MoProgressHUD {
     private Boolean isFinishing = false;
 
     private Context context;
-    private ViewGroup decorView;//activity的根View
-    private ViewGroup rootView;// mSharedView 的 根View
+    /**activity的根View*/
+    private ViewGroup decorView;
+    /**mSharedView 的 根View*/
+    private ViewGroup rootView;
     private MoProgressView mSharedView;
 
 
@@ -177,7 +181,10 @@ public class MoProgressHUD {
         isFinishing = false;
     }
 
-    //转圈的载入
+
+    /**
+     * 转圈的载入
+     * */
     public void showLoading() {
         showLoading(null);
     }

@@ -1,4 +1,3 @@
-//Copyright (c) 2017. 章钦豪. All rights reserved.
 package com.example.azuredragon.business.read;
 
 import android.graphics.Color;
@@ -13,6 +12,11 @@ import android.widget.TextView;
 import com.example.azuredragon.R;
 import com.example.azuredragon.http.bean.BookShelfBean;
 
+/**
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:书籍列表
+ */
 public class ChapterListAdapter extends RecyclerView.Adapter<ChapterListAdapter.Viewholder> {
     private BookShelfBean bookShelfBean;
     private ChapterListView.OnItemClickListener itemClickListener;

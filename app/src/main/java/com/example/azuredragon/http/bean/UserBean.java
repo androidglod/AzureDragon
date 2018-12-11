@@ -1,5 +1,9 @@
 package com.example.azuredragon.http.bean;
-
+/**
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:  用户
+ */
 public class UserBean {
     private String username;
     private String password;
