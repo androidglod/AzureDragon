@@ -1,7 +1,11 @@
 package com.example.azuredragon;
 
 import android.support.annotation.NonNull;
-
+/**
+ * @author: chz
+ * @date: 2018/11/25
+ * @description
+ */
 public interface IPresenter {
     /**
      * 注入View，使之能够与View相互响应

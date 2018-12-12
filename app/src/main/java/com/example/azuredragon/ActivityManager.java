@@ -8,7 +8,9 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Activity管理器,管理项目中Activity的状态
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:Activity管理器,管理项目中Activity的状态
  */
 public class ActivityManager {
 

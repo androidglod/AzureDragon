@@ -1,4 +1,3 @@
-//Copyright (c) 2017. 章钦豪. All rights reserved.
 package com.example.azuredragon.http.impl.module;
 
 
@@ -10,7 +9,11 @@ import com.example.azuredragon.http.listener.OnGetChapterListListener;
 import java.util.List;
 
 import io.reactivex.Observable;
-
+/**
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:
+ */
 public interface IStationBookModel {
 
     /**

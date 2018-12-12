@@ -11,7 +11,11 @@ import android.widget.TextView;
 
 import com.example.azuredragon.R;
 
-
+/**
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:
+ */
 public abstract class RefreshRecyclerViewAdapter extends RecyclerView.Adapter {
     private final int LOADMORETYPE = 2001;
 

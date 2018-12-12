@@ -6,7 +6,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by zhuyst on 2017/8/26.
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:校验输入框格式
  */
 
 public class EmailValidator extends RegexpValidator{

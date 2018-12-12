@@ -26,7 +26,11 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-
+/**
+ * @author: chz
+ * @date: 2018/11/25
+ * @description
+ */
 public class MainActivity extends  MBaseActivity<IMainPresenter> implements IMainView  {
     @BindView(R2.id.rf_rv_shelf)
     RefreshRecyclerView rfRvShelf;

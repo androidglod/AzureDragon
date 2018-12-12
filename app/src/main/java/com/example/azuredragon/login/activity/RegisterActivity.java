@@ -14,11 +14,11 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-
 /**
- * Created by zhuyst on 2017/7/11.
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:注册
  */
-
 public class RegisterActivity extends MBaseActivity {
 
     @BindView(R.id.text_username)

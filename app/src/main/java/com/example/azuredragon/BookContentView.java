@@ -17,7 +17,11 @@ import com.example.azuredragon.widget.MTextView;
 
 import java.util.List;
 
-
+/**
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:Activity管理器,管理项目中Activity的状态
+ */
 public class BookContentView extends FrameLayout {
     public long qTag = System.currentTimeMillis();
 

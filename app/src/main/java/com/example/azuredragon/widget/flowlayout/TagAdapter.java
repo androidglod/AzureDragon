@@ -7,7 +7,11 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
+/**
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:
+ */
 public abstract class TagAdapter<T> {
     protected List<T> mTagDatas;
     private OnDataChangedListener mOnDataChangedListener;

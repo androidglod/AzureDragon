@@ -13,7 +13,11 @@ import android.view.View;
 
 import com.example.azuredragon.R;
 
-
+/**
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:
+ */
 public class RefreshProgressBar extends View {
     private int maxProgress = 100;
     private int durProgress = 0;

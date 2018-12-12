@@ -5,9 +5,10 @@ import android.support.annotation.NonNull;
 import com.rengwuxian.materialedittext.validation.METValidator;
 
 /**
- * Created by zhuyst on 2017/8/26.
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:校验输入框格式
  */
-
 public class LengthValidator extends METValidator{
     private Integer min;
     private Integer max;

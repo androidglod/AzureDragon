@@ -3,11 +3,10 @@ package com.example.azuredragon.http.dialog;
 import android.content.Context;
 
 import com.kaopiz.kprogresshud.KProgressHUD;
-
 /**
- * @ description: 加载对话框
- * @ author: Allen
- * @ date: 2018/7/26
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:  加载对话框
  */
 public class ProgressHUD {
 

@@ -11,11 +11,10 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 /**
- * @author: Allen.
- * @date: 2018/7/27
- * @description: 读取cookie
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:读取cookie
  */
-
 public class CookieReadInterceptor implements Interceptor {
     @Override
     public Response intercept(Chain chain) throws IOException {

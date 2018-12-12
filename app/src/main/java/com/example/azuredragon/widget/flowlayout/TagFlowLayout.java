@@ -16,7 +16,11 @@ import com.example.azuredragon.R;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
-
+/**
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:
+ */
 public class TagFlowLayout extends FlowLayout implements TagAdapter.OnDataChangedListener
 {
     private TagAdapter mTagAdapter;

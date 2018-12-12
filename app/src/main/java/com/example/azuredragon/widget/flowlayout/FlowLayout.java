@@ -10,7 +10,11 @@ import com.example.azuredragon.R;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:
+ */
 public class FlowLayout extends ViewGroup
 {
     private static final String TAG = "FlowLayout";

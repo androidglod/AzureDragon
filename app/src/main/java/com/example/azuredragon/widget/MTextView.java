@@ -8,7 +8,9 @@ import android.text.TextPaint;
 import android.util.AttributeSet;
 
 /**
- * Created by ZQH on 2017/4/10.
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:
  */
 
 public class MTextView extends android.support.v7.widget.AppCompatTextView {

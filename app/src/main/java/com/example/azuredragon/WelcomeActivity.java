@@ -1,4 +1,3 @@
-//Copyright (c) 2017. 章钦豪. All rights reserved.
 package com.example.azuredragon;
 
 import android.animation.Animator;
@@ -9,7 +8,11 @@ import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
+/**
+ * @author: chz
+ * @date: 2018/11/25
+ * @description：欢迎页
+ */
 public class WelcomeActivity extends MBaseActivity {
 
     @BindView(R.id.iv_welcome_intro)

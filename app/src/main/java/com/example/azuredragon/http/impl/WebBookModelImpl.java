@@ -1,4 +1,3 @@
-//Copyright (c) 2017. 章钦豪. All rights reserved.
 package com.example.azuredragon.http.impl;
 
 import com.example.azuredragon.business.search.LingdiankanshuStationBookModelImpl;
@@ -14,7 +13,11 @@ import java.util.List;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
-
+/**
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:
+ */
 public class WebBookModelImpl implements IWebBookModel {
 
     public static WebBookModelImpl getInstance() {

@@ -10,7 +10,11 @@ import okio.BufferedSource;
 import okio.Okio;
 import retrofit2.Converter;
 import retrofit2.Retrofit;
-
+/**
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:
+ */
 public class EncodoConverter extends Converter.Factory {
 
     private String encode = "utf-8";

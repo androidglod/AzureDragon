@@ -1,11 +1,10 @@
 package com.example.azuredragon.http;
 
 /**
- * @author: Allen.
- * @date: 2018/3/8
- * @description: 所有接口地址集
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:所有接口地址集
  */
-
 public class ApiAddress {
     //生成环境
     public final static String apis = "http://www.tv188.com/";

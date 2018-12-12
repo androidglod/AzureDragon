@@ -8,7 +8,11 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ScrollView;
-
+/**
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:
+ */
 public class RefreshScrollView extends ScrollView {
     private RefreshProgressBar rpb;
     private float durTouchY = -1000000;

@@ -14,7 +14,9 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
- * Created by zhuyst on 2017/7/11.
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:
  */
 
 public class UserInfoActivity extends MBaseActivity {

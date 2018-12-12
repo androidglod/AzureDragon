@@ -10,9 +10,9 @@ import okhttp3.Interceptor;
 import okhttp3.Response;
 
 /**
- * @author: Allen.
- * @date: 2018/7/25
- * @description:
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:读取cookie
  */
 
 public class CookiesSaveInterceptor implements Interceptor {

@@ -14,7 +14,11 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-
+/**
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:登录
+ */
 public class LoginActivity extends MBaseActivity implements LoginContract.View {
 
     @BindView(R2.id.text_username)

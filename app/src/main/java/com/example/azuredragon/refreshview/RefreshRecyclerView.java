@@ -12,7 +12,11 @@ import android.widget.FrameLayout;
 
 import com.example.azuredragon.R;
 
-
+/**
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:
+ */
 public class RefreshRecyclerView extends FrameLayout {
     private View view;
     private RefreshProgressBar rpb;

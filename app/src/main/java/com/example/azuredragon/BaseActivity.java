@@ -13,7 +13,11 @@ import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import butterknife.ButterKnife;
 
-
+/**
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:Activity管理器,管理项目中Activity的状态
+ */
 public abstract class BaseActivity<T extends IPresenter> extends RxAppCompatActivity implements IView {
     public final static String start_share_ele= "start_with_share_ele";
     protected Bundle savedInstanceState;

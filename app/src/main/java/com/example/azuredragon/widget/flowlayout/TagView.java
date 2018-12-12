@@ -4,7 +4,11 @@ import android.content.Context;
 import android.view.View;
 import android.widget.Checkable;
 import android.widget.FrameLayout;
-
+/**
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:
+ */
 public class TagView extends FrameLayout implements Checkable
 {
     private boolean isChecked;

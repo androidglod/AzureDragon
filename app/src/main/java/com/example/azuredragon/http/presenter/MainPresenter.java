@@ -24,10 +24,9 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
 
-
 /**
- * @author: Allen.
- * @date: 2018/7/25
+ * @author: chz
+ * @date: 2018/11/25
  * @description:
  */
 
