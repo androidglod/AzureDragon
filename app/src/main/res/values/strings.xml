@@ -9,4 +9,8 @@
     <string name="net_error_10001">没有网络</string>
     <string name="net_error_10002">网络连接超时</string>
     <string name="net_error_10003">数据解析失败</string>
+
+    <string name="check_update">检查更新</string>
+    <string name="check_update_contenting">升级到最新版本</string>
+    <string name="check_update_contented">已是最新版本</string>
 </resources>

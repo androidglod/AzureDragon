@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_737373"
+    android:background="@color/color_FFFFFF"
     android:id="@+id/ll_content">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:background="#ffffff"
+        android:background="@color/color_common_bg"
         android:orientation="horizontal">
 
-        <ImageButton
+        <ImageView
             android:id="@+id/ib_return"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="@dimen/px86"
+            android:layout_height="@dimen/px70"
+            android:paddingLeft="@dimen/px30"
+            android:paddingTop="@dimen/px10"
+            android:paddingBottom="@dimen/px10"
+            android:paddingRight="@dimen/px30"
             android:layout_gravity="center_vertical"
-            android:background="@drawable/bg_ib_pre"
-            android:clickable="true"
-            android:src="@drawable/selector_icon_return" />
+            android:layout_marginLeft="@dimen/px20"
+            app:srcCompat="@drawable/black_back"
+            tools:ignore="VectorDrawableCompat" />
 
         <TextView
             android:id="@+id/tv_title"
@@ -33,7 +38,8 @@
             android:singleLine="true"
             android:text="书城"
             android:textColor="#343434"
-            android:textSize="16sp" />
+            android:textSize="@dimen/px40"/>
+
     </LinearLayout>
     <FrameLayout
         android:layout_width="match_parent"
@@ -52,20 +58,19 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="10dp"/>
-
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#ffffff"
-                    android:paddingBottom="15dp"
-                    android:paddingLeft="40dp"
-                    android:paddingRight="40dp"
-                    android:paddingTop="15dp">
+                    android:background="@color/color_FFFFFF"
+                    android:paddingBottom="@dimen/px25"
+                    android:paddingLeft="@dimen/px80"
+                    android:paddingRight="@dimen/px80"
+                    android:paddingTop="@dimen/px25">
 
                     <FrameLayout
                         android:id="@+id/fl_search"
                         android:layout_width="match_parent"
-                        android:layout_height="25dp"
+                        android:layout_height="@dimen/px80"
                         android:transitionName="to_search">
                         <TextView
                             android:layout_width="match_parent"
@@ -73,8 +78,10 @@
                             android:background="@drawable/bg_search_content"
                             android:gravity="center"
                             android:hint="搜书名、作者"
-                            android:textColorHint="#6f6f6f"
-                            android:textSize="13sp" />
+                            android:singleLine="true"
+                            android:textColor="@color/color_222222"
+                            android:textColorHint="@color/color_909090"
+                            android:textSize="@dimen/px42"/>
 
                         <ImageView
                             android:layout_width="13dp"

@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -37,7 +36,7 @@ public class BookListActivity extends MBaseActivity implements BookListContract.
     private RefreshProgressBar rpbProgress;
 
     private LinearLayout llContent;
-    private ImageButton ibReturn;
+    private ImageView ibReturn;
     private FrameLayout flSearch;
 
     private Animation animIn;
@@ -74,7 +73,7 @@ public class BookListActivity extends MBaseActivity implements BookListContract.
         rscvContent.setRpb(rpbProgress);
 
         llContent = (LinearLayout) findViewById(R.id.ll_content);
-        ibReturn = (ImageButton) findViewById(R.id.ib_return);
+        ibReturn = (ImageView) findViewById(R.id.ib_return);
         flSearch = (FrameLayout) findViewById(R.id.fl_search);
 
         kindLl = (LinearLayout) findViewById(R.id.kind_ll);

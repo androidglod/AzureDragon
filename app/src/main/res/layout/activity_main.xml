@@ -18,30 +18,31 @@
         <!--app:layout_constraintTop_toTopOf="parent" />-->
 
 
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/titlebar"
             android:layout_width="match_parent"
             android:layout_height="48dp"
+            android:background="@color/color_common_bg"
             android:orientation="horizontal">
 
-            <ImageView
+            <TextView
                 android:id="@+id/iv_logo"
-                android:layout_width="@dimen/px240"
-                android:layout_height="@dimen/px40"
-                android:layout_gravity="center_vertical"
+                android:layout_width="@dimen/px220"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/px30"
-                android:src="@drawable/icon_monkovel_black" />
+                android:textStyle="bold|italic"
+                android:textColor="@android:color/holo_orange_dark"
+                android:textSize="@dimen/px46"
+                android:text="DRAGON"/>
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
 
             <ImageView
                 android:id="@+id/iv_money"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_gravity="center_vertical"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
                 android:background="@drawable/bg_ib_pre"
                 android:src="@drawable/selector_iv_money"
                 android:visibility="gone" />
@@ -66,14 +67,16 @@
 
             <ImageView
                 android:id="@+id/iv_add"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="@dimen/px120"
+                android:layout_height="@dimen/px80"
                 android:layout_gravity="center_vertical"
-                android:padding="@dimen/px20"
-                android:layout_marginRight="@dimen/px10"
+                android:padding="@dimen/px15"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/px16"
                 android:background="@drawable/bg_ib_pre"
                 android:src="@drawable/selector_iv_add" />
-        </LinearLayout>
+        </RelativeLayout>
 
         <!--<com.monke.monkeybook.widget.refreshview.RefreshRecyclerView-->
             <!--android:id="@+id/rf_rv_shelf"-->
