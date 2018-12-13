@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.azuredragon.adapter.BookRackAdapter;
 import com.example.azuredragon.business.BookList.BookListActivity;
+import com.example.azuredragon.business.Localfile.ImportBookActivity;
 import com.example.azuredragon.business.bookdetail.BitIntentDataManager;
 import com.example.azuredragon.business.bookdetail.BookDetailActivity;
 import com.example.azuredragon.business.bookdetail.BookDetailPresenterImpl;
@@ -29,7 +30,7 @@ import butterknife.OnClick;
 /**
  * @author: chz
  * @date: 2018/11/25
- * @description
+ * @description 主activity
  */
 public class MainActivity extends  MBaseActivity<IMainPresenter> implements IMainView  {
     @BindView(R2.id.rf_rv_shelf)
@@ -39,7 +40,9 @@ public class MainActivity extends  MBaseActivity<IMainPresenter> implements IMai
     @OnClick(R2.id.iv_add)
     public void addItem(){
         resideMenu.closeMenu();
-        startActivityByAnim(new Intent(MainActivity.this, LoginActivity.class), android.R.anim.fade_in, android.R.anim.fade_out);
+        //点击更多
+        startActivityByAnim(new Intent(MainActivity.this, ImportBookActivity.class), 0, 0);
+//        startActivityByAnim(new Intent(MainActivity.this, LoginActivity.class), android.R.anim.fade_in, android.R.anim.fade_out);
 
     }
     @OnClick(R2.id.iv_logo)
