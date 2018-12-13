@@ -11,6 +11,10 @@
     <color name="color_adadad">#adadad</color>
     <color name="color_f1f1f1">#f1f1f1</color>
     <color name="color_343434">#343434</color>
+    <color name="color_222222">#222222</color>
+    <color name="color_909090">#909090</color>
+    <color name="color_F5F5F5">#F5F5F5</color>
+
     <color name="tv_text_addshelf_nor">#ffffff</color>
     <color name="tv_text_addshelf_pre">#7891A5</color>
     <color name="tv_text_addshelf_disable">#7891A5</color>
