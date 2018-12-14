@@ -18,23 +18,30 @@ import android.widget.Toast;
 
 import com.example.azuredragon.MBaseActivity;
 import com.example.azuredragon.R;
+import com.example.azuredragon.R2;
 import com.example.azuredragon.business.bookdetail.PremissionCheck;
 import com.example.azuredragon.business.read.modialog.MoProgressHUD;
 import com.victor.loading.rotate.RotateLoading;
 import java.io.File;
 
+import butterknife.BindView;
+
 public class ImportBookActivity extends MBaseActivity<IImportBookPresenter> implements IImportBookView {
-    private LinearLayout llContent;
-    private ImageButton ivReturn;
-    private TextView tvScan;
 
-    private RotateLoading rlLoading;
-    private TextView tvCount;
-
-    private TextView tvAddshelf;
-
-    private RecyclerView rcvBooks;
-
+    @BindView(R2.id.ll_content)
+     LinearLayout llContent;
+    @BindView(R2.id.iv_return)
+     ImageButton ivReturn;
+    @BindView(R2.id.tv_scan)
+     TextView tvScan;
+    @BindView(R2.id.rl_loading)
+     RotateLoading rlLoading;
+    @BindView(R2.id.tv_count)
+     TextView tvCount;
+    @BindView(R2.id.tv_addshelf)
+     TextView tvAddshelf;
+    @BindView(R2.id.rcv_books)
+     RecyclerView rcvBooks;
     private ImportBookAdapter importBookAdapter;
 
     private Animation animIn;
@@ -70,16 +77,7 @@ public class ImportBookActivity extends MBaseActivity<IImportBookPresenter> impl
     protected void bindView() {
         moProgressHUD = new MoProgressHUD(this);
 
-        llContent = (LinearLayout) findViewById(R.id.ll_content);
-        ivReturn = (ImageButton) findViewById(R.id.iv_return);
-        tvScan = (TextView) findViewById(R.id.tv_scan);
 
-        rlLoading = (RotateLoading) findViewById(R.id.rl_loading);
-        tvCount = (TextView) findViewById(R.id.tv_count);
-
-        tvAddshelf = (TextView) findViewById(R.id.tv_addshelf);
-
-        rcvBooks = (RecyclerView) findViewById(R.id.rcv_books);
 
     }
 

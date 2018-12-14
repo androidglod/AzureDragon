@@ -1,4 +1,3 @@
-//Copyright (c) 2017. 章钦豪. All rights reserved.
 package com.example.azuredragon.business.bookdetail;
 
 import android.content.Intent;
@@ -15,20 +14,35 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.azuredragon.MBaseActivity;
 import com.example.azuredragon.R;
+import com.example.azuredragon.R2;
 import com.example.azuredragon.business.read.ReadBookActivity;
 
+import butterknife.BindView;
+
 public class BookDetailActivity extends MBaseActivity<IBookDetailPresenter> implements IBookDetailView {
-    private FrameLayout iflContent;
-    private ImageView ivBlurCover;
-    private ImageView ivCover;
-    private TextView tvName;
-    private TextView tvAuthor;
-    private TextView tvOrigin;
-    private TextView tvChapter;
-    private TextView tvIntro;
-    private TextView tvShelf;
-    private TextView tvRead;
-    private TextView tvLoading;
+
+    @BindView(R2.id.ifl_content)
+    FrameLayout iflContent;
+    @BindView(R2.id.iv_blur_cover)
+     ImageView ivBlurCover;
+    @BindView(R2.id.iv_cover)
+     ImageView ivCover;
+    @BindView(R2.id.tv_name)
+     TextView tvName;
+    @BindView(R2.id.tv_author)
+     TextView tvAuthor;
+    @BindView(R2.id.tv_origin)
+     TextView tvOrigin;
+    @BindView(R2.id.tv_chapter)
+     TextView tvChapter;
+    @BindView(R2.id.tv_intro)
+     TextView tvIntro;
+    @BindView(R2.id.tv_shelf)
+     TextView tvShelf;
+    @BindView(R2.id.tv_read)
+     TextView tvRead;
+    @BindView(R2.id.tv_loading)
+     TextView tvLoading;
 
     private Animation animHideLoading;
     private Animation animShowInfo;
@@ -68,17 +82,7 @@ public class BookDetailActivity extends MBaseActivity<IBookDetailPresenter> impl
 
     @Override
     protected void bindView() {
-        iflContent = (FrameLayout) findViewById(R.id.ifl_content);
-        ivBlurCover = (ImageView) findViewById(R.id.iv_blur_cover);
-        ivCover = (ImageView) findViewById(R.id.iv_cover);
-        tvName = (TextView) findViewById(R.id.tv_name);
-        tvAuthor = (TextView) findViewById(R.id.tv_author);
-        tvOrigin = (TextView) findViewById(R.id.tv_origin);
-        tvChapter = (TextView) findViewById(R.id.tv_chapter);
-        tvIntro = (TextView) findViewById(R.id.tv_intro);
-        tvShelf = (TextView) findViewById(R.id.tv_shelf);
-        tvRead = (TextView) findViewById(R.id.tv_read);
-        tvLoading = (TextView) findViewById(R.id.tv_loading);
+
 
         tvIntro.setMovementMethod(ScrollingMovementMethod.getInstance());
         initView();

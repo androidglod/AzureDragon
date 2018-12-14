@@ -86,7 +86,7 @@
         <activity
             android:name=".business.Localfile.ImportBookActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateVisible">
+            android:theme="@style/CAppTransparentTheme">
         </activity>
 
     </application>

@@ -1,4 +1,3 @@
-//Copyright (c) 2017. 章钦豪. All rights reserved.
 package com.example.azuredragon.http.utils;
 
 import android.app.Activity;

@@ -10,7 +10,11 @@ import com.example.azuredragon.widget.flowlayout.FlowLayout;
 import com.example.azuredragon.widget.flowlayout.TagAdapter;
 
 import java.util.ArrayList;
-
+/**
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:
+ */
 public class LibraryNewBooksAdapter extends TagAdapter<LibraryNewBookBean> {
     private LibraryNewBooksView.OnClickAuthorListener clickNewBookListener;
 

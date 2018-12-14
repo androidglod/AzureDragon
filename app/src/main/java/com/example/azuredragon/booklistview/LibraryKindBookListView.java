@@ -15,7 +15,11 @@ import com.example.azuredragon.http.bean.SearchBookBean;
 import com.example.azuredragon.http.utils.DensityUtil;
 
 import java.util.List;
-
+/**
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:
+ */
 public class LibraryKindBookListView extends LinearLayout {
     public interface OnItemListener{
         public void onClickMore(String title, String url);

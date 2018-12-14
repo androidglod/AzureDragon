@@ -12,7 +12,11 @@ import com.example.azuredragon.http.bean.LibraryNewBookBean;
 import com.example.azuredragon.widget.flowlayout.TagFlowLayout;
 
 import java.util.List;
-
+/**
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:
+ */
 public class LibraryNewBooksView extends LinearLayout {
     private TagFlowLayout tflBooks;
     private LibraryNewBooksAdapter libraryNewBooksAdapter;

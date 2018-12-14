@@ -8,7 +8,7 @@ import retrofit2.http.Url;
 /**
  * @author: chz
  * @date: 2018/11/25
- * @description:宜搜小说API (质量太差  废弃)
+ * @description:
  */
 public interface ILingdiankanshuApi {
 

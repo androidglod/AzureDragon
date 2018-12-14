@@ -1,4 +1,3 @@
-//Copyright (c) 2017. 章钦豪. All rights reserved.
 package com.example.azuredragon.business.BookList;
 
 import android.content.Intent;
@@ -14,6 +13,7 @@ import android.widget.TextView;
 import com.example.azuredragon.IPresenter;
 import com.example.azuredragon.MBaseActivity;
 import com.example.azuredragon.R;
+import com.example.azuredragon.R2;
 import com.example.azuredragon.booklistview.LibraryKindBookListView;
 import com.example.azuredragon.booklistview.LibraryNewBooksView;
 import com.example.azuredragon.business.bookdetail.BookDetailActivity;
@@ -31,25 +31,35 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import butterknife.BindView;
+/**
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:图书列表
+ */
 public class BookListActivity extends MBaseActivity implements BookListContract.View {
-    private RefreshScrollView rscvContent;
-    private RefreshProgressBar rpbProgress;
 
-    private LinearLayout llContent;
-    private ImageView ibReturn;
-    private FrameLayout flSearch;
-
-    private Animation animIn;
-    private Animation animOut;
-
-    private LinearLayout kindLl;
-
-    private LibraryNewBooksView lavHotauthor;
-    private LibraryKindBookListView lkbvKindbooklist;
+    @BindView(R2.id.rscv_content)
+     RefreshScrollView rscvContent;
+    @BindView(R2.id.rpb_progress)
+     RefreshProgressBar rpbProgress;
+    @BindView(R2.id.ll_content)
+     LinearLayout llContent;
+    @BindView(R2.id.ib_return)
+     ImageView ibReturn;
+    @BindView(R2.id.fl_search)
+     FrameLayout flSearch;
+    @BindView(R2.id.kind_ll)
+     LinearLayout kindLl;
+    @BindView(R2.id.lav_hotauthor)
+     LibraryNewBooksView lavHotauthor;
+    @BindView(R2.id.lkbv_kindbooklist)
+     LibraryKindBookListView lkbvKindbooklist;
 
     private BookListPresenter presenter;
 
-
+    private Animation animIn;
+    private Animation animOut;
     @Override
     protected void onCreateActivity() {
         setContentView(R.layout.activity_library);
@@ -68,19 +78,8 @@ public class BookListActivity extends MBaseActivity implements BookListContract.
 
     @Override
     protected void bindView() {
-        rscvContent = (RefreshScrollView) findViewById(R.id.rscv_content);
-        rpbProgress = (RefreshProgressBar) findViewById(R.id.rpb_progress);
         rscvContent.setRpb(rpbProgress);
-
-        llContent = (LinearLayout) findViewById(R.id.ll_content);
-        ibReturn = (ImageView) findViewById(R.id.ib_return);
-        flSearch = (FrameLayout) findViewById(R.id.fl_search);
-
-        kindLl = (LinearLayout) findViewById(R.id.kind_ll);
         initKind();
-
-        lavHotauthor = (LibraryNewBooksView) findViewById(R.id.lav_hotauthor);
-        lkbvKindbooklist = (LibraryKindBookListView) findViewById(R.id.lkbv_kindbooklist);
     }
 
     @Override

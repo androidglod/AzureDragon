@@ -14,7 +14,11 @@ import android.widget.TextView;
 import com.example.azuredragon.R;
 import com.example.azuredragon.http.bean.LibraryKindBookListBean;
 
-
+/**
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:
+ */
 public class LibraryKindBookView extends LinearLayout {
     private TextView tvKindName;
     private TextView tvMore;

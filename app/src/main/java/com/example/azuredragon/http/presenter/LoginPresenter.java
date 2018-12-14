@@ -13,8 +13,6 @@ import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
-
-
 /**
  * @author: chz
  * @date: 2018/11/25

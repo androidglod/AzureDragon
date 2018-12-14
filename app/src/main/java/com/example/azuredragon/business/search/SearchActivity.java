@@ -30,6 +30,7 @@ import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.example.azuredragon.MBaseActivity;
 import com.example.azuredragon.R;
+import com.example.azuredragon.R2;
 import com.example.azuredragon.business.bookdetail.BookDetailActivity;
 import com.example.azuredragon.business.bookdetail.BookDetailPresenterImpl;
 import com.example.azuredragon.http.bean.SearchBookBean;
@@ -42,6 +43,7 @@ import com.monke.immerselayout.StatusBarUtils;
 
 import java.util.List;
 
+import butterknife.BindView;
 import tyrantgit.explosionfield.ExplosionField;
 /**
  * @author: chz
@@ -49,19 +51,27 @@ import tyrantgit.explosionfield.ExplosionField;
  * @description:
  */
 public class SearchActivity extends MBaseActivity<ISearchPresenter> implements ISearchView {
-    private FrameLayout flSearchContent;
-    private EditText edtContent;
-    private TextView tvTosearch;
 
-    private LinearLayout llSearchHistory;
-    private TextView tvSearchHistoryClean;
-    private TagFlowLayout tflSearchHistory;
+    @BindView(R2.id.fl_search_content)
+     FrameLayout flSearchContent;
+    @BindView(R2.id.edt_content)
+     EditText edtContent;
+    @BindView(R2.id.tv_tosearch)
+     TextView tvTosearch;
+    @BindView(R2.id.ll_search_history)
+     LinearLayout llSearchHistory;
+    @BindView(R2.id.tv_search_history_clean)
+     TextView tvSearchHistoryClean;
+    @BindView(R2.id.tfl_search_history)
+     TagFlowLayout tflSearchHistory;
+    @BindView(R2.id.rfRv_search_books)
+     RefreshRecyclerView rfRvSearchBooks;
+
     private SearchHistoryAdapter searchHistoryAdapter;
     private Animation animHistory;
     private Animator animHistory5;
     private ExplosionField explosionField;
 
-    private RefreshRecyclerView rfRvSearchBooks;
     private SearchBookAdapter searchBookAdapter;
 
     @Override
@@ -113,19 +123,6 @@ public class SearchActivity extends MBaseActivity<ISearchPresenter> implements I
 
     @Override
     protected void bindView() {
-        flSearchContent = (FrameLayout) findViewById(R.id.fl_search_content);
-        edtContent = (EditText) findViewById(R.id.edt_content);
-        tvTosearch = (TextView) findViewById(R.id.tv_tosearch);
-
-        llSearchHistory = (LinearLayout) findViewById(R.id.ll_search_history);
-        tvSearchHistoryClean = (TextView) findViewById(R.id.tv_search_history_clean);
-        tflSearchHistory = (TagFlowLayout) findViewById(R.id.tfl_search_history);
-
-
-        rfRvSearchBooks = (RefreshRecyclerView) findViewById(R.id.rfRv_search_books);
-
-
-
 
 
     }

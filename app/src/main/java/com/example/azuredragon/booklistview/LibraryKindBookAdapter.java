@@ -16,7 +16,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.grantland.widget.AutofitTextView;
-
+/**
+ * @author: chz
+ * @date: 2018/11/25
+ * @description:
+ */
 public class LibraryKindBookAdapter extends RecyclerView.Adapter<LibraryKindBookAdapter.Viewholder>{
     private LibraryKindBookListView.OnItemListener itemListener;
 

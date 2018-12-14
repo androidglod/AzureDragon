@@ -26,6 +26,7 @@ import com.example.azuredragon.BookContentView;
 import com.example.azuredragon.MBaseActivity;
 import com.example.azuredragon.MainActivity;
 import com.example.azuredragon.R;
+import com.example.azuredragon.R2;
 import com.example.azuredragon.business.bookdetail.ContentSwitchView;
 import com.example.azuredragon.business.bookdetail.IBookReadPresenter;
 import com.example.azuredragon.business.bookdetail.IBookReadView;
@@ -43,41 +44,56 @@ import com.monke.mprogressbar.OnProgressListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
 import me.grantland.widget.AutofitTextView;
 /**
  * @author: chz
  * @date: 2018/11/25
- * @description:
+ * @description:阅读类
  */
 public class ReadBookActivity extends MBaseActivity<IBookReadPresenter> implements IBookReadView {
-
-    private FrameLayout flContent;
-
-    private ContentSwitchView csvBook;
+    @BindView(R2.id.fl_content)
+     FrameLayout flContent;
+    @BindView(R2.id.csv_book)
+     ContentSwitchView csvBook;
 
     //主菜单
-    private FrameLayout flMenu;
-    private View vMenuBg;
-    private LinearLayout llMenuTop;
-    private LinearLayout llMenuBottom;
-    private ImageButton ivReturn;
-    private ImageView ivMenuMore;
-    private AutofitTextView atvTitle;
-    private TextView tvPre;
-    private TextView tvNext;
-    private MHorProgressBar hpbReadProgress;
-    private LinearLayout llCatalog;
-    private LinearLayout llLight;
-    private LinearLayout llFont;
-    private LinearLayout llSetting;
+    @BindView(R2.id.fl_menu)
+     FrameLayout flMenu;
+    @BindView(R2.id.v_menu_bg)
+     View vMenuBg;
+    @BindView(R2.id.ll_menu_top)
+     LinearLayout llMenuTop;
+    @BindView(R2.id.ll_menu_bottom)
+     LinearLayout llMenuBottom;
+    @BindView(R2.id.iv_return)
+     ImageButton ivReturn;
+    @BindView(R2.id.iv_more)
+     ImageView ivMenuMore;
+    @BindView(R2.id.atv_title)
+     AutofitTextView atvTitle;
+    @BindView(R2.id.tv_pre)
+     TextView tvPre;
+    @BindView(R2.id.tv_next)
+     TextView tvNext;
+    @BindView(R2.id.hpb_read_progress)
+     MHorProgressBar hpbReadProgress;
+    @BindView(R2.id.ll_catalog)
+     LinearLayout llCatalog;
+    @BindView(R2.id.ll_light)
+     LinearLayout llLight;
+    @BindView(R2.id.ll_font)
+     LinearLayout llFont;
+    @BindView(R2.id.ll_setting)
+     LinearLayout llSetting;
     //主菜单动画
     private Animation menuTopIn;
     private Animation menuTopOut;
     private Animation menuBottomIn;
     private Animation menuBottomOut;
-
+    @BindView(R2.id.clp_chapterlist)
+     ChapterListView chapterListView;
     private CheckAddShelfPop checkAddShelfPop;
-    private ChapterListView chapterListView;
     private WindowLightPop windowLightPop;
     private ReadBookMenuMorePop readBookMenuMorePop;
     private FontPop fontPop;
@@ -145,28 +161,7 @@ public class ReadBookActivity extends MBaseActivity<IBookReadPresenter> implemen
     @Override
     protected void bindView() {
         moProgressHUD = new MoProgressHUD(this);
-
-        flContent = (FrameLayout) findViewById(R.id.fl_content);
-        csvBook = (ContentSwitchView) findViewById(R.id.csv_book);
         initCsvBook();
-
-        flMenu = (FrameLayout) findViewById(R.id.fl_menu);
-        vMenuBg = findViewById(R.id.v_menu_bg);
-        llMenuTop = (LinearLayout) findViewById(R.id.ll_menu_top);
-        llMenuBottom = (LinearLayout) findViewById(R.id.ll_menu_bottom);
-        ivReturn = (ImageButton) findViewById(R.id.iv_return);
-        ivMenuMore = (ImageView) findViewById(R.id.iv_more);
-        atvTitle = (AutofitTextView) findViewById(R.id.atv_title);
-
-        tvPre = (TextView) findViewById(R.id.tv_pre);
-        tvNext = (TextView) findViewById(R.id.tv_next);
-        hpbReadProgress = (MHorProgressBar) findViewById(R.id.hpb_read_progress);
-        llCatalog = (LinearLayout) findViewById(R.id.ll_catalog);
-        llLight = (LinearLayout) findViewById(R.id.ll_light);
-        llFont = (LinearLayout) findViewById(R.id.ll_font);
-        llSetting = (LinearLayout) findViewById(R.id.ll_setting);
-
-        chapterListView = (ChapterListView) findViewById(R.id.clp_chapterlist);
     }
 
     @Override
