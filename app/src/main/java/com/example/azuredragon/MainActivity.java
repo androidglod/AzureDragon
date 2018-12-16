@@ -17,7 +17,6 @@ import com.example.azuredragon.business.bookdetail.BookDetailPresenterImpl;
 import com.example.azuredragon.business.bookdetail.ReadBookPresenterImpl;
 import com.example.azuredragon.business.read.ReadBookActivity;
 import com.example.azuredragon.http.bean.BookShelfBean;
-import com.example.azuredragon.login.activity.LoginActivity;
 import com.example.azuredragon.refreshview.OnRefreshWithProgressListener;
 import com.example.azuredragon.refreshview.RefreshRecyclerView;
 import com.special.ResideMenu.ResideMenu;
@@ -42,7 +41,6 @@ public class MainActivity extends  MBaseActivity<IMainPresenter> implements IMai
         resideMenu.closeMenu();
         //点击更多
         startActivityByAnim(new Intent(MainActivity.this, ImportBookActivity.class), 0, 0);
-//        startActivityByAnim(new Intent(MainActivity.this, LoginActivity.class), android.R.anim.fade_in, android.R.anim.fade_out);
 
     }
     @OnClick(R2.id.iv_logo)
