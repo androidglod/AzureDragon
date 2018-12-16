@@ -3,34 +3,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:background="#f1f1f1"
     android:id="@+id/ll_content">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:background="#ffffff"
+        android:background="@color/color_common_bg"
         android:orientation="horizontal">
-        <ImageButton
+
+        <ImageView
             android:id="@+id/iv_return"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/selector_icon_return"
-            android:background="@drawable/bg_ib_pre"
-            android:clickable="true"
-            android:layout_gravity="center_vertical"/>
+            android:layout_width="@dimen/px86"
+            android:layout_height="@dimen/px70"
+            android:paddingLeft="@dimen/px30"
+            android:paddingTop="@dimen/px10"
+            android:paddingBottom="@dimen/px10"
+            android:paddingRight="@dimen/px30"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/px20"
+            app:srcCompat="@drawable/black_back"
+            tools:ignore="VectorDrawableCompat" />
+
         <TextView
             android:id="@+id/atv_title"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="45dp"
+            android:layout_weight="1"
+            android:gravity="center|left"
             android:singleLine="true"
-            android:textSize="16sp"
             android:text="本地文件"
             android:textColor="#343434"
-            android:gravity="center|left"/>
+            android:textSize="@dimen/px40"/>
         <TextView
             android:id="@+id/tv_addshelf"
             android:layout_width="wrap_content"
@@ -43,6 +50,7 @@
             android:textSize="14sp"
             android:visibility="invisible"/>
     </LinearLayout>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"

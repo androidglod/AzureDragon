@@ -98,6 +98,7 @@ public class MainActivity extends  MBaseActivity<IMainPresenter> implements IMai
             public void toSearch() {
                 //点击去选书
                 startActivityByAnim(new Intent(MainActivity.this, BookListActivity.class), 0, 0);
+
             }
 
             @Override

@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,7 +32,7 @@ public class ImportBookActivity extends MBaseActivity<IImportBookPresenter> impl
     @BindView(R2.id.ll_content)
      LinearLayout llContent;
     @BindView(R2.id.iv_return)
-     ImageButton ivReturn;
+    ImageView ivReturn;
     @BindView(R2.id.tv_scan)
      TextView tvScan;
     @BindView(R2.id.rl_loading)
