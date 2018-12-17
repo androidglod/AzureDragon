@@ -60,7 +60,6 @@ dependencies {
     compile 'com.kaopiz:kprogresshud:+'
     //UI
     api 'com.rengwuxian.materialedittext:library:2.1.4'
-    compile project(':ResideMenu')
     compile 'com.android.support:design:25.1.0'
     compile 'com.android.support:cardview-v7:25.1.0'
     compile 'com.android.support:support-compat:25.1.0'
@@ -89,6 +88,7 @@ dependencies {
     //SwitchButton
     compile 'com.kyleduo.switchbutton:library:1.4.4'
     compile 'com.victor:lib:1.0.4'
+    implementation 'com.nineoldandroids:library:2.4.0'
 }
 greendao {
     schemaVersion 1//数据库版本号

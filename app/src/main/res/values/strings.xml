@@ -13,4 +13,6 @@
     <string name="check_update">检查更新</string>
     <string name="check_update_contenting">升级到最新版本</string>
     <string name="check_update_contented">已是最新版本</string>
+
+    <string name="about_us">关于青龙</string>
 </resources>

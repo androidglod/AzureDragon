@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.azuredragon.ResideMenu.ResideMenu;
+import com.example.azuredragon.ResideMenu.ResideMenuItem;
 import com.example.azuredragon.adapter.BookRackAdapter;
 import com.example.azuredragon.business.BookList.BookListActivity;
 import com.example.azuredragon.business.Localfile.ImportBookActivity;
@@ -19,8 +21,6 @@ import com.example.azuredragon.business.read.ReadBookActivity;
 import com.example.azuredragon.http.bean.BookShelfBean;
 import com.example.azuredragon.refreshview.OnRefreshWithProgressListener;
 import com.example.azuredragon.refreshview.RefreshRecyclerView;
-import com.special.ResideMenu.ResideMenu;
-import com.special.ResideMenu.ResideMenuItem;
 
 import java.util.List;
 
@@ -85,8 +85,8 @@ public class MainActivity extends  MBaseActivity<IMainPresenter> implements IMai
         resideMenu.setMenuListener(menuListener);
         //valid scale factor is between 0.0f and 1.0f. leftmenu'width is 150dip.
         resideMenu.setScaleValue(0.6f);
-        itemHome  = new ResideMenuItem(this, R.drawable.icon_home,     "Home");
-        resideMenu.addMenuItem(itemHome, ResideMenu.DIRECTION_LEFT);
+//        itemHome  = new ResideMenuItem(this, R.drawable.icon_home,     "Home");
+//        resideMenu.addMenuItem(itemHome, ResideMenu.DIRECTION_LEFT);
     }
 
     private void bindRvShelfEvent() {
