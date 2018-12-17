@@ -29,7 +29,7 @@
 
         <!--MainActivity-->
         <activity
-            android:name=".MainActivity"
+            android:name=".business.main.MainActivity"
             android:screenOrientation="portrait"
             android:launchMode="singleTask">
         </activity>

@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.azuredragon.business.main.MainActivity;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 /**

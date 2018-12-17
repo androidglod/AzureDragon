@@ -1,4 +1,4 @@
-package com.example.azuredragon;
+package com.example.azuredragon.business.main;
 
 import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,8 +8,14 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.azuredragon.IMainPresenter;
+import com.example.azuredragon.MBaseActivity;
+import com.example.azuredragon.R;
+import com.example.azuredragon.R2;
+import com.example.azuredragon.business.BookList.BookListContract;
+import com.example.azuredragon.business.BookList.BookListPresenter;
+import com.example.azuredragon.http.bean.LibraryBean;
 import com.example.azuredragon.residemenu.ResideMenu;
-import com.example.azuredragon.residemenu.ResideMenuItem;
 import com.example.azuredragon.adapter.BookRackAdapter;
 import com.example.azuredragon.business.BookList.BookListActivity;
 import com.example.azuredragon.business.Localfile.ImportBookActivity;
@@ -22,6 +28,7 @@ import com.example.azuredragon.http.bean.BookShelfBean;
 import com.example.azuredragon.refreshview.OnRefreshWithProgressListener;
 import com.example.azuredragon.refreshview.RefreshRecyclerView;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import butterknife.BindView;
@@ -31,7 +38,7 @@ import butterknife.OnClick;
  * @date: 2018/11/25
  * @description 主activity
  */
-public class MainActivity extends  MBaseActivity<IMainPresenter> implements IMainView  {
+public class MainActivity extends MBaseActivity implements BookRackContract.View{
     @BindView(R2.id.rf_rv_shelf)
     RefreshRecyclerView rfRvShelf;
     @BindView(R2.id.iv_add)
@@ -48,9 +55,8 @@ public class MainActivity extends  MBaseActivity<IMainPresenter> implements IMai
         resideMenu.openMenu(ResideMenu.DIRECTION_LEFT);
     }
     private ResideMenu resideMenu;
-    private ResideMenuItem itemHome;
 
-
+    private BookRackPresenter presenter;
     private BookRackAdapter bookRackAdapter;
 
 
@@ -72,6 +78,7 @@ public class MainActivity extends  MBaseActivity<IMainPresenter> implements IMai
     @Override
     protected void initData() {
         setUpMenu();
+        presenter = new BookRackPresenter(this,this);
         bindRvShelfEvent();
     }
 
@@ -133,7 +140,7 @@ public class MainActivity extends  MBaseActivity<IMainPresenter> implements IMai
 
             @Override
             public void startRefresh() {
-                mPresenter.queryBookShelf(true);
+                presenter.getBookList(true);
             }
         });
     }
@@ -226,6 +233,21 @@ public class MainActivity extends  MBaseActivity<IMainPresenter> implements IMai
             finish();
             System.exit(0);
         }
+    }
+
+    @Override
+    public void success(LibraryBean library) {
+
+    }
+
+    @Override
+    public void fail(String content) {
+
+    }
+
+    @Override
+    public LinkedHashMap<String, String> getLinked() {
+        return null;
     }
 }
 

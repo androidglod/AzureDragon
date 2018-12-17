@@ -24,7 +24,7 @@ import android.widget.Toast;
 import com.example.azuredragon.ActivityManager;
 import com.example.azuredragon.BookContentView;
 import com.example.azuredragon.MBaseActivity;
-import com.example.azuredragon.MainActivity;
+import com.example.azuredragon.business.main.MainActivity;
 import com.example.azuredragon.R;
 import com.example.azuredragon.R2;
 import com.example.azuredragon.business.bookdetail.ContentSwitchView;
