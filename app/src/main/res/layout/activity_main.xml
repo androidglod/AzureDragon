@@ -32,7 +32,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/px30"
                 android:textStyle="bold|italic"
-                android:textColor="#FAFAD2"
+                android:textColor="@color/color_FAFAD2"
                 android:textSize="@dimen/px46"
                 android:text="DRAGON"/>
 

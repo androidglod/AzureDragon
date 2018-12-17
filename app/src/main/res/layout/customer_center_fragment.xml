@@ -159,8 +159,8 @@
                 android:layout_marginBottom="@dimen/px40"
                 android:layout_marginTop="@dimen/px18"
                 android:text="SSSS"
-                android:textColor="@color/color_737373"
-                android:textSize="@dimen/px24"/>
+                android:textColor="@color/color_FAFAD2"
+                android:textSize="@dimen/px36"/>
 
 
         </RelativeLayout>
@@ -182,8 +182,8 @@
                 android:layout_marginBottom="@dimen/px40"
                 android:layout_marginTop="@dimen/px18"
                 android:text="SASDASD"
-                android:textColor="@color/color_737373"
-                android:textSize="@dimen/px24"/>
+                android:textColor="@color/color_FAFAD2"
+                android:textSize="@dimen/px32"/>
 
         </RelativeLayout>
         <!--我的浏览-->
@@ -205,8 +205,8 @@
                 android:layout_marginBottom="@dimen/px40"
                 android:layout_marginTop="@dimen/px18"
                 android:text=";LKDF"
-                android:textColor="@color/color_737373"
-                android:textSize="@dimen/px24"/>
+                android:textColor="@color/color_FAFAD2"
+                android:textSize="@dimen/px34"/>
 
 
         </RelativeLayout>
