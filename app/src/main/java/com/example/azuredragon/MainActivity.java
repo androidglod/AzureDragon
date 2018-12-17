@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.azuredragon.ResideMenu.ResideMenu;
-import com.example.azuredragon.ResideMenu.ResideMenuItem;
+import com.example.azuredragon.residemenu.ResideMenu;
+import com.example.azuredragon.residemenu.ResideMenuItem;
 import com.example.azuredragon.adapter.BookRackAdapter;
 import com.example.azuredragon.business.BookList.BookListActivity;
 import com.example.azuredragon.business.Localfile.ImportBookActivity;

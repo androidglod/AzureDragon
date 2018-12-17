@@ -89,6 +89,13 @@
             android:theme="@style/CAppTransparentTheme">
         </activity>
 
+        <!--关于我们-->
+        <activity
+            android:name=".residemenu.AboutUsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/CAppTransparentTheme">
+        </activity>
+
     </application>
 
 </manifest>

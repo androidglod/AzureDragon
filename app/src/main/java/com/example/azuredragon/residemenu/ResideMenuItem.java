@@ -1,11 +1,12 @@
-package com.special.ResideMenu;
+package com.example.azuredragon.residemenu;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.special.ResideMenu.R;
+
+import com.example.azuredragon.R;
+
 
 /**
  * User: special
@@ -15,8 +16,8 @@ import com.special.ResideMenu.R;
  */
 public class ResideMenuItem extends LinearLayout{
 
-    /** menu item  icon  */
-    private ImageView iv_icon;
+//    /** menu item  icon  */
+//    private ImageView iv_icon;
     /** menu item  title */
     private TextView tv_title;
 
@@ -28,22 +29,22 @@ public class ResideMenuItem extends LinearLayout{
     public ResideMenuItem(Context context, int icon, int title) {
         super(context);
         initViews(context);
-        iv_icon.setImageResource(icon);
+//        iv_icon.setImageResource(icon);
         tv_title.setText(title);
     }
 
     public ResideMenuItem(Context context, int icon, String title) {
         super(context);
         initViews(context);
-        iv_icon.setImageResource(icon);
+//        iv_icon.setImageResource(icon);
         tv_title.setText(title);
     }
 
     private void initViews(Context context){
         LayoutInflater inflater=(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(R.layout.residemenu_item, this);
-        iv_icon = (ImageView) findViewById(R.id.iv_icon);
-        tv_title = (TextView) findViewById(R.id.tv_title);
+        inflater.inflate(R.layout.customer_center_fragment, this);
+//        iv_icon = (ImageView) findViewById(R.id.iv_icon);
+        tv_title = (TextView) findViewById(R.id.tv_about_us);
     }
 
     /**
@@ -52,7 +53,7 @@ public class ResideMenuItem extends LinearLayout{
      * @param icon
      */
     public void setIcon(int icon){
-        iv_icon.setImageResource(icon);
+//        iv_icon.setImageResource(icon);
     }
 
     /**

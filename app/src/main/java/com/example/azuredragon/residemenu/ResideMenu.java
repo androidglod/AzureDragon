@@ -1,16 +1,26 @@
-package com.special.ResideMenu;
+package com.example.azuredragon.residemenu;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Rect;
-import android.os.Build;
 import android.util.DisplayMetrics;
-import android.view.*;
+import android.view.KeyCharacterMap;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
-import android.widget.*;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
+import com.example.azuredragon.R;
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.AnimatorSet;
 import com.nineoldandroids.animation.ObjectAnimator;
@@ -37,6 +47,7 @@ public class ResideMenu extends FrameLayout {
     private ImageView imageViewShadow;
     private ImageView imageViewBackground;
     private LinearLayout layoutLeftMenu;
+    private TextView mAboutUs;
     private LinearLayout layoutRightMenu;
     private View scrollViewLeftMenu;
     private View scrollViewRightMenu;
@@ -101,8 +112,17 @@ public class ResideMenu extends FrameLayout {
             scrollViewLeftMenu = inflater.inflate(customLeftMenuId, this, false);
         } else {
             scrollViewLeftMenu = inflater.inflate(
-                    R.layout.residemenu_custom_left_scrollview, this, false);
+                    R.layout.customer_center_fragment, this, false);
             layoutLeftMenu = (LinearLayout) scrollViewLeftMenu.findViewById(R.id.layout_left_menu);
+            mAboutUs  = (TextView) scrollViewLeftMenu.findViewById(R.id.tv_about_us);
+            mAboutUs.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent mIntent = new Intent(activity,AboutUsActivity.class);
+                    activity.startActivity(mIntent);
+                    //点击去选书
+                }
+            });
         }
 
         if (customRightMenuId >= 0) {

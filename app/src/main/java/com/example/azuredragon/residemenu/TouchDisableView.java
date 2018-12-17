@@ -1,4 +1,4 @@
-package com.example.azuredragon.ResideMenu;
+package com.example.azuredragon.residemenu;
 
 
 

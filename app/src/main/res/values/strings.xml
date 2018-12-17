@@ -15,4 +15,11 @@
     <string name="check_update_contented">已是最新版本</string>
 
     <string name="about_us">关于青龙</string>
+
+    <string name="title_home_toolbar_medicine">青龙</string>
+    <string name="allin_wx_account">微信公众号：QLong</string>
+    <string name="allin_website">阅读网：www.qinglong.cn</string>
+    <string name="allin_current_version_code">当前版本1.0.0</string>
+    <string name="disclaimer">免责声明</string>
+    <string name="activity_create_articles">服务条款</string>
 </resources>
