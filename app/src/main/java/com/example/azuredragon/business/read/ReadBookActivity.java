@@ -67,7 +67,7 @@ public class ReadBookActivity extends MBaseActivity<IBookReadPresenter> implemen
     @BindView(R2.id.ll_menu_bottom)
      LinearLayout llMenuBottom;
     @BindView(R2.id.iv_return)
-     ImageButton ivReturn;
+     ImageView ivReturn;
     @BindView(R2.id.iv_more)
      ImageView ivMenuMore;
     @BindView(R2.id.atv_title)

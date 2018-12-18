@@ -80,6 +80,13 @@ public class MainActivity extends MBaseActivity implements BookRackContract.View
         setUpMenu();
         presenter = new BookRackPresenter(this,this);
         bindRvShelfEvent();
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        presenter.getBookList(true);
     }
 
     private void setUpMenu() {

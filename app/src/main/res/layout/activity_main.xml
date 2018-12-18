@@ -27,13 +27,13 @@
 
             <TextView
                 android:id="@+id/iv_logo"
-                android:layout_width="@dimen/px220"
+                android:layout_width="@dimen/px270"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/px30"
                 android:textStyle="bold|italic"
                 android:textColor="@color/color_FAFAD2"
-                android:textSize="@dimen/px46"
+                android:textSize="16sp"
                 android:text="DRAGON"/>
 
 

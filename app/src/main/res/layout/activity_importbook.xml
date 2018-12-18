@@ -23,21 +23,20 @@
             android:paddingRight="@dimen/px30"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/px20"
-            app:srcCompat="@drawable/black_back"
+            app:srcCompat="@drawable/common_back"
             tools:ignore="VectorDrawableCompat" />
 
         <TextView
             android:id="@+id/atv_title"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="45dp"
-            android:layout_weight="1"
             android:gravity="center|left"
             android:singleLine="true"
             android:text="本地文件"
-            android:textColor="#343434"
-            android:textSize="@dimen/px40"/>
+            android:textColor="@color/color_FAFAD2"
+            android:textSize="20sp"/>
         <TextView
             android:id="@+id/tv_addshelf"
             android:layout_width="wrap_content"
