@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:background="#f1f1f1"
     android:id="@+id/ll_content">
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="@color/color_common_bg"
@@ -18,6 +18,7 @@
             android:layout_width="43dp"
             android:layout_height="35dp"
             android:paddingLeft="17dp"
+            android:layout_centerVertical="true"
             android:paddingTop="7dp"
             android:paddingBottom="7dp"
             android:paddingRight="17dp"
@@ -27,26 +28,31 @@
 
         <TextView
             android:id="@+id/atv_title"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/iv_return"
             android:layout_marginRight="45dp"
             android:gravity="center|left"
+            android:layout_centerVertical="true"
             android:singleLine="true"
             android:text="本地文件"
             android:textColor="@color/color_FAFAD2"
             android:textSize="16sp"/>
+
         <TextView
             android:id="@+id/tv_addshelf"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
             android:text="添加书籍"
-            android:padding="15dp"
-            android:layout_gravity="center_vertical"
+            android:layout_centerVertical="true"
+            android:gravity="center"
             android:background="@drawable/bg_ib_pre"
-            android:textColor="#767676"
-            android:textSize="14sp"
+            android:textColor="@color/color_FAFAD2"
+            android:textSize="16sp"
             android:visibility="invisible"/>
-    </LinearLayout>
+    </RelativeLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
