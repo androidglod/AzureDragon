@@ -17,28 +17,28 @@
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="@dimen/px236"
-            android:layout_height="@dimen/px260"
+            android:layout_width="118dp"
+            android:layout_height="130dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/px50"
+            android:layout_marginTop="25dp"
             android:src="@drawable/icon_add_sel"/>
 
         <TextView
             android:id="@+id/tv_versions_introduce"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/px12"
+            android:layout_marginTop="6dp"
             android:gravity="center_horizontal"
-            android:lineSpacingExtra="@dimen/px8"
+            android:lineSpacingExtra="4dp"
             android:textColor="@color/color_909090"
-            android:lineHeight="@dimen/px30"
+            android:lineHeight="15dp"
             android:textSize="13sp"/>
         <TextView
             android:id="@+id/tv_about_allin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/px38"
-            android:lineSpacingExtra="@dimen/px8"
+            android:layout_marginTop="19dp"
+            android:lineSpacingExtra="4dp"
             android:textColor="@color/color_555555"
             android:lineHeight="15dp"
             android:textSize="15sp"
@@ -51,8 +51,8 @@
             android:gravity="center"
             android:orientation="horizontal">
             <ImageView
-                android:layout_width="@dimen/px40"
-                android:layout_height="@dimen/px40"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_gravity="center"
                 android:gravity="center"
                 app:srcCompat="@drawable/about_allin_we_chat"/>
@@ -73,13 +73,13 @@
             android:gravity="center"
             android:orientation="horizontal">
             <ImageView
-                android:layout_width="@dimen/px40"
-                android:layout_height="@dimen/px40"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 app:srcCompat="@drawable/about_allin_web"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/px12"
+                android:layout_marginLeft="6dp"
                 android:text="@string/allin_website"
                 android:gravity="center_vertical"
                 android:textColor="@color/color_555555"
@@ -92,18 +92,18 @@
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:background="@color/reference_list_divider"
-        android:layout_marginStart="@dimen/px32"
-        android:layout_marginEnd="@dimen/px28"/>
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"/>
     <RelativeLayout
         android:id="@+id/rl_check_update"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:layout_marginStart="@dimen/px30"
-        android:layout_marginEnd="@dimen/px32">
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp">
         <ImageView
             android:id="@+id/iv_check_update"
-            android:layout_width="@dimen/px23"
-            android:layout_height="@dimen/px23"
+            android:layout_width="13dp"
+            android:layout_height="13dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:scaleType="fitEnd"
@@ -111,7 +111,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/px12"
+            android:layout_marginStart="6dp"
             android:layout_centerVertical="true"
             android:text="@string/check_update"
             android:textColor="@color/color_222222"
@@ -130,17 +130,17 @@
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:background="@color/reference_list_divider"
-        android:layout_marginStart="@dimen/px32"
+        android:layout_marginStart="16dp"
         android:layout_marginEnd="@dimen/px28"/>
     <RelativeLayout
         android:id="@+id/rl_allin_score"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:layout_marginStart="@dimen/px30"
-        android:layout_marginEnd="@dimen/px32">
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="16dp">
         <ImageView
-            android:layout_width="@dimen/px23"
-            android:layout_height="@dimen/px23"
+            android:layout_width="13dp"
+            android:layout_height="13dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:scaleType="fitEnd"
@@ -149,7 +149,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/px12"
+            android:layout_marginLeft="6dp"
             android:layout_centerVertical="true"
             android:text="给唯医骨科评分"
             android:textColor="@color/color_222222"
@@ -159,17 +159,17 @@
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:background="@color/reference_list_divider"
-        android:layout_marginStart="@dimen/px32"
-        android:layout_marginEnd="@dimen/px28"/>
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"/>
     <RelativeLayout
         android:id="@+id/rl_go_tell_us"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:layout_marginStart="@dimen/px30"
-        android:layout_marginEnd="@dimen/px32">
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="16dp">
         <ImageView
-            android:layout_width="@dimen/px23"
-            android:layout_height="@dimen/px23"
+            android:layout_width="13dp"
+            android:layout_height="13dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:scaleType="center"
@@ -177,7 +177,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/px12"
+            android:layout_marginLeft="6dp"
             android:layout_centerVertical="true"
             android:text="联系我们"
             android:textColor="@color/color_222222"
@@ -187,14 +187,14 @@
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:background="@color/reference_list_divider"
-        android:layout_marginStart="@dimen/px32"
-        android:layout_marginEnd="@dimen/px28"/>
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"/>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_version_number"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/px120"
+        android:layout_marginTop="60dp"
         android:layout_gravity="center_horizontal"
         android:orientation="horizontal">
 
@@ -209,8 +209,8 @@
         <View
             android:layout_width="@dimen/px2"
             android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/px16"
-            android:layout_marginRight="@dimen/px16"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
             android:background="@color/color_CCCCCC"/>
 
         <TextView
@@ -228,10 +228,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="@dimen/px60"
-        android:layout_marginTop="@dimen/px60"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="30dp"
         android:gravity="center_horizontal"
-        android:lineSpacingExtra="@dimen/px8"
+        android:lineSpacingExtra="4dp"
         android:textColor="@color/color_aaaaaa"
         android:textSize="15sp"
         tools:text="北京欧应信息技术有限公司保留所有权利\nBeijing Allin Technology Co,Ltd ©2016"/>

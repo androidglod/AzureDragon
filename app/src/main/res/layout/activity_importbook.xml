@@ -15,14 +15,13 @@
 
         <ImageView
             android:id="@+id/iv_return"
-            android:layout_width="@dimen/px86"
-            android:layout_height="@dimen/px70"
-            android:paddingLeft="@dimen/px30"
-            android:paddingTop="@dimen/px10"
-            android:paddingBottom="@dimen/px10"
-            android:paddingRight="@dimen/px30"
+            android:layout_width="43dp"
+            android:layout_height="35dp"
+            android:paddingLeft="17dp"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:paddingRight="17dp"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/px20"
             app:srcCompat="@drawable/common_back"
             tools:ignore="VectorDrawableCompat" />
 
@@ -30,13 +29,12 @@
             android:id="@+id/atv_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
             android:layout_marginRight="45dp"
             android:gravity="center|left"
             android:singleLine="true"
             android:text="本地文件"
             android:textColor="@color/color_FAFAD2"
-            android:textSize="20sp"/>
+            android:textSize="16sp"/>
         <TextView
             android:id="@+id/tv_addshelf"
             android:layout_width="wrap_content"

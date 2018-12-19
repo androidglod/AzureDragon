@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="@dimen/px700"
+    android:layout_width="250dp"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
@@ -12,20 +12,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:layout_marginTop="@dimen/px160"
-        android:layout_marginLeft="@dimen/px100"
-        android:layout_marginBottom="@dimen/px20"
+        android:layout_marginTop="80dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
         android:gravity="center_vertical"
         app:layout_collapseMode="parallax">
 
         <!--头像-->
         <ImageView
             android:id="@+id/iv_head"
-            android:layout_width="@dimen/px160"
-            android:layout_height="@dimen/px160"
-            android:layout_marginLeft="@dimen/px26"
-            android:layout_marginTop="@dimen/px40"
-            android:layout_marginBottom="@dimen/px50"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="25dp"
             android:src="@drawable/common_head_portrait"
             tools:ignore="MissingPrefix"/>
         <!--登录用户展示-->
@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:visibility="gone"
-            android:layout_marginLeft="@dimen/px36"
+            android:layout_marginLeft="18dp"
             android:layout_toRightOf="@+id/iv_head"
             android:orientation="horizontal">
 
@@ -44,7 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_alignParentLeft="true"
                 android:gravity="left"
-                android:layout_marginRight="@dimen/px20"
+                android:layout_marginRight="10dp"
                 android:layout_height="wrap_content">
 
                 <TextView
@@ -56,18 +56,18 @@
                     android:maxLines="1"
                     android:layout_weight="1"
                     android:ellipsize="end"
-                    android:textSize="@dimen/px44"
+                    android:textSize="22dp"
                     android:textStyle="bold"
                     tools:text="白静春白静春白静春白静春白静春白静春"/>
 
                 <ImageView
                     android:id="@+id/iv_auth_v"
-                    android:layout_width="@dimen/px37"
-                    android:layout_height="@dimen/px37"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
                     android:layout_alignParentRight="true"
                     android:layout_gravity="center_vertical"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/px10"
+                    android:layout_marginLeft="5dp"
                     android:baselineAlignBottom="@id/tv_name"/>
             </RelativeLayout>
 
@@ -76,9 +76,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/rl_name"
-                android:layout_marginTop="@dimen/px20"
+                android:layout_marginTop="10dp"
                 android:textColor="@color/color_999999"
-                android:textSize="@dimen/px30"
+                android:textSize="15dp"
                 tools:text="主任医师"/>
 
             <TextView
@@ -86,9 +86,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_medical_title"
-                android:layout_marginTop="@dimen/px4"
+                android:layout_marginTop="2dp"
                 android:textColor="@color/color_999999"
-                android:textSize="@dimen/px30"
+                android:textSize="15dp"
                 tools:text="中国人民解放军总医院"/>
 
         </RelativeLayout>
@@ -99,8 +99,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/px32"
-            android:layout_marginRight="@dimen/px30"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="15dp"
             android:layout_toRightOf="@+id/iv_head"
             android:orientation="horizontal">
 
@@ -111,19 +111,9 @@
                 android:text="QINGDENGLENG"
                 android:textColor="@color/color_222222"
                 android:textStyle="bold"
-                android:textSize="@dimen/px44"/>
+                android:textSize="18dp"/>
 
 
-            <ImageView
-                android:layout_width="@dimen/px40"
-                android:layout_height="@dimen/px40"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="@dimen/px10"
-                android:layout_marginRight="@dimen/px10"
-                android:scaleType="centerCrop"
-                app:srcCompat="@drawable/customer_arrow_gran"
-                tools:ignore="VectorDrawableCompat" />
 
         </RelativeLayout>
 
@@ -133,14 +123,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginLeft="@dimen/px100"
-        android:background="@drawable/customer_home_shadow"
-        android:gravity="center_vertical">
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/customer_home_shadow">
         <!--我的收藏-->
         <RelativeLayout
             android:id="@+id/rl_main_tab_bar_collection"
-            android:layout_width="@dimen/px0"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
@@ -156,11 +144,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="@dimen/px40"
-                android:layout_marginTop="@dimen/px18"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="9dp"
                 android:text="SSSS"
                 android:textColor="@color/color_FAFAD2"
-                android:textSize="@dimen/px36"/>
+                android:textSize="18dp"/>
 
 
         </RelativeLayout>
@@ -179,11 +167,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="@dimen/px40"
-                android:layout_marginTop="@dimen/px18"
-                android:text="SASDASD"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="9dp"
+                android:text="SASDA"
                 android:textColor="@color/color_FAFAD2"
-                android:textSize="@dimen/px32"/>
+                android:textSize="16dp"/>
 
         </RelativeLayout>
         <!--我的浏览-->
@@ -202,11 +190,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="@dimen/px40"
-                android:layout_marginTop="@dimen/px18"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="9dp"
                 android:text=";LKDF"
                 android:textColor="@color/color_FAFAD2"
                 android:textSize="@dimen/px34"/>
+
 
 
         </RelativeLayout>
@@ -216,18 +205,16 @@
     <LinearLayout
         android:id="@+id/layout_left_menu"
         android:layout_width="match_parent"
-        android:layout_marginLeft="@dimen/px100"
-        android:layout_marginTop="@dimen/px100"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="50dp"
         android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/tv_about_us"
             style="@style/customer_center_list_title"
-            android:layout_marginLeft="@dimen/px30"
-            android:layout_marginRight="@dimen/px30"
+            android:layout_marginRight="15dp"
             android:lines="1"
-
-            android:padding="@dimen/px25"
+            android:padding="12dp"
             android:text="@string/about_us"/>
     </LinearLayout>
 
