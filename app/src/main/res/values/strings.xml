@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AzureDragon</string>
+    <string name="app_name">青龙看书</string>
     <string name="allow_input">.@0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLIMNOPQRSTUVWXYZ</string>
     <string name="tv_read_durprogress">观看至:%s</string>
     <string name="tv_book_name">《%s》</string>
