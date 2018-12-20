@@ -4,11 +4,14 @@ import android.content.Context;
 
 import com.example.azuredragon.http.base.BaseEntry;
 import com.example.azuredragon.http.base.BaseObserver;
+import com.example.azuredragon.http.bean.BaseBean;
+import com.example.azuredragon.http.bean.Login;
 import com.example.azuredragon.http.bean.ZiXunAll;
 import com.example.azuredragon.http.contract.LoginContract;
 import com.example.azuredragon.http.utils.MainUtil;
 import com.example.azuredragon.http.utils.RetrofitUtil;
 
+import java.util.HashMap;
 import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -29,22 +32,22 @@ public class LoginPresenter implements LoginContract.presenter {
         this.view = view;
     }
 
-    @Override
-    public void getBookList() {
-                RetrofitUtil.getInstance().initRetrofit().getBooData()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new BaseObserver<List<ZiXunAll>>(context,MainUtil.loadTxt) {
-                    @Override
-                    protected void onSuccees(BaseEntry<List<ZiXunAll>> t) throws Exception {
-                        view.success("标题：" + t.getData().get(0).getTitle());
-                    }
-
-                    @Override
-                    protected void onFailure(Throwable e, boolean isNetWorkError) throws Exception {
-                        view.fail("失败了----->"+e.getMessage());
-                    }
-                });
+//    @Override
+//    public void getBookList(HashMap map) {
+//                RetrofitUtil.getInstance().initRetrofit().getBooData()
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new BaseObserver<List<ZiXunAll>>(context,MainUtil.loadTxt) {
+//                    @Override
+//                    protected void onSuccees(BaseEntry<List<ZiXunAll>> t) throws Exception {
+//                        view.success("标题：" + t.getData().get(0).getTitle());
+//                    }
+//
+//                    @Override
+//                    protected void onFailure(Throwable e, boolean isNetWorkError) throws Exception {
+//                        view.fail("失败了----->"+e.getMessage());
+//                    }
+//                });
 
 //                .subscribe(new BaseObserver<List<ZiXunAll>>(context,MainUtil.loadTxt) {
 //
@@ -58,7 +61,7 @@ public class LoginPresenter implements LoginContract.presenter {
 //                        view.setContent("失败了----->"+e.getMessage());
 //                    }
 //                });
-    }
+//    }
 
 //    public void userLogin(String user, String pwd, String code) {
 //        Map<String,String> map=new HashMap<>();
@@ -108,18 +111,41 @@ public class LoginPresenter implements LoginContract.presenter {
 //                });
 //    }
 //
-    /**
-     * 获取资讯
-     */
+//    /**
+//     * 获取资讯
+//     */
+//    @Override
+//    public void getLiveData() {
+//        RetrofitUtil.getInstance().initRetrofit().getZixunData()
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new BaseObserver<List<ZiXunAll>>(context,MainUtil.loadTxt) {
+//                    @Override
+//                    protected void onSuccees(BaseEntry<List<ZiXunAll>> t) throws Exception {
+//                        view.success("标题：" + t.getData().get(0).getTitle());
+//                    }
+//
+//                    @Override
+//                    protected void onFailure(Throwable e, boolean isNetWorkError) throws Exception {
+//                        view.fail("失败了----->"+e.getMessage());
+//                    }
+//                });
+//    }
+
+
     @Override
-    public void getLiveData() {
-        RetrofitUtil.getInstance().initRetrofit().getZixunData()
+    public void goLogin(HashMap map) {
+        RetrofitUtil.getInstance().initRetrofit().userLogin(map)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new BaseObserver<List<ZiXunAll>>(context,MainUtil.loadTxt) {
+                .subscribe(new BaseObserver<BaseBean<Login>>(context,MainUtil.loadLogin) {
                     @Override
-                    protected void onSuccees(BaseEntry<List<ZiXunAll>> t) throws Exception {
-                        view.success("标题：" + t.getData().get(0).getTitle());
+                    protected void onSuccees(BaseEntry<BaseBean<Login>> t) throws Exception {
+                       if(t.isSuccess()){
+                           view.success("Hello---->"+t.getData().getMessage());
+                       }else {
+                           view.fail("----->"+t.getMessage());
+                       }
                     }
 
                     @Override
@@ -128,6 +154,4 @@ public class LoginPresenter implements LoginContract.presenter {
                     }
                 });
     }
-
-
 }

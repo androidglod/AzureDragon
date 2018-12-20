@@ -21,6 +21,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.azuredragon.R;
+import com.example.azuredragon.business.login.activity.LoginActivity;
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.AnimatorSet;
 import com.nineoldandroids.animation.ObjectAnimator;
@@ -48,6 +49,7 @@ public class ResideMenu extends FrameLayout {
     private ImageView imageViewBackground;
     private LinearLayout layoutLeftMenu;
     private TextView mAboutUs;
+    private TextView mLogin;
     private LinearLayout layoutRightMenu;
     private View scrollViewLeftMenu;
     private View scrollViewRightMenu;
@@ -115,12 +117,23 @@ public class ResideMenu extends FrameLayout {
                     R.layout.customer_center_fragment, this, false);
             layoutLeftMenu = (LinearLayout) scrollViewLeftMenu.findViewById(R.id.layout_left_menu);
             mAboutUs  = (TextView) scrollViewLeftMenu.findViewById(R.id.tv_about_us);
+            mLogin = (TextView) scrollViewLeftMenu.findViewById(R.id.tv_login);
             mAboutUs.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    //关于我们
                     Intent mIntent = new Intent(activity,AboutUsActivity.class);
                     activity.startActivity(mIntent);
-                    //点击去选书
+
+                }
+            });
+            mLogin.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //登陆
+                    Intent mIntent = new Intent(activity,LoginActivity.class);
+                    activity.startActivity(mIntent);
+
                 }
             });
         }

@@ -1,4 +1,4 @@
-package com.example.azuredragon.login.validator;
+package com.example.azuredragon.business.login.validator;
 
 import android.support.annotation.NonNull;
 import android.text.Editable;

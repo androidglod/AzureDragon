@@ -1,5 +1,7 @@
 package com.example.azuredragon.http.bean;
 
+import java.util.List;
+
 /**
  * @author: chz
  * @date: 2018/11/25
@@ -17,68 +19,31 @@ public class Login {
      * headPath : http://image.tv188.com/images/member/head_image.jpg
      * tokenId : 4761182680843567127
      */
+    private String userName;
+    private String mobile;
+    private int state;
 
-    private int id;
-    private String name;
-    private int type;
-    private String createTime;
-    private long phoneNumber;
-    private String headPath;
-    private long tokenId;
-
-    public int getId() {
-        return id;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public String getName() {
-        return name;
+    public String getMobile() {
+        return mobile;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
-    public int getType() {
-        return type;
+    public int getState() {
+        return state;
     }
 
-    public void setType(int type) {
-        this.type = type;
-    }
-
-    public String getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime;
-    }
-
-    public long getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(long phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getHeadPath() {
-        return headPath;
-    }
-
-    public void setHeadPath(String headPath) {
-        this.headPath = headPath;
-    }
-
-    public long getTokenId() {
-        return tokenId;
-    }
-
-    public void setTokenId(long tokenId) {
-        this.tokenId = tokenId;
+    public void setState(int state) {
+        this.state = state;
     }
 }

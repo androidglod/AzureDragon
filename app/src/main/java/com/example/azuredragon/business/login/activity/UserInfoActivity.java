@@ -1,4 +1,4 @@
-package com.example.azuredragon.login.activity;
+package com.example.azuredragon.business.login.activity;
 
 import android.content.Intent;
 import android.widget.RadioGroup;
@@ -7,7 +7,7 @@ import android.widget.TextView;
 import com.example.azuredragon.IPresenter;
 import com.example.azuredragon.MBaseActivity;
 import com.example.azuredragon.R;
-import com.example.azuredragon.login.validator.EmailValidator;
+import com.example.azuredragon.business.login.validator.EmailValidator;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 import butterknife.BindView;

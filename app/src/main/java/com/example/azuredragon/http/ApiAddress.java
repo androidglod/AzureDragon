@@ -27,16 +27,25 @@ public class ApiAddress {
     //忘记密码
     public final static String forgetPwd = "mbforgetPwd.do";
     //登录
-    public final static String userLogin = "mblogin.do";
+//    public final static String userLogin = "mblogin.do";
     //注册
-    public final static String userRegister = "mbregister.do";
+//    public final static String userRegister = "mbregister.do";
     //发送验证码
     public final static String sendVerifyCode = "mbsend";
 
     //获取图片验证码
     public final static String getVerifyCode = "getVerityCode.do";
 
-
+    //登录
+    public final static String userLogin = "mblogin.do";
+    //注册
+    public final static String userRegister = "http://www.qinglongread.com/app/reader/regist.do";
+    //小说列表
+    public final static String bookList = "http://www.qinglongread.com/app/works/findWorksList.do";
+    //小说详情
+    public final static String bookDetail = "  http://www.qinglongread.com/app/works/detailWorks.do";
+    //作品列表
+    public final static String myBooklists = " http://www.qinglongread.com/app/works/showChapterList.do";
 
 
 }

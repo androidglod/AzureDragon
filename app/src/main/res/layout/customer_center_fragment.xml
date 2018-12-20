@@ -94,28 +94,21 @@
         </RelativeLayout>
 
         <!--非登录用户展示-->
-        <RelativeLayout
-            android:id="@+id/ll_login_and_register"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
+
+        <TextView
+            android:id="@+id/tv_login"
+            android:layout_width="60dp"
+            android:layout_height="25dp"
+            android:text="请登录"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="15dp"
+            android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/iv_head"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tv_login"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="QINGDENGLENG"
-                android:textColor="@color/color_222222"
-                android:textStyle="bold"
-                android:textSize="18dp"/>
-
-
-
-        </RelativeLayout>
+            android:background="@drawable/common_bg"
+            android:gravity="center"
+            android:textColor="@color/color_FAFAD2"
+            android:textStyle="bold"
+            android:textSize="14sp"/>
 
     </RelativeLayout>
 

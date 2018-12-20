@@ -64,10 +64,10 @@
 
     <TextView
         android:id="@+id/tv_login"
-        android:layout_height="60dp"
+        android:layout_height="34dp"
         android:layout_width="match_parent"
         android:textColor="#FFFFFF"
-        android:textSize="20dp"
+        android:textSize="14sp"
         android:layout_marginBottom="20dp"
         android:gravity="center"
         android:text="登 陆"
@@ -75,10 +75,10 @@
 
     <TextView
         android:id="@+id/tv_register"
-        android:layout_height="60dp"
+        android:layout_height="34dp"
         android:layout_width="match_parent"
         android:textColor="#FFFFFF"
-        android:textSize="20dp"
+        android:textSize="14sp"
         android:gravity="center"
         android:text="注 册"
         android:background="@drawable/bg_login_btn"/>

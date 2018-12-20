@@ -108,7 +108,7 @@ public class ImportBookAdapter extends RecyclerView.Adapter<ImportBookAdapter.Vi
         float f;
         if (size < 1024) {
             f = size / 1.0f;
-            return (df.format(new Float(f).doubleValue()) + "B");
+            return (df.format(new Float(f).doubleValue()) + "BaseBean");
         } else if (size < 1024 * 1024) {
             f = (float) ((float) size / (float) 1024);
             return (df.format(new Float(f).doubleValue()) + "KB");

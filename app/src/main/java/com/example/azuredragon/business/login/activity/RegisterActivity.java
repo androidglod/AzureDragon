@@ -1,4 +1,4 @@
-package com.example.azuredragon.login.activity;
+package com.example.azuredragon.business.login.activity;
 
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -6,10 +6,10 @@ import android.widget.TextView;
 import com.example.azuredragon.IPresenter;
 import com.example.azuredragon.MBaseActivity;
 import com.example.azuredragon.R;
-import com.example.azuredragon.login.validator.EmailValidator;
-import com.example.azuredragon.login.validator.EmptyValidator;
-import com.example.azuredragon.login.validator.LengthValidator;
-import com.example.azuredragon.login.validator.PasswordValidator;
+import com.example.azuredragon.business.login.validator.EmailValidator;
+import com.example.azuredragon.business.login.validator.EmptyValidator;
+import com.example.azuredragon.business.login.validator.LengthValidator;
+import com.example.azuredragon.business.login.validator.PasswordValidator;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 import butterknife.BindView;

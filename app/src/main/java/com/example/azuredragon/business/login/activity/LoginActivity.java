@@ -1,4 +1,4 @@
-package com.example.azuredragon.login.activity;
+package com.example.azuredragon.business.login.activity;
 
 import android.content.Intent;
 import android.widget.TextView;
@@ -12,8 +12,13 @@ import com.example.azuredragon.http.contract.LoginContract;
 import com.example.azuredragon.http.presenter.LoginPresenter;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
+import java.util.HashMap;
+
 import butterknife.BindView;
 import butterknife.OnClick;
+
+import static android.widget.Toast.LENGTH_SHORT;
+
 /**
  * @author: chz
  * @date: 2018/11/25
@@ -57,7 +62,7 @@ public class LoginActivity extends MBaseActivity implements LoginContract.View {
                     //注册成功后将用户名放入textUsername中
                     String username = data.getStringExtra("username");
                     textUsername.setText(username);
-                    Toast.makeText(getApplicationContext(), "注册成功，请登录", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "注册成功，请登录", LENGTH_SHORT).show();
 
                     //设置register按钮为Success
 //                    button_register.setProgress(100);
@@ -101,7 +106,10 @@ public class LoginActivity extends MBaseActivity implements LoginContract.View {
 
     @OnClick(R.id.tv_login)
     public void login() {
-        presenter.getBookList();
+        HashMap map = new HashMap();
+        map.put("userName",textUsername.getText().toString());
+        map.put("password",textPassword.getText().toString());
+        presenter.goLogin(map);
         //如果登陆按钮状态为Error，则进行归位
 //        if(mTvLogin.getProgress() == -1){
 //            mTvLogin.setProgress(0);
@@ -115,7 +123,7 @@ public class LoginActivity extends MBaseActivity implements LoginContract.View {
 
     @OnClick(R.id.tv_register)
     public void register() {
-        presenter.getLiveData();
+//        presenter.getLiveData();
 //        //如果注册按钮状态为Success，则进行归位
 //        if(button_register.getProgress() == 100){
 //            button_register.setProgress(0);
@@ -129,12 +137,12 @@ public class LoginActivity extends MBaseActivity implements LoginContract.View {
 
     @Override
     public void success(String content) {
-
+        Toast.makeText(LoginActivity.this,"登录成功",Toast.LENGTH_SHORT);
     }
 
     @Override
     public void fail(String content) {
-
+           Toast.makeText(LoginActivity.this,"登录失败",Toast.LENGTH_SHORT);
     }
 //
 //    @OnClick(R.id.remember_password)

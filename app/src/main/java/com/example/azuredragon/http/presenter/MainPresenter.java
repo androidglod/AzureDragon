@@ -89,7 +89,7 @@ public class MainPresenter implements MainContract.presenter {
                     @Override
                     protected void onSuccees(BaseEntry<Login> t) throws Exception {
                        if(t.isSuccess()){
-                           view.setContent("Hello---->"+t.getData().getName());
+                           view.setContent("Hello---->"+t.getData().getUserName());
                        }else {
                            view.setContent("----->"+t.getMessage());
                        }
