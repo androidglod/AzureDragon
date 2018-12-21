@@ -75,7 +75,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="@dimen/px16"
                 android:background="@drawable/bg_ib_pre"
-                android:src="@drawable/selector_iv_add" />
+                android:src="@drawable/add_book" />
         </RelativeLayout>
 
         <!--<com.monke.monkeybook.widget.refreshview.RefreshRecyclerView-->

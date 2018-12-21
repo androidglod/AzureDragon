@@ -21,7 +21,7 @@
             android:layout_height="130dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="25dp"
-            android:src="@drawable/icon_add_sel"/>
+            android:src="@drawable/logo"/>
 
         <TextView
             android:id="@+id/tv_versions_introduce"
