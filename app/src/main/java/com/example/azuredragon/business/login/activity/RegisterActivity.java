@@ -6,11 +6,16 @@ import android.widget.TextView;
 import com.example.azuredragon.IPresenter;
 import com.example.azuredragon.MBaseActivity;
 import com.example.azuredragon.R;
+import com.example.azuredragon.business.login.activity.http.LoginPresenter;
+import com.example.azuredragon.business.login.activity.http.RegisterContract;
+import com.example.azuredragon.business.login.activity.http.RegisterPresenter;
 import com.example.azuredragon.business.login.validator.EmailValidator;
 import com.example.azuredragon.business.login.validator.EmptyValidator;
 import com.example.azuredragon.business.login.validator.LengthValidator;
 import com.example.azuredragon.business.login.validator.PasswordValidator;
 import com.rengwuxian.materialedittext.MaterialEditText;
+
+import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -19,7 +24,7 @@ import butterknife.OnClick;
  * @date: 2018/11/25
  * @description:注册
  */
-public class RegisterActivity extends MBaseActivity {
+public class RegisterActivity extends MBaseActivity  implements RegisterContract.View {
 
     @BindView(R.id.text_username)
     public MaterialEditText textUsername;
@@ -38,7 +43,7 @@ public class RegisterActivity extends MBaseActivity {
 
     @BindView(R.id.tv_register)
     TextView mTvRegister;
-
+    private RegisterPresenter presenter;
     @Override
     protected IPresenter initInjector() {
         return null;
@@ -54,9 +59,10 @@ public class RegisterActivity extends MBaseActivity {
         //添加表单验证器
         textUsername.addValidator(new LengthValidator(5,12));
         textPassword.addValidator(new LengthValidator(5,12));
-        textEmail.addValidator(new EmailValidator());
+//        textEmail.addValidator(new EmailValidator());
         textPasswordRetry.addValidator(new EmptyValidator("重复密码不能为空！"))
                 .addValidator(new PasswordValidator(textPassword.getText()));
+        presenter = new RegisterPresenter(RegisterActivity.this,RegisterActivity.this);
     }
 
 //    public void onRegisterResult(Msg msg) {
@@ -97,9 +103,14 @@ public class RegisterActivity extends MBaseActivity {
                  textPassword.validate()&&
                  textPasswordRetry.validate() &&
                  (textEmail.getText().toString().equals("") || textEmail.validate())){
+                //包装表单数据并进行注册
+                HashMap map = new HashMap();
+                map.put("userName",textUsername.getText().toString());
+                map.put("mobile",textEmail.getText().toString());
+                map.put("password",textPassword.getText().toString());
+                presenter.goRegister(map);
 
-//            //包装表单数据并进行注册
-//            User user = new User(textUsername.getText().toString(),textPassword.getText().toString());
+//            User user = new User(,);
 //
 //            user.setEmail(textEmail.getText().toString());
 //            RadioButton radioButton = (RadioButton) findViewById(groupSex.getCheckedRadioButtonId());
@@ -107,5 +118,15 @@ public class RegisterActivity extends MBaseActivity {
 //
 //            registerPresenter.register(user);
         }
+    }
+
+    @Override
+    public void success(String content) {
+
+    }
+
+    @Override
+    public void fail(String content) {
+
     }
 }

@@ -8,8 +8,8 @@ import com.example.azuredragon.IPresenter;
 import com.example.azuredragon.MBaseActivity;
 import com.example.azuredragon.R;
 import com.example.azuredragon.R2;
-import com.example.azuredragon.http.contract.LoginContract;
-import com.example.azuredragon.http.presenter.LoginPresenter;
+import com.example.azuredragon.business.login.activity.http.LoginContract;
+import com.example.azuredragon.business.login.activity.http.LoginPresenter;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.util.HashMap;

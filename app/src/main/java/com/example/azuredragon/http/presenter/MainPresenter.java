@@ -88,8 +88,8 @@ public class MainPresenter implements MainContract.presenter {
                 .subscribe(new BaseObserver<Login>(context,MainUtil.loadLogin) {
                     @Override
                     protected void onSuccees(BaseEntry<Login> t) throws Exception {
-                       if(t.isSuccess()){
-                           view.setContent("Hello---->"+t.getData().getUserName());
+                       if(t.isStatus()){
+                           view.setContent("Hello---->"+t.getMessage());
                        }else {
                            view.setContent("----->"+t.getMessage());
                        }

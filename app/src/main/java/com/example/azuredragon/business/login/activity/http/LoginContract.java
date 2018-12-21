@@ -1,4 +1,4 @@
-package com.example.azuredragon.http.contract;
+package com.example.azuredragon.business.login.activity.http;
 
 import com.example.azuredragon.http.base.BasePresenter;
 import com.example.azuredragon.http.base.BaseView;

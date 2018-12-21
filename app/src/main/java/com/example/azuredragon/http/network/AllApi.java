@@ -58,4 +58,10 @@ public interface AllApi {
      */
     @POST(ApiAddress.userLogin)
     Observable<BaseEntry<Login>> userLogin(@Body Map<String, String> maps);
+
+    /**
+     * 注册
+     */
+    @POST(ApiAddress.userRegister)
+    Observable<BaseEntry> userRegister(@Body Map<String, String> maps);
 }

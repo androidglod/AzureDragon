@@ -1,13 +1,10 @@
-package com.example.azuredragon.http.presenter;
+package com.example.azuredragon.business.login.activity.http;
 
 import android.content.Context;
 
 import com.example.azuredragon.http.base.BaseEntry;
 import com.example.azuredragon.http.base.BaseObserver;
-import com.example.azuredragon.http.bean.BaseBean;
 import com.example.azuredragon.http.bean.Login;
-import com.example.azuredragon.http.bean.ZiXunAll;
-import com.example.azuredragon.http.contract.LoginContract;
 import com.example.azuredragon.http.utils.MainUtil;
 import com.example.azuredragon.http.utils.RetrofitUtil;
 
@@ -138,11 +135,11 @@ public class LoginPresenter implements LoginContract.presenter {
         RetrofitUtil.getInstance().initRetrofit().userLogin(map)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new BaseObserver<BaseBean<Login>>(context,MainUtil.loadLogin) {
+                .subscribe(new BaseObserver<Login>(context,MainUtil.loadLogin) {
                     @Override
-                    protected void onSuccees(BaseEntry<BaseBean<Login>> t) throws Exception {
-                       if(t.isSuccess()){
-                           view.success("Hello---->"+t.getData().getMessage());
+                    protected void onSuccees(BaseEntry<Login> t) throws Exception {
+                       if(t.isStatus()){
+                           view.success("Hello---->"+t.getMessage());
                        }else {
                            view.fail("----->"+t.getMessage());
                        }

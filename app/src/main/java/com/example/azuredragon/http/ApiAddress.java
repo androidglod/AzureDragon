@@ -37,9 +37,9 @@ public class ApiAddress {
     public final static String getVerifyCode = "getVerityCode.do";
 
     //登录
-    public final static String userLogin = "mblogin.do";
+    public final static String userLogin = "reader/login.do";
     //注册
-    public final static String userRegister = "http://www.qinglongread.com/app/reader/regist.do";
+    public final static String userRegister = "reader/regist.do";
     //小说列表
     public final static String bookList = "http://www.qinglongread.com/app/works/findWorksList.do";
     //小说详情

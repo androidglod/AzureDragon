@@ -11,21 +11,9 @@ import com.example.azuredragon.http.utils.MainUtil;
 
 public class BaseEntry<T> {
     private boolean status;
-    private int code;
     private String message;
     private T data;
 
-    public boolean isSuccess(){
-        return getCode()== MainUtil.SUCCESS_CODE;
-    }
-
-    public int getCode() {
-        return code;
-    }
-
-    public void setCode(int code) {
-        this.code = code;
-    }
 
     public String getMessage() {
         return message;
@@ -41,5 +29,13 @@ public class BaseEntry<T> {
 
     public void setData(T data) {
         this.data = data;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }
