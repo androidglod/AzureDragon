@@ -4,7 +4,7 @@ package com.example.azuredragon.http.network;
 import com.example.azuredragon.http.ApiAddress;
 import com.example.azuredragon.http.base.BaseEntry;
 import com.example.azuredragon.http.bean.Banner;
-import com.example.azuredragon.http.bean.LibraryBean;
+import com.example.azuredragon.http.bean.BookDetailBean;
 import com.example.azuredragon.http.bean.Login;
 import com.example.azuredragon.http.bean.ZiXunAll;
 
@@ -13,9 +13,9 @@ import java.util.Map;
 
 import io.reactivex.Observable;
 import okhttp3.ResponseBody;
-import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.QueryMap;
 
 /**
  * @author: chz
@@ -34,8 +34,8 @@ public interface AllApi {
     /**
      * 最新书籍列表
      */
-    @GET("works/findWorksList.do")
-    Observable<BaseEntry<List<LibraryBean>>> getBookListData();
+    @GET("works/detailWorks.do")
+    Observable<BaseEntry<BookDetailBean>> getBookListData(@QueryMap() Map<String, String> maps);
 
     /**
      * ces
@@ -57,11 +57,11 @@ public interface AllApi {
      * 登录
      */
     @POST(ApiAddress.userLogin)
-    Observable<BaseEntry<Login>> userLogin(@Body Map<String, String> maps);
+    Observable<BaseEntry<Login>> userLogin(@QueryMap Map<String, String> maps);
 
     /**
      * 注册
      */
     @POST(ApiAddress.userRegister)
-    Observable<BaseEntry> userRegister(@Body Map<String, String> maps);
+    Observable<BaseEntry> userRegister(@QueryMap Map<String, String> maps);
 }

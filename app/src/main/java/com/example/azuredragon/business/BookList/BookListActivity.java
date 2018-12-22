@@ -19,6 +19,7 @@ import com.example.azuredragon.booklistview.LibraryNewBooksView;
 import com.example.azuredragon.business.bookdetail.BookDetailActivity;
 import com.example.azuredragon.business.bookdetail.BookDetailPresenterImpl;
 import com.example.azuredragon.business.search.SearchActivity;
+import com.example.azuredragon.http.bean.BookDetailBean;
 import com.example.azuredragon.http.bean.LibraryBean;
 import com.example.azuredragon.http.bean.LibraryNewBookBean;
 import com.example.azuredragon.http.bean.SearchBookBean;
@@ -27,6 +28,7 @@ import com.example.azuredragon.refreshview.BaseRefreshListener;
 import com.example.azuredragon.refreshview.RefreshProgressBar;
 import com.example.azuredragon.refreshview.RefreshScrollView;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -184,7 +186,10 @@ public class BookListActivity extends MBaseActivity implements BookListContract.
         rscvContent.setBaseRefreshListener(new BaseRefreshListener() {
             @Override
             public void startRefresh() {
-                presenter.getBookList();
+                HashMap map = new HashMap();
+
+                map.put("worksId","48");
+                presenter.getBookList(map);
             }
         });
     }
@@ -234,9 +239,9 @@ public class BookListActivity extends MBaseActivity implements BookListContract.
 
 
     @Override
-    public void success(LibraryBean library) {
+    public void success(BookDetailBean library) {
         rscvContent.finishRefresh();
-        updateUI(library);
+//        updateUI(library);
     }
 
     @Override

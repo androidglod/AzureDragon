@@ -2,8 +2,9 @@ package com.example.azuredragon.business.BookList;
 
 import com.example.azuredragon.http.base.BasePresenter;
 import com.example.azuredragon.http.base.BaseView;
-import com.example.azuredragon.http.bean.LibraryBean;
+import com.example.azuredragon.http.bean.BookDetailBean;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 /**
@@ -16,7 +17,7 @@ public interface BookListContract {
     LinkedHashMap<String,String> kinds = new LinkedHashMap<>();
     interface View extends BaseView<presenter> {
         //获取书籍列表成功
-        void success(LibraryBean library);
+        void success(BookDetailBean library);
         //获取书籍列表失败
         void fail(String content);
         LinkedHashMap<String,String> getLinked();
@@ -24,7 +25,7 @@ public interface BookListContract {
 
     interface presenter extends BasePresenter {
         //获取书籍列表
-        void getBookList();
+        void getBookList(HashMap map);
 
     }
 

@@ -52,6 +52,11 @@ public class LoginActivity extends MBaseActivity implements LoginContract.View {
     @Override
     protected void initData() {
         presenter = new LoginPresenter(this,this);
+        textUsername.setText("13522666927");
+        textPassword.setText("111111");
+//        textUsername.setText("ruffian");
+//        textPassword.setText("EA8A706C4C34A168");
+
     }
 
     @Override
@@ -107,6 +112,7 @@ public class LoginActivity extends MBaseActivity implements LoginContract.View {
     @OnClick(R.id.tv_login)
     public void login() {
         HashMap map = new HashMap();
+
         map.put("userName",textUsername.getText().toString());
         map.put("password",textPassword.getText().toString());
         presenter.goLogin(map);

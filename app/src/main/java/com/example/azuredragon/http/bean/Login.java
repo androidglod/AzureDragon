@@ -1,7 +1,5 @@
 package com.example.azuredragon.http.bean;
 
-import java.util.List;
-
 /**
  * @author: chz
  * @date: 2018/11/25
@@ -21,11 +19,11 @@ public class Login {
      */
     private String userName;
     private String mobile;
-    // 书币
-    private long gold;
-
-
-    private long giveGold;
+//    // 书币
+//    private long gold;
+//
+//
+//    private long giveGold;
     private int state;
 
     public String getUserName() {
