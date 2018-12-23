@@ -3,9 +3,10 @@ package com.example.azuredragon.http.network;
 
 import com.example.azuredragon.http.ApiAddress;
 import com.example.azuredragon.http.base.BaseEntry;
+import com.example.azuredragon.http.base.BaseObserver;
 import com.example.azuredragon.http.bean.Banner;
 import com.example.azuredragon.http.bean.BookDetailBean;
-import com.example.azuredragon.http.bean.Login;
+import com.example.azuredragon.http.bean.LoginBean;
 import com.example.azuredragon.http.bean.ZiXunAll;
 
 import java.util.List;
@@ -57,11 +58,11 @@ public interface AllApi {
      * 登录
      */
     @POST(ApiAddress.userLogin)
-    Observable<BaseEntry<Login>> userLogin(@QueryMap Map<String, String> maps);
+    Observable<BaseEntry<LoginBean>> userLogin(@QueryMap Map<String, String> maps);
 
     /**
      * 注册
      */
     @POST(ApiAddress.userRegister)
-    Observable<BaseEntry> userRegister(@QueryMap Map<String, String> maps);
+    Observable<BaseEntry<LoginBean>> userRegister(@QueryMap Map<String, String> maps);
 }

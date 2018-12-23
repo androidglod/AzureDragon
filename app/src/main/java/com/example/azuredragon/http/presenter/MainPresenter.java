@@ -7,7 +7,7 @@ import android.graphics.BitmapFactory;
 import com.example.azuredragon.http.base.BaseEntry;
 import com.example.azuredragon.http.base.BaseObserver;
 import com.example.azuredragon.http.bean.Banner;
-import com.example.azuredragon.http.bean.Login;
+import com.example.azuredragon.http.bean.LoginBean;
 import com.example.azuredragon.http.bean.ZiXunAll;
 import com.example.azuredragon.http.module.MainContract;
 import com.example.azuredragon.http.utils.MainUtil;
@@ -85,9 +85,9 @@ public class MainPresenter implements MainContract.presenter {
         RetrofitUtil.getInstance().initRetrofit().userLogin(map)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new BaseObserver<Login>(context,MainUtil.loadLogin) {
+                .subscribe(new BaseObserver<LoginBean>(context,MainUtil.loadLogin) {
                     @Override
-                    protected void onSuccees(BaseEntry<Login> t) throws Exception {
+                    protected void onSuccees(BaseEntry<LoginBean> t) throws Exception {
                        if(t.isStatus()){
                            view.setContent("Hello---->"+t.getMessage());
                        }else {

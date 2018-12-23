@@ -14,6 +14,8 @@ import com.example.azuredragon.business.login.activity.http.RegisterPresenter;
 import com.example.azuredragon.business.login.validator.EmailValidator;
 import com.example.azuredragon.business.login.validator.LengthValidator;
 import com.example.azuredragon.business.main.MainActivity;
+import com.example.azuredragon.cache.DbHelper;
+import com.example.azuredragon.http.bean.LoginBean;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.util.HashMap;
@@ -103,8 +105,9 @@ public class RegisterActivity extends MBaseActivity  implements RegisterContract
         return m.matches();
     }
     @Override
-    public void success(String content) {
+    public void success(LoginBean mLoginBean ) {
         Toast.makeText(RegisterActivity.this,"注册成功",Toast.LENGTH_SHORT);
+//        DbHelper.getInstance().getmDaoSession().getLoginBeanDao().insert(mLoginBean);
         //跳转注册界面
         Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
         startActivity(intent);

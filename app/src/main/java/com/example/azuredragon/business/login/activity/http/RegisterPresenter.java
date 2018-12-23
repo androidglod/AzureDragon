@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.example.azuredragon.http.base.BaseEntry;
 import com.example.azuredragon.http.base.BaseObserver;
+import com.example.azuredragon.http.bean.LoginBean;
 import com.example.azuredragon.http.utils.MainUtil;
 import com.example.azuredragon.http.utils.RetrofitUtil;
 
@@ -67,9 +68,9 @@ public class RegisterPresenter implements RegisterContract.presenter {
 //        RetrofitUtil.getInstance().initRetrofit().userLogin(map)
 //                .subscribeOn(Schedulers.io())
 //                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(new BaseObserver<Login>(context,MainUtil.loadLogin) {
+//                .subscribe(new BaseObserver<LoginBean>(context,MainUtil.loadLogin) {
 //                    @Override
-//                    protected void onSuccees(BaseEntry<Login> t) throws Exception {
+//                    protected void onSuccees(BaseEntry<LoginBean> t) throws Exception {
 //                       if(t.isSuccess()){
 //                           view.setContent("Hello---->"+t.getData().getName());
 //                       }else {
@@ -134,11 +135,11 @@ public class RegisterPresenter implements RegisterContract.presenter {
         RetrofitUtil.getInstance().initRetrofit().userRegister(map)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new BaseObserver<BaseEntry>(context,MainUtil.loadLogin) {
+                .subscribe(new BaseObserver<LoginBean>(context,MainUtil.loadLogin) {
                     @Override
-                    protected void onSuccees(BaseEntry t) throws Exception {
+                    protected void onSuccees(BaseEntry<LoginBean> t) throws Exception {
                        if(t.isStatus()){
-                           view.success("Hello---->"+t.getMessage());
+                           view.success(t.getData());
                        }else {
                            view.fail("----->"+t.getMessage());
                        }

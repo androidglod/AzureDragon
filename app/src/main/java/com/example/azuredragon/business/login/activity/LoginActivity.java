@@ -10,9 +10,12 @@ import com.example.azuredragon.R;
 import com.example.azuredragon.R2;
 import com.example.azuredragon.business.login.activity.http.LoginContract;
 import com.example.azuredragon.business.login.activity.http.LoginPresenter;
+import com.example.azuredragon.cache.DbHelper;
+import com.example.azuredragon.http.bean.LoginBean;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.util.HashMap;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -76,39 +79,6 @@ public class LoginActivity extends MBaseActivity implements LoginContract.View {
         }
     }
 
-
-//    public void onLoginResult(Msg msg) {
-//        if (msg.getSuccess()) {
-//            //设置登陆按钮为Success
-//            button_login.setProgress(100);
-//            Toast.makeText(getApplicationContext(), "登陆成功", Toast.LENGTH_SHORT).show();
-//
-//            //封装用户信息后存入系统
-//            User user = new User(textUsername.getText().toString(), textPassword.getText().toString());
-//            user.setRememberChecked(rememberPassword.isChecked());
-//            user.setAutoLoginChecked(autoLogin.isChecked());
-//            loginPresenter.saveUserInfo(user);
-//
-//            //进入主界面
-//            Intent intent = new Intent(LoginActivity.this, UserInfoActivity.class);
-//            intent.putExtra("username", textUsername.getText().toString());
-//            startActivity(intent);
-//            finish();
-//        } else {
-//            //设置登陆按钮为Error，并显示错误信息
-//            button_login.setProgress(-1);
-//            button_login.setErrorText(msg.getMessage());
-//            Toast.makeText(getApplicationContext(),msg.getMessage(),Toast.LENGTH_SHORT).show();
-//        }
-//    }
-
-//    @Override
-//    public void startLogin() {
-//        //设置登陆按钮为Progress，并设置为无限转动
-//        button_login.setIndeterminateProgressMode(true);
-//        button_login.setProgress(1);
-//    }
-
     @OnClick(R.id.tv_login)
     public void login() {
         HashMap map = new HashMap();
@@ -142,7 +112,12 @@ public class LoginActivity extends MBaseActivity implements LoginContract.View {
     }
 
     @Override
-    public void success(String content) {
+    public void success(LoginBean mLoginBean) {
+        //调用返回一个集合queryBuilder().where(UserDao.Properties.Name.eq("")).list()
+//        List<LoginBean> mLoginBeans = DbHelper.getInstance().getmDaoSession().getLoginBeanDao().queryBuilder().where(LoginBeanDao.Properties.UserName.eq(mLoginBean.getUserName())).list();
+//        if (mLoginBeans.size() == 0){
+//            DbHelper.getInstance().getmDaoSession().getLoginBeanDao().insert(mLoginBean);
+//        }
         Toast.makeText(LoginActivity.this,"登录成功",Toast.LENGTH_SHORT);
     }
 

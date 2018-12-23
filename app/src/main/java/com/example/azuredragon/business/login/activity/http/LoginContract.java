@@ -2,6 +2,7 @@ package com.example.azuredragon.business.login.activity.http;
 
 import com.example.azuredragon.http.base.BasePresenter;
 import com.example.azuredragon.http.base.BaseView;
+import com.example.azuredragon.http.bean.LoginBean;
 
 import java.util.HashMap;
 
@@ -14,7 +15,7 @@ import java.util.HashMap;
 
 public interface LoginContract {
     interface View extends BaseView<presenter> {
-        void success(String content);  //登录成功
+        void success(LoginBean mLoginBean);  //登录成功
         void fail(String content);  //登录失败
     }
 

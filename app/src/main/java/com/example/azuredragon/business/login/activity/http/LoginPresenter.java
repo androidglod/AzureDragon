@@ -4,12 +4,11 @@ import android.content.Context;
 
 import com.example.azuredragon.http.base.BaseEntry;
 import com.example.azuredragon.http.base.BaseObserver;
-import com.example.azuredragon.http.bean.Login;
+import com.example.azuredragon.http.bean.LoginBean;
 import com.example.azuredragon.http.utils.MainUtil;
 import com.example.azuredragon.http.utils.RetrofitUtil;
 
 import java.util.HashMap;
-import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -68,9 +67,9 @@ public class LoginPresenter implements LoginContract.presenter {
 //        RetrofitUtil.getInstance().initRetrofit().userLogin(map)
 //                .subscribeOn(Schedulers.io())
 //                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(new BaseObserver<Login>(context,MainUtil.loadLogin) {
+//                .subscribe(new BaseObserver<LoginBean>(context,MainUtil.loadLogin) {
 //                    @Override
-//                    protected void onSuccees(BaseEntry<Login> t) throws Exception {
+//                    protected void onSuccees(BaseEntry<LoginBean> t) throws Exception {
 //                       if(t.isSuccess()){
 //                           view.setContent("Hello---->"+t.getData().getName());
 //                       }else {
@@ -135,11 +134,11 @@ public class LoginPresenter implements LoginContract.presenter {
         RetrofitUtil.getInstance().initRetrofit().userLogin(map)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new BaseObserver<Login>(context,MainUtil.loadLogin) {
+                .subscribe(new BaseObserver<LoginBean>(context,MainUtil.loadLogin) {
                     @Override
-                    protected void onSuccees(BaseEntry<Login> t) throws Exception {
+                    protected void onSuccees(BaseEntry<LoginBean> t) throws Exception {
                        if(t.isStatus()){
-                           view.success("Hello---->"+t.getMessage());
+                           view.success(t.getData());
                        }else {
                            view.fail("----->"+t.getMessage());
                        }

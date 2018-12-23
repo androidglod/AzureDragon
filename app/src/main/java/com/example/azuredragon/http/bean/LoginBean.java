@@ -6,7 +6,7 @@ package com.example.azuredragon.http.bean;
  * @description:  login
  */
 
-public class Login {
+public class LoginBean {
 
     /**
      * id : 18

@@ -12,7 +12,7 @@ import butterknife.OnClick;
  * @date: 2018/11/25
  * @description:关于我们
  */
-public class AboutUsActivity extends MBaseActivity implements LoginContract.View {
+public class AboutUsActivity extends MBaseActivity {
 
 //    @BindView(R2.id.text_username)
 //    MaterialEditText textUsername;
@@ -51,13 +51,5 @@ public class AboutUsActivity extends MBaseActivity implements LoginContract.View
     public void register() {
     }
 
-    @Override
-    public void success(String content) {
 
-    }
-
-    @Override
-    public void fail(String content) {
-
-    }
 }
