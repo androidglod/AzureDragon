@@ -1,7 +1,9 @@
 package com.example.azuredragon.business.login.activity;
 
+import android.content.Intent;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.azuredragon.IPresenter;
 import com.example.azuredragon.MBaseActivity;
@@ -10,12 +12,13 @@ import com.example.azuredragon.business.login.activity.http.LoginPresenter;
 import com.example.azuredragon.business.login.activity.http.RegisterContract;
 import com.example.azuredragon.business.login.activity.http.RegisterPresenter;
 import com.example.azuredragon.business.login.validator.EmailValidator;
-import com.example.azuredragon.business.login.validator.EmptyValidator;
 import com.example.azuredragon.business.login.validator.LengthValidator;
-import com.example.azuredragon.business.login.validator.PasswordValidator;
+import com.example.azuredragon.business.main.MainActivity;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -32,8 +35,6 @@ public class RegisterActivity extends MBaseActivity  implements RegisterContract
     @BindView(R.id.text_password)
     MaterialEditText textPassword;
 
-    @BindView(R.id.text_password_retry)
-    MaterialEditText textPasswordRetry;
 
     @BindView(R.id.text_email)
     MaterialEditText textEmail;
@@ -57,76 +58,60 @@ public class RegisterActivity extends MBaseActivity  implements RegisterContract
     @Override
     protected void initData() {
         //添加表单验证器
-        textUsername.addValidator(new LengthValidator(5,12));
-        textPassword.addValidator(new LengthValidator(5,12));
-//        textEmail.addValidator(new EmailValidator());
-        textPasswordRetry.addValidator(new EmptyValidator("重复密码不能为空！"))
-                .addValidator(new PasswordValidator(textPassword.getText()));
+        textUsername.addValidator(new LengthValidator(1,12));
+        textPassword.addValidator(new LengthValidator(6,12));
+        textEmail.addValidator(new EmailValidator());
+
         presenter = new RegisterPresenter(RegisterActivity.this,RegisterActivity.this);
     }
 
-//    public void onRegisterResult(Msg msg) {
-//        if(msg.getSuccess()){
-//            //设置注册按钮为Success
-//            button_register.setProgress(100);
-//
-//            //将username带回登陆界面
-//            Intent intent = new Intent();
-//            intent.putExtra("username",textUsername.getText().toString());
-//            setResult(RESULT_OK,intent);
-//            finish();
-//        }
-//        else {
-//            //设置注册按钮为Error，并显示错误信息
-//            button_register.setProgress(-1);
-//            button_register.setErrorText(msg.getMessage());
-//            Toast.makeText(getApplicationContext(),msg.getMessage(),Toast.LENGTH_SHORT).show();
-//        }
-//    }
-//
-//    @Override
-//    public void startRegister() {
-//        //设置注册按钮为Progress，并设置为无限转动
-//        button_register.setIndeterminateProgressMode(true);
-//        button_register.setProgress(1);
-//    }
-//
     @OnClick(R.id.tv_register)
     public void register() {
-//        //如果注册按钮状态为Error，则进行归位
-//        if(button_register.getProgress() == -1){
-//            button_register.setProgress(0);
-//        }
-//        //先进行表单验证
-//        else
-            if(textUsername.validate() &&
-                 textPassword.validate()&&
-                 textPasswordRetry.validate() &&
-                 (textEmail.getText().toString().equals("") || textEmail.validate())){
-                //包装表单数据并进行注册
-                HashMap map = new HashMap();
-                map.put("userName",textUsername.getText().toString());
-                map.put("mobile",textEmail.getText().toString());
-                map.put("password",textPassword.getText().toString());
-                presenter.goRegister(map);
 
-//            User user = new User(,);
-//
-//            user.setEmail(textEmail.getText().toString());
-//            RadioButton radioButton = (RadioButton) findViewById(groupSex.getCheckedRadioButtonId());
-//            user.setSex(radioButton.getText().toString());
-//
-//            registerPresenter.register(user);
-        }
+//         //先进行表单验证
+            if (!textEmail.getText().toString().equals("")){
+                if (isMobileNO(textEmail.getText().toString())||isEmail(textEmail.getText().toString())){
+                    if(textUsername.validate() &&
+                            textPassword.validate()) {
+                        //包装表单数据并进行注册
+                        HashMap map = new HashMap();
+                        map.put("userName", textUsername.getText().toString());
+                        map.put("mobile", textEmail.getText().toString());
+                        map.put("password", textPassword.getText().toString());
+                        presenter.goRegister(map);
+                    }
+                }else{
+                    textEmail.validate();
+                }
+            }else{
+                textEmail.validate();
+            }
+
+
     }
-
+    //验证手机号
+    public boolean isMobileNO(String mobiles) {
+        Pattern p = Pattern.compile("^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$");
+        Matcher m = p.matcher(mobiles);
+        return m.matches();
+    }
+    //验证邮箱
+    public boolean isEmail(String email) {
+        String str = "^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$";
+        Pattern p = Pattern.compile(str);
+        Matcher m = p.matcher(email);
+        return m.matches();
+    }
     @Override
     public void success(String content) {
-
+        Toast.makeText(RegisterActivity.this,"注册成功",Toast.LENGTH_SHORT);
+        //跳转注册界面
+        Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+        startActivity(intent);
     }
 
     @Override
     public void fail(String content) {
-
+        Toast.makeText(RegisterActivity.this,"网络错误",Toast.LENGTH_SHORT);
     }
 }

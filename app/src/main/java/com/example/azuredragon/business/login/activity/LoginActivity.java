@@ -137,7 +137,7 @@ public class LoginActivity extends MBaseActivity implements LoginContract.View {
 //        else {
             //跳转注册界面
             Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-            startActivityForResult(intent, 1);
+            startActivity(intent);
 //        }
     }
 
