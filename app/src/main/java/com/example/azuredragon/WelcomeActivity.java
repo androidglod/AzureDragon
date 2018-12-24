@@ -7,6 +7,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.azuredragon.business.main.MainActivity;
+import com.example.azuredragon.cache.PreferencesUtils;
+import com.example.azuredragon.http.bean.LoginBean;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

@@ -29,12 +29,13 @@
             android:src="@drawable/common_head_portrait"
             tools:ignore="MissingPrefix"/>
         <!--登录用户展示-->
+        <!--登录用户展示-->
         <RelativeLayout
-            android:id="@+id/ll_name_and_auth"
+            android:id="@+id/rl_name_and_auth"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:visibility="gone"
+            android:visibility="visible"
             android:layout_marginLeft="18dp"
             android:layout_toRightOf="@+id/iv_head"
             android:orientation="horizontal">
@@ -51,14 +52,14 @@
                     android:id="@+id/tv_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/color_222222"
+                    android:textColor="#CDCD00"
                     android:layout_toLeftOf="@+id/iv_auth_v"
                     android:maxLines="1"
                     android:layout_weight="1"
                     android:ellipsize="end"
-                    android:textSize="22dp"
+                    android:textSize="18dp"
                     android:textStyle="bold"
-                    tools:text="白静春白静春白静春白静春白静春白静春"/>
+                    tools:text="天蚕土豆"/>
 
                 <ImageView
                     android:id="@+id/iv_auth_v"
@@ -72,23 +73,24 @@
             </RelativeLayout>
 
             <TextView
-                android:id="@+id/tv_medical_title"
+                android:id="@+id/tv_author_sex"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/rl_name"
                 android:layout_marginTop="10dp"
-                android:textColor="@color/color_999999"
+                android:textColor="#CDCD00"
                 android:textSize="15dp"
-                tools:text="主任医师"/>
+                tools:text="男"/>
 
             <TextView
-                android:id="@+id/tv_hospital_name"
+                android:id="@+id/tv_author_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_medical_title"
+                android:layout_below="@+id/tv_author_sex"
                 android:layout_marginTop="2dp"
                 android:textColor="@color/color_999999"
                 android:textSize="15dp"
+                android:visibility="gone"
                 tools:text="中国人民解放军总医院"/>
 
         </RelativeLayout>
@@ -108,6 +110,7 @@
             android:gravity="center"
             android:textColor="@color/color_FAFAD2"
             android:textStyle="bold"
+            android:visibility="gone"
             android:textSize="14sp"/>
 
     </RelativeLayout>
@@ -133,19 +136,31 @@
                 <!--app:srcCompat="@drawable/customer_collect_logo"/>-->
 
             <TextView
-                android:id="@+id/tv_main_tab_bar_collection"
+                android:id="@+id/tv_book_currency"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="20dp"
                 android:layout_marginTop="9dp"
-                android:text="SSSS"
+                android:text="书 币"
                 android:textColor="@color/color_FAFAD2"
-                android:textSize="18dp"/>
+                android:textSize="16dp"/>
+            <TextView
+                android:id="@+id/tv_book_currency_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/tv_book_currency"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="0"
+                android:lines="1"
+                android:ellipsize="end"
+                android:textColor="@color/color_FAFAD2"
+                android:textSize="14dp"/>
 
 
         </RelativeLayout>
-        <!--我的下载-->
+        <!--我的书币-->
         <RelativeLayout
             android:id="@+id/rl_main_tab_bar_download"
             android:layout_width="@dimen/px0"
@@ -156,42 +171,54 @@
 
 
             <TextView
-                android:id="@+id/tv_main_tab_bar_download"
+                android:id="@+id/tv_give_book_currency"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="20dp"
                 android:layout_marginTop="9dp"
-                android:text="SASDA"
+                android:text="赠送书币"
                 android:textColor="@color/color_FAFAD2"
                 android:textSize="16dp"/>
-
-        </RelativeLayout>
-        <!--我的浏览-->
-        <RelativeLayout
-            android:id="@+id/rl_main_tab_bar_scan"
-            android:layout_width="@dimen/px0"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:gravity="center_vertical">
-
-
-
             <TextView
-                android:id="@+id/tv_main_tab_bar_scan"
+                android:id="@+id/tv_give_book_currency_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="20dp"
-                android:layout_marginTop="9dp"
-                android:text=";LKDF"
+                android:layout_below="@+id/tv_give_book_currency"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="0"
+                android:lines="1"
+                android:ellipsize="end"
                 android:textColor="@color/color_FAFAD2"
-                android:textSize="@dimen/px34"/>
-
-
+                android:textSize="14dp"/>
 
         </RelativeLayout>
+        <!--&lt;!&ndash;我的浏览&ndash;&gt;-->
+        <!--<RelativeLayout-->
+            <!--android:id="@+id/rl_main_tab_bar_scan"-->
+            <!--android:layout_width="@dimen/px0"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center_vertical"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center_vertical">-->
+
+
+
+            <!--<TextView-->
+                <!--android:id="@+id/tv_main_tab_bar_scan"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_centerHorizontal="true"-->
+                <!--android:layout_marginBottom="20dp"-->
+                <!--android:layout_marginTop="9dp"-->
+                <!--android:text=";LKDF"-->
+                <!--android:textColor="@color/color_FAFAD2"-->
+                <!--android:textSize="@dimen/px34"/>-->
+
+
+
+        <!--</RelativeLayout>-->
 
     </LinearLayout>
 

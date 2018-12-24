@@ -1,12 +1,15 @@
 package com.example.azuredragon.http.bean;
 
+import java.io.Serializable;
+import java.math.BigDecimal;
+
 /**
  * @author: chz
  * @date: 2018/11/25
  * @description:  login
  */
 
-public class LoginBean {
+public class LoginBean implements Serializable {
 
     /**
      * id : 18
@@ -19,11 +22,13 @@ public class LoginBean {
      */
     private String userName;
     private String mobile;
-//    // 书币
-//    private long gold;
-//
-//
-//    private long giveGold;
+    // 书币
+    private BigDecimal gold;
+    // 性别
+    private int sex;
+
+
+    private BigDecimal giveGold;
     private int state;
 
     public String getUserName() {
@@ -48,5 +53,29 @@ public class LoginBean {
 
     public void setState(int state) {
         this.state = state;
+    }
+
+    public BigDecimal getGold() {
+        return gold;
+    }
+
+    public void setGold(BigDecimal gold) {
+        this.gold = gold;
+    }
+
+    public BigDecimal getGiveGold() {
+        return giveGold;
+    }
+
+    public void setGiveGold(BigDecimal giveGold) {
+        this.giveGold = giveGold;
+    }
+
+    public int getSex() {
+        return sex;
+    }
+
+    public void setSex(int sex) {
+        this.sex = sex;
     }
 }

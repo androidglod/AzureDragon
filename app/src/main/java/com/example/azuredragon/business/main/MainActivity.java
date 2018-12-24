@@ -14,7 +14,9 @@ import com.example.azuredragon.R;
 import com.example.azuredragon.R2;
 import com.example.azuredragon.business.BookList.BookListContract;
 import com.example.azuredragon.business.BookList.BookListPresenter;
+import com.example.azuredragon.cache.PreferencesUtils;
 import com.example.azuredragon.http.bean.LibraryBean;
+import com.example.azuredragon.http.bean.LoginBean;
 import com.example.azuredragon.residemenu.ResideMenu;
 import com.example.azuredragon.adapter.BookRackAdapter;
 import com.example.azuredragon.business.BookList.BookListActivity;
@@ -77,22 +79,23 @@ public class MainActivity extends MBaseActivity implements BookRackContract.View
 
     @Override
     protected void initData() {
-        setUpMenu();
         presenter = new BookRackPresenter(this,this);
         bindRvShelfEvent();
+
 
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        setUpMenu();
         presenter.getBookList(true);
     }
 
     private void setUpMenu() {
-
+        LoginBean mLoginBeans = PreferencesUtils.getUser(this,"user","user_info");
         // attach to current activity;
-        resideMenu = new ResideMenu(this);
+        resideMenu = new ResideMenu(this,mLoginBeans);
         resideMenu.setUse3D(true);
         resideMenu.setBackground(R.drawable.menu_background);
         resideMenu.attachToActivity(this);
