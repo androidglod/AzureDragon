@@ -52,7 +52,7 @@
                     android:id="@+id/tv_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#CDCD00"
+                    android:textColor="@color/color_FFDEAD"
                     android:layout_toLeftOf="@+id/iv_auth_v"
                     android:maxLines="1"
                     android:layout_weight="1"
@@ -78,7 +78,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/rl_name"
                 android:layout_marginTop="10dp"
-                android:textColor="#CDCD00"
+                android:textColor="@color/color_FFDEAD"
                 android:textSize="15dp"
                 tools:text="男"/>
 
@@ -88,7 +88,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_author_sex"
                 android:layout_marginTop="2dp"
-                android:textColor="@color/color_999999"
+                android:textColor="@color/color_FFDEAD"
                 android:textSize="15dp"
                 android:visibility="gone"
                 tools:text="中国人民解放军总医院"/>

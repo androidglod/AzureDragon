@@ -30,7 +30,7 @@ import butterknife.OnClick;
  * @date: 2018/11/25
  * @description:注册
  */
-public class RegisterActivity extends MBaseActivity  implements RegisterContract.View {
+public class RegisterActivity extends MBaseActivity  implements RegisterContract.View , RadioGroup.OnCheckedChangeListener {
 
     @BindView(R.id.text_username)
     public MaterialEditText textUsername;
@@ -48,6 +48,9 @@ public class RegisterActivity extends MBaseActivity  implements RegisterContract
     @BindView(R.id.tv_register)
     TextView mTvRegister;
     private RegisterPresenter presenter;
+    /**性别 1-男 2-女*/
+    private int sex = 1;
+
     @Override
     protected IPresenter initInjector() {
         return null;
@@ -76,12 +79,9 @@ public class RegisterActivity extends MBaseActivity  implements RegisterContract
                 if (isMobileNO(textEmail.getText().toString())||isEmail(textEmail.getText().toString())){
                     if(textUsername.validate() &&
                             textPassword.validate()) {
-                        //包装表单数据并进行注册
                         HashMap map = new HashMap();
-                        map.put("userName", textUsername.getText().toString());
                         map.put("mobile", textEmail.getText().toString());
-                        map.put("password", textPassword.getText().toString());
-                        presenter.goRegister(map);
+                        presenter.checkPhone(map);
                     }
                 }else{
                     textEmail.validate();
@@ -107,7 +107,7 @@ public class RegisterActivity extends MBaseActivity  implements RegisterContract
     }
     @Override
     public void success(LoginBean mLoginBean ) {
-        Toast.makeText(RegisterActivity.this,"注册成功",Toast.LENGTH_SHORT);
+        Toast.makeText(RegisterActivity.this,"注册成功",Toast.LENGTH_SHORT).show();
 //        DbHelper.getInstance().getmDaoSession().getLoginBeanDao().insert(mLoginBean);
         //跳转注册界面
         try {
@@ -121,6 +121,34 @@ public class RegisterActivity extends MBaseActivity  implements RegisterContract
 
     @Override
     public void fail(String content) {
-        Toast.makeText(RegisterActivity.this,"网络错误",Toast.LENGTH_SHORT);
+        Toast.makeText(RegisterActivity.this,"网络错误",Toast.LENGTH_SHORT).show();;
+    }
+
+    @Override
+    public void checkPhonesuccess(String content) {
+        //包装表单数据并进行注册
+        HashMap map = new HashMap();
+        map.put("userName", textUsername.getText().toString());
+        map.put("mobile", textEmail.getText().toString());
+        map.put("password", textPassword.getText().toString());
+        map.put("sex", sex);
+        presenter.goRegister(map);
+    }
+
+    @Override
+    public void checkPhonefail(String content) {
+        Toast.makeText(RegisterActivity.this,"账号已存在",Toast.LENGTH_SHORT).show();;
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        switch(checkedId){
+            case R.id.man:
+                sex = 1;
+                break;
+            case R.id.woman:
+                sex = 2;
+                break;
+        }
     }
 }
