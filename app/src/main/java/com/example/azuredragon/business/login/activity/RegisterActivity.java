@@ -15,6 +15,7 @@ import com.example.azuredragon.business.login.validator.EmailValidator;
 import com.example.azuredragon.business.login.validator.LengthValidator;
 import com.example.azuredragon.business.main.MainActivity;
 import com.example.azuredragon.cache.DbHelper;
+import com.example.azuredragon.cache.PreferencesUtils;
 import com.example.azuredragon.http.bean.LoginBean;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
@@ -109,6 +110,11 @@ public class RegisterActivity extends MBaseActivity  implements RegisterContract
         Toast.makeText(RegisterActivity.this,"注册成功",Toast.LENGTH_SHORT);
 //        DbHelper.getInstance().getmDaoSession().getLoginBeanDao().insert(mLoginBean);
         //跳转注册界面
+        try {
+            PreferencesUtils.saveUser(RegisterActivity.this,"user","user_info",mLoginBean);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
         startActivity(intent);
     }

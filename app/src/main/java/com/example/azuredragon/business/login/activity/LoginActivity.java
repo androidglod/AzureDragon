@@ -8,9 +8,12 @@ import com.example.azuredragon.IPresenter;
 import com.example.azuredragon.MBaseActivity;
 import com.example.azuredragon.R;
 import com.example.azuredragon.R2;
+import com.example.azuredragon.WelcomeActivity;
 import com.example.azuredragon.business.login.activity.http.LoginContract;
 import com.example.azuredragon.business.login.activity.http.LoginPresenter;
+import com.example.azuredragon.business.main.MainActivity;
 import com.example.azuredragon.cache.DbHelper;
+import com.example.azuredragon.cache.PreferencesUtils;
 import com.example.azuredragon.http.bean.LoginBean;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
@@ -55,28 +58,8 @@ public class LoginActivity extends MBaseActivity implements LoginContract.View {
     @Override
     protected void initData() {
         presenter = new LoginPresenter(this,this);
-        textUsername.setText("13522666927");
-        textPassword.setText("111111");
-//        textUsername.setText("ruffian");
-//        textPassword.setText("EA8A706C4C34A168");
-
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch (requestCode) {
-            case 1:
-                if (resultCode == RESULT_OK) {
-                    //注册成功后将用户名放入textUsername中
-                    String username = data.getStringExtra("username");
-                    textUsername.setText(username);
-                    Toast.makeText(getApplicationContext(), "注册成功，请登录", LENGTH_SHORT).show();
-
-                    //设置register按钮为Success
-//                    button_register.setProgress(100);
-                }
-                break;
-        }
+//        textUsername.setText("13522666927");
+//        textPassword.setText("111111");
     }
 
     @OnClick(R.id.tv_login)
@@ -86,39 +69,30 @@ public class LoginActivity extends MBaseActivity implements LoginContract.View {
         map.put("userName",textUsername.getText().toString());
         map.put("password",textPassword.getText().toString());
         presenter.goLogin(map);
-        //如果登陆按钮状态为Error，则进行归位
-//        if(mTvLogin.getProgress() == -1){
-//            mTvLogin.setProgress(0);
-//        }
-//        //先进行表单检查
-//        else if(textUsername.validate() && textPassword.validate()){
-//            User user = new User(textUsername.getText().toString(), textPassword.getText().toString());
-//            loginPresenter.login(user);
-//        }
     }
 
     @OnClick(R.id.tv_register)
     public void register() {
-//        presenter.getLiveData();
-//        //如果注册按钮状态为Success，则进行归位
-//        if(button_register.getProgress() == 100){
-//            button_register.setProgress(0);
-//        }
-//        else {
-            //跳转注册界面
-            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-            startActivity(intent);
-//        }
+        //跳转注册界面
+        Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+        startActivity(intent);
+
     }
 
     @Override
     public void success(LoginBean mLoginBean) {
-        //调用返回一个集合queryBuilder().where(UserDao.Properties.Name.eq("")).list()
-//        List<LoginBean> mLoginBeans = DbHelper.getInstance().getmDaoSession().getLoginBeanDao().queryBuilder().where(LoginBeanDao.Properties.UserName.eq(mLoginBean.getUserName())).list();
-//        if (mLoginBeans.size() == 0){
-//            DbHelper.getInstance().getmDaoSession().getLoginBeanDao().insert(mLoginBean);
-//        }
+
         Toast.makeText(LoginActivity.this,"登录成功",Toast.LENGTH_SHORT);
+        LoginBean mLoginBeans = PreferencesUtils.getUser(this,"user","user_info");
+        if (null == mLoginBeans){
+            try {
+                PreferencesUtils.saveUser(LoginActivity.this,"user","user_info",mLoginBean);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        startActivityByAnim(new Intent(LoginActivity.this, MainActivity.class), android.R.anim.fade_in, android.R.anim.fade_out);
+        finish();
     }
 
     @Override

@@ -22,6 +22,7 @@ import android.widget.TextView;
 
 import com.example.azuredragon.R;
 import com.example.azuredragon.business.login.activity.LoginActivity;
+import com.example.azuredragon.http.bean.LoginBean;
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.AnimatorSet;
 import com.nineoldandroids.animation.ObjectAnimator;
@@ -48,8 +49,22 @@ public class ResideMenu extends FrameLayout {
     private ImageView imageViewShadow;
     private ImageView imageViewBackground;
     private LinearLayout layoutLeftMenu;
+    /**关于我们*/
     private TextView mAboutUs;
+    /**登陆*/
     private TextView mLogin;
+    /**用户信息*/
+    private RelativeLayout rl_name_and_auth;
+    /**姓名*/
+    private TextView tv_name;
+    /**x性别*/
+    private TextView tv_author_sex;
+    /**书币*/
+    private TextView tv_book_currency_value;
+    /**赠送书币*/
+    private TextView tv_give_book_currency_value;
+
+
     private LinearLayout layoutRightMenu;
     private View scrollViewLeftMenu;
     private View scrollViewRightMenu;
@@ -87,10 +102,12 @@ public class ResideMenu extends FrameLayout {
 
     private boolean mUse3D;
     private static final int ROTATE_Y_ANGLE = 10;
-
-    public ResideMenu(Context context) {
+    private LoginBean mLoginBean;
+    public ResideMenu(Context context, LoginBean mLoginBean) {
         super(context);
+        this.mLoginBean = mLoginBean;
         initViews(context, -1, -1);
+
     }
 
     /**
@@ -116,8 +133,30 @@ public class ResideMenu extends FrameLayout {
             scrollViewLeftMenu = inflater.inflate(
                     R.layout.customer_center_fragment, this, false);
             layoutLeftMenu = (LinearLayout) scrollViewLeftMenu.findViewById(R.id.layout_left_menu);
-            mAboutUs  = (TextView) scrollViewLeftMenu.findViewById(R.id.tv_about_us);
+            rl_name_and_auth = (RelativeLayout) scrollViewLeftMenu.findViewById(R.id.rl_name_and_auth);
+            tv_name = (TextView) scrollViewLeftMenu.findViewById(R.id.tv_name);
+            tv_author_sex = (TextView) scrollViewLeftMenu.findViewById(R.id.tv_author_sex);
+            tv_book_currency_value = (TextView) scrollViewLeftMenu.findViewById(R.id.tv_book_currency_value);
+            tv_give_book_currency_value = (TextView) scrollViewLeftMenu.findViewById(R.id.tv_give_book_currency_value);
             mLogin = (TextView) scrollViewLeftMenu.findViewById(R.id.tv_login);
+            mAboutUs  = (TextView) scrollViewLeftMenu.findViewById(R.id.tv_about_us);
+            if (null == mLoginBean){
+                rl_name_and_auth.setVisibility(GONE);
+                mLogin.setVisibility(VISIBLE);
+            }else{
+                rl_name_and_auth.setVisibility(VISIBLE);
+                mLogin.setVisibility(GONE);
+                tv_name.setText(mLoginBean.getUserName());
+                if (mLoginBean.getSex() == 1){
+                    tv_author_sex.setText("男");
+                }else{
+                    tv_author_sex.setText("女");
+                }
+                tv_book_currency_value.setText(mLoginBean.getGold().toString());
+                tv_give_book_currency_value.setText(mLoginBean.getGiveGold().toString());
+            }
+
+
             mAboutUs.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -127,6 +166,8 @@ public class ResideMenu extends FrameLayout {
 
                 }
             });
+
+
             mLogin.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
