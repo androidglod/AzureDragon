@@ -12,12 +12,6 @@ import com.example.azuredragon.IMainPresenter;
 import com.example.azuredragon.MBaseActivity;
 import com.example.azuredragon.R;
 import com.example.azuredragon.R2;
-import com.example.azuredragon.business.BookList.BookListContract;
-import com.example.azuredragon.business.BookList.BookListPresenter;
-import com.example.azuredragon.cache.PreferencesUtils;
-import com.example.azuredragon.http.bean.LibraryBean;
-import com.example.azuredragon.http.bean.LoginBean;
-import com.example.azuredragon.residemenu.ResideMenu;
 import com.example.azuredragon.adapter.BookRackAdapter;
 import com.example.azuredragon.business.BookList.BookListActivity;
 import com.example.azuredragon.business.Localfile.ImportBookActivity;
@@ -26,9 +20,13 @@ import com.example.azuredragon.business.bookdetail.BookDetailActivity;
 import com.example.azuredragon.business.bookdetail.BookDetailPresenterImpl;
 import com.example.azuredragon.business.bookdetail.ReadBookPresenterImpl;
 import com.example.azuredragon.business.read.ReadBookActivity;
+import com.example.azuredragon.cache.PreferencesUtils;
 import com.example.azuredragon.http.bean.BookShelfBean;
+import com.example.azuredragon.http.bean.LibraryBean;
+import com.example.azuredragon.http.bean.LoginBean;
 import com.example.azuredragon.refreshview.OnRefreshWithProgressListener;
 import com.example.azuredragon.refreshview.RefreshRecyclerView;
+import com.example.azuredragon.residemenu.ResideMenu;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -97,7 +95,6 @@ public class MainActivity extends MBaseActivity implements BookRackContract.View
         // attach to current activity;
         resideMenu = new ResideMenu(this,mLoginBeans);
         resideMenu.setUse3D(true);
-        resideMenu.setBackground(R.drawable.menu_background);
         resideMenu.attachToActivity(this);
         resideMenu.setMenuListener(menuListener);
         //valid scale factor is between 0.0f and 1.0f. leftmenu'width is 150dip.

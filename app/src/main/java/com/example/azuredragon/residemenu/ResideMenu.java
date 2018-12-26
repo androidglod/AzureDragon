@@ -22,7 +22,9 @@ import android.widget.TextView;
 
 import com.example.azuredragon.R;
 import com.example.azuredragon.business.login.activity.LoginActivity;
+import com.example.azuredragon.cache.PreferencesUtils;
 import com.example.azuredragon.http.bean.LoginBean;
+import com.example.azuredragon.widget.DialogManager;
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.AnimatorSet;
 import com.nineoldandroids.animation.ObjectAnimator;
@@ -50,7 +52,14 @@ public class ResideMenu extends FrameLayout {
     private ImageView imageViewBackground;
     private LinearLayout layoutLeftMenu;
     /**关于我们*/
-    private TextView mAboutUs;
+    private LinearLayout mLlAboutUs;
+    /**关于我们*/
+    private LinearLayout mLlContactUs;
+    /**意见反馈*/
+    private LinearLayout mLlAuggest;
+    /**设置*/
+    private LinearLayout mLlSetting;
+
     /**登陆*/
     private TextView mLogin;
     /**用户信息*/
@@ -99,6 +108,7 @@ public class ResideMenu extends FrameLayout {
     private List<Integer> disabledSwipeDirection = new ArrayList<Integer>();
     // Valid scale factor is between 0.0f and 1.0f.
     private float mScaleValue = 0.5f;
+    private DialogManager dialogManager;
 
     private boolean mUse3D;
     private static final int ROTATE_Y_ANGLE = 10;
@@ -139,7 +149,11 @@ public class ResideMenu extends FrameLayout {
             tv_book_currency_value = (TextView) scrollViewLeftMenu.findViewById(R.id.tv_book_currency_value);
             tv_give_book_currency_value = (TextView) scrollViewLeftMenu.findViewById(R.id.tv_give_book_currency_value);
             mLogin = (TextView) scrollViewLeftMenu.findViewById(R.id.tv_login);
-            mAboutUs  = (TextView) scrollViewLeftMenu.findViewById(R.id.tv_about_us);
+            mLlAboutUs  = (LinearLayout) scrollViewLeftMenu.findViewById(R.id.ll_about_us);
+            mLlContactUs = (LinearLayout) scrollViewLeftMenu.findViewById(R.id.ll_contact_us);
+            mLlAuggest  = (LinearLayout) scrollViewLeftMenu.findViewById(R.id.ll_suggest);
+            mLlSetting  = (LinearLayout) scrollViewLeftMenu.findViewById(R.id.ll_setting);
+
             if (null == mLoginBean){
                 rl_name_and_auth.setVisibility(GONE);
                 mLogin.setVisibility(VISIBLE);
@@ -157,7 +171,7 @@ public class ResideMenu extends FrameLayout {
             }
 
 
-            mAboutUs.setOnClickListener(new OnClickListener() {
+            mLlAboutUs.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     //关于我们
@@ -167,13 +181,44 @@ public class ResideMenu extends FrameLayout {
                 }
             });
 
-
-            mLogin.setOnClickListener(new OnClickListener() {
+            mLlContactUs.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //登陆
+                    //联系我们
+                    Intent mIntent = new Intent(activity,AboutUsActivity.class);
+                    activity.startActivity(mIntent);
+
+                }
+            });
+
+            mLlAuggest.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //意见
                     Intent mIntent = new Intent(activity,LoginActivity.class);
                     activity.startActivity(mIntent);
+
+                }
+            });
+            mLlSetting.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    if (null == dialogManager) {
+                          dialogManager =new DialogManager(context);
+                    } else {
+                        dialogManager.showMsgDialog("确定退出登录吗？", "确定", "取消", false, new DialogManager.DialogCallback() {
+                            @Override
+                            public void onPositiveButton() {
+                                PreferencesUtils.cleanUser(context,"user","user_info");
+                                //退出
+                                Intent mIntent = new Intent(activity,LoginActivity.class);
+                                activity.startActivity(mIntent);
+                                activity.finish();
+                            }
+                        });
+                    }
+
 
                 }
             });
@@ -287,9 +332,9 @@ public class ResideMenu extends FrameLayout {
      *
      * @param imageResource
      */
-    public void setBackground(int imageResource) {
-        imageViewBackground.setImageResource(imageResource);
-    }
+//    public void setBackground(int imageResource) {
+//        imageViewBackground.setImageResource(imageResource);
+//    }
 
     /**
      * The visibility of the shadow under the activity;

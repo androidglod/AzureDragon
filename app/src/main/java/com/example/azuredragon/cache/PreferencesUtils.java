@@ -53,4 +53,9 @@ public class PreferencesUtils {
         return user;
     }
 
+    public static void cleanUser(Context context, String preferenceName, String key) {
+        SharedPreferences sharedPreferences=context.getSharedPreferences(preferenceName,context.MODE_PRIVATE);
+        sharedPreferences.edit().clear().commit();
+    }
+
 }

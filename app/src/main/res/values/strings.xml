@@ -15,7 +15,9 @@
     <string name="check_update_contented">已是最新版本</string>
 
     <string name="about_us">关于青龙</string>
-
+    <string name="contact_us">联系我们</string>
+    <string name="suggest">意见反馈</string>
+    <string name="setting">退出登录</string>
     <string name="title_home_toolbar_medicine">青龙</string>
     <string name="allin_wx_account">微信公众号：QLong</string>
     <string name="allin_website">阅读网：www.qinglong.cn</string>
