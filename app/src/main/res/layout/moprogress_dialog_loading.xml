@@ -13,21 +13,22 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/color_common_bg"
         android:orientation="vertical">
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:layout_gravity="center">
-            <!--<com.victor.loading.rotate.RotateLoading-->
-                <!--android:id="@+id/rl_loading"-->
-                <!--android:layout_width="48dp"-->
-                <!--android:layout_height="48dp"-->
-                <!--app:loading_width="2dp"-->
-                <!--app:loading_color="#767676"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:layout_marginTop="20dp"-->
-                <!--android:layout_marginBottom="20dp"/>-->
+            <com.victor.loading.rotate.RotateLoading
+                android:id="@+id/rl_loading"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                app:loading_width="2dp"
+                app:loading_color="color_FAFAD2"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"/>
         </FrameLayout>
 
         <TextView
@@ -38,7 +39,7 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:textSize="16sp"
-            android:textColor="#767676"
+            android:textColor="@color/color_FAFAD2"
             android:layout_marginBottom="20dp"/>
     </LinearLayout>
 </LinearLayout>

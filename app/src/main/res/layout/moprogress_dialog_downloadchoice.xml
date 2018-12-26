@@ -137,7 +137,7 @@
             android:clickable="true"
             android:gravity="center"
             android:text="下载"
-            android:textColor="#ffffff"
+            android:textColor="@color/color_common_bg"
             android:textSize="15sp" />
     </LinearLayout>
 </LinearLayout>

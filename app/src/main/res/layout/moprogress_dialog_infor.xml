@@ -16,6 +16,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/color_common_bg"
         android:orientation="vertical">
         <TextView
             android:id="@+id/msg_tv"
@@ -41,7 +42,7 @@
             android:gravity="center"
             android:textSize="14sp"
             android:lines="1"
-            android:textColor="@drawable/selector_tv_addshelf_text"/>
+            android:textColor="@color/color_FAFAD2"/>
     </LinearLayout>
     <View
         android:layout_width="0dp"

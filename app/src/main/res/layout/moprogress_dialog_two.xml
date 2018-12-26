@@ -48,7 +48,7 @@
                 android:textColor="#ffffff"
                 android:clickable="true"
                 android:textSize="15sp"
-                android:background="@drawable/selector_book_detail_read_bg"/>
+                android:background="@color/color_common_bg"/>
         </LinearLayout>
     </LinearLayout>
 </FrameLayout>
