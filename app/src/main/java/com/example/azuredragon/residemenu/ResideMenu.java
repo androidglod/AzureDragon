@@ -345,17 +345,17 @@ public class ResideMenu extends FrameLayout {
 //        imageViewBackground.setImageResource(imageResource);
 //    }
 
-    /**
-     * The visibility of the shadow under the activity;
-     *
-     * @param isVisible
-     */
-    public void setShadowVisible(boolean isVisible) {
-        if (isVisible)
-            imageViewShadow.setBackgroundResource(R.drawable.shadow);
-        else
-            imageViewShadow.setBackgroundResource(0);
-    }
+//    /**
+//     * The visibility of the shadow under the activity;
+//     *
+//     * @param isVisible
+//     */
+//    public void setShadowVisible(boolean isVisible) {
+//        if (isVisible)
+//            imageViewShadow.setBackgroundResource(R.drawable.shadow);
+//        else
+//            imageViewShadow.setBackgroundResource(0);
+//    }
 
     /**
      * Add a single item to the left menu;

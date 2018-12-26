@@ -14,17 +14,14 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import com.example.azuredragon.ActivityManager;
 import com.example.azuredragon.BookContentView;
 import com.example.azuredragon.MBaseActivity;
-import com.example.azuredragon.business.main.MainActivity;
 import com.example.azuredragon.R;
 import com.example.azuredragon.R2;
 import com.example.azuredragon.business.bookdetail.ContentSwitchView;
@@ -32,11 +29,11 @@ import com.example.azuredragon.business.bookdetail.IBookReadPresenter;
 import com.example.azuredragon.business.bookdetail.IBookReadView;
 import com.example.azuredragon.business.bookdetail.PremissionCheck;
 import com.example.azuredragon.business.bookdetail.ReadBookPresenterImpl;
+import com.example.azuredragon.business.main.MainActivity;
 import com.example.azuredragon.business.read.modialog.MoProgressHUD;
 import com.example.azuredragon.cache.RxBusTag;
 import com.example.azuredragon.http.bean.DownloadChapterBean;
 import com.example.azuredragon.http.bean.DownloadChapterListBean;
-import com.example.azuredragon.http.utils.DensityUtil;
 import com.hwangjr.rxbus.RxBus;
 import com.monke.mprogressbar.MHorProgressBar;
 import com.monke.mprogressbar.OnProgressListener;
@@ -68,8 +65,8 @@ public class ReadBookActivity extends MBaseActivity<IBookReadPresenter> implemen
      LinearLayout llMenuBottom;
     @BindView(R2.id.iv_return)
      ImageView ivReturn;
-    @BindView(R2.id.iv_more)
-     ImageView ivMenuMore;
+//    @BindView(R2.id.iv_more)
+//     ImageView ivMenuMore;
     @BindView(R2.id.atv_title)
      AutofitTextView atvTitle;
     @BindView(R2.id.tv_pre)
@@ -310,12 +307,12 @@ public class ReadBookActivity extends MBaseActivity<IBookReadPresenter> implemen
                 finish();
             }
         });
-        ivMenuMore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                readBookMenuMorePop.showAsDropDown(ivMenuMore, 0, DensityUtil.dp2px(ReadBookActivity.this, -3.5f));
-            }
-        });
+//        ivMenuMore.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                readBookMenuMorePop.showAsDropDown(ivMenuMore, 0, DensityUtil.dp2px(ReadBookActivity.this, -3.5f));
+//            }
+//        });
         csvBook.setLoadDataListener(new ContentSwitchView.LoadDataListener() {
             @Override
             public void loaddata(BookContentView bookContentView, long qtag, int chapterIndex, int pageIndex) {
@@ -506,7 +503,7 @@ public class ReadBookActivity extends MBaseActivity<IBookReadPresenter> implemen
 
     @Override
     public void showDownloadMenu() {
-        ivMenuMore.setVisibility(View.VISIBLE);
+//        ivMenuMore.setVisibility(View.VISIBLE);
     }
 
     private Boolean showCheckPremission = false;

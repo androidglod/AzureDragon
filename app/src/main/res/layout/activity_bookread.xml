@@ -63,17 +63,17 @@
                     app:minTextSize="14sp"
                     android:textColor="@color/color_FAFAD2"
                     android:gravity="center|left"/>
-                <ImageView
-                    android:id="@+id/iv_more"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:paddingTop="7dp"
-                    android:paddingBottom="7dp"
-                    android:src="@drawable/selector_icon_more"
-                    android:background="@drawable/bg_ib_pre"
-                    android:clickable="true"
-                    android:layout_gravity="center_vertical"
-                    android:visibility="invisible"/>
+                <!--<ImageView-->
+                    <!--android:id="@+id/iv_more"-->
+                    <!--android:layout_width="48dp"-->
+                    <!--android:layout_height="48dp"-->
+                    <!--android:paddingTop="7dp"-->
+                    <!--android:paddingBottom="7dp"-->
+                    <!--android:src="@drawable/selector_icon_more"-->
+                    <!--android:background="@drawable/bg_ib_pre"-->
+                    <!--android:clickable="true"-->
+                    <!--android:layout_gravity="center_vertical"-->
+                    <!--android:visibility="invisible"/>-->
             </LinearLayout>
 
             <View
