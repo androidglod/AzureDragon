@@ -82,7 +82,7 @@ public class LoginActivity extends MBaseActivity implements LoginContract.View {
     @Override
     public void success(LoginBean mLoginBean) {
 
-        Toast.makeText(LoginActivity.this,"登录成功",Toast.LENGTH_SHORT);
+        Toast.makeText(LoginActivity.this,"登录成功",Toast.LENGTH_SHORT).show();
         LoginBean mLoginBeans = PreferencesUtils.getUser(this,"user","user_info");
         if (null == mLoginBeans){
             try {
@@ -97,7 +97,7 @@ public class LoginActivity extends MBaseActivity implements LoginContract.View {
 
     @Override
     public void fail(String content) {
-           Toast.makeText(LoginActivity.this,"登录失败",Toast.LENGTH_SHORT);
+           Toast.makeText(LoginActivity.this,"登录失败",Toast.LENGTH_SHORT).show();
     }
 //
 //    @OnClick(R.id.remember_password)

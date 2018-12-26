@@ -65,4 +65,12 @@ public interface AllApi {
      */
     @POST(ApiAddress.userRegister)
     Observable<BaseEntry<LoginBean>> userRegister(@QueryMap Map<String, String> maps);
+
+    /**
+     * 最新书籍列表
+     */
+    @GET("reader/checkReader.do")
+    Observable<BaseEntry> getCheckPhone(@QueryMap() Map<String, String> maps);
+
+
 }

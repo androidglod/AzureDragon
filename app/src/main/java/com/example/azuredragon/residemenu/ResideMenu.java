@@ -29,6 +29,7 @@ import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.AnimatorSet;
 import com.nineoldandroids.animation.ObjectAnimator;
 import com.nineoldandroids.view.ViewHelper;
+import com.ta.utdid2.android.utils.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -166,8 +167,16 @@ public class ResideMenu extends FrameLayout {
                 }else{
                     tv_author_sex.setText("女");
                 }
-                tv_book_currency_value.setText(mLoginBean.getGold().toString());
-                tv_give_book_currency_value.setText(mLoginBean.getGiveGold().toString());
+                if (null== mLoginBean.getGold() || StringUtils.isEmpty(mLoginBean.getGold().toString())){
+                    tv_book_currency_value.setText("0");
+                }else{
+                    tv_book_currency_value.setText(mLoginBean.getGold().toString());
+                }
+                if (null== mLoginBean.getGold() || StringUtils.isEmpty(mLoginBean.getGiveGold().toString())){
+                    tv_book_currency_value.setText("0");
+                }else{
+                    tv_book_currency_value.setText(mLoginBean.getGiveGold().toString());
+                }
             }
 
 
