@@ -179,7 +179,17 @@ public class ResideMenu extends FrameLayout {
                 }
             }
 
+            mLogin.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
+                    //登录
+                    Intent mIntent = new Intent(activity,LoginActivity.class);
+                    activity.startActivity(mIntent);
+
+
+                }
+            });
             mLlAboutUs.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {

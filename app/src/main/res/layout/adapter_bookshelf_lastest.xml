@@ -14,7 +14,7 @@
             android:layout_height="116dp"/>
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="45dp"
             android:background="@drawable/img_shelf_lastest"/>
     </LinearLayout>
     <LinearLayout
