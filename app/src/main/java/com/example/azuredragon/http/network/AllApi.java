@@ -3,7 +3,6 @@ package com.example.azuredragon.http.network;
 
 import com.example.azuredragon.http.ApiAddress;
 import com.example.azuredragon.http.base.BaseEntry;
-import com.example.azuredragon.http.base.BaseObserver;
 import com.example.azuredragon.http.bean.Banner;
 import com.example.azuredragon.http.bean.BookDetailBean;
 import com.example.azuredragon.http.bean.LoginBean;
