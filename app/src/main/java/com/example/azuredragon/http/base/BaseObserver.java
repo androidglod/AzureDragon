@@ -19,7 +19,7 @@ import io.reactivex.disposables.Disposable;
  * @date: 2018/11/25
  * @description:自定义Observer
  */
-public abstract class BaseObserver<T> implements Observer<BaseEntry<T>> {
+public abstract class BaseObserver<T> implements Observer<T> {
     protected Context mContext;
     private KProgressHUD progressHUD;
     private String labelTxt;
@@ -38,7 +38,7 @@ public abstract class BaseObserver<T> implements Observer<BaseEntry<T>> {
 
     //获取数据
     @Override
-    public void onNext(BaseEntry<T> tBaseEntity) {
+    public void onNext(T tBaseEntity) {
         try {
             onSuccees(tBaseEntity);
         } catch (Exception e) {
@@ -76,7 +76,7 @@ public abstract class BaseObserver<T> implements Observer<BaseEntry<T>> {
      * @param t
      * @throws Exception
      */
-    protected abstract void onSuccees(BaseEntry<T> t) throws Exception;
+    protected abstract void onSuccees(T t) throws Exception;
 
 
     /**

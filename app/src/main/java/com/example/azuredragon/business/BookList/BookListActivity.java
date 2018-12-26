@@ -19,6 +19,7 @@ import com.example.azuredragon.booklistview.LibraryNewBooksView;
 import com.example.azuredragon.business.bookdetail.BookDetailActivity;
 import com.example.azuredragon.business.bookdetail.BookDetailPresenterImpl;
 import com.example.azuredragon.business.search.SearchActivity;
+import com.example.azuredragon.http.base.BaseListEntry;
 import com.example.azuredragon.http.bean.BookDetailBean;
 import com.example.azuredragon.http.bean.LibraryBean;
 import com.example.azuredragon.http.bean.LibraryNewBookBean;
@@ -31,6 +32,7 @@ import com.example.azuredragon.refreshview.RefreshScrollView;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -239,7 +241,7 @@ public class BookListActivity extends MBaseActivity implements BookListContract.
 
 
     @Override
-    public void success(BookDetailBean library) {
+    public void success(List<BookDetailBean> library) {
         rscvContent.finishRefresh();
 //        updateUI(library);
     }

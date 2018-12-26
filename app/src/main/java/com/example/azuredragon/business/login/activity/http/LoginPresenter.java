@@ -134,7 +134,7 @@ public class LoginPresenter implements LoginContract.presenter {
         RetrofitUtil.getInstance().initRetrofit().userLogin(map)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new BaseObserver<LoginBean>(context,MainUtil.loadLogin) {
+                .subscribe(new BaseObserver<BaseEntry<LoginBean>>(context,MainUtil.loadLogin) {
                     @Override
                     protected void onSuccees(BaseEntry<LoginBean> t) throws Exception {
                        if(t.isStatus()){
