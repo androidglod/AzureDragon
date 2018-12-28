@@ -3,6 +3,7 @@ package com.example.azuredragon.business.BookList;
 import android.content.Context;
 
 import com.example.azuredragon.http.base.BaseEntry;
+import com.example.azuredragon.http.base.BaseListEntry;
 import com.example.azuredragon.http.base.BaseObserver;
 import com.example.azuredragon.http.bean.BookDetailBean;
 import com.example.azuredragon.http.utils.MainUtil;
@@ -10,6 +11,7 @@ import com.example.azuredragon.http.utils.RetrofitUtil;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -36,10 +38,12 @@ public class BookListPresenter implements BookListContract.presenter {
         RetrofitUtil.getInstance().initRetrofit().getBookListData(map)
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
-        .subscribe(new BaseObserver<BookDetailBean>(context,MainUtil.loadTxt) {
+        .subscribe(new BaseObserver<BaseListEntry<BookDetailBean>>(context,MainUtil.loadTxt) {
+
+
             @Override
-            protected void onSuccees(BaseEntry<BookDetailBean> t) throws Exception {
-                view.success(t.getData());
+            protected void onSuccees(BaseListEntry<BookDetailBean> bookDetailBeanBaseListEntry) throws Exception {
+                view.success(bookDetailBeanBaseListEntry.getData());
             }
 
             @Override

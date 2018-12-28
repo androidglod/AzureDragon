@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
 import com.example.azuredragon.http.base.BaseEntry;
+import com.example.azuredragon.http.base.BaseListEntry;
 import com.example.azuredragon.http.base.BaseObserver;
 import com.example.azuredragon.http.bean.Banner;
 import com.example.azuredragon.http.bean.LoginBean;
@@ -85,7 +86,7 @@ public class MainPresenter implements MainContract.presenter {
         RetrofitUtil.getInstance().initRetrofit().userLogin(map)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new BaseObserver<LoginBean>(context,MainUtil.loadLogin) {
+                .subscribe(new BaseObserver<BaseEntry<LoginBean>>(context,MainUtil.loadLogin) {
                     @Override
                     protected void onSuccees(BaseEntry<LoginBean> t) throws Exception {
                        if(t.isStatus()){
@@ -110,9 +111,9 @@ public class MainPresenter implements MainContract.presenter {
         RetrofitUtil.getInstance().initRetrofit().getBanner()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new BaseObserver<List<Banner>>(context,MainUtil.loadTxt) {
+                .subscribe(new BaseObserver<BaseListEntry<Banner>>(context,MainUtil.loadTxt) {
                     @Override
-                    protected void onSuccees(BaseEntry<List<Banner>> t) throws Exception {
+                    protected void onSuccees(BaseListEntry<Banner> t) throws Exception {
                         MainUtil.printLogger(t.getData().get(0).getTitle());
                         view.setContent(t.getData().get(0).getContent());
                     }
@@ -133,10 +134,11 @@ public class MainPresenter implements MainContract.presenter {
         RetrofitUtil.getInstance().initRetrofit().getZixunData()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new BaseObserver<List<ZiXunAll>>(context,MainUtil.loadTxt) {
+                .subscribe(new BaseObserver<BaseListEntry<ZiXunAll>>(context,MainUtil.loadTxt) {
+
                     @Override
-                    protected void onSuccees(BaseEntry<List<ZiXunAll>> t) throws Exception {
-                        view.setContent("标题：" + t.getData().get(0).getTitle());
+                    protected void onSuccees(BaseListEntry<ZiXunAll> ziXunAllBaseListEntry) throws Exception {
+                        view.setContent("标题：" + ziXunAllBaseListEntry.getData().get(0).getTitle());
                     }
 
                     @Override

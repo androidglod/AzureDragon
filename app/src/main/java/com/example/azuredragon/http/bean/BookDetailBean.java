@@ -1,19 +1,40 @@
 package com.example.azuredragon.http.bean;
+
+import java.io.Serializable;
+
 /**
  * @author: chz
  * @date: 2018/11/25
  * @description:  书城 书籍分类推荐列表
  */
-public class BookDetailBean {
+public class BookDetailBean implements Serializable {
     private long worksId;
     private String worksName;
     private String worksCoverPic;
     private int affiliatedChannel;
     private String fictionTypeName;
+    private String fictionTypeId;
     private String writer;
     private int writingState;
     private String worksDes;
     private int totalWordsNumber;
+    private int auditStatus;
+
+    public String getFictionTypeId() {
+        return fictionTypeId;
+    }
+
+    public void setFictionTypeId(String fictionTypeId) {
+        this.fictionTypeId = fictionTypeId;
+    }
+
+    public int getAuditStatus() {
+        return auditStatus;
+    }
+
+    public void setAuditStatus(int auditStatus) {
+        this.auditStatus = auditStatus;
+    }
 
     public long getWorksId() {
         return worksId;

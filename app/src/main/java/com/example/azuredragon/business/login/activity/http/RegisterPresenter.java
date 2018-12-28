@@ -37,7 +37,7 @@ public class RegisterPresenter implements RegisterContract.presenter {
         RetrofitUtil.getInstance().initRetrofit().userRegister(map)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new BaseObserver<LoginBean>(context,MainUtil.loadLogin) {
+                .subscribe(new BaseObserver<BaseEntry<LoginBean>>(context,MainUtil.loadLogin) {
                     @Override
                     protected void onSuccees(BaseEntry<LoginBean> t) throws Exception {
                        if(t.isStatus()){
@@ -59,7 +59,7 @@ public class RegisterPresenter implements RegisterContract.presenter {
         RetrofitUtil.getInstance().initRetrofit().getCheckPhone(map)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new BaseObserver(context,"") {
+                .subscribe(new BaseObserver<BaseEntry>(context,"") {
                     @Override
                     protected void onSuccees(BaseEntry t) throws Exception {
                         if (t.isStatus()) {

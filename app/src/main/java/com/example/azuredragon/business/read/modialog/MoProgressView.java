@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.azuredragon.R;
+import com.victor.loading.rotate.RotateLoading;
 
 /**
  * @author: chz
@@ -43,9 +44,8 @@ public class MoProgressView extends LinearLayout {
         if (text != null && text.length() > 0) {
             msgTv.setText(text);
         }
-
-//        RotateLoading rlLoading = (RotateLoading) findViewById(R.id.rl_loading);
-//        rlLoading.start();
+        RotateLoading rlLoading = (RotateLoading) findViewById(R.id.rl_loading);
+        rlLoading.start();
     }
 
     //单个按钮的信息提示框

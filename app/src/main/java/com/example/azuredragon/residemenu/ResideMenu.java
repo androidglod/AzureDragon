@@ -179,7 +179,18 @@ public class ResideMenu extends FrameLayout {
                 }
             }
 
+            mLogin.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
+                    //登录
+                    Intent mIntent = new Intent(activity,LoginActivity.class);
+                    activity.startActivity(mIntent);
+                    activity.finish();
+
+
+                }
+            });
             mLlAboutUs.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -215,19 +226,17 @@ public class ResideMenu extends FrameLayout {
 
                     if (null == dialogManager) {
                           dialogManager =new DialogManager(context);
-                    } else {
-                        dialogManager.showMsgDialog("确定退出登录吗？", "确定", "取消", false, new DialogManager.DialogCallback() {
-                            @Override
-                            public void onPositiveButton() {
-                                PreferencesUtils.cleanUser(context,"user","user_info");
-                                //退出
-                                Intent mIntent = new Intent(activity,LoginActivity.class);
-                                activity.startActivity(mIntent);
-                                activity.finish();
-                            }
-                        });
                     }
-
+                    dialogManager.showMsgDialog("确定退出登录吗？", "确定", "取消", false, new DialogManager.DialogCallback() {
+                        @Override
+                        public void onPositiveButton() {
+                            PreferencesUtils.cleanUser(context,"user","user_info");
+                            //退出
+                            Intent mIntent = new Intent(activity,LoginActivity.class);
+                            activity.startActivity(mIntent);
+                            activity.finish();
+                        }
+                    });
 
                 }
             });

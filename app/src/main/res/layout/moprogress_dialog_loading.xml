@@ -25,7 +25,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 app:loading_width="2dp"
-                app:loading_color="color_FAFAD2"
+                app:loading_color="@color/color_FAFAD2"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"/>

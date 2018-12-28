@@ -3,6 +3,7 @@ package com.example.azuredragon.http.network;
 
 import com.example.azuredragon.http.ApiAddress;
 import com.example.azuredragon.http.base.BaseEntry;
+import com.example.azuredragon.http.base.BaseListEntry;
 import com.example.azuredragon.http.bean.Banner;
 import com.example.azuredragon.http.bean.BookDetailBean;
 import com.example.azuredragon.http.bean.LoginBean;
@@ -29,24 +30,19 @@ public interface AllApi {
      * 获取banner
      */
     @GET(ApiAddress.getBannerList)
-    Observable<BaseEntry<List<Banner>>> getBanner();
+    Observable<BaseListEntry<Banner>> getBanner();
 
     /**
      * 最新书籍列表
      */
-    @GET("works/detailWorks.do")
-    Observable<BaseEntry<BookDetailBean>> getBookListData(@QueryMap() Map<String, String> maps);
-
-    /**
-     * ces
-     */
     @GET("works/findWorksList.do")
-    Observable<BaseEntry<List<ZiXunAll>>> getBooData();
+    Observable<BaseListEntry<BookDetailBean>> getBookListData(@QueryMap() Map<String, String> maps);
+
     /**
      * 最新资讯
      */
     @GET("mobile/listArticles.do")
-    Observable<BaseEntry<List<ZiXunAll>>> getZixunData();
+    Observable<BaseListEntry<ZiXunAll>> getZixunData();
     /**
      * 获取图片验证码
      */
