@@ -43,6 +43,14 @@ public class MainActivity extends MBaseActivity implements BookRackContract.View
     RefreshRecyclerView rfRvShelf;
     @BindView(R2.id.iv_add)
     ImageView username;
+
+    @OnClick(R2.id.iv_booklist)
+    public void selectBook(){
+        resideMenu.closeMenu();
+        //点击更多
+        startActivityByAnim(new Intent(MainActivity.this, BookListActivity.class), 0, 0);
+
+    }
     @OnClick(R2.id.iv_add)
     public void addItem(){
         resideMenu.closeMenu();
@@ -160,12 +168,10 @@ public class MainActivity extends MBaseActivity implements BookRackContract.View
     private ResideMenu.OnMenuListener menuListener = new ResideMenu.OnMenuListener() {
         @Override
         public void openMenu() {
-            Toast.makeText(MainActivity.this, "Menu is opened!", Toast.LENGTH_SHORT).show();
         }
 
         @Override
         public void closeMenu() {
-            Toast.makeText(MainActivity.this, "Menu is closed!", Toast.LENGTH_SHORT).show();
         }
     };
 //
