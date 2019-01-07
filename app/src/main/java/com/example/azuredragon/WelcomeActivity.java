@@ -6,9 +6,7 @@ import android.content.Intent;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.azuredragon.business.main.MainActivity;
-import com.example.azuredragon.cache.PreferencesUtils;
-import com.example.azuredragon.http.bean.LoginBean;
+import com.example.azuredragon.business.pay.PayActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -68,7 +66,7 @@ public class WelcomeActivity extends MBaseActivity {
 
             @Override
             public void onAnimationEnd(Animator animation) {
-                startActivityByAnim(new Intent(WelcomeActivity.this, MainActivity.class), android.R.anim.fade_in, android.R.anim.fade_out);
+                startActivityByAnim(new Intent(WelcomeActivity.this, PayActivity.class), android.R.anim.fade_in, android.R.anim.fade_out);
                 finish();
             }
 

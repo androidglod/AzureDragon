@@ -39,12 +39,15 @@
             android:textColor="@color/color_FAFAD2"
             android:textSize="16sp"/>
 
-
     </RelativeLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="20dp">
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
         <TextView
             android:id="@+id/payment"
             android:layout_width="wrap_content"
@@ -58,8 +61,9 @@
 
         <ImageView
             android:id="@+id/iv_payment"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="12dp"
             android:layout_gravity="center"
             android:layout_marginRight="10dp"
             android:layout_toLeftOf="@+id/tv_select_payment"
@@ -81,14 +85,185 @@
             android:gravity="center"/>
     </RelativeLayout>
 
-        <TextView
-            android:id="@+id/tv_scan"
+
+    <View
+        android:id="@+id/view_top"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:background="@color/color_F1F4F9" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/color_common_bg"
-            android:clickable="true"
-            android:textColor="#ffffff"
-            android:textSize="16sp"
-            android:text="智能扫描"
-            android:gravity="center"/>
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:padding="10dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="10dp"
+            android:id="@+id/shiyuan">
+
+            <ImageView
+                android:id="@+id/ch_box_10"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:checked="true"
+                app:srcCompat="@drawable/consultation_selected"
+                tools:ignore="VectorDrawableCompat" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toEndOf="@+id/ch_box_10"
+                android:textColor="@color/color_222222"
+                android:text="1000点"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="10dp"
+            android:padding="10dp"
+            android:id="@+id/ershi">
+
+            <ImageView
+                android:id="@+id/ch_box_20"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:checked="true"
+                app:srcCompat="@drawable/consultation_select"
+                tools:ignore="VectorDrawableCompat" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/ch_box_20"
+                android:textColor="@color/color_222222"
+                android:text="3000点"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="10dp"
+            android:padding="10dp"
+            android:id="@+id/wushi">
+
+            <ImageView
+                android:id="@+id/ch_box_50"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:checked="true"
+                app:srcCompat="@drawable/consultation_select"
+                tools:ignore="VectorDrawableCompat" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/ch_box_50"
+                android:textColor="@color/color_222222"
+                android:text="5000点"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:padding="10dp"
+            android:layout_marginStart="10dp"
+            android:id="@+id/yibaiyuan">
+
+            <ImageView
+                android:id="@+id/ch_box_100"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:checked="true"
+                app:srcCompat="@drawable/consultation_select"
+                tools:ignore="VectorDrawableCompat" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/ch_box_100"
+                android:id="@+id/tv_radiobutton_title"
+                android:textColor="@color/color_222222"
+                android:text="10000点"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_custom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="10dp"
+            android:paddingTop="8dp"
+            android:paddingLeft="10dp">
+
+            <ImageView
+                android:id="@+id/ch_custom"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:checked="true"
+                app:srcCompat="@drawable/consultation_select"
+                tools:ignore="VectorDrawableCompat"/>
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/me_custom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginRight="15dp"
+                android:focusable="false"
+                android:paddingBottom="16dp"
+                android:layout_toEndOf="@+id/ch_custom"
+                android:hint="自定义点卷"
+                android:inputType="number"
+                app:met_clearButton="true"
+                app:met_floatingLabel="highlight"
+                app:met_iconPadding="0dp"/>
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/tv_pay"
+        android:layout_height="34dp"
+        android:layout_width="match_parent"
+        android:layout_margin="20dp"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:text="支付10元"
+        android:background="@drawable/bg_login_btn"/>
 </LinearLayout>

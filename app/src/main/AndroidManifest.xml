@@ -95,6 +95,13 @@
             android:theme="@style/CAppTransparentTheme">
         </activity>
 
+        <!--支付功能-->
+        <activity
+            android:name=".business.pay.PayActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/CAppTransparentTheme">
+        </activity>
+
     </application>
 
 </manifest>
