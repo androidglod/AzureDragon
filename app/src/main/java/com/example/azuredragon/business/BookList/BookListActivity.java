@@ -15,20 +15,18 @@ import com.example.azuredragon.MBaseActivity;
 import com.example.azuredragon.R;
 import com.example.azuredragon.R2;
 import com.example.azuredragon.booklistview.LibraryKindBookListView;
-import com.example.azuredragon.booklistview.LibraryNewBooksView;
 import com.example.azuredragon.business.bookdetail.BookDetailActivity;
 import com.example.azuredragon.business.bookdetail.BookDetailPresenterImpl;
 import com.example.azuredragon.business.search.SearchActivity;
-import com.example.azuredragon.http.base.BaseListEntry;
 import com.example.azuredragon.http.bean.BookDetailBean;
-import com.example.azuredragon.http.bean.LibraryBean;
-import com.example.azuredragon.http.bean.LibraryNewBookBean;
+import com.example.azuredragon.http.bean.BookListBean;
 import com.example.azuredragon.http.bean.SearchBookBean;
 import com.example.azuredragon.http.utils.DensityUtil;
 import com.example.azuredragon.refreshview.BaseRefreshListener;
 import com.example.azuredragon.refreshview.RefreshProgressBar;
 import com.example.azuredragon.refreshview.RefreshScrollView;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -55,13 +53,13 @@ public class BookListActivity extends MBaseActivity implements BookListContract.
      FrameLayout flSearch;
     @BindView(R2.id.kind_ll)
      LinearLayout kindLl;
-    @BindView(R2.id.lav_hotauthor)
-     LibraryNewBooksView lavHotauthor;
+//    @BindView(R2.id.lav_hotauthor)
+//     LibraryNewBooksView lavHotauthor;
     @BindView(R2.id.lkbv_kindbooklist)
      LibraryKindBookListView lkbvKindbooklist;
 
     private BookListPresenter presenter;
-
+    List<List<BookDetailBean>> allBookList = new ArrayList<>();
     private Animation animIn;
     private Animation animOut;
     @Override
@@ -207,23 +205,21 @@ public class BookListActivity extends MBaseActivity implements BookListContract.
     }
 
 
-    public void updateUI(final LibraryBean library) {
-        //获取数据后刷新UI
-        lavHotauthor.updateData(library.getLibraryNewBooks(), new LibraryNewBooksView.OnClickAuthorListener() {
-            @Override
-            public void clickNewBook(LibraryNewBookBean libraryNewBookBean) {
-                SearchBookBean searchBookBean = new SearchBookBean();
-                searchBookBean.setName(libraryNewBookBean.getName());
-                searchBookBean.setNoteUrl(libraryNewBookBean.getUrl());
-                searchBookBean.setTag(libraryNewBookBean.getTag());
-                searchBookBean.setOrigin(libraryNewBookBean.getOrgin());
-                Intent intent = new Intent(BookListActivity.this, BookDetailActivity.class);
-                intent.putExtra("from", BookDetailPresenterImpl.FROM_SEARCH);
-                intent.putExtra("data", searchBookBean);
-                startActivityByAnim(intent, android.R.anim.fade_in, android.R.anim.fade_out);
-            }
-        });
-        lkbvKindbooklist.updateData(library.getKindBooks(), new LibraryKindBookListView.OnItemListener() {
+    public void updateUI(final BookListBean library) {
+        allBookList.clear();
+        allBookList.add(library.getCazpList());
+        allBookList.add(library.getErCiYuanWorkList());
+        allBookList.add(library.getGdyqList());
+        allBookList.add(library.getLsjsList());
+        allBookList.add(library.getMenWorkList());
+        allBookList.add(library.getMxtxList());
+        allBookList.add(library.getNdsnList());
+        allBookList.add(library.getWomenWorkList());
+        allBookList.add(library.getXylyList());
+        allBookList.add(library.getXjqhList());
+        allBookList.add(library.getXddsList());
+
+        lkbvKindbooklist.updateData(allBookList, new LibraryKindBookListView.OnItemListener() {
             @Override
             public void onClickMore(String title, String url) {
 //                ChoiceBookActivity.startChoiceBookActivity(BookListActivity.this,title,url);
@@ -241,9 +237,9 @@ public class BookListActivity extends MBaseActivity implements BookListContract.
 
 
     @Override
-    public void success(List<BookDetailBean> library) {
+    public void success(BookListBean library) {
         rscvContent.finishRefresh();
-//        updateUI(library);
+        updateUI(library);
     }
 
     @Override

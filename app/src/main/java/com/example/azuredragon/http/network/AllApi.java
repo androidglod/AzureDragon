@@ -6,10 +6,10 @@ import com.example.azuredragon.http.base.BaseEntry;
 import com.example.azuredragon.http.base.BaseListEntry;
 import com.example.azuredragon.http.bean.Banner;
 import com.example.azuredragon.http.bean.BookDetailBean;
+import com.example.azuredragon.http.bean.BookListBean;
 import com.example.azuredragon.http.bean.LoginBean;
 import com.example.azuredragon.http.bean.ZiXunAll;
 
-import java.util.List;
 import java.util.Map;
 
 import io.reactivex.Observable;
@@ -37,6 +37,13 @@ public interface AllApi {
      */
     @GET("works/findWorksList.do")
     Observable<BaseListEntry<BookDetailBean>> getBookListData(@QueryMap() Map<String, String> maps);
+
+    /**
+     * 推荐列表
+     */
+    @GET("works/fictionTypeRecommendList.do")
+    Observable<BaseEntry<BookListBean>> getRecommendBookListData(@QueryMap() Map<String, String> maps);
+
 
     /**
      * 最新资讯

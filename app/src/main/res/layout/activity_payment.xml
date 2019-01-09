@@ -68,7 +68,7 @@
             android:layout_marginRight="10dp"
             android:layout_toLeftOf="@+id/tv_select_payment"
             android:gravity="center"
-            app:srcCompat="@drawable/about_allin_we_chat"
+            app:srcCompat="@drawable/zhifubaologo"
             tools:ignore="VectorDrawableCompat"/>
 
         <TextView
@@ -81,7 +81,7 @@
             android:textColor="#222222"
             android:textSize="16sp"
             android:drawableRight="@drawable/customer_arrow_gran"
-            android:text="微信"
+            android:text="支付宝"
             android:gravity="center"/>
     </RelativeLayout>
 
