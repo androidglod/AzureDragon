@@ -41,8 +41,8 @@ public class BookDetailActivity extends MBaseActivity<IBookDetailPresenter> impl
      TextView tvShelf;
     @BindView(R2.id.tv_read)
      TextView tvRead;
-    @BindView(R2.id.tv_loading)
-     TextView tvLoading;
+//    @BindView(R2.id.tv_loading)
+//     TextView tvLoading;
 
     private Animation animHideLoading;
     private Animation animShowInfo;
@@ -69,7 +69,7 @@ public class BookDetailActivity extends MBaseActivity<IBookDetailPresenter> impl
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                tvLoading.setVisibility(View.GONE);
+//                tvLoading.setVisibility(View.GONE);
             }
 
             @Override
@@ -94,10 +94,11 @@ public class BookDetailActivity extends MBaseActivity<IBookDetailPresenter> impl
     public void updateView() {
         if (null != mPresenter.getBookShelf()) {
             if (mPresenter.getInBookShelf()) {
-                if (mPresenter.getBookShelf().getBookInfoBean().getChapterlist().size() > 0)
+                if (mPresenter.getBookShelf().getBookInfoBean().getChapterlist().size() > 0) {
                     tvChapter.setText(String.format(getString(R.string.tv_read_durprogress), mPresenter.getBookShelf().getBookInfoBean().getChapterlist().get(mPresenter.getBookShelf().getDurChapter()).getDurChapterName()));
-                else
+                } else {
                     tvChapter.setText("无章节");
+                }
                 tvShelf.setText("移出书架");
                 tvRead.setText("继续阅读");
                 tvShelf.setOnClickListener(new View.OnClickListener() {
@@ -129,7 +130,7 @@ public class BookDetailActivity extends MBaseActivity<IBookDetailPresenter> impl
             if (tvIntro.getVisibility() != View.VISIBLE) {
                 tvIntro.setVisibility(View.VISIBLE);
                 tvIntro.startAnimation(animShowInfo);
-                tvLoading.startAnimation(animHideLoading);
+//                tvLoading.startAnimation(animHideLoading);
             }
             if (mPresenter.getBookShelf().getBookInfoBean().getOrigin() != null && mPresenter.getBookShelf().getBookInfoBean().getOrigin().length() > 0) {
                 tvOrigin.setVisibility(View.VISIBLE);
@@ -138,7 +139,7 @@ public class BookDetailActivity extends MBaseActivity<IBookDetailPresenter> impl
                 tvOrigin.setVisibility(View.GONE);
             }
         } else {
-            tvChapter.setText(String.format(getString(R.string.tv_searchbook_lastest), mPresenter.getSearchBook().getLastChapter()));
+//            tvChapter.setText(String.format(getString(R.string.tv_searchbook_lastest), mPresenter.getSearchBook().getLastChapter()));
             tvShelf.setText("放入书架");
             tvRead.setText("开始阅读");
             tvRead.setOnClickListener(new View.OnClickListener() {
@@ -148,24 +149,24 @@ public class BookDetailActivity extends MBaseActivity<IBookDetailPresenter> impl
                 }
             });
             tvIntro.setVisibility(View.INVISIBLE);
-            tvLoading.setVisibility(View.VISIBLE);
-            tvLoading.setText("加载中...");
+//            tvLoading.setVisibility(View.VISIBLE);
+//            tvLoading.setText("加载中...");
         }
-        tvLoading.setOnClickListener(null);
+//        tvLoading.setOnClickListener(null);
     }
 
     @Override
     public void getBookShelfError() {
-        tvLoading.setVisibility(View.VISIBLE);
-        tvLoading.setText("加载失败,点击重试");
-        tvLoading.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tvLoading.setText("加载中...");
-                tvLoading.setOnClickListener(null);
-                mPresenter.getBookShelfInfo();
-            }
-        });
+//        tvLoading.setVisibility(View.VISIBLE);
+//        tvLoading.setText("加载失败,点击重试");
+//        tvLoading.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                tvLoading.setText("加载中...");
+//                tvLoading.setOnClickListener(null);
+//                mPresenter.getBookShelfInfo();
+//            }
+//        });
     }
 
     @Override
@@ -192,15 +193,15 @@ public class BookDetailActivity extends MBaseActivity<IBookDetailPresenter> impl
                 tvOrigin.setVisibility(View.GONE);
             }
         } else {
-            coverUrl = mPresenter.getSearchBook().getCoverUrl();
-            name = mPresenter.getSearchBook().getName();
-            author = mPresenter.getSearchBook().getAuthor();
-            if (mPresenter.getSearchBook().getOrigin() != null && mPresenter.getSearchBook().getOrigin().length() > 0) {
-                tvOrigin.setVisibility(View.VISIBLE);
-                tvOrigin.setText("来源:" + mPresenter.getSearchBook().getOrigin());
-            } else {
-                tvOrigin.setVisibility(View.GONE);
-            }
+            coverUrl = mPresenter.getSearchBook().getWorksCoverPic();
+            name = mPresenter.getSearchBook().getWorksName();
+            author = mPresenter.getSearchBook().getWriter();
+//            if (mPresenter.getSearchBook().getOrigin() != null && mPresenter.getSearchBook().getOrigin().length() > 0) {
+//                tvOrigin.setVisibility(View.VISIBLE);
+//                tvOrigin.setText("来源:" + mPresenter.getSearchBook().getOrigin());
+//            } else {
+//                tvOrigin.setVisibility(View.GONE);
+//            }
         }
 
         Glide.with(this).load(coverUrl).dontAnimate().diskCacheStrategy(DiskCacheStrategy.RESULT).centerCrop().placeholder(R.drawable.img_cover_default).into(ivCover);

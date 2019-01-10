@@ -12,7 +12,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.azuredragon.R;
-import com.example.azuredragon.http.bean.LibraryKindBookListBean;
+import com.example.azuredragon.http.bean.BookDetailBean;
+
+import java.util.List;
 
 /**
  * @author: chz
@@ -60,22 +62,24 @@ public class LibraryKindBookView extends LinearLayout {
     }
 
 
-    public void updateData(final LibraryKindBookListBean data, final LibraryKindBookListView.OnItemListener itemListener){
-        updateData(data,itemListener,data.getKindUrl()==null?false:true);
+    public void updateData(final List<BookDetailBean> data, final LibraryKindBookListView.OnItemListener itemListener){
+        updateData(data,itemListener,false);
     }
-    public void updateData(final LibraryKindBookListBean data, final LibraryKindBookListView.OnItemListener itemListener,Boolean hasMore){
-        if(data.getBooks()==null || data.getBooks().size()==0){
+    public void updateData(final List<BookDetailBean> data, final LibraryKindBookListView.OnItemListener itemListener,Boolean hasMore){
+        if(data==null || data.size()==0){
             setVisibility(GONE);
-        }else
+        }else {
             setVisibility(VISIBLE);
-        tvKindName.setText(data.getKindName());
+        }
+        tvKindName.setText(data.get(0).getFictionTypeName());
         if(hasMore){
             tvMore.setVisibility(VISIBLE);
             tvMore.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(itemListener!=null)
-                        itemListener.onClickMore(data.getKindName(),data.getKindUrl());
+//                    if(itemListener!=null) {
+//                        itemListener.onClickMore(data.getKindName(),data.getKindUrl());
+//                    }
                 }
             });
         }else{
@@ -83,6 +87,6 @@ public class LibraryKindBookView extends LinearLayout {
             tvMore.setOnClickListener(null);
         }
         libraryKindBookAdapter.setItemListener(itemListener);
-        libraryKindBookAdapter.updateDataAll(data.getBooks());
+        libraryKindBookAdapter.updateDataAll(data);
     }
 }

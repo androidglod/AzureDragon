@@ -94,10 +94,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"/>
 
-                <com.example.azuredragon.booklistview.LibraryNewBooksView
-                    android:id="@+id/lav_hotauthor"
+                <com.example.azuredragon.booklistview.LibraryKindBookListView
+                    android:id="@+id/lkbv_kindbooklist"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:paddingBottom="10dp"
                     android:background="#ffffff"/>
             </LinearLayout>
         </com.example.azuredragon.refreshview.RefreshScrollView>

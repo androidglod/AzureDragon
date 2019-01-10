@@ -2,14 +2,14 @@ package com.example.azuredragon.business.bookdetail;
 
 
 import com.example.azuredragon.IPresenter;
+import com.example.azuredragon.http.bean.BookDetailBean;
 import com.example.azuredragon.http.bean.BookShelfBean;
-import com.example.azuredragon.http.bean.SearchBookBean;
 
 public interface IBookDetailPresenter extends IPresenter {
 
     int getOpenfrom();
 
-    SearchBookBean getSearchBook();
+    BookDetailBean getSearchBook();
 
     BookShelfBean getBookShelf();
 

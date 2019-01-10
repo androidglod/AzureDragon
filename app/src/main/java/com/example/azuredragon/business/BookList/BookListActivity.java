@@ -20,7 +20,6 @@ import com.example.azuredragon.business.bookdetail.BookDetailPresenterImpl;
 import com.example.azuredragon.business.search.SearchActivity;
 import com.example.azuredragon.http.bean.BookDetailBean;
 import com.example.azuredragon.http.bean.BookListBean;
-import com.example.azuredragon.http.bean.SearchBookBean;
 import com.example.azuredragon.http.utils.DensityUtil;
 import com.example.azuredragon.refreshview.BaseRefreshListener;
 import com.example.azuredragon.refreshview.RefreshProgressBar;
@@ -222,14 +221,15 @@ public class BookListActivity extends MBaseActivity implements BookListContract.
         lkbvKindbooklist.updateData(allBookList, new LibraryKindBookListView.OnItemListener() {
             @Override
             public void onClickMore(String title, String url) {
+//                Log.e("", "onClickMore: ",null);
 //                ChoiceBookActivity.startChoiceBookActivity(BookListActivity.this,title,url);
             }
 
             @Override
-            public void onClickBook(ImageView animView, SearchBookBean searchBookBean) {
+            public void onClickBook(ImageView animView, BookDetailBean mBookDetailBean) {
                 Intent intent = new Intent(BookListActivity.this, BookDetailActivity.class);
                 intent.putExtra("from", BookDetailPresenterImpl.FROM_SEARCH);
-                intent.putExtra("data", searchBookBean);
+                intent.putExtra("data", mBookDetailBean);
                 startActivityByAnim(intent, animView, "img_cover", android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });

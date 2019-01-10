@@ -10,8 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.azuredragon.R;
-import com.example.azuredragon.http.bean.LibraryKindBookListBean;
-import com.example.azuredragon.http.bean.SearchBookBean;
+import com.example.azuredragon.http.bean.BookDetailBean;
 import com.example.azuredragon.http.utils.DensityUtil;
 
 import java.util.List;
@@ -23,7 +22,7 @@ import java.util.List;
 public class LibraryKindBookListView extends LinearLayout {
     public interface OnItemListener{
         public void onClickMore(String title, String url);
-        public void onClickBook(ImageView animView, SearchBookBean searchBookBean);
+        public void onClickBook(ImageView animView, BookDetailBean mBookDetailBean);
     }
     public LibraryKindBookListView(Context context) {
         super(context);
@@ -52,22 +51,25 @@ public class LibraryKindBookListView extends LinearLayout {
         LayoutInflater.from(getContext()).inflate(R.layout.view_library_hotauthor, this, true);
     }
 
-    public void updateData(List<LibraryKindBookListBean> datas, OnItemListener itemListener){
+    public void updateData(List<List<BookDetailBean>>  datas, OnItemListener itemListener){
         removeAllViews();
         if(datas!=null && datas.size()>0){
             setVisibility(VISIBLE);
             for(int i=0;i<datas.size();i++){
-                if(i>0){
-                    LinearLayout.LayoutParams layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT,DensityUtil.dp2px(getContext(),1f));
-                    layoutParams.setMargins(0,DensityUtil.dp2px(getContext(),5),0,0);
-                    View view = new View(getContext());
-                    view.setBackgroundColor(getContext().getResources().getColor(R.color.color_f1f1f1));
-                    view.setLayoutParams(layoutParams);
-                    addView(view);
+                if(datas.get(i)!=null && !datas.get(i).isEmpty()){
+                    if(i>0){
+                        LinearLayout.LayoutParams layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT,DensityUtil.dp2px(getContext(),1f));
+                        layoutParams.setMargins(0,DensityUtil.dp2px(getContext(),5),0,0);
+                        View view = new View(getContext());
+                        view.setBackgroundColor(getContext().getResources().getColor(R.color.color_f1f1f1));
+                        view.setLayoutParams(layoutParams);
+                        addView(view);
+                    }
+                    LibraryKindBookView itemView = new LibraryKindBookView(getContext());
+                    itemView.updateData(datas.get(i),itemListener);
+                    addView(itemView);
                 }
-                LibraryKindBookView itemView = new LibraryKindBookView(getContext());
-                itemView.updateData(datas.get(i),itemListener);
-                addView(itemView);
+
             }
         }else{
             setVisibility(GONE);

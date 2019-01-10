@@ -1,6 +1,7 @@
 package com.example.azuredragon.booklistview;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +11,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.azuredragon.R;
-import com.example.azuredragon.http.bean.SearchBookBean;
+import com.example.azuredragon.http.bean.BookDetailBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,7 @@ import me.grantland.widget.AutofitTextView;
 public class LibraryKindBookAdapter extends RecyclerView.Adapter<LibraryKindBookAdapter.Viewholder>{
     private LibraryKindBookListView.OnItemListener itemListener;
 
-    private List<SearchBookBean> datas = new ArrayList<>();
+    private List<BookDetailBean> datas = new ArrayList<>();
 
     public LibraryKindBookAdapter(){
 
@@ -38,19 +39,21 @@ public class LibraryKindBookAdapter extends RecyclerView.Adapter<LibraryKindBook
     @Override
     public void onBindViewHolder(final Viewholder holder, final int position) {
         Glide.with(holder.ivCover.getContext())
-                .load(datas.get(position).getCoverUrl())
+                .load(datas.get(position).getWorksCoverPic())
                 .diskCacheStrategy(DiskCacheStrategy.RESULT)
                 .fitCenter()
                 .dontAnimate()
                 .placeholder(R.drawable.img_cover_default)
                 .into(holder.ivCover);
-        holder.tvName.setText(datas.get(position).getName());
-        holder.tvAuthor.setText(datas.get(position).getAuthor());
+        holder.tvName.setText(datas.get(position).getWorksName());
+        holder.tvAuthor.setText(datas.get(position).getWriter());
         holder.ibContent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (itemListener != null)
+                if (itemListener != null) {
+                    Log.e("", "onClickMore: ",null);
                     itemListener.onClickBook(holder.ivCover,datas.get(position));
+                }
             }
         });
     }
@@ -78,10 +81,11 @@ public class LibraryKindBookAdapter extends RecyclerView.Adapter<LibraryKindBook
         this.itemListener = itemListener;
     }
 
-    public void updateDataAll(List<SearchBookBean> newDatas){
+    public void updateDataAll(List<BookDetailBean> newDatas){
         datas.clear();
-        if(newDatas!=null && newDatas.size()>0)
+        if(newDatas!=null && newDatas.size()>0) {
             datas.addAll(newDatas);
+        }
         notifyDataSetChanged();
     }
 }

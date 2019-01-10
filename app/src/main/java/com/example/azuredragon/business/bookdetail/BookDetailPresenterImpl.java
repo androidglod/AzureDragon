@@ -9,8 +9,8 @@ import com.example.azuredragon.IView;
 import com.example.azuredragon.cache.DbHelper;
 import com.example.azuredragon.cache.RxBusTag;
 import com.example.azuredragon.http.app.MyApp;
+import com.example.azuredragon.http.bean.BookDetailBean;
 import com.example.azuredragon.http.bean.BookShelfBean;
-import com.example.azuredragon.http.bean.SearchBookBean;
 import com.example.azuredragon.http.impl.BasePresenterImpl;
 import com.example.azuredragon.http.impl.WebBookModelImpl;
 import com.example.azuredragon.http.listener.OnGetChapterListListener;
@@ -38,7 +38,7 @@ public class BookDetailPresenterImpl extends BasePresenterImpl<IBookDetailView> 
     public final static int FROM_SEARCH = 2;
 
     private int openfrom;
-    private SearchBookBean searchBook;
+    private BookDetailBean searchBook;
     private BookShelfBean bookShelf;
     private Boolean inBookShelf = false;
 
@@ -53,10 +53,11 @@ public class BookDetailPresenterImpl extends BasePresenterImpl<IBookDetailView> 
             inBookShelf = true;
         } else {
             searchBook = intent.getParcelableExtra("data");
-            inBookShelf = searchBook.getAdd();
+            inBookShelf = false;
         }
     }
 
+    @Override
     public Boolean getInBookShelf() {
         return inBookShelf;
     }
@@ -65,14 +66,17 @@ public class BookDetailPresenterImpl extends BasePresenterImpl<IBookDetailView> 
         this.inBookShelf = inBookShelf;
     }
 
+    @Override
     public int getOpenfrom() {
         return openfrom;
     }
 
-    public SearchBookBean getSearchBook() {
+    @Override
+    public BookDetailBean getSearchBook() {
         return searchBook;
     }
 
+    @Override
     public BookShelfBean getBookShelf() {
         return bookShelf;
     }
@@ -83,8 +87,9 @@ public class BookDetailPresenterImpl extends BasePresenterImpl<IBookDetailView> 
             @Override
             public void subscribe(ObservableEmitter<List<BookShelfBean>> e) throws Exception {
                 List<BookShelfBean> temp = DbHelper.getInstance().getmDaoSession().getBookShelfBeanDao().queryBuilder().list();
-                if (temp == null)
+                if (temp == null) {
                     temp = new ArrayList<BookShelfBean>();
+                }
                 e.onNext(temp);
                 e.onComplete();
             }
@@ -94,11 +99,11 @@ public class BookDetailPresenterImpl extends BasePresenterImpl<IBookDetailView> 
                 bookShelfs.addAll(bookShelfBeen);
 
                 final BookShelfBean bookShelfResult = new BookShelfBean();
-                bookShelfResult.setNoteUrl(searchBook.getNoteUrl());
+//                bookShelfResult.setNoteUrl(searchBook.getNoteUrl());
                 bookShelfResult.setFinalDate(System.currentTimeMillis());
                 bookShelfResult.setDurChapter(0);
                 bookShelfResult.setDurChapterPage(0);
-                bookShelfResult.setTag(searchBook.getTag());
+//                bookShelfResult.setTag(searchBook.getTag());
                 return WebBookModelImpl.getInstance().getBookInfo(bookShelfResult);
             }
         }).map(new Function<BookShelfBean, BookShelfBean>() {
@@ -235,7 +240,7 @@ public class BookDetailPresenterImpl extends BasePresenterImpl<IBookDetailView> 
             }
     )
     public void hadAddBook(BookShelfBean value) {
-        if ((null != bookShelf && value.getNoteUrl().equals(bookShelf.getNoteUrl())) || (null != searchBook && value.getNoteUrl().equals(searchBook.getNoteUrl()))) {
+        if ((null != bookShelf && value.getNoteUrl().equals(bookShelf.getNoteUrl())) || (null != searchBook && value.getNoteUrl().equals(""))) {
             inBookShelf = true;
             if (null != searchBook) {
                 searchBook.setAdd(inBookShelf);
@@ -259,7 +264,7 @@ public class BookDetailPresenterImpl extends BasePresenterImpl<IBookDetailView> 
                 }
             }
         }
-        if ((null != bookShelf && value.getNoteUrl().equals(bookShelf.getNoteUrl())) || (null != searchBook && value.getNoteUrl().equals(searchBook.getNoteUrl()))) {
+        if ((null != bookShelf && value.getNoteUrl().equals(bookShelf.getNoteUrl())) || (null != searchBook && value.getNoteUrl().equals(""))) {
             inBookShelf = false;
             if (null != searchBook) {
                 searchBook.setAdd(false);
@@ -276,7 +281,7 @@ public class BookDetailPresenterImpl extends BasePresenterImpl<IBookDetailView> 
     )
     public void hadBook(BookShelfBean value) {
         bookShelfs.add(value);
-        if ((null != bookShelf && value.getNoteUrl().equals(bookShelf.getNoteUrl())) || (null != searchBook && value.getNoteUrl().equals(searchBook.getNoteUrl()))) {
+        if ((null != bookShelf && value.getNoteUrl().equals(bookShelf.getNoteUrl())) || (null != searchBook && value.getNoteUrl().equals(""))) {
             inBookShelf = true;
             if (null != searchBook) {
                 searchBook.setAdd(true);
