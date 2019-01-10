@@ -16,17 +16,14 @@ import java.util.List;
  * @description: 章节列表
  */
 
-@Entity
-public class ChapterListBean implements Parcelable,Cloneable {
+public class ChapterListBean1 implements Parcelable,Cloneable {
 
     private int total;
     private int pageNo;
-    @Transient
     private List<ChaptersBean> chaptersList;
     private String noteUrl; //对应BookInfoBean noteUrl;
 
     private int durChapterIndex;  //当前章节数
-    @Id
     private String durChapterUrl;  //当前章节对应的文章地址
 
     private String durChapterName;  //当前章节名称
@@ -34,10 +31,9 @@ public class ChapterListBean implements Parcelable,Cloneable {
     private String tag;
 
     private Boolean hasCache = false;
-    @Transient
     private BookContentBean bookContentBean = new BookContentBean();
 
-    protected ChapterListBean(Parcel in) {
+    protected ChapterListBean1(Parcel in) {
         noteUrl = in.readString();
         durChapterIndex = in.readInt();
         durChapterUrl = in.readString();
@@ -47,11 +43,9 @@ public class ChapterListBean implements Parcelable,Cloneable {
         hasCache = in.readByte() != 0;
     }
 
-    @Generated(hash = 1888531893)
-    public ChapterListBean(int total, int pageNo, String noteUrl, int durChapterIndex,
-            String durChapterUrl, String durChapterName, String tag, Boolean hasCache) {
-        this.total = total;
-        this.pageNo = pageNo;
+    @Generated(hash = 1225922702)
+    public ChapterListBean1(String noteUrl, int durChapterIndex, String durChapterUrl,
+                            String durChapterName, String tag, Boolean hasCache) {
         this.noteUrl = noteUrl;
         this.durChapterIndex = durChapterIndex;
         this.durChapterUrl = durChapterUrl;
@@ -61,7 +55,7 @@ public class ChapterListBean implements Parcelable,Cloneable {
     }
 
     @Generated(hash = 1096893365)
-    public ChapterListBean() {
+    public ChapterListBean1() {
     }
 
     @Override
@@ -161,21 +155,21 @@ public class ChapterListBean implements Parcelable,Cloneable {
     }
 
     @Transient
-    public static final Creator<ChapterListBean> CREATOR = new Creator<ChapterListBean>() {
+    public static final Creator<ChapterListBean1> CREATOR = new Creator<ChapterListBean1>() {
         @Override
-        public ChapterListBean createFromParcel(Parcel in) {
-            return new ChapterListBean(in);
+        public ChapterListBean1 createFromParcel(Parcel in) {
+            return new ChapterListBean1(in);
         }
 
         @Override
-        public ChapterListBean[] newArray(int size) {
-            return new ChapterListBean[size];
+        public ChapterListBean1[] newArray(int size) {
+            return new ChapterListBean1[size];
         }
     };
 
     @Override
     protected Object clone() throws CloneNotSupportedException {
-        ChapterListBean chapterListBean = (ChapterListBean) super.clone();
+        ChapterListBean1 chapterListBean = (ChapterListBean1) super.clone();
         chapterListBean.noteUrl = noteUrl;
         chapterListBean.durChapterUrl = durChapterUrl;
         chapterListBean.durChapterName = durChapterName;

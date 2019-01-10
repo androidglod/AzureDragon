@@ -7,6 +7,7 @@ import com.example.azuredragon.http.base.BaseListEntry;
 import com.example.azuredragon.http.bean.Banner;
 import com.example.azuredragon.http.bean.BookDetailBean;
 import com.example.azuredragon.http.bean.BookListBean;
+import com.example.azuredragon.http.bean.ChapterListBean;
 import com.example.azuredragon.http.bean.LoginBean;
 import com.example.azuredragon.http.bean.ZiXunAll;
 
@@ -44,6 +45,11 @@ public interface AllApi {
     @GET("works/fictionTypeRecommendList.do")
     Observable<BaseEntry<BookListBean>> getRecommendBookListData(@QueryMap() Map<String, String> maps);
 
+    /**
+     * 最新书籍列表
+     */
+    @GET("works/showChapterList.do")
+    Observable<BaseEntry<ChapterListBean>> getShowChapterList(@QueryMap() Map<String, String> maps);
 
     /**
      * 最新资讯
@@ -73,6 +79,8 @@ public interface AllApi {
      */
     @GET("reader/checkReader.do")
     Observable<BaseEntry> getCheckPhone(@QueryMap() Map<String, String> maps);
+
+
 
 
 }
