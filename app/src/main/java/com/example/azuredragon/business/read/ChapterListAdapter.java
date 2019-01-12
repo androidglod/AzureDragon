@@ -58,7 +58,7 @@ public class ChapterListAdapter extends RecyclerView.Adapter<ChapterListAdapter.
             holder.flContent.setBackgroundColor(Color.parseColor("#cfcfcf"));
             holder.flContent.setClickable(false);
         } else {
-            holder.flContent.setBackgroundResource(R.drawable.bg_ib_pre2);
+            holder.flContent.setBackgroundResource(R.color.color_FFFFFF);
             holder.flContent.setClickable(true);
         }
     }

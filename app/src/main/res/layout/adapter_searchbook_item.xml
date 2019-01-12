@@ -7,7 +7,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_ib_pre2"
+        android:background="@color/color_FFFFFF"
         android:clickable="true"
         android:paddingLeft="10dp"
         android:id="@+id/fl_content">
