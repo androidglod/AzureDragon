@@ -1,6 +1,8 @@
 package com.example.azuredragon.http.app;
 
 import android.app.Application;
+import android.content.Context;
+import android.support.multidex.MultiDex;
 
 import com.example.azuredragon.http.network.CookieReadInterceptor;
 import com.example.azuredragon.http.network.CookiesSaveInterceptor;
@@ -21,9 +23,17 @@ public class MyApp extends Application {
     private static OkHttpClient mOkHttpClient;
 
     @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
+    }
+
+    @Override
     public void onCreate() {
         super.onCreate();
         myApp = this;
+
+
     }
 
     /**

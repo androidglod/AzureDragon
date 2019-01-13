@@ -22,7 +22,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class ImportBookPresenterImpl extends BasePresenterImpl<IImportBookView> implements IImportBookPresenter {
 
-
+    boolean stop= false;
     public ImportBookPresenterImpl(){
 
     }
@@ -33,7 +33,10 @@ public class ImportBookPresenterImpl extends BasePresenterImpl<IImportBookView> 
             public void subscribe(ObservableEmitter<File> e) throws Exception {
                 if (Environment.getExternalStorageState().equals(
                         Environment.MEDIA_MOUNTED)){
-                    searchBook(e,new File(Environment.getExternalStorageDirectory().getAbsolutePath()));
+                    if (!stop){
+                        searchBook(e,new File(Environment.getExternalStorageDirectory().getAbsolutePath()));
+                    }
+
                 }
                 e.onComplete();
             }
@@ -57,6 +60,11 @@ public class ImportBookPresenterImpl extends BasePresenterImpl<IImportBookView> 
                 });
     }
 
+    @Override
+    public void stopSearchLocationBook() {
+        stop = true;
+    }
+
     private void searchBook(ObservableEmitter<File> e, File parentFile) {
         if (null != parentFile && parentFile.listFiles().length > 0) {
             File[] childFiles = parentFile.listFiles();
@@ -64,9 +72,15 @@ public class ImportBookPresenterImpl extends BasePresenterImpl<IImportBookView> 
                 if (childFiles[i].isFile() && childFiles[i].getName().substring(childFiles[i].getName().lastIndexOf(".") + 1).equalsIgnoreCase("txt") && childFiles[i].length() > 100*1024) {   //100kb
                     e.onNext(childFiles[i]);
                     continue;
+                }else{
+                    if (stop){
+                        break;
+                    }
                 }
                 if (childFiles[i].isDirectory() && childFiles[i].listFiles().length > 0) {
-                    searchBook(e, childFiles[i]);
+                    if (!stop) {
+                        searchBook(e, childFiles[i]);
+                    }
                 }
             }
         }

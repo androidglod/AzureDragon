@@ -44,7 +44,6 @@ public class ImportBookActivity extends MBaseActivity<IImportBookPresenter> impl
     @BindView(R2.id.rcv_books)
      RecyclerView rcvBooks;
     private ImportBookAdapter importBookAdapter;
-
     private Animation animIn;
     private Animation animOut;
 
@@ -67,7 +66,6 @@ public class ImportBookActivity extends MBaseActivity<IImportBookPresenter> impl
         importBookAdapter = new ImportBookAdapter(new ImportBookAdapter.OnCheckBookListener() {
             @Override
             public void checkBook(int count) {
-                tvAddshelf.setVisibility(count == 0 ? View.INVISIBLE : View.VISIBLE);
             }
         });
         rcvBooks.setAdapter(importBookAdapter);
@@ -87,6 +85,7 @@ public class ImportBookActivity extends MBaseActivity<IImportBookPresenter> impl
         tvScan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                tvAddshelf.setVisibility(View.VISIBLE);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !PremissionCheck.checkPremission(ImportBookActivity.this,
                         Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
                     //申请权限
@@ -130,7 +129,8 @@ public class ImportBookActivity extends MBaseActivity<IImportBookPresenter> impl
             public void onClick(View v) {
                 //添加书籍
                 moProgressHUD.showLoading("放入书架中...");
-                mPresenter.importBooks(importBookAdapter.getSelectDatas());
+                mPresenter.stopSearchLocationBook();
+
             }
         });
     }
@@ -164,17 +164,24 @@ public class ImportBookActivity extends MBaseActivity<IImportBookPresenter> impl
         rlLoading.stop();
         rlLoading.setVisibility(View.INVISIBLE);
         importBookAdapter.setCanCheck(true);
+        mPresenter.importBooks(importBookAdapter.getSelectDatas());
     }
 
     @Override
     public void addSuccess() {
         moProgressHUD.dismiss();
         Toast.makeText(this,"添加书籍成功",Toast.LENGTH_SHORT).show();
+        finish();
     }
 
     @Override
     public void addError() {
         moProgressHUD.showInfo("放入书架失败!");
+    }
+
+    @Override
+    public void stopSuccess() {
+
     }
 
     @SuppressLint("NewApi")

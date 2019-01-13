@@ -698,8 +698,10 @@ public class ResideMenu extends FrameLayout {
     }
 
     private void setScaleDirectionByRawX(float currentRawX) {
-        if (currentRawX < lastRawX)
-            setScaleDirection(DIRECTION_RIGHT);
+        if (currentRawX < lastRawX){
+
+        }
+//            setScaleDirection(DIRECTION_RIGHT);
         else
             setScaleDirection(DIRECTION_LEFT);
     }

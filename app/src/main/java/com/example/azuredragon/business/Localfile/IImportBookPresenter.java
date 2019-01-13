@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface IImportBookPresenter extends IPresenter {
     void searchLocationBook();
-
+    void stopSearchLocationBook();
     void importBooks(List<File> books);
 }

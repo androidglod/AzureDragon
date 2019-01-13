@@ -27,4 +27,9 @@ public interface IImportBookView extends IView {
      * 添加失败
      */
     void addError();
+
+    /**
+     * 停止搜索成功
+     */
+    void stopSuccess();
 }

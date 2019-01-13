@@ -33,10 +33,14 @@ public class ImportBookAdapter extends RecyclerView.Adapter<ImportBookAdapter.Vi
     }
 
     @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+
+    @Override
     public Viewholder onCreateViewHolder(ViewGroup parent, int viewType) {
         return new Viewholder(LayoutInflater.from(parent.getContext()).inflate(R.layout.view_adapter_importbook,parent,false));
     }
-
     @Override
     public void onBindViewHolder(final Viewholder holder, final int position) {
         holder.tvNmae.setText(datas.get(position).getName());
@@ -54,7 +58,6 @@ public class ImportBookAdapter extends RecyclerView.Adapter<ImportBookAdapter.Vi
                 checkBookListener.checkBook(selectDatas.size());
             }
         });
-        if(canCheck){
             holder.scbSelect.setVisibility(View.VISIBLE);
             holder.llContent.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -62,10 +65,6 @@ public class ImportBookAdapter extends RecyclerView.Adapter<ImportBookAdapter.Vi
                     holder.scbSelect.setChecked(!holder.scbSelect.isChecked(),true);
                 }
             });
-        }else{
-            holder.scbSelect.setVisibility(View.INVISIBLE);
-            holder.llContent.setOnClickListener(null);
-        }
     }
 
     public void addData(File newItem){
