@@ -20,6 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.Utils.CallPhoneUtils;
 import com.example.azuredragon.R;
 import com.example.azuredragon.business.login.activity.LoginActivity;
 import com.example.azuredragon.cache.PreferencesUtils;
@@ -205,8 +206,7 @@ public class ResideMenu extends FrameLayout {
                 @Override
                 public void onClick(View v) {
                     //联系我们
-                    Intent mIntent = new Intent(activity,AboutUsActivity.class);
-                    activity.startActivity(mIntent);
+                    CallPhoneUtils.ShowTelPhone(context, "13240404320");
 
                 }
             });

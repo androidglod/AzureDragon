@@ -42,7 +42,7 @@
             android:textColor="@color/color_555555"
             android:lineHeight="15dp"
             android:textSize="15sp"
-            android:text="3.0"/>
+            android:text="当前版本1.0"/>
         <!--唯医网 公众号-->
         <LinearLayout
             android:layout_width="match_parent"
@@ -137,7 +137,8 @@
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_marginStart="15dp"
-        android:layout_marginEnd="16dp">
+        android:layout_marginEnd="16dp"
+        android:visibility="gone">
         <ImageView
             android:layout_width="13dp"
             android:layout_height="13dp"
@@ -181,7 +182,8 @@
             android:layout_centerVertical="true"
             android:text="联系我们"
             android:textColor="@color/color_222222"
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            android:visibility="gone"/>
     </RelativeLayout>
     <View
         android:layout_width="match_parent"
@@ -196,6 +198,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="60dp"
         android:layout_gravity="center_horizontal"
+        android:visibility="gone"
         android:orientation="horizontal">
 
         <TextView
@@ -234,6 +237,6 @@
         android:lineSpacingExtra="4dp"
         android:textColor="@color/color_aaaaaa"
         android:textSize="15sp"
-        tools:text="北京欧应信息技术有限公司保留所有权利\nBeijing Allin Technology Co,Ltd ©2016"/>
+        tools:text="河南道阅网络技术公司保留所有权利\nhenan Daoyue Technology Co,Ltd ©2016"/>
 </LinearLayout>
 
