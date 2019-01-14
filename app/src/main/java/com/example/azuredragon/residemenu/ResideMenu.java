@@ -23,6 +23,8 @@ import android.widget.TextView;
 import com.Utils.CallPhoneUtils;
 import com.example.azuredragon.R;
 import com.example.azuredragon.business.login.activity.LoginActivity;
+import com.example.azuredragon.business.seting.AboutUsActivity;
+import com.example.azuredragon.business.seting.FeedbackActivity;
 import com.example.azuredragon.cache.PreferencesUtils;
 import com.example.azuredragon.http.bean.LoginBean;
 import com.example.azuredragon.widget.DialogManager;
@@ -55,7 +57,7 @@ public class ResideMenu extends FrameLayout {
     private LinearLayout layoutLeftMenu;
     /**关于我们*/
     private LinearLayout mLlAboutUs;
-    /**关于我们*/
+    /**联系我们*/
     private LinearLayout mLlContactUs;
     /**意见反馈*/
     private LinearLayout mLlAuggest;
@@ -215,7 +217,7 @@ public class ResideMenu extends FrameLayout {
                 @Override
                 public void onClick(View v) {
                     //意见
-                    Intent mIntent = new Intent(activity,LoginActivity.class);
+                    Intent mIntent = new Intent(activity,FeedbackActivity.class);
                     activity.startActivity(mIntent);
 
                 }

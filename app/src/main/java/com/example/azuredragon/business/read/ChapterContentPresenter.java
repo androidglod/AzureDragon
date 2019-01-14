@@ -1,13 +1,12 @@
-package com.example.azuredragon.business.bookdetail;
+package com.example.azuredragon.business.read;
 
 import android.content.Context;
 
+import com.example.azuredragon.business.bookdetail.ChapterListContract;
 import com.example.azuredragon.http.base.BaseEntry;
-import com.example.azuredragon.http.base.BaseListEntry;
 import com.example.azuredragon.http.base.BaseObserver;
-import com.example.azuredragon.http.bean.BookListBean;
+import com.example.azuredragon.http.bean.BookChapterContentBean;
 import com.example.azuredragon.http.bean.ChapterListBean;
-import com.example.azuredragon.http.bean.ChapterListBean1;
 import com.example.azuredragon.http.utils.MainUtil;
 import com.example.azuredragon.http.utils.RetrofitUtil;
 
@@ -21,29 +20,29 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * @author: chz.
  * @date: 2018/11/25
- * @description:书籍列表请求接口
+ * @description:章节内容请求接口
  */
 
-public class ChapterListPresenter implements ChapterListContract.presenter {
+public class ChapterContentPresenter implements ChapterContentContract.presenter {
 
     private Context context;
-    private ChapterListContract.View view;
+    private ChapterContentContract.View view;
 
-    public ChapterListPresenter(Context context, ChapterListContract.View view) {
+    public ChapterContentPresenter(Context context, ChapterContentContract.View view) {
         this.context = context;
         this.view = view;
     }
 
     @Override
-    public void getChapterList(HashMap map) {
-        RetrofitUtil.getInstance().initRetrofit().getShowChapterList(map)
+    public void getChapterContent(HashMap map) {
+        RetrofitUtil.getInstance().initRetrofit().getBookContentData(map)
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
-        .subscribe(new BaseObserver<BaseListEntry<ChapterListBean1>>(context,MainUtil.loadTxt) {
+        .subscribe(new BaseObserver<BaseEntry<BookChapterContentBean>>(context,MainUtil.loadTxt) {
 
 
             @Override
-            protected void onSuccees(BaseListEntry<ChapterListBean1> mChapterListBean) throws Exception {
+            protected void onSuccees(BaseEntry<BookChapterContentBean> mChapterListBean) throws Exception {
                 view.success(mChapterListBean.getData());
             }
 

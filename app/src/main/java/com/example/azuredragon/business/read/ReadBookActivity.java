@@ -32,6 +32,9 @@ import com.example.azuredragon.business.bookdetail.ReadBookPresenterImpl;
 import com.example.azuredragon.business.main.MainActivity;
 import com.example.azuredragon.business.read.modialog.MoProgressHUD;
 import com.example.azuredragon.cache.RxBusTag;
+import com.example.azuredragon.http.bean.BookChapterContentBean;
+import com.example.azuredragon.http.bean.ChapterListBean;
+import com.example.azuredragon.http.bean.ChapterListBean1;
 import com.example.azuredragon.http.bean.DownloadChapterBean;
 import com.example.azuredragon.http.bean.DownloadChapterListBean;
 import com.hwangjr.rxbus.RxBus;
@@ -48,7 +51,7 @@ import me.grantland.widget.AutofitTextView;
  * @date: 2018/11/25
  * @description:阅读类
  */
-public class ReadBookActivity extends MBaseActivity<IBookReadPresenter> implements IBookReadView {
+public class ReadBookActivity extends MBaseActivity<IBookReadPresenter> implements IBookReadView,ChapterContentContract.View{
     @BindView(R2.id.fl_content)
      FrameLayout flContent;
     @BindView(R2.id.csv_book)
@@ -95,12 +98,12 @@ public class ReadBookActivity extends MBaseActivity<IBookReadPresenter> implemen
     private ReadBookMenuMorePop readBookMenuMorePop;
     private FontPop fontPop;
     private MoreSettingPop moreSettingPop;
-
+    private ArrayList<ChapterListBean1> library;
     private MoProgressHUD moProgressHUD;
-
+    ChapterContentPresenter mChapterContentPresenter ;
     @Override
     protected IBookReadPresenter initInjector() {
-        return new ReadBookPresenterImpl();
+        return null;
     }
 
     @Override
@@ -110,6 +113,8 @@ public class ReadBookActivity extends MBaseActivity<IBookReadPresenter> implemen
 
     @Override
     protected void initData() {
+//        library = getIntent().getParcelableArrayListExtra("data");
+         mChapterContentPresenter = new  ChapterContentPresenter(this,this);
         mPresenter.saveProgress();
         menuTopIn = AnimationUtils.loadAnimation(this, R.anim.anim_readbook_top_in);
         menuTopIn.setAnimationListener(new Animation.AnimationListener() {
@@ -555,4 +560,13 @@ public class ReadBookActivity extends MBaseActivity<IBookReadPresenter> implemen
         super.finish();
     }
 
+    @Override
+    public void success(BookChapterContentBean library) {
+
+    }
+
+    @Override
+    public void fail(String content) {
+
+    }
 }

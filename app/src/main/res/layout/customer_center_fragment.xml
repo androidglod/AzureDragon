@@ -29,13 +29,12 @@
             android:src="@drawable/common_head_portrait"
             tools:ignore="MissingPrefix"/>
         <!--登录用户展示-->
-        <!--登录用户展示-->
         <RelativeLayout
             android:id="@+id/rl_name_and_auth"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:visibility="visible"
+            android:visibility="gone"
             android:layout_marginLeft="18dp"
             android:layout_toRightOf="@+id/iv_head"
             android:orientation="horizontal">
@@ -110,7 +109,7 @@
             android:gravity="center"
             android:textColor="@color/color_FAFAD2"
             android:textStyle="bold"
-            android:visibility="gone"
+            android:visibility="visible"
             android:textSize="14sp"/>
 
     </RelativeLayout>

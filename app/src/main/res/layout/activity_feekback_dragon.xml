@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/color_FFFFFF"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/color_common_bg"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_return"
+            android:layout_width="43dp"
+            android:layout_height="35dp"
+            android:paddingLeft="17dp"
+            android:layout_centerVertical="true"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:paddingRight="17dp"
+            android:layout_gravity="center_vertical"
+            app:srcCompat="@drawable/common_back"
+            tools:ignore="VectorDrawableCompat" />
+
+        <TextView
+            android:id="@+id/atv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/iv_return"
+            android:layout_marginRight="45dp"
+            android:gravity="center|left"
+            android:layout_centerVertical="true"
+            android:singleLine="true"
+            android:text="意见反馈"
+            android:textColor="@color/color_FAFAD2"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/tv_addshelf"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp"
+            android:text="提交"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:background="@drawable/bg_ib_pre"
+            android:textColor="@color/color_FAFAD2"
+            android:textSize="16sp"
+            android:visibility="gone"/>
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/et_content"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:padding="8dp"
+        android:gravity="left|top"
+        android:hint="说点什么吧~我们会做得更好~"
+        android:textSize="15sp"
+        android:maxLength="200"
+        android:background="@drawable/shape_et_bg"/>
+    <TextView
+        android:id="@+id/text_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="10dp"
+        android:textColor="@color/color_common_bg"
+        android:layout_gravity="right"
+        android:text="0/200"/>
+
+    <TextView
+        android:id="@+id/tv_submit"
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:layout_below="@+id/group_sex"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="70dp"
+        android:textColor="#FFFFFF"
+        android:textSize="14dp"
+        android:gravity="center"
+        android:text="提 交 "
+        android:background="@drawable/bg_login_btn"/>
+
+</LinearLayout>
+
+

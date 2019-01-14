@@ -18,9 +18,12 @@ import com.com.sky.downloader.greendao.BookContentBeanDao;
 import com.com.sky.downloader.greendao.BookShelfBeanDao;
 import com.example.azuredragon.BaseActivity;
 import com.example.azuredragon.BookContentView;
+import com.example.azuredragon.business.read.ChapterContentContract;
+import com.example.azuredragon.business.read.ChapterContentPresenter;
 import com.example.azuredragon.cache.DbHelper;
 import com.example.azuredragon.cache.RxBusTag;
 import com.example.azuredragon.http.app.MyApp;
+import com.example.azuredragon.http.bean.BookChapterContentBean;
 import com.example.azuredragon.http.bean.BookContentBean;
 import com.example.azuredragon.http.bean.BookShelfBean;
 import com.example.azuredragon.http.bean.LocBookShelfBean;
@@ -33,6 +36,7 @@ import com.trello.rxlifecycle2.android.ActivityEvent;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import io.reactivex.Observable;
@@ -42,7 +46,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
-public class ReadBookPresenterImpl extends BasePresenterImpl<IBookReadView> implements IBookReadPresenter {
+public class ReadBookPresenterImpl extends BasePresenterImpl<IBookReadView> implements IBookReadPresenter,ChapterContentContract.View {
 
     public final static int OPEN_FROM_OTHER = 0;
     public final static int OPEN_FROM_APP = 1;
@@ -52,7 +56,7 @@ public class ReadBookPresenterImpl extends BasePresenterImpl<IBookReadView> impl
     private BookShelfBean bookShelf;
 
     private int pageLineCount = 5;   //假设5行一页
-
+    ChapterContentPresenter mChapterContentPresenter ;
     public ReadBookPresenterImpl() {
 
     }
@@ -79,6 +83,7 @@ public class ReadBookPresenterImpl extends BasePresenterImpl<IBookReadView> impl
                 openBookFromOther(activity);
             }
         }
+        mChapterContentPresenter = new ChapterContentPresenter(activity,this);
     }
 
     @Override
@@ -215,6 +220,10 @@ public class ReadBookPresenterImpl extends BasePresenterImpl<IBookReadView> impl
                                     loadContent(bookContentView, bookTag, chapterIndex, tempList.getPageIndex());
                                 } else {
                                     final int finalPageIndex1 = tempList.getPageIndex();
+                                    HashMap map = new HashMap();
+                                    map.put("worksId","59");
+                                    map.put("pageNo","1");
+                                    mChapterContentPresenter.getChapterContent(map);
                                     WebBookModelImpl.getInstance().getBookContent(bookShelf.getBookInfoBean().getChapterlist().get(chapterIndex).getDurChapterUrl(), chapterIndex, bookShelf.getTag()).map(new Function<BookContentBean, BookContentBean>() {
                                         @Override
                                         public BookContentBean apply(BookContentBean bookContentBean) throws Exception {
@@ -354,6 +363,16 @@ public class ReadBookPresenterImpl extends BasePresenterImpl<IBookReadView> impl
                         e.printStackTrace();
                     }
                 });
+    }
+
+    @Override
+    public void success(BookChapterContentBean library) {
+
+    }
+
+    @Override
+    public void fail(String content) {
+
     }
 
     public interface OnAddListner {

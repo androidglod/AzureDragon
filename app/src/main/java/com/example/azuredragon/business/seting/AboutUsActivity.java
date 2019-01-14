@@ -1,4 +1,4 @@
-package com.example.azuredragon.residemenu;
+package com.example.azuredragon.business.seting;
 
 import com.example.azuredragon.IPresenter;
 import com.example.azuredragon.MBaseActivity;

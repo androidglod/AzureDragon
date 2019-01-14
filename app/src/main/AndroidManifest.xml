@@ -93,7 +93,13 @@
 
         <!--关于我们-->
         <activity
-            android:name=".residemenu.AboutUsActivity"
+            android:name=".business.seting.AboutUsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/CAppTransparentTheme">
+        </activity>
+        <!--关于我们-->
+        <activity
+            android:name=".business.seting.FeedbackActivity"
             android:screenOrientation="portrait"
             android:theme="@style/CAppTransparentTheme">
         </activity>

@@ -5,9 +5,11 @@ import com.example.azuredragon.http.ApiAddress;
 import com.example.azuredragon.http.base.BaseEntry;
 import com.example.azuredragon.http.base.BaseListEntry;
 import com.example.azuredragon.http.bean.Banner;
+import com.example.azuredragon.http.bean.BookChapterContentBean;
 import com.example.azuredragon.http.bean.BookDetailBean;
 import com.example.azuredragon.http.bean.BookListBean;
 import com.example.azuredragon.http.bean.ChapterListBean;
+import com.example.azuredragon.http.bean.ChapterListBean1;
 import com.example.azuredragon.http.bean.LoginBean;
 import com.example.azuredragon.http.bean.ZiXunAll;
 
@@ -45,11 +47,31 @@ public interface AllApi {
     @GET("works/fictionTypeRecommendList.do")
     Observable<BaseEntry<BookListBean>> getRecommendBookListData(@QueryMap() Map<String, String> maps);
 
+
     /**
-     * 最新书籍列表
+     * 章节列表
      */
     @GET("works/showChapterList.do")
-    Observable<BaseEntry<ChapterListBean>> getShowChapterList(@QueryMap() Map<String, String> maps);
+    Observable<BaseListEntry<ChapterListBean1>> getShowChapterList(@QueryMap() Map<String, String> maps);
+
+    /**
+     * 章节内容
+     */
+    @GET("works/selectContenByChapterId.do")
+    Observable<BaseEntry<BookChapterContentBean>> getBookContentData(@QueryMap() Map<String, String> maps);
+
+
+    /**
+     * 反馈
+     */
+    @POST("reader/addFeedBack.do")
+    Observable<BaseEntry> getFeedbackData(@QueryMap() Map<String, String> maps);
+
+
+
+
+
+
 
     /**
      * 最新资讯
