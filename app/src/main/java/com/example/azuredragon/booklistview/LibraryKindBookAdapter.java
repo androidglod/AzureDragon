@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.azuredragon.R;
 import com.example.azuredragon.http.bean.BookDetailBean;
+import com.ta.utdid2.android.utils.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,8 +46,11 @@ public class LibraryKindBookAdapter extends RecyclerView.Adapter<LibraryKindBook
                 .dontAnimate()
                 .placeholder(R.drawable.img_cover_default)
                 .into(holder.ivCover);
-        holder.tvName.setText(datas.get(position).getWorksName());
-        holder.tvAuthor.setText(datas.get(position).getWriter());
+        if (!StringUtils.isEmpty(datas.get(position).getWorksName())){
+            holder.tvName.setText(datas.get(position).getWorksName());
+        }
+//        holder.tvName.setText(datas.get(position).getWorksName());
+//        holder.tvAuthor.setText(datas.get(position).getWriter());
         holder.ibContent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,13 +70,13 @@ public class LibraryKindBookAdapter extends RecyclerView.Adapter<LibraryKindBook
     class Viewholder extends RecyclerView.ViewHolder {
         ImageView ivCover;
         AutofitTextView tvName;
-        AutofitTextView tvAuthor;
+//        AutofitTextView tvAuthor;
         ImageButton ibContent;
         public Viewholder(View itemView) {
             super(itemView);
             ivCover= (ImageView) itemView.findViewById(R.id.iv_cover);
             tvName = (AutofitTextView) itemView.findViewById(R.id.tv_name);
-            tvAuthor = (AutofitTextView) itemView.findViewById(R.id.tv_author);
+//            tvAuthor = (AutofitTextView) itemView.findViewById(R.id.tv_author);
             ibContent = (ImageButton) itemView.findViewById(R.id.ib_content);
         }
     }

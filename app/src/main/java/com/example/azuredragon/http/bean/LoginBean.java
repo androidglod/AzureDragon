@@ -20,6 +20,8 @@ public class LoginBean implements Serializable {
      * headPath : http://image.tv188.com/images/member/head_image.jpg
      * tokenId : 4761182680843567127
      */
+
+    private String id;
     private String userName;
     private String mobile;
     // 书币
@@ -30,6 +32,14 @@ public class LoginBean implements Serializable {
 
     private BigDecimal giveGold;
     private int state;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getUserName() {
         return userName;

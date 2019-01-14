@@ -22,6 +22,8 @@
     <color name="color_CCCCCC">#cccccc</color>
     <color name="color_FF4F4F">#FF4F4F</color>
     <color name="color_7b95dc">#7b95dc</color>
+    <color name="color_f0f0f0">#f0f0f0</color>
+
     <color name="tv_text_addshelf_nor">#ffffff</color>
     <color name="tv_text_addshelf_pre">#7891A5</color>
     <color name="tv_text_addshelf_disable">#7891A5</color>

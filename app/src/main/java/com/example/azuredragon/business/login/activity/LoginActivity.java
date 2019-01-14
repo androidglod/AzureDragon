@@ -8,22 +8,17 @@ import com.example.azuredragon.IPresenter;
 import com.example.azuredragon.MBaseActivity;
 import com.example.azuredragon.R;
 import com.example.azuredragon.R2;
-import com.example.azuredragon.WelcomeActivity;
 import com.example.azuredragon.business.login.activity.http.LoginContract;
 import com.example.azuredragon.business.login.activity.http.LoginPresenter;
 import com.example.azuredragon.business.main.MainActivity;
-import com.example.azuredragon.cache.DbHelper;
 import com.example.azuredragon.cache.PreferencesUtils;
 import com.example.azuredragon.http.bean.LoginBean;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.util.HashMap;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-
-import static android.widget.Toast.LENGTH_SHORT;
 
 /**
  * @author: chz

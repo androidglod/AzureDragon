@@ -33,8 +33,7 @@ import com.example.azuredragon.business.main.MainActivity;
 import com.example.azuredragon.business.read.modialog.MoProgressHUD;
 import com.example.azuredragon.cache.RxBusTag;
 import com.example.azuredragon.http.bean.BookChapterContentBean;
-import com.example.azuredragon.http.bean.ChapterListBean;
-import com.example.azuredragon.http.bean.ChapterListBean1;
+import com.example.azuredragon.http.bean.ChaptersBean;
 import com.example.azuredragon.http.bean.DownloadChapterBean;
 import com.example.azuredragon.http.bean.DownloadChapterListBean;
 import com.hwangjr.rxbus.RxBus;
@@ -95,15 +94,15 @@ public class ReadBookActivity extends MBaseActivity<IBookReadPresenter> implemen
      ChapterListView chapterListView;
     private CheckAddShelfPop checkAddShelfPop;
     private WindowLightPop windowLightPop;
-    private ReadBookMenuMorePop readBookMenuMorePop;
+//    private ReadBookMenuMorePop readBookMenuMorePop;
     private FontPop fontPop;
     private MoreSettingPop moreSettingPop;
-    private ArrayList<ChapterListBean1> library;
+    private ArrayList<ChaptersBean> library;
     private MoProgressHUD moProgressHUD;
     ChapterContentPresenter mChapterContentPresenter ;
     @Override
     protected IBookReadPresenter initInjector() {
-        return null;
+        return new ReadBookPresenterImpl();
     }
 
     @Override
@@ -113,7 +112,7 @@ public class ReadBookActivity extends MBaseActivity<IBookReadPresenter> implemen
 
     @Override
     protected void initData() {
-//        library = getIntent().getParcelableArrayListExtra("data");
+        library = getIntent().getParcelableArrayListExtra("data");
          mChapterContentPresenter = new  ChapterContentPresenter(this,this);
         mPresenter.saveProgress();
         menuTopIn = AnimationUtils.loadAnimation(this, R.anim.anim_readbook_top_in);
@@ -216,47 +215,7 @@ public class ReadBookActivity extends MBaseActivity<IBookReadPresenter> implemen
             }
         });
 
-        readBookMenuMorePop = new ReadBookMenuMorePop(this);
-        readBookMenuMorePop.setOnClickDownload(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                readBookMenuMorePop.dismiss();
-                if (flMenu.getVisibility() == View.VISIBLE) {
-                    llMenuTop.startAnimation(menuTopOut);
-                    llMenuBottom.startAnimation(menuBottomOut);
-                }
-                //弹出离线下载界面
-                int endIndex = mPresenter.getBookShelf().getDurChapter() + 50;
-                if (endIndex >= mPresenter.getBookShelf().getBookInfoBean().getChapterlist().size()) {
-                    endIndex = mPresenter.getBookShelf().getBookInfoBean().getChapterlist().size() - 1;
-                }
-                moProgressHUD.showDownloadList(mPresenter.getBookShelf().getDurChapter(), endIndex, mPresenter.getBookShelf().getBookInfoBean().getChapterlist().size(), new MoProgressHUD.OnClickDownload() {
-                    @Override
-                    public void download(final int start, final int end) {
-                        moProgressHUD.dismiss();
-                        mPresenter.addToShelf(new ReadBookPresenterImpl.OnAddListner() {
-                            @Override
-                            public void addSuccess() {
-                                List<DownloadChapterBean> result = new ArrayList<DownloadChapterBean>();
-                                for (int i = start; i <= end; i++) {
-                                    DownloadChapterBean item = new DownloadChapterBean();
-                                    item.setNoteUrl(mPresenter.getBookShelf().getNoteUrl());
-                                    item.setDurChapterIndex(mPresenter.getBookShelf().getBookInfoBean().getChapterlist().get(i).getDurChapterIndex());
-                                    item.setDurChapterName(mPresenter.getBookShelf().getBookInfoBean().getChapterlist().get(i).getDurChapterName());
-                                    item.setDurChapterUrl(mPresenter.getBookShelf().getBookInfoBean().getChapterlist().get(i).getDurChapterUrl());
-                                    item.setTag(mPresenter.getBookShelf().getTag());
-                                    item.setBookName(mPresenter.getBookShelf().getBookInfoBean().getName());
-                                    item.setCoverUrl(mPresenter.getBookShelf().getBookInfoBean().getCoverUrl());
-                                    result.add(item);
-                                }
-                                RxBus.get().post(RxBusTag.ADD_DOWNLOAD_TASK, new DownloadChapterListBean(result));
-                            }
-                        });
 
-                    }
-                });
-            }
-        });
 
         moreSettingPop = new MoreSettingPop(this);
     }
@@ -506,10 +465,7 @@ public class ReadBookActivity extends MBaseActivity<IBookReadPresenter> implemen
         csvBook.loadError();
     }
 
-    @Override
-    public void showDownloadMenu() {
-//        ivMenuMore.setVisibility(View.VISIBLE);
-    }
+
 
     private Boolean showCheckPremission = false;
 

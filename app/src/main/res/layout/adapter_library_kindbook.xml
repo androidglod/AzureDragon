@@ -32,20 +32,20 @@
             app:minTextSize="10sp"
             android:text="小说名"
             android:layout_gravity="center_horizontal|bottom"/>
-        <me.grantland.widget.AutofitTextView
-            android:id="@+id/tv_author"
-            android:layout_width="match_parent"
-            android:layout_height="14dp"
-            android:paddingLeft="2dp"
-            android:paddingRight="2dp"
-            android:singleLine="true"
-            android:gravity="center"
-            android:textColor="@color/color_737373"
-            android:textSize="11sp"
-            app:minTextSize="8sp"
-            android:text="作者"
-            android:layout_gravity="center_horizontal|bottom"
-            android:layout_marginBottom="3dp"/>
+        <!--<me.grantland.widget.AutofitTextView-->
+            <!--android:id="@+id/tv_author"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="14dp"-->
+            <!--android:paddingLeft="2dp"-->
+            <!--android:paddingRight="2dp"-->
+            <!--android:singleLine="true"-->
+            <!--android:gravity="center"-->
+            <!--android:textColor="@color/color_737373"-->
+            <!--android:textSize="11sp"-->
+            <!--app:minTextSize="8sp"-->
+            <!--android:text="作者"-->
+            <!--android:layout_gravity="center_horizontal|bottom"-->
+            <!--android:layout_marginBottom="3dp"/>-->
     </LinearLayout>
 
     <ImageButton

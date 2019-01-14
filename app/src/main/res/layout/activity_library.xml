@@ -52,6 +52,15 @@
                 android:orientation="vertical">
 
                 <include layout="@layout/view_kind" />
+                <!--轮播-->
+                <com.example.azuredragon.banner.ConvenientBanner
+                    android:id="@+id/convent_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:background="@color/color_f0f0f0"
+                    android:visibility="gone">
+
+                </com.example.azuredragon.banner.ConvenientBanner>
 
                 <View
                     android:layout_width="match_parent"

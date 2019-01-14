@@ -2,12 +2,9 @@ package com.example.azuredragon.business.bookdetail;
 
 import android.content.Context;
 
-import com.example.azuredragon.http.base.BaseEntry;
 import com.example.azuredragon.http.base.BaseListEntry;
 import com.example.azuredragon.http.base.BaseObserver;
-import com.example.azuredragon.http.bean.BookListBean;
-import com.example.azuredragon.http.bean.ChapterListBean;
-import com.example.azuredragon.http.bean.ChapterListBean1;
+import com.example.azuredragon.http.bean.ChaptersBean;
 import com.example.azuredragon.http.utils.MainUtil;
 import com.example.azuredragon.http.utils.RetrofitUtil;
 
@@ -39,11 +36,11 @@ public class ChapterListPresenter implements ChapterListContract.presenter {
         RetrofitUtil.getInstance().initRetrofit().getShowChapterList(map)
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
-        .subscribe(new BaseObserver<BaseListEntry<ChapterListBean1>>(context,MainUtil.loadTxt) {
+        .subscribe(new BaseObserver<BaseListEntry<ChaptersBean>>(context,MainUtil.loadTxt) {
 
 
             @Override
-            protected void onSuccees(BaseListEntry<ChapterListBean1> mChapterListBean) throws Exception {
+            protected void onSuccees(BaseListEntry<ChaptersBean> mChapterListBean) throws Exception {
                 view.success(mChapterListBean.getData());
             }
 

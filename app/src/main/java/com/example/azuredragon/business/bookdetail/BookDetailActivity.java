@@ -16,16 +16,13 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.azuredragon.MBaseActivity;
 import com.example.azuredragon.R;
 import com.example.azuredragon.R2;
-import com.example.azuredragon.business.BookList.BookListPresenter;
 import com.example.azuredragon.business.read.ReadBookActivity;
 import com.example.azuredragon.http.bean.BookDetailBean;
-import com.example.azuredragon.http.bean.ChapterListBean;
-import com.example.azuredragon.http.bean.ChapterListBean1;
+import com.example.azuredragon.http.bean.ChaptersBean;
 import com.ta.utdid2.android.utils.StringUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 
 import butterknife.BindView;
@@ -58,7 +55,7 @@ public class BookDetailActivity extends MBaseActivity<IBookDetailPresenter> impl
     private Animation animHideLoading;
     private Animation animShowInfo;
     private ChapterListPresenter presenter;
-    private ArrayList<ChapterListBean1> library;
+    private ArrayList<ChaptersBean> library;
     @Override
     protected IBookDetailPresenter initInjector() {
         return null;
@@ -76,8 +73,8 @@ public class BookDetailActivity extends MBaseActivity<IBookDetailPresenter> impl
         HashMap map = new HashMap();
         map.put("worksId",searchBook.getWorksId());
 //        map.put("pageNo",1);
-        presenter.getChapterList(map);
-        animShowInfo = AnimationUtils.loadAnimation(this, android.R.anim.fade_in);
+
+
         animHideLoading = AnimationUtils.loadAnimation(this, android.R.anim.fade_out);
         animHideLoading.setAnimationListener(new Animation.AnimationListener() {
             @Override
@@ -95,6 +92,7 @@ public class BookDetailActivity extends MBaseActivity<IBookDetailPresenter> impl
 
             }
         });
+        presenter.getChapterList(map);
     }
 
 
@@ -171,6 +169,14 @@ public class BookDetailActivity extends MBaseActivity<IBookDetailPresenter> impl
 //        }
              tvShelf.setText("放入书架");
                 tvRead.setText("开始阅读");
+        if (tvIntro.getText().toString().trim().length() == 0) {
+                tvIntro.setText(mPresenter.getBookShelf().getBookInfoBean().getIntroduce());
+    }
+            if (tvIntro.getVisibility() != View.VISIBLE) {
+        tvIntro.setVisibility(View.VISIBLE);
+        tvIntro.startAnimation(animShowInfo);
+//                tvLoading.startAnimation(animHideLoading);
+    }
 //        tvLoading.setOnClickListener(null);
     }
 
@@ -231,6 +237,9 @@ public class BookDetailActivity extends MBaseActivity<IBookDetailPresenter> impl
         }
 
         tvAuthor.setText(searchBook.getWriter());
+        tvIntro.setText(searchBook.getWorksDes());
+        animShowInfo = AnimationUtils.loadAnimation(this, android.R.anim.fade_in);
+        tvIntro.startAnimation(animShowInfo);
     }
 
     @Override
@@ -260,7 +269,7 @@ public class BookDetailActivity extends MBaseActivity<IBookDetailPresenter> impl
                 intent.putExtra("from", ReadBookPresenterImpl.OPEN_FROM_APP);
                 String key = String.valueOf(System.currentTimeMillis());
                 intent.putExtra("data_key", key);
-//                intent.putParcelableArrayListExtra("data", library);
+                intent.putParcelableArrayListExtra("data", library);
 //                try {
 //                    BitIntentDataManager.getInstance().putData(key, mPresenter.getBookShelf().clone());
 //                } catch (CloneNotSupportedException e) {
@@ -285,9 +294,9 @@ public class BookDetailActivity extends MBaseActivity<IBookDetailPresenter> impl
     }
 
     @Override
-    public void success(List<ChapterListBean1> library) {
+    public void success(List<ChaptersBean> library) {
         Log.d("ss", "success: ");
-        this.library = (ArrayList<ChapterListBean1>) library;
+        this.library = (ArrayList<ChaptersBean>) library;
     }
 
     @Override

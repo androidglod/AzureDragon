@@ -42,5 +42,4 @@ public interface IBookReadView extends IView {
 
     void loadLocationBookError();
 
-    void showDownloadMenu();
 }

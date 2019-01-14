@@ -14,16 +14,19 @@ import com.example.azuredragon.IPresenter;
 import com.example.azuredragon.MBaseActivity;
 import com.example.azuredragon.R;
 import com.example.azuredragon.R2;
+import com.example.azuredragon.banner.holder.CBViewHolderCreatorImpl;
 import com.example.azuredragon.booklistview.LibraryKindBookListView;
 import com.example.azuredragon.business.bookdetail.BookDetailActivity;
 import com.example.azuredragon.business.bookdetail.BookDetailPresenterImpl;
 import com.example.azuredragon.business.search.SearchActivity;
+import com.example.azuredragon.http.bean.BannerBean;
 import com.example.azuredragon.http.bean.BookDetailBean;
 import com.example.azuredragon.http.bean.BookListBean;
 import com.example.azuredragon.http.utils.DensityUtil;
 import com.example.azuredragon.refreshview.BaseRefreshListener;
 import com.example.azuredragon.refreshview.RefreshProgressBar;
 import com.example.azuredragon.refreshview.RefreshScrollView;
+import com.example.azuredragon.banner.ConvenientBanner;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -52,8 +55,9 @@ public class BookListActivity extends MBaseActivity implements BookListContract.
      FrameLayout flSearch;
     @BindView(R2.id.kind_ll)
      LinearLayout kindLl;
-//    @BindView(R2.id.lav_hotauthor)
-//     LibraryNewBooksView lavHotauthor;
+    @BindView(R2.id.convent_banner)
+    ConvenientBanner<BannerBean> convenientBanner;
+
     @BindView(R2.id.lkbv_kindbooklist)
      LibraryKindBookListView lkbvKindbooklist;
 
@@ -61,10 +65,16 @@ public class BookListActivity extends MBaseActivity implements BookListContract.
     List<List<BookDetailBean>> allBookList = new ArrayList<>();
     private Animation animIn;
     private Animation animOut;
+
+    private static final int VIEW_PAGER_TIME = 3000;
+    /** 轮播图holderCreator */
+    private CBViewHolderCreatorImpl mCBViewHolderCreator;
+    private List<BannerBean> mBannerEntities;
     @Override
     protected void onCreateActivity() {
         setContentView(R.layout.activity_library);
     }
+
 
     @Override
     protected void firstRequest() {
@@ -88,6 +98,40 @@ public class BookListActivity extends MBaseActivity implements BookListContract.
         return null;
     }
 
+    private void initBanner() {
+        //轮播图
+        mBannerEntities = new ArrayList<>();
+        mCBViewHolderCreator = new CBViewHolderCreatorImpl();
+        //设置两个点图片作为翻页指示器，不设置则没有指示器，可以根据自己需求自行配合自己的指示器,不需要圆点指示器可用不设
+        convenientBanner.setPageIndicator(new int[]{R.drawable.conference_viewpager_noselect, R.drawable
+                .conference_viewpager_select});
+        //设置指示器的方向
+        convenientBanner.setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.CENTER_HORIZONTAL);
+    }
+
+    /**
+     * 设置广告位
+     * @param bannerEntities 实体
+     */
+    private void setAdvertising(final List<BannerBean> bannerEntities) {
+        mBannerEntities.addAll(bannerEntities);
+        convenientBanner.setPages(mCBViewHolderCreator, mBannerEntities);
+        convenientBanner.setOnItemClickListener(mOnItemClickListener);
+        convenientBanner.notifyDataSetChanged();
+        if (mBannerEntities.size() <= 1) {
+            convenientBanner.stopTurning();
+            convenientBanner.setCanLoop(false);
+        } else {
+            convenientBanner.startTurning(VIEW_PAGER_TIME);
+        }
+
+    }
+    private com.example.azuredragon.banner.listener.OnItemClickListener mOnItemClickListener = new com.example.azuredragon.banner.listener.OnItemClickListener() {
+        @Override
+        public void onItemClick(int position) {
+//            bannerItemClick(position);
+        }
+    };
     private void initKind() {
 
         presenter = new BookListPresenter(this,this);
@@ -233,12 +277,30 @@ public class BookListActivity extends MBaseActivity implements BookListContract.
                 startActivityByAnim(intent, animView, "img_cover", android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
+
+//        if (brandAttImgList != null && brandAttImgList.size()>0) {
+//            convenientBanner.setVisibility(View.VISIBLE);
+//            imageMediaList = new ArrayList<>();
+//            for (BrandDetailEntity.BrandAttImgListBean brandAttImgListBean : brandAttImgList) {
+//                BannerEntity bannerEntity = new BannerEntity();
+//                bannerEntity.setAdAttUrl(brandAttImgListBean.getImageUrl());
+//                bannerEntities.add(bannerEntity);
+//                //查看大图用
+//                ImageMedia imageMedia = new ImageMedia();
+//                imageMedia.setPhotoNetUrl(brandAttImgListBean.getImageUrl());
+//                imageMediaList.add(imageMedia);
+//            }
+//            setAdvertising(bannerEntities);
+//        }else {
+//            convenientBanner.setVisibility(View.GONE);
+//        }
     }
 
 
     @Override
     public void success(BookListBean library) {
         rscvContent.finishRefresh();
+
         updateUI(library);
     }
 

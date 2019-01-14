@@ -26,6 +26,7 @@ import com.example.azuredragon.http.app.MyApp;
 import com.example.azuredragon.http.bean.BookChapterContentBean;
 import com.example.azuredragon.http.bean.BookContentBean;
 import com.example.azuredragon.http.bean.BookShelfBean;
+import com.example.azuredragon.http.bean.ChaptersBean;
 import com.example.azuredragon.http.bean.LocBookShelfBean;
 import com.example.azuredragon.http.bean.ReadBookContentBean;
 import com.example.azuredragon.http.impl.BasePresenterImpl;
@@ -50,7 +51,7 @@ public class ReadBookPresenterImpl extends BasePresenterImpl<IBookReadView> impl
 
     public final static int OPEN_FROM_OTHER = 0;
     public final static int OPEN_FROM_APP = 1;
-
+    private ArrayList<ChaptersBean> library;
     private Boolean isAdd = false; //判断是否已经添加进书架
     private int open_from;
     private BookShelfBean bookShelf;
@@ -64,13 +65,14 @@ public class ReadBookPresenterImpl extends BasePresenterImpl<IBookReadView> impl
     @Override
     public void initData(Activity activity) {
         Intent intent = activity.getIntent();
+        library = intent.getParcelableArrayListExtra("data");
         open_from = intent.getIntExtra("from", OPEN_FROM_OTHER);
         if (open_from == OPEN_FROM_APP) {
             String key = intent.getStringExtra("data_key");
             bookShelf = (BookShelfBean) BitIntentDataManager.getInstance().getData(key);
-            if (!bookShelf.getTag().equals(BookShelfBean.LOCAL_TAG)) {
-                mView.showDownloadMenu();
-            }
+//            if (!bookShelf.getTag().equals(BookShelfBean.LOCAL_TAG)) {
+//                mView.showDownloadMenu();
+//            }
             BitIntentDataManager.getInstance().cleanData(key);
             checkInShelf();
         } else {
@@ -221,8 +223,7 @@ public class ReadBookPresenterImpl extends BasePresenterImpl<IBookReadView> impl
                                 } else {
                                     final int finalPageIndex1 = tempList.getPageIndex();
                                     HashMap map = new HashMap();
-                                    map.put("worksId","59");
-                                    map.put("pageNo","1");
+                                    map.put("chapterId",library.get(chapterIndex).getChapterId());
                                     mChapterContentPresenter.getChapterContent(map);
                                     WebBookModelImpl.getInstance().getBookContent(bookShelf.getBookInfoBean().getChapterlist().get(chapterIndex).getDurChapterUrl(), chapterIndex, bookShelf.getTag()).map(new Function<BookContentBean, BookContentBean>() {
                                         @Override

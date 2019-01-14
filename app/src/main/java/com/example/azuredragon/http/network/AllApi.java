@@ -8,8 +8,7 @@ import com.example.azuredragon.http.bean.Banner;
 import com.example.azuredragon.http.bean.BookChapterContentBean;
 import com.example.azuredragon.http.bean.BookDetailBean;
 import com.example.azuredragon.http.bean.BookListBean;
-import com.example.azuredragon.http.bean.ChapterListBean;
-import com.example.azuredragon.http.bean.ChapterListBean1;
+import com.example.azuredragon.http.bean.ChaptersBean;
 import com.example.azuredragon.http.bean.LoginBean;
 import com.example.azuredragon.http.bean.ZiXunAll;
 
@@ -52,7 +51,7 @@ public interface AllApi {
      * 章节列表
      */
     @GET("works/showChapterList.do")
-    Observable<BaseListEntry<ChapterListBean1>> getShowChapterList(@QueryMap() Map<String, String> maps);
+    Observable<BaseListEntry<ChaptersBean>> getShowChapterList(@QueryMap() Map<String, String> maps);
 
     /**
      * 章节内容

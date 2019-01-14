@@ -54,7 +54,7 @@ public class MainActivity extends MBaseActivity implements BookRackContract.View
     @OnClick(R2.id.iv_add)
     public void addItem(){
         resideMenu.closeMenu();
-        //点击更多
+        //查看本地文件
         startActivityByAnim(new Intent(MainActivity.this, ImportBookActivity.class), 0, 0);
 
     }
@@ -100,15 +100,11 @@ public class MainActivity extends MBaseActivity implements BookRackContract.View
 
     private void setUpMenu() {
         LoginBean mLoginBeans = PreferencesUtils.getUser(this,"user","user_info");
-        // attach to current activity;
         resideMenu = new ResideMenu(this,mLoginBeans);
         resideMenu.setUse3D(true);
         resideMenu.attachToActivity(this);
         resideMenu.setMenuListener(menuListener);
-        //valid scale factor is between 0.0f and 1.0f. leftmenu'width is 150dip.
         resideMenu.setScaleValue(0.6f);
-//        itemHome  = new ResideMenuItem(this, R.drawable.icon_home,     "Home");
-//        resideMenu.addMenuItem(itemHome, ResideMenu.DIRECTION_LEFT);
     }
 
     private void bindRvShelfEvent() {
@@ -118,7 +114,6 @@ public class MainActivity extends MBaseActivity implements BookRackContract.View
             public void toSearch() {
                 //点击去选书
                 startActivityByAnim(new Intent(MainActivity.this, BookListActivity.class), 0, 0);
-
             }
 
             @Override
@@ -174,17 +169,7 @@ public class MainActivity extends MBaseActivity implements BookRackContract.View
         public void closeMenu() {
         }
     };
-//
-//    private void changeFragment(Fragment targetFragment){
-//        resideMenu.clearIgnoredViewList();
-//        getSupportFragmentManager()
-//                .beginTransaction()
-//                .replace(R.id.main_fragment, targetFragment, "fragment")
-//                .setTransitionStyle(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-//                .commit();
-//    }
 
-    // What good method is to access resideMenu？
     public ResideMenu getResideMenu(){
         return resideMenu;
     }

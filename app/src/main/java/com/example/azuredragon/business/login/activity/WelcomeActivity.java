@@ -1,4 +1,4 @@
-package com.example.azuredragon;
+package com.example.azuredragon.business.login.activity;
 
 import android.animation.Animator;
 import android.animation.ValueAnimator;
@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.azuredragon.IPresenter;
+import com.example.azuredragon.MBaseActivity;
+import com.example.azuredragon.R;
 import com.example.azuredragon.business.main.MainActivity;
 
 import butterknife.BindView;
