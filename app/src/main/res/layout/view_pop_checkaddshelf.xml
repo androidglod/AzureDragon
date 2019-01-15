@@ -4,24 +4,20 @@
     android:layout_height="wrap_content">
     <LinearLayout
         android:layout_width="260dp"
-        android:layout_height="180dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingTop="3.5dp"
-        android:paddingLeft="10.5dp"
-        android:paddingRight="10.5dp"
-        android:paddingBottom="16.5dp"
-        android:background="@drawable/bg_search"
+        android:background="@drawable/common_white_bg"
         android:gravity="center_horizontal">
         <TextView
             android:id="@+id/tv_book_name"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="100dp"
             android:maxLines="2"
             android:gravity="center"
             android:textSize="16sp"
-            android:text="是否将《xxx》放入书架？"
-            android:padding="10dp"
+            android:text="是否将《xxxxxxxxxxxxxxxxx》放入书架？"
+            android:padding="20dp"
             android:textColor="#343434"/>
         <View
             android:layout_width="match_parent"
@@ -41,7 +37,7 @@
                 android:gravity="center"
                 android:textSize="15sp"
                 android:clickable="true"
-                android:background="@drawable/selector_book_detail_shelf_bg"/>
+                android:background="@drawable/common_white_bg"/>
             <TextView
                 android:id="@+id/tv_addshelf"
                 android:layout_width="0dp"
@@ -52,7 +48,7 @@
                 android:textColor="#ffffff"
                 android:clickable="true"
                 android:textSize="15sp"
-                android:background="@drawable/selector_book_detail_read_bg"/>
+                android:background="@drawable/common_bg"/>
         </LinearLayout>
     </LinearLayout>
 </FrameLayout>

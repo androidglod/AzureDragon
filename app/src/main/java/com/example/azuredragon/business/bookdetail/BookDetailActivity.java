@@ -17,6 +17,7 @@ import com.example.azuredragon.MBaseActivity;
 import com.example.azuredragon.R;
 import com.example.azuredragon.R2;
 import com.example.azuredragon.business.read.ReadBookActivity;
+import com.example.azuredragon.business.read.modialog.MoProgressHUD;
 import com.example.azuredragon.http.bean.BookDetailBean;
 import com.example.azuredragon.http.bean.BookInfoBean;
 import com.example.azuredragon.http.bean.BookShelfBean;
@@ -59,6 +60,7 @@ public class BookDetailActivity extends MBaseActivity<IBookDetailPresenter> impl
     private Animation animShowInfo;
     private ChapterListPresenter presenter;
     private ArrayList<ChaptersBean> library;
+    private MoProgressHUD moProgressHUD;
     BookShelfBean mBookShelfBean = new BookShelfBean();
     @Override
     protected IBookDetailPresenter initInjector() {
@@ -72,7 +74,7 @@ public class BookDetailActivity extends MBaseActivity<IBookDetailPresenter> impl
 
     @Override
     protected void initData() {
-
+        moProgressHUD = new MoProgressHUD(this);
         presenter = new ChapterListPresenter(this,this);
         HashMap map = new HashMap();
         map.put("worksId",searchBook.getWorksId());
@@ -96,6 +98,7 @@ public class BookDetailActivity extends MBaseActivity<IBookDetailPresenter> impl
 
             }
         });
+        moProgressHUD.showLoading();
         presenter.getChapterList(map);
     }
 
@@ -311,18 +314,22 @@ public class BookDetailActivity extends MBaseActivity<IBookDetailPresenter> impl
             mChapterListBean.setDurChapterName(library.get(i).getWorksName());
             mChapterListBean.setDurChapterId(library.get(i).getChapterId());
             mChapterListBean.setDurChapterIndex(i);
+            mChapterListBean.setDurChapterUrl(library.get(i).getChapterId()+"");
             chapterlist.add(mChapterListBean);
         }
         mBookInfoBean.setChapterlist(chapterlist);
         mBookInfoBean.setAuthor(searchBook.getWriter());
         mBookInfoBean.setName(searchBook.getWorksName());
         mBookInfoBean.setIntroduce(searchBook.getWorksDes());
+        mBookInfoBean.setNoteUrl(searchBook.getWorksDes());
+        mBookShelfBean.setNoteUrl(searchBook.getWorksId()+"");
         mBookShelfBean.setBookInfoBean(mBookInfoBean);
+        moProgressHUD.dismiss();
     }
 
     @Override
     public void fail(String content) {
-
+        moProgressHUD.dismiss();
     }
 
 }

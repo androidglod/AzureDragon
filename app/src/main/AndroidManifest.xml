@@ -57,7 +57,7 @@
 
         <!--书籍列表-->
         <activity
-            android:name=".business.BookList.BookListActivity"
+            android:name=".business.bookList.BookListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/CAppTransparentTheme">
         </activity>

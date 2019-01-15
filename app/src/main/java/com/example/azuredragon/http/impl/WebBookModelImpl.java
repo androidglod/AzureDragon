@@ -107,11 +107,5 @@ public class WebBookModelImpl implements IWebBookModel {
             });
         }
     }
-    /**
-     * 获取分类书籍
-     */
-    @Override
-    public Observable<List<SearchBookBean>> getKindBook(String url, int page) {
-        return GxwztvBookModelImpl.getInstance().getKindBook(url,page);
-    }
+
 }

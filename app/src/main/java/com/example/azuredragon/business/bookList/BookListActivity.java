@@ -1,4 +1,4 @@
-package com.example.azuredragon.business.BookList;
+package com.example.azuredragon.business.bookList;
 
 import android.content.Intent;
 import android.view.Gravity;

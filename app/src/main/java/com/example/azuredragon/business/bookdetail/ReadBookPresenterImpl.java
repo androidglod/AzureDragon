@@ -12,6 +12,7 @@ import android.provider.MediaStore;
 import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextPaint;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.com.sky.downloader.greendao.BookContentBeanDao;
@@ -33,6 +34,7 @@ import com.example.azuredragon.http.impl.BasePresenterImpl;
 import com.example.azuredragon.http.impl.WebBookModelImpl;
 import com.example.azuredragon.http.observer.SimpleObserver;
 import com.hwangjr.rxbus.RxBus;
+import com.ta.utdid2.android.utils.StringUtils;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 
 import java.io.File;
@@ -348,7 +350,17 @@ public class ReadBookPresenterImpl extends BasePresenterImpl<IBookReadView> impl
         BookContentBean mBookContentBean = new BookContentBean();
         mBookContentBean.setDurChapterIndex(chapterIndex);
         mBookContentBean.setDurCapterContent(content);
-        mBookContentBean.setDurChapterUrl("www");
+        if (!StringUtils.isEmpty(content)){
+            if (content.length()>20){
+                mBookContentBean.setDurChapterUrl( content.substring(0,20));
+            }else{
+                mBookContentBean.setDurChapterUrl( content.substring(0,content.length()));
+            }
+        }else{
+            mBookContentBean.setDurChapterUrl("www");
+        }
+
+
 
 
         if (mBookContentBean.getDurChapterUrl() != null && mBookContentBean.getDurChapterUrl().length() > 0) {
@@ -432,7 +444,7 @@ public class ReadBookPresenterImpl extends BasePresenterImpl<IBookReadView> impl
 
                         @Override
                         public void onError(Throwable e) {
-
+                            Log.d("ss", "onError: ");
                         }
                     });
         }

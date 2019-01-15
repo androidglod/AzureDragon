@@ -249,33 +249,7 @@ public class MoProgressHUD {
         }
         mSharedView.getChildAt(0).startAnimation(inAnim);
     }
-    ////////////////////离线章节选择////////////////////////////
-    public interface OnClickDownload{
-        public void download(int start, int end);
-    }
-    public void showDownloadList(int startIndex, int endIndex,int all, OnClickDownload clickDownload){
-        initCenter();
-        initAnimation();
-        canBack = true;
-        rootView.setBackgroundColor(Color.parseColor("#00000000"));
-        rootView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismiss();
-            }
-        });
-        mSharedView.showDownloadList(startIndex, endIndex, all, clickDownload, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismiss();
-            }
-        });
-        if (!isShowing()) {
-            onAttached();
-        }
-        mSharedView.getChildAt(0).startAnimation(inAnim);
-    }
-    //////////////////////////////////////////////////////////
+
 
     public Boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {

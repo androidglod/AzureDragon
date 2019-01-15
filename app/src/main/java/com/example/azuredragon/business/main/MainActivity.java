@@ -16,13 +16,12 @@ import com.example.azuredragon.MBaseActivity;
 import com.example.azuredragon.R;
 import com.example.azuredragon.R2;
 import com.example.azuredragon.adapter.BookRackAdapter;
-import com.example.azuredragon.business.BookList.BookListActivity;
+import com.example.azuredragon.business.bookList.BookListActivity;
 import com.example.azuredragon.business.Localfile.ImportBookActivity;
 import com.example.azuredragon.business.bookdetail.BitIntentDataManager;
 import com.example.azuredragon.business.bookdetail.BookDetailActivity;
 import com.example.azuredragon.business.bookdetail.BookDetailPresenterImpl;
 import com.example.azuredragon.business.bookdetail.ReadBookPresenterImpl;
-import com.example.azuredragon.business.login.activity.WelcomeActivity;
 import com.example.azuredragon.business.read.ReadBookActivity;
 import com.example.azuredragon.cache.DbHelper;
 import com.example.azuredragon.cache.PreferencesUtils;
@@ -104,23 +103,21 @@ public class MainActivity extends MBaseActivity implements BookRackContract.View
                 e.onNext(bookShelfes == null ? new ArrayList<BookShelfBean>() : bookShelfes);
             }
         })
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SimpleObserver<List<BookShelfBean>>() {
-                    @Override
-                    public void onNext(List<BookShelfBean> value) {
-                        if (null == value&&value.size()==0) {
+        .subscribeOn(Schedulers.io())
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribe(new SimpleObserver<List<BookShelfBean>>() {
+            @Override
+            public void onNext(List<BookShelfBean> value) {
+                if (null == value || value.size()==0) {
+                    startActivityByAnim(new Intent(MainActivity.this, BookListActivity.class), android.R.anim.fade_in, android.R.anim.fade_out);
+                }
+            }
 
-                            startActivityByAnim(new Intent(MainActivity.this, BookListActivity.class), android.R.anim.fade_in, android.R.anim.fade_out);
-                            finish();
-                        }
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        e.printStackTrace();
-                    }
-                });
+            @Override
+            public void onError(Throwable e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     @Override

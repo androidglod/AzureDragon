@@ -36,7 +36,7 @@ public class ChapterListPresenter implements ChapterListContract.presenter {
         RetrofitUtil.getInstance().initRetrofit().getShowChapterList(map)
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
-        .subscribe(new BaseObserver<BaseListEntry<ChaptersBean>>(context,MainUtil.loadTxt) {
+        .subscribe(new BaseObserver<BaseListEntry<ChaptersBean>>(context,null) {
 
 
             @Override

@@ -51,7 +51,7 @@ import me.grantland.widget.AutofitTextView;
  * @date: 2018/11/25
  * @description:阅读类
  */
-public class ReadBookActivity extends MBaseActivity<IBookReadPresenter> implements IBookReadView,ChapterContentContract.View{
+public class ReadBookActivity extends MBaseActivity<IBookReadPresenter> implements IBookReadView{
     @BindView(R2.id.fl_content)
      FrameLayout flContent;
     @BindView(R2.id.csv_book)
@@ -95,13 +95,11 @@ public class ReadBookActivity extends MBaseActivity<IBookReadPresenter> implemen
      ChapterListView chapterListView;
     private CheckAddShelfPop checkAddShelfPop;
     private WindowLightPop windowLightPop;
-//    private ReadBookMenuMorePop readBookMenuMorePop;
     private FontPop fontPop;
     private MoreSettingPop moreSettingPop;
     private ArrayList<ChaptersBean> library;
     private BookShelfBean bookShelf;
     private MoProgressHUD moProgressHUD;
-    ChapterContentPresenter mChapterContentPresenter ;
     @Override
     protected IBookReadPresenter initInjector() {
         return new ReadBookPresenterImpl();
@@ -115,7 +113,6 @@ public class ReadBookActivity extends MBaseActivity<IBookReadPresenter> implemen
     @Override
     protected void initData() {
         bookShelf = getIntent().getParcelableExtra("data");
-         mChapterContentPresenter = new  ChapterContentPresenter(this,this);
         mPresenter.saveProgress();
         menuTopIn = AnimationUtils.loadAnimation(this, R.anim.anim_readbook_top_in);
         menuTopIn.setAnimationListener(new Animation.AnimationListener() {
@@ -270,7 +267,7 @@ public class ReadBookActivity extends MBaseActivity<IBookReadPresenter> implemen
         ivReturn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                backKey2();
             }
         });
 //        ivMenuMore.setOnClickListener(new View.OnClickListener() {
@@ -419,22 +416,7 @@ public class ReadBookActivity extends MBaseActivity<IBookReadPresenter> implemen
             return mo;
         else {
             if (keyCode == KeyEvent.KEYCODE_BACK) {
-                if (flMenu.getVisibility() == View.VISIBLE) {
-                    llMenuTop.startAnimation(menuTopOut);
-                    llMenuBottom.startAnimation(menuBottomOut);
-                    return true;
-                } else if (!mPresenter.getAdd() && checkAddShelfPop != null && !checkAddShelfPop.isShowing()) {
-                    checkAddShelfPop.showAtLocation(flContent, Gravity.CENTER, 0, 0);
-                    return true;
-                } else {
-                    Boolean temp2 = chapterListView.dimissChapterList();
-                    if (temp2)
-                        return true;
-                    else {
-                        finish();
-                        return true;
-                    }
-                }
+                backKey();
             } else {
                 Boolean temp = csvBook.onKeyDown(keyCode, event);
                 if (temp)
@@ -443,7 +425,37 @@ public class ReadBookActivity extends MBaseActivity<IBookReadPresenter> implemen
             return super.onKeyDown(keyCode, event);
         }
     }
+   public boolean backKey(){
+       if (flMenu.getVisibility() == View.VISIBLE) {
+           llMenuTop.startAnimation(menuTopOut);
+           llMenuBottom.startAnimation(menuBottomOut);
+           return true;
+       } else if (!mPresenter.getAdd() && checkAddShelfPop != null && !checkAddShelfPop.isShowing()) {
+           checkAddShelfPop.showAtLocation(flContent, Gravity.CENTER, 0, 0);
+           return true;
+       } else {
+           Boolean temp2 = chapterListView.dimissChapterList();
+           if (temp2)
+               return true;
+           else {
+               finish();
+               return true;
+           }
+       }
+   }
 
+    public void backKey2(){
+        if (!mPresenter.getAdd() && checkAddShelfPop != null && !checkAddShelfPop.isShowing()) {
+            checkAddShelfPop.showAtLocation(flContent, Gravity.CENTER, 0, 0);
+        } else {
+            Boolean temp2 = chapterListView.dimissChapterList();
+            if (temp2){
+
+            }else {
+                finish();
+            }
+        }
+    }
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
         Boolean temp = csvBook.onKeyUp(keyCode, event);
@@ -518,13 +530,4 @@ public class ReadBookActivity extends MBaseActivity<IBookReadPresenter> implemen
         super.finish();
     }
 
-    @Override
-    public void success(String content) {
-
-    }
-
-    @Override
-    public void fail(String content) {
-
-    }
 }

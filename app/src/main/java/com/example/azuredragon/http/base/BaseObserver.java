@@ -27,7 +27,10 @@ public abstract class BaseObserver<T> implements Observer<T> {
     public BaseObserver(Context cxt, String text) {
         this.mContext = cxt;
         this.labelTxt = text;
-        progressHUD = ProgressHUD.show(mContext);
+        if (null != labelTxt){
+            progressHUD = ProgressHUD.show(mContext);
+        }
+
     }
 
     //开始

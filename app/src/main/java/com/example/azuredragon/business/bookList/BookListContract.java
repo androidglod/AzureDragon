@@ -1,4 +1,4 @@
-package com.example.azuredragon.business.BookList;
+package com.example.azuredragon.business.bookList;
 
 import com.example.azuredragon.http.base.BasePresenter;
 import com.example.azuredragon.http.base.BaseView;
