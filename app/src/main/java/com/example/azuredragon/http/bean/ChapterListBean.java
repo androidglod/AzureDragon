@@ -21,8 +21,7 @@ public class ChapterListBean implements Parcelable,Cloneable {
 
     private int total;
     private int pageNo;
-    @Transient
-    private List<ChaptersBean> chaptersList;
+
     private String noteUrl; //对应BookInfoBean noteUrl;
 
     private int durChapterIndex;  //当前章节数
@@ -30,7 +29,7 @@ public class ChapterListBean implements Parcelable,Cloneable {
     private String durChapterUrl;  //当前章节对应的文章地址
 
     private String durChapterName;  //当前章节名称
-
+    private int durChapterId;  //当前章节名称
     private String tag;
 
     private Boolean hasCache = false;
@@ -42,27 +41,39 @@ public class ChapterListBean implements Parcelable,Cloneable {
         durChapterIndex = in.readInt();
         durChapterUrl = in.readString();
         durChapterName = in.readString();
+        durChapterId = in.readInt();
         tag = in.readString();
         bookContentBean = in.readParcelable(BookContentBean.class.getClassLoader());
         hasCache = in.readByte() != 0;
     }
 
-    @Generated(hash = 1888531893)
+
+
+
+    @Generated(hash = 306183219)
     public ChapterListBean(int total, int pageNo, String noteUrl, int durChapterIndex,
-            String durChapterUrl, String durChapterName, String tag, Boolean hasCache) {
+            String durChapterUrl, String durChapterName, int durChapterId, String tag,
+            Boolean hasCache) {
         this.total = total;
         this.pageNo = pageNo;
         this.noteUrl = noteUrl;
         this.durChapterIndex = durChapterIndex;
         this.durChapterUrl = durChapterUrl;
         this.durChapterName = durChapterName;
+        this.durChapterId = durChapterId;
         this.tag = tag;
         this.hasCache = hasCache;
     }
 
+
+
+
     @Generated(hash = 1096893365)
     public ChapterListBean() {
     }
+
+
+
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
@@ -70,6 +81,7 @@ public class ChapterListBean implements Parcelable,Cloneable {
         dest.writeInt(durChapterIndex);
         dest.writeString(durChapterUrl);
         dest.writeString(durChapterName);
+        dest.writeInt(durChapterId);
         dest.writeString(tag);
         dest.writeParcelable(bookContentBean, flags);
         dest.writeByte((byte)(hasCache?1:0));
@@ -88,6 +100,14 @@ public class ChapterListBean implements Parcelable,Cloneable {
         this.bookContentBean = bookContentBean;
     }
 
+    public int getDurChapterId() {
+        return durChapterId;
+    }
+
+    public void setDurChapterId(int durChapterId) {
+        this.durChapterId = durChapterId;
+    }
+
     public int getTotal() {
         return total;
     }
@@ -102,14 +122,6 @@ public class ChapterListBean implements Parcelable,Cloneable {
 
     public void setPageNo(int pageNo) {
         this.pageNo = pageNo;
-    }
-
-    public List<ChaptersBean> getChaptersList() {
-        return chaptersList;
-    }
-
-    public void setChaptersList(List<ChaptersBean> chaptersList) {
-        this.chaptersList = chaptersList;
     }
 
     public Boolean getHasCache() {
@@ -179,6 +191,7 @@ public class ChapterListBean implements Parcelable,Cloneable {
         chapterListBean.noteUrl = noteUrl;
         chapterListBean.durChapterUrl = durChapterUrl;
         chapterListBean.durChapterName = durChapterName;
+        chapterListBean.durChapterId = durChapterId;
         chapterListBean.tag = tag;
         chapterListBean.hasCache = hasCache;
         chapterListBean.bookContentBean = new BookContentBean();

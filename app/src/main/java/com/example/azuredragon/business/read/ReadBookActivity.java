@@ -33,6 +33,7 @@ import com.example.azuredragon.business.main.MainActivity;
 import com.example.azuredragon.business.read.modialog.MoProgressHUD;
 import com.example.azuredragon.cache.RxBusTag;
 import com.example.azuredragon.http.bean.BookChapterContentBean;
+import com.example.azuredragon.http.bean.BookShelfBean;
 import com.example.azuredragon.http.bean.ChaptersBean;
 import com.example.azuredragon.http.bean.DownloadChapterBean;
 import com.example.azuredragon.http.bean.DownloadChapterListBean;
@@ -98,6 +99,7 @@ public class ReadBookActivity extends MBaseActivity<IBookReadPresenter> implemen
     private FontPop fontPop;
     private MoreSettingPop moreSettingPop;
     private ArrayList<ChaptersBean> library;
+    private BookShelfBean bookShelf;
     private MoProgressHUD moProgressHUD;
     ChapterContentPresenter mChapterContentPresenter ;
     @Override
@@ -112,7 +114,7 @@ public class ReadBookActivity extends MBaseActivity<IBookReadPresenter> implemen
 
     @Override
     protected void initData() {
-        library = getIntent().getParcelableArrayListExtra("data");
+        bookShelf = getIntent().getParcelableExtra("data");
          mChapterContentPresenter = new  ChapterContentPresenter(this,this);
         mPresenter.saveProgress();
         menuTopIn = AnimationUtils.loadAnimation(this, R.anim.anim_readbook_top_in);
@@ -181,7 +183,7 @@ public class ReadBookActivity extends MBaseActivity<IBookReadPresenter> implemen
 
     @Override
     public void initPop() {
-        checkAddShelfPop = new CheckAddShelfPop(this, mPresenter.getBookShelf().getBookInfoBean().getName(), new CheckAddShelfPop.OnItemClickListener() {
+        checkAddShelfPop = new CheckAddShelfPop(this, bookShelf.getBookInfoBean().getName(), new CheckAddShelfPop.OnItemClickListener() {
             @Override
             public void clickExit() {
                 finish();
@@ -193,10 +195,10 @@ public class ReadBookActivity extends MBaseActivity<IBookReadPresenter> implemen
                 checkAddShelfPop.dismiss();
             }
         });
-        chapterListView.setData(mPresenter.getBookShelf(), new ChapterListView.OnItemClickListener() {
+        chapterListView.setData(bookShelf, new ChapterListView.OnItemClickListener() {
             @Override
             public void itemClick(int index) {
-                csvBook.setInitData(index, mPresenter.getBookShelf().getBookInfoBean().getChapterlist().size(), BookContentView.DURPAGEINDEXBEGIN);
+                csvBook.setInitData(index,bookShelf.getBookInfoBean().getChapterlist().size(), BookContentView.DURPAGEINDEXBEGIN);
             }
         });
 
@@ -517,7 +519,7 @@ public class ReadBookActivity extends MBaseActivity<IBookReadPresenter> implemen
     }
 
     @Override
-    public void success(BookChapterContentBean library) {
+    public void success(String content) {
 
     }
 

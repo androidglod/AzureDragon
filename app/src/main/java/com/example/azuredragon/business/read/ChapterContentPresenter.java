@@ -38,12 +38,12 @@ public class ChapterContentPresenter implements ChapterContentContract.presenter
         RetrofitUtil.getInstance().initRetrofit().getBookContentData(map)
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
-        .subscribe(new BaseObserver<BaseEntry<BookChapterContentBean>>(context,MainUtil.loadTxt) {
+        .subscribe(new BaseObserver<BaseEntry>(context,MainUtil.loadTxt) {
 
 
             @Override
-            protected void onSuccees(BaseEntry<BookChapterContentBean> mChapterListBean) throws Exception {
-                view.success(mChapterListBean.getData());
+            protected void onSuccees(BaseEntry mChapterListBean) throws Exception {
+                view.success(mChapterListBean.getData().toString());
             }
 
             @Override

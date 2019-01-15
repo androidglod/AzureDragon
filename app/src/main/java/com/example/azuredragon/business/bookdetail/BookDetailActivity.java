@@ -18,6 +18,9 @@ import com.example.azuredragon.R;
 import com.example.azuredragon.R2;
 import com.example.azuredragon.business.read.ReadBookActivity;
 import com.example.azuredragon.http.bean.BookDetailBean;
+import com.example.azuredragon.http.bean.BookInfoBean;
+import com.example.azuredragon.http.bean.BookShelfBean;
+import com.example.azuredragon.http.bean.ChapterListBean;
 import com.example.azuredragon.http.bean.ChaptersBean;
 import com.ta.utdid2.android.utils.StringUtils;
 
@@ -56,6 +59,7 @@ public class BookDetailActivity extends MBaseActivity<IBookDetailPresenter> impl
     private Animation animShowInfo;
     private ChapterListPresenter presenter;
     private ArrayList<ChaptersBean> library;
+    BookShelfBean mBookShelfBean = new BookShelfBean();
     @Override
     protected IBookDetailPresenter initInjector() {
         return null;
@@ -269,7 +273,7 @@ public class BookDetailActivity extends MBaseActivity<IBookDetailPresenter> impl
                 intent.putExtra("from", ReadBookPresenterImpl.OPEN_FROM_APP);
                 String key = String.valueOf(System.currentTimeMillis());
                 intent.putExtra("data_key", key);
-                intent.putParcelableArrayListExtra("data", library);
+                intent.putExtra("data", mBookShelfBean);
 //                try {
 //                    BitIntentDataManager.getInstance().putData(key, mPresenter.getBookShelf().clone());
 //                } catch (CloneNotSupportedException e) {
@@ -297,6 +301,23 @@ public class BookDetailActivity extends MBaseActivity<IBookDetailPresenter> impl
     public void success(List<ChaptersBean> library) {
         Log.d("ss", "success: ");
         this.library = (ArrayList<ChaptersBean>) library;
+
+        mBookShelfBean.setDurChapter(0);
+        mBookShelfBean.setDurChapterPage(0);
+        BookInfoBean mBookInfoBean = new BookInfoBean();
+        List<ChapterListBean> chapterlist = new ArrayList<>();
+        for (int i = 0; i < library.size(); i++) {
+            ChapterListBean mChapterListBean = new ChapterListBean();
+            mChapterListBean.setDurChapterName(library.get(i).getWorksName());
+            mChapterListBean.setDurChapterId(library.get(i).getChapterId());
+            mChapterListBean.setDurChapterIndex(i);
+            chapterlist.add(mChapterListBean);
+        }
+        mBookInfoBean.setChapterlist(chapterlist);
+        mBookInfoBean.setAuthor(searchBook.getWriter());
+        mBookInfoBean.setName(searchBook.getWorksName());
+        mBookInfoBean.setIntroduce(searchBook.getWorksDes());
+        mBookShelfBean.setBookInfoBean(mBookInfoBean);
     }
 
     @Override

@@ -30,7 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="123dp"
                 android:orientation="horizontal"
-                android:background="#70000000">
+                android:background="@color/color_common_bg">
                 <ImageView
                     android:id="@+id/iv_cover"
                     android:layout_width="87dp"
@@ -68,7 +68,7 @@
                         android:layout_height="wrap_content"
                         android:lines="1"
                         android:textSize="13sp"
-                        android:textColor="#dfdfdf"
+                        android:textColor="@color/color_FAFAD2"
                         android:layout_marginTop="6dp"/>
                     <View
                         android:layout_width="0dp"
@@ -78,7 +78,7 @@
                         android:id="@+id/tv_chapter"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="#ffffff"
+                        android:textColor="@color/color_FAFAD2"
                         android:textSize="15sp"
                         android:ellipsize="end"
                         android:lines="2"/>
@@ -98,10 +98,7 @@
                 android:scrollbarStyle="outsideInset"
                 android:textSize="15sp"
                 android:textColor="#767676"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="5dp"
-                android:paddingTop="5dp"
+                android:padding="10dp"
                 android:clickable="true"
                 android:visibility="visible"/>
             <View

@@ -17,7 +17,7 @@ import java.util.HashMap;
 public interface ChapterContentContract {
     interface View extends BaseView<presenter> {
         //获取章节内容成功
-        void success(BookChapterContentBean library);
+        void success(String content);
         //获取章节内容失败
         void fail(String content);
     }

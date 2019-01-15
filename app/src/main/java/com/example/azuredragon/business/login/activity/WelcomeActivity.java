@@ -6,13 +6,30 @@ import android.content.Intent;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.com.sky.downloader.greendao.BookInfoBeanDao;
+import com.com.sky.downloader.greendao.BookShelfBeanDao;
+import com.com.sky.downloader.greendao.ChapterListBeanDao;
 import com.example.azuredragon.IPresenter;
 import com.example.azuredragon.MBaseActivity;
 import com.example.azuredragon.R;
+import com.example.azuredragon.business.BookList.BookListActivity;
 import com.example.azuredragon.business.main.MainActivity;
+import com.example.azuredragon.cache.DbHelper;
+import com.example.azuredragon.http.bean.BookInfoBean;
+import com.example.azuredragon.http.bean.BookShelfBean;
+import com.example.azuredragon.http.observer.SimpleObserver;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
+
 /**
  * @author: chz
  * @date: 2018/11/25

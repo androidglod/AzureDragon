@@ -57,7 +57,7 @@ public interface AllApi {
      * 章节内容
      */
     @GET("works/selectContenByChapterId.do")
-    Observable<BaseEntry<BookChapterContentBean>> getBookContentData(@QueryMap() Map<String, String> maps);
+    Observable<BaseEntry> getBookContentData(@QueryMap() Map<String, String> maps);
 
 
     /**

@@ -3,6 +3,7 @@ package com.example.azuredragon;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -234,6 +235,7 @@ public class BookContentView extends FrameLayout {
         return tvContent;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     public int getLineCount(int height) {
         float ascent = tvContent.getPaint().ascent();
         float descent = tvContent.getPaint().descent();

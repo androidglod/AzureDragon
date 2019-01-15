@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.com.sky.downloader.greendao.BookInfoBeanDao;
+import com.com.sky.downloader.greendao.BookShelfBeanDao;
+import com.com.sky.downloader.greendao.ChapterListBeanDao;
 import com.example.azuredragon.IMainPresenter;
 import com.example.azuredragon.MBaseActivity;
 import com.example.azuredragon.R;
@@ -19,20 +22,31 @@ import com.example.azuredragon.business.bookdetail.BitIntentDataManager;
 import com.example.azuredragon.business.bookdetail.BookDetailActivity;
 import com.example.azuredragon.business.bookdetail.BookDetailPresenterImpl;
 import com.example.azuredragon.business.bookdetail.ReadBookPresenterImpl;
+import com.example.azuredragon.business.login.activity.WelcomeActivity;
 import com.example.azuredragon.business.read.ReadBookActivity;
+import com.example.azuredragon.cache.DbHelper;
 import com.example.azuredragon.cache.PreferencesUtils;
+import com.example.azuredragon.http.bean.BookInfoBean;
 import com.example.azuredragon.http.bean.BookShelfBean;
 import com.example.azuredragon.http.bean.LibraryBean;
 import com.example.azuredragon.http.bean.LoginBean;
+import com.example.azuredragon.http.observer.SimpleObserver;
 import com.example.azuredragon.refreshview.OnRefreshWithProgressListener;
 import com.example.azuredragon.refreshview.RefreshRecyclerView;
 import com.example.azuredragon.residemenu.ResideMenu;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
+
 /**
  * @author: chz
  * @date: 2018/11/25
@@ -71,6 +85,42 @@ public class MainActivity extends MBaseActivity implements BookRackContract.View
     @Override
     protected void bindView() {
         super.bindView();
+        Observable.create(new ObservableOnSubscribe<List<BookShelfBean>>() {
+            @Override
+            public void subscribe(ObservableEmitter<List<BookShelfBean>> e) throws Exception {
+                List<BookShelfBean> bookShelfes = DbHelper.getInstance().getmDaoSession().getBookShelfBeanDao().queryBuilder().orderDesc(BookShelfBeanDao.Properties.FinalDate).list();
+                for (int i = 0; i < bookShelfes.size(); i++) {
+                    List<BookInfoBean> temp = DbHelper.getInstance().getmDaoSession().getBookInfoBeanDao().queryBuilder().where(BookInfoBeanDao.Properties.NoteUrl.eq(bookShelfes.get(i).getNoteUrl())).limit(1).build().list();
+                    if (temp != null && temp.size() > 0) {
+                        BookInfoBean bookInfoBean = temp.get(0);
+                        bookInfoBean.setChapterlist(DbHelper.getInstance().getmDaoSession().getChapterListBeanDao().queryBuilder().where(ChapterListBeanDao.Properties.NoteUrl.eq(bookShelfes.get(i).getNoteUrl())).orderAsc(ChapterListBeanDao.Properties.DurChapterIndex).build().list());
+                        bookShelfes.get(i).setBookInfoBean(bookInfoBean);
+                    } else {
+                        DbHelper.getInstance().getmDaoSession().getBookShelfBeanDao().delete(bookShelfes.get(i));
+                        bookShelfes.remove(i);
+                        i--;
+                    }
+                }
+                e.onNext(bookShelfes == null ? new ArrayList<BookShelfBean>() : bookShelfes);
+            }
+        })
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SimpleObserver<List<BookShelfBean>>() {
+                    @Override
+                    public void onNext(List<BookShelfBean> value) {
+                        if (null == value&&value.size()==0) {
+
+                            startActivityByAnim(new Intent(MainActivity.this, BookListActivity.class), android.R.anim.fade_in, android.R.anim.fade_out);
+                            finish();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        e.printStackTrace();
+                    }
+                });
     }
 
     @Override
