@@ -24,7 +24,7 @@
         android:paddingLeft="27dp"
         android:paddingRight="15.5dp">
         <FrameLayout
-            android:layout_width="95dp"
+            android:layout_width="110dp"
             android:layout_height="match_parent">
             <ImageView
                 android:id="@+id/iv_cover"

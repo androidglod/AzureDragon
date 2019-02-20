@@ -2,6 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:id="@+id/ifl_content"
     android:clickable="true"
@@ -25,20 +26,28 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:background="@drawable/common_white_bg">
+            android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="123dp"
                 android:orientation="horizontal"
-                android:background="@color/color_common_bg">
-                <ImageView
-                    android:id="@+id/iv_cover"
-                    android:layout_width="87dp"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/img_cover_default"
-                    android:transitionName="img_cover"/>
+                android:background="@drawable/common_top_bg">
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cv_select"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/color_FFFFFF"
+                    app:cardCornerRadius="3dp"
+                    app:cardElevation="0dp">
+
+                    <ImageView
+                        android:id="@+id/iv_cover"
+                        android:layout_width="87dp"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/img_cover_default"/>
+
+                </android.support.v7.widget.CardView>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -123,7 +132,7 @@
                        android:gravity="center"
                        android:textSize="15sp"
                        android:clickable="true"
-                       android:background="@drawable/common_white_bg"/>
+                       android:background="@drawable/common_white_bottom_bg"/>
                    <TextView
                        android:id="@+id/tv_read"
                        android:layout_width="0dp"
