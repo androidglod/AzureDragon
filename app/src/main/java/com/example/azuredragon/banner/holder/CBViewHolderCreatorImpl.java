@@ -8,8 +8,8 @@ import com.example.azuredragon.R;
 /**
  * Description:
  *
- * @author zhangchangan
- * date: 2018/5/25 17:32
+ * @author chenhaizhen
+ * date: 2019/1/25 17:32
  */
 public class CBViewHolderCreatorImpl implements CBViewHolderCreator {
     @Override

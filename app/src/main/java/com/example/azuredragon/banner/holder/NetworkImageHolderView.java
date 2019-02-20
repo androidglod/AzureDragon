@@ -11,8 +11,8 @@ import com.example.azuredragon.http.bean.BannerBean;
 
 /**
  *
- * @author zhangchangan
- * @date 15/8/4
+ * @author chenhaizhen
+ * @date 19/1/4
  * 网络图片加载例子
  */
 public class NetworkImageHolderView extends Holder<BannerBean> {

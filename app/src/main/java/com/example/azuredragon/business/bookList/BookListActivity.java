@@ -53,8 +53,7 @@ public class BookListActivity extends MBaseActivity implements BookListContract.
      ImageView ibReturn;
     @BindView(R2.id.fl_search)
      FrameLayout flSearch;
-    @BindView(R2.id.kind_ll)
-     LinearLayout kindLl;
+
     @BindView(R2.id.convent_banner)
     ConvenientBanner<BannerBean> convenientBanner;
 
@@ -85,12 +84,14 @@ public class BookListActivity extends MBaseActivity implements BookListContract.
     protected void initData() {
         animIn = AnimationUtils.loadAnimation(this, R.anim.anim_act_importbook_in);
         animOut = AnimationUtils.loadAnimation(this, R.anim.anim_act_importbook_out);
+        presenter = new BookListPresenter(this,this);
+        initBanner();
     }
 
     @Override
     protected void bindView() {
         rscvContent.setRpb(rpbProgress);
-        initKind();
+//        initKind();
     }
 
     @Override
@@ -132,48 +133,48 @@ public class BookListActivity extends MBaseActivity implements BookListContract.
 //            bannerItemClick(position);
         }
     };
-    private void initKind() {
-
-        presenter = new BookListPresenter(this,this);
-        int columnCout = 4;
-        Iterator iterator = presenter.bookListTabelPresenterImpl().entrySet().iterator();
-        int temp = 0;
-        LinearLayout.LayoutParams l = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        LinearLayout linearLayout = null;
-        LinearLayout.LayoutParams tvLp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        tvLp.weight = 1;
-        while (iterator.hasNext()) {
-            final Map.Entry<String, String> resultTemp = (Map.Entry<String, String>) iterator.next();
-            if (temp % columnCout == 0) {
-                linearLayout = new LinearLayout(this);
-                linearLayout.setLayoutParams(l);
-                linearLayout.setOrientation(LinearLayout.HORIZONTAL);
-                kindLl.addView(linearLayout);
-            }
-            TextView textView = new TextView(this);
-            textView.setLayoutParams(tvLp);
-            textView.setText(resultTemp.getKey());
-            textView.setGravity(Gravity.CENTER);
-            textView.setTextSize(14);
-            textView.setPadding(0, DensityUtil.dp2px(this, 5), 0, DensityUtil.dp2px(this, 5));
-            textView.setLines(1);
-            textView.setTextColor(getResources().getColorStateList(R.color.color_737373));
-            textView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-//                    ChoiceBookActivity.startChoiceBookActivity(BookListActivity.this, resultTemp.getKey(),resultTemp.getValue());
-                }
-            });
-            linearLayout.addView(textView);
-            temp++;
-        }
-        int viewCount = presenter.bookListTabelPresenterImpl().size() % columnCout == 0?0:(columnCout-presenter.bookListTabelPresenterImpl().size() % columnCout);
-        for(int i=0;i<viewCount;i++){
-            View v = new View(this);
-            v.setLayoutParams(tvLp);
-            linearLayout.addView(v);
-        }
-    }
+//    private void initKind() {
+//
+//
+//        int columnCout = 3;
+//        Iterator iterator = presenter.bookListTabelPresenterImpl().entrySet().iterator();
+//        int temp = 0;
+//        LinearLayout.LayoutParams l = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+//        LinearLayout linearLayout = null;
+//        LinearLayout.LayoutParams tvLp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+//        tvLp.weight = 1;
+//        while (iterator.hasNext()) {
+//            final Map.Entry<String, String> resultTemp = (Map.Entry<String, String>) iterator.next();
+//            if (temp % columnCout == 0) {
+//                linearLayout = new LinearLayout(this);
+//                linearLayout.setLayoutParams(l);
+//                linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+//                kindLl.addView(linearLayout);
+//            }
+//            TextView textView = new TextView(this);
+//            textView.setLayoutParams(tvLp);
+//            textView.setText(resultTemp.getKey());
+//            textView.setGravity(Gravity.CENTER);
+//            textView.setTextSize(14);
+//            textView.setPadding(0, DensityUtil.dp2px(this, 5), 0, DensityUtil.dp2px(this, 5));
+//            textView.setLines(1);
+//            textView.setTextColor(getResources().getColorStateList(R.color.color_737373));
+//            textView.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+////                    ChoiceBookActivity.startChoiceBookActivity(BookListActivity.this, resultTemp.getKey(),resultTemp.getValue());
+//                }
+//            });
+//            linearLayout.addView(textView);
+//            temp++;
+//        }
+//        int viewCount = presenter.bookListTabelPresenterImpl().size() % columnCout == 0?0:(columnCout-presenter.bookListTabelPresenterImpl().size() % columnCout);
+//        for(int i=0;i<viewCount;i++){
+//            View v = new View(this);
+//            v.setLayoutParams(tvLp);
+//            linearLayout.addView(v);
+//        }
+//    }
 
     @Override
     protected void bindEvent() {
@@ -277,6 +278,20 @@ public class BookListActivity extends MBaseActivity implements BookListContract.
                 startActivityByAnim(intent, animView, "img_cover", android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
+        if (!library.getCazpList().isEmpty()){
+            List<BannerBean> bannerBeanArrayList= new ArrayList<>();
+            mBannerEntities.clear();
+            for (int i = 0; i <library.getCazpList().size() ; i++) {
+                BannerBean mBannerBean = new BannerBean();
+                mBannerBean.setId(library.getCazpList().get(i).getWorksId()+"");
+                mBannerBean.setAdAttUrl(library.getCazpList().get(i).getWorksCoverPic());
+                bannerBeanArrayList.add(mBannerBean);
+            }
+            setAdvertising(bannerBeanArrayList);
+            convenientBanner.setVisibility(View.VISIBLE);
+        }else{
+            convenientBanner.setVisibility(View.GONE);
+        }
 
 //        if (brandAttImgList != null && brandAttImgList.size()>0) {
 //            convenientBanner.setVisibility(View.VISIBLE);
@@ -300,7 +315,6 @@ public class BookListActivity extends MBaseActivity implements BookListContract.
     @Override
     public void success(BookListBean library) {
         rscvContent.finishRefresh();
-
         updateUI(library);
     }
 
