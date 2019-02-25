@@ -2,15 +2,15 @@ package com.example.azuredragon.business.main;
 
 import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.com.sky.downloader.greendao.BookInfoBeanDao;
-import com.com.sky.downloader.greendao.BookShelfBeanDao;
-import com.com.sky.downloader.greendao.ChapterListBeanDao;
 import com.example.azuredragon.IMainPresenter;
 import com.example.azuredragon.MBaseActivity;
 import com.example.azuredragon.R;
@@ -27,24 +27,21 @@ import com.example.azuredragon.cache.DbHelper;
 import com.example.azuredragon.cache.PreferencesUtils;
 import com.example.azuredragon.http.bean.BookInfoBean;
 import com.example.azuredragon.http.bean.BookShelfBean;
+import com.example.azuredragon.http.bean.ChapterListBean;
+import com.example.azuredragon.http.bean.ChaptersBean;
 import com.example.azuredragon.http.bean.LibraryBean;
 import com.example.azuredragon.http.bean.LoginBean;
-import com.example.azuredragon.http.observer.SimpleObserver;
 import com.example.azuredragon.refreshview.OnRefreshWithProgressListener;
 import com.example.azuredragon.refreshview.RefreshRecyclerView;
 import com.example.azuredragon.residemenu.ResideMenu;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
-import io.reactivex.ObservableOnSubscribe;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * @author: chz
@@ -56,7 +53,7 @@ public class MainActivity extends MBaseActivity implements BookRackContract.View
     RefreshRecyclerView rfRvShelf;
     @BindView(R2.id.iv_add)
     ImageView username;
-
+    List<BookShelfBean> temp;
     @OnClick(R2.id.iv_booklist)
     public void selectBook(){
         resideMenu.closeMenu();
@@ -80,44 +77,12 @@ public class MainActivity extends MBaseActivity implements BookRackContract.View
     private BookRackPresenter presenter;
     private BookRackAdapter bookRackAdapter;
 
-
+    BookShelfBean mBookShelfBean = new BookShelfBean();
     @Override
     protected void bindView() {
         super.bindView();
-        Observable.create(new ObservableOnSubscribe<List<BookShelfBean>>() {
-            @Override
-            public void subscribe(ObservableEmitter<List<BookShelfBean>> e) throws Exception {
-                List<BookShelfBean> bookShelfes = DbHelper.getInstance().getmDaoSession().getBookShelfBeanDao().queryBuilder().orderDesc(BookShelfBeanDao.Properties.FinalDate).list();
-                for (int i = 0; i < bookShelfes.size(); i++) {
-                    List<BookInfoBean> temp = DbHelper.getInstance().getmDaoSession().getBookInfoBeanDao().queryBuilder().where(BookInfoBeanDao.Properties.NoteUrl.eq(bookShelfes.get(i).getNoteUrl())).limit(1).build().list();
-                    if (temp != null && temp.size() > 0) {
-                        BookInfoBean bookInfoBean = temp.get(0);
-                        bookInfoBean.setChapterlist(DbHelper.getInstance().getmDaoSession().getChapterListBeanDao().queryBuilder().where(ChapterListBeanDao.Properties.NoteUrl.eq(bookShelfes.get(i).getNoteUrl())).orderAsc(ChapterListBeanDao.Properties.DurChapterIndex).build().list());
-                        bookShelfes.get(i).setBookInfoBean(bookInfoBean);
-                    } else {
-                        DbHelper.getInstance().getmDaoSession().getBookShelfBeanDao().delete(bookShelfes.get(i));
-                        bookShelfes.remove(i);
-                        i--;
-                    }
-                }
-                e.onNext(bookShelfes == null ? new ArrayList<BookShelfBean>() : bookShelfes);
-            }
-        })
-        .subscribeOn(Schedulers.io())
-        .observeOn(AndroidSchedulers.mainThread())
-        .subscribe(new SimpleObserver<List<BookShelfBean>>() {
-            @Override
-            public void onNext(List<BookShelfBean> value) {
-                if (null == value || value.size()==0) {
-                    startActivityByAnim(new Intent(MainActivity.this, BookListActivity.class), android.R.anim.fade_in, android.R.anim.fade_out);
-                }
-            }
 
-            @Override
-            public void onError(Throwable e) {
-                e.printStackTrace();
-            }
-        });
+
     }
 
     @Override
@@ -156,6 +121,12 @@ public class MainActivity extends MBaseActivity implements BookRackContract.View
 
     private void bindRvShelfEvent() {
         bookRackAdapter = new BookRackAdapter();
+        temp = DbHelper.getInstance().getmDaoSession().getBookShelfBeanDao().queryBuilder().list();
+        if (null != temp && temp.size()>0){
+            bookRackAdapter.replaceAll(temp);
+        }else{
+            startActivityByAnim(new Intent(MainActivity.this, BookListActivity.class), android.R.anim.fade_in, android.R.anim.fade_out);
+        }
         bookRackAdapter.setItemClickListener(new BookRackAdapter.OnItemClickListener() {
             @Override
             public void toSearch() {
@@ -165,17 +136,12 @@ public class MainActivity extends MBaseActivity implements BookRackContract.View
 
             @Override
             public void onClick(BookShelfBean bookShelfBean, int index) {
-                Intent intent = new Intent(MainActivity.this, ReadBookActivity.class);
-                intent.putExtra("from", ReadBookPresenterImpl.OPEN_FROM_APP);
-                String key = String.valueOf(System.currentTimeMillis());
-                intent.putExtra("data_key", key);
-                try {
-                    BitIntentDataManager.getInstance().putData(key, bookShelfBean.clone());
-                } catch (CloneNotSupportedException e) {
-                    BitIntentDataManager.getInstance().putData(key, bookShelfBean);
-                    e.printStackTrace();
-                }
-                startActivityByAnim(intent, android.R.anim.fade_in, android.R.anim.fade_out);
+//                presenter = new ChapterListPresenter(this,this);
+//                HashMap map = new HashMap();
+                HashMap map = new HashMap();
+                map.put("worksId",bookShelfBean.getNoteUrl());
+                presenter.getBookListDetail(map, index);
+
             }
 
             @Override
@@ -287,6 +253,47 @@ public class MainActivity extends MBaseActivity implements BookRackContract.View
 
     @Override
     public void fail(String content) {
+
+    }
+
+    @Override
+    public void bookDetailSuccess(List<ChaptersBean> library,int index) {
+        Log.d("ss", "success: ");
+        mBookShelfBean.setDurChapter(0);
+        mBookShelfBean.setDurChapterPage(0);
+        BookInfoBean mBookInfoBean = new BookInfoBean();
+        List<ChapterListBean> chapterlist = new ArrayList<>();
+        for (int i = 0; i < library.size(); i++) {
+            ChapterListBean mChapterListBean = new ChapterListBean();
+            mChapterListBean.setDurChapterName(library.get(i).getWorksName());
+            mChapterListBean.setDurChapterId(library.get(i).getChapterId());
+            mChapterListBean.setDurChapterIndex(i);
+            mChapterListBean.setDurChapterUrl(library.get(i).getChapterId()+"");
+            mChapterListBean.setNoteUrl(temp.get(index).getBookInfoBean().getNoteUrl()+"");
+            mChapterListBean.setTag(library.get(i).getChapterId()+"");
+            chapterlist.add(mChapterListBean);
+        }
+        mBookInfoBean.setChapterlist(chapterlist);
+        mBookInfoBean.setChapterlist(chapterlist);
+        mBookInfoBean.setAuthor(temp.get(index).getBookInfoBean().getAuthor());
+        mBookInfoBean.setName(temp.get(index).getBookInfoBean().getName());
+        mBookInfoBean.setNoteUrl(temp.get(index).getBookInfoBean().getNoteUrl()+"");
+        mBookInfoBean.setCoverUrl(temp.get(index).getBookInfoBean().getCoverUrl());
+        mBookShelfBean.setNoteUrl(temp.get(index).getBookInfoBean().getNoteUrl()+"");
+        mBookShelfBean.setTag(temp.get(index).getBookInfoBean().getNoteUrl()+"");
+        mBookShelfBean.setBookInfoBean(mBookInfoBean);
+        Intent intent = new Intent(MainActivity.this, ReadBookActivity.class);
+        intent.putExtra("from", ReadBookPresenterImpl.OPEN_FROM_APP);
+        intent.putExtra("data", mBookShelfBean);
+        String key = String.valueOf(System.currentTimeMillis());
+        intent.putExtra("data_key", key);
+        startActivityByAnim(intent, android.R.anim.fade_in, android.R.anim.fade_out);
+
+
+    }
+
+    @Override
+    public void bookDetailFail(String content) {
 
     }
 

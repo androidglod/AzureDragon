@@ -24,14 +24,11 @@ import com.example.azuredragon.business.read.ChapterContentPresenter;
 import com.example.azuredragon.cache.DbHelper;
 import com.example.azuredragon.cache.RxBusTag;
 import com.example.azuredragon.http.app.MyApp;
-import com.example.azuredragon.http.bean.BookChapterContentBean;
 import com.example.azuredragon.http.bean.BookContentBean;
 import com.example.azuredragon.http.bean.BookShelfBean;
-import com.example.azuredragon.http.bean.ChaptersBean;
 import com.example.azuredragon.http.bean.LocBookShelfBean;
 import com.example.azuredragon.http.bean.ReadBookContentBean;
 import com.example.azuredragon.http.impl.BasePresenterImpl;
-import com.example.azuredragon.http.impl.WebBookModelImpl;
 import com.example.azuredragon.http.observer.SimpleObserver;
 import com.hwangjr.rxbus.RxBus;
 import com.ta.utdid2.android.utils.StringUtils;
@@ -46,7 +43,6 @@ import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
 public class ReadBookPresenterImpl extends BasePresenterImpl<IBookReadView> implements IBookReadPresenter,ChapterContentContract.View {

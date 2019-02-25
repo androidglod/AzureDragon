@@ -10,6 +10,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -18,11 +19,14 @@ import com.example.azuredragon.R;
 import com.example.azuredragon.R2;
 import com.example.azuredragon.business.read.ReadBookActivity;
 import com.example.azuredragon.business.read.modialog.MoProgressHUD;
+import com.example.azuredragon.cache.DbHelper;
+import com.example.azuredragon.cache.RxBusTag;
 import com.example.azuredragon.http.bean.BookDetailBean;
 import com.example.azuredragon.http.bean.BookInfoBean;
 import com.example.azuredragon.http.bean.BookShelfBean;
 import com.example.azuredragon.http.bean.ChapterListBean;
 import com.example.azuredragon.http.bean.ChaptersBean;
+import com.hwangjr.rxbus.RxBus;
 import com.ta.utdid2.android.utils.StringUtils;
 
 import java.util.ArrayList;
@@ -61,10 +65,11 @@ public class BookDetailActivity extends MBaseActivity<IBookDetailPresenter> impl
     private ChapterListPresenter presenter;
     private ArrayList<ChaptersBean> library;
     private MoProgressHUD moProgressHUD;
+    private boolean isLocakBookShelf;
     BookShelfBean mBookShelfBean = new BookShelfBean();
     @Override
     protected IBookDetailPresenter initInjector() {
-        return null;
+        return new BookDetailPresenterImpl(getIntent());
     }
 
     @Override
@@ -110,81 +115,55 @@ public class BookDetailActivity extends MBaseActivity<IBookDetailPresenter> impl
         tvIntro.setMovementMethod(ScrollingMovementMethod.getInstance());
         initView();
 
-        updateView();
+
     }
 
     public void updateView() {
-//        if (null != mPresenter.getBookShelf()) {
-//            if (mPresenter.getInBookShelf()) {
-//                if (mPresenter.getBookShelf().getBookInfoBean().getChapterlist().size() > 0) {
-//                    tvChapter.setText(String.format(getString(R.string.tv_read_durprogress), mPresenter.getBookShelf().getBookInfoBean().getChapterlist().get(mPresenter.getBookShelf().getDurChapter()).getDurChapterName()));
-//                } else {
-//                    tvChapter.setText("无章节");
-//                }
-//                tvShelf.setText("移出书架");
-//                tvRead.setText("继续阅读");
-//                tvShelf.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        //从书架移出
-//                        mPresenter.removeFromBookShelf();
-//                    }
-//                });
-//            } else {
-//                if (mPresenter.getBookShelf().getBookInfoBean().getChapterlist().size() == 0) {
-//                    tvChapter.setText("无章节");
-//                } else {
-//                    tvChapter.setText(String.format(getString(R.string.tv_searchbook_lastest), mPresenter.getBookShelf().getBookInfoBean().getChapterlist().get(mPresenter.getBookShelf().getBookInfoBean().getChapterlist().size() - 1).getDurChapterName()));
-//                }
-//                tvShelf.setText("放入书架");
-//                tvRead.setText("开始阅读");
-//                tvShelf.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        //放入书架
-//                        mPresenter.addToBookShelf();
-//                    }
-//                });
-//            }
-//            if (tvIntro.getText().toString().trim().length() == 0) {
-//                tvIntro.setText(mPresenter.getBookShelf().getBookInfoBean().getIntroduce());
-//            }
-//            if (tvIntro.getVisibility() != View.VISIBLE) {
-//                tvIntro.setVisibility(View.VISIBLE);
-//                tvIntro.startAnimation(animShowInfo);
-////                tvLoading.startAnimation(animHideLoading);
-//            }
-//            if (mPresenter.getBookShelf().getBookInfoBean().getOrigin() != null && mPresenter.getBookShelf().getBookInfoBean().getOrigin().length() > 0) {
-//                tvOrigin.setVisibility(View.VISIBLE);
-//                tvOrigin.setText("来源:" + mPresenter.getBookShelf().getBookInfoBean().getOrigin());
-//            } else {
-//                tvOrigin.setVisibility(View.GONE);
-//            }
-//        } else {
-////            tvChapter.setText(String.format(getString(R.string.tv_searchbook_lastest), mPresenter.getSearchBook().getLastChapter()));
-//            tvShelf.setText("放入书架");
-//            tvRead.setText("开始阅读");
-//            tvRead.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    //放入书架
-//                }
-//            });
-//            tvIntro.setVisibility(View.INVISIBLE);
-////            tvLoading.setVisibility(View.VISIBLE);
-////            tvLoading.setText("加载中...");
-//        }
-             tvShelf.setText("放入书架");
-                tvRead.setText("开始阅读");
+
+        if (isLocakBookShelf){
+            tvShelf.setText("移出书架");
+            tvRead.setText("继续阅读");
+            tvShelf.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //从书架移出
+                    DbHelper.getInstance().getmDaoSession().getBookShelfBeanDao().deleteByKey(mBookShelfBean.getNoteUrl());
+                    DbHelper.getInstance().getmDaoSession().getBookInfoBeanDao().deleteByKey(mBookShelfBean.getBookInfoBean().getNoteUrl());
+                    List<String> keys = new ArrayList<String>();
+                    if(mBookShelfBean.getBookInfoBean().getChapterlist().size()>0){
+                        for(int i=0;i<mBookShelfBean.getBookInfoBean().getChapterlist().size();i++){
+                            keys.add(mBookShelfBean.getBookInfoBean().getChapterlist().get(i).getDurChapterUrl());
+                        }
+                    }
+                    DbHelper.getInstance().getmDaoSession().getBookContentBeanDao().deleteByKeyInTx(keys);
+                    DbHelper.getInstance().getmDaoSession().getChapterListBeanDao().deleteInTx(mBookShelfBean.getBookInfoBean().getChapterlist());
+//                    RxBus.get().post(RxBusTag.HAD_REMOVE_BOOK, mBookShelfBean);
+                }
+            });
+        } else {
+            tvShelf.setText("放入书架");
+            tvRead.setText("开始阅读");
+            tvShelf.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //放入书架
+                    DbHelper.getInstance().getmDaoSession().getChapterListBeanDao().insertOrReplaceInTx(mBookShelfBean.getBookInfoBean().getChapterlist());
+                    DbHelper.getInstance().getmDaoSession().getBookInfoBeanDao().insertOrReplace(mBookShelfBean.getBookInfoBean());
+                    //网络数据获取成功  存入BookShelf表数据库
+                    DbHelper.getInstance().getmDaoSession().getBookShelfBeanDao().insertOrReplace(mBookShelfBean);
+
+//                    RxBus.get().post(RxBusTag.HAD_ADD_BOOK, mBookShelfBean);
+
+                }
+            });
+        }
         if (tvIntro.getText().toString().trim().length() == 0) {
                 tvIntro.setText(mPresenter.getBookShelf().getBookInfoBean().getIntroduce());
-    }
-            if (tvIntro.getVisibility() != View.VISIBLE) {
-        tvIntro.setVisibility(View.VISIBLE);
-        tvIntro.startAnimation(animShowInfo);
-//                tvLoading.startAnimation(animHideLoading);
-    }
-//        tvLoading.setOnClickListener(null);
+         }
+        if (tvIntro.getVisibility() != View.VISIBLE) {
+            tvIntro.setVisibility(View.VISIBLE);
+            tvIntro.startAnimation(animShowInfo);
+        }
     }
 
 //    @Override
@@ -315,16 +294,31 @@ public class BookDetailActivity extends MBaseActivity<IBookDetailPresenter> impl
             mChapterListBean.setDurChapterId(library.get(i).getChapterId());
             mChapterListBean.setDurChapterIndex(i);
             mChapterListBean.setDurChapterUrl(library.get(i).getChapterId()+"");
+            mChapterListBean.setNoteUrl(searchBook.getWorksId()+"");
+            mChapterListBean.setTag(library.get(i).getChapterId()+"");
             chapterlist.add(mChapterListBean);
         }
         mBookInfoBean.setChapterlist(chapterlist);
         mBookInfoBean.setAuthor(searchBook.getWriter());
         mBookInfoBean.setName(searchBook.getWorksName());
         mBookInfoBean.setIntroduce(searchBook.getWorksDes());
-        mBookInfoBean.setNoteUrl(searchBook.getWorksDes());
+        mBookInfoBean.setCoverUrl(searchBook.getWorksCoverPic());
+        mBookInfoBean.setNoteUrl(searchBook.getWorksId()+"");
         mBookShelfBean.setNoteUrl(searchBook.getWorksId()+"");
+        mBookShelfBean.setTag(searchBook.getWorksId()+"");
         mBookShelfBean.setBookInfoBean(mBookInfoBean);
+
+        List<BookShelfBean> temp = DbHelper.getInstance().getmDaoSession().getBookShelfBeanDao().queryBuilder().list();
+        if (null != temp && temp.size()>0){
+            for(int i=0;i<temp.size();i++){
+                if(temp.get(i).getNoteUrl().equals(mBookShelfBean.getNoteUrl())){
+                    isLocakBookShelf = true;
+                    break;
+                }
+            }
+        }
         moProgressHUD.dismiss();
+        updateView();
     }
 
     @Override

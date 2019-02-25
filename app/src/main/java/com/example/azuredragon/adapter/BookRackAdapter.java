@@ -123,14 +123,14 @@ public class BookRackAdapter extends RefreshRecyclerViewAdapter {
         Glide.with(holder.ivCover_1.getContext()).load(books.get(index_1).getBookInfoBean().getCoverUrl()).dontAnimate().diskCacheStrategy(DiskCacheStrategy.RESULT).centerCrop().placeholder(R.drawable.img_cover_default).into(holder.ivCover_1);
         holder.tvName_1.setText(books.get(index_1).getBookInfoBean().getName());
 
-        holder.ibContent_1.setOnClickListener(new View.OnClickListener() {
+        holder.ivCover_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (itemClickListener != null)
                     itemClickListener.onClick(books.get(index_1), index_1);
             }
         });
-        holder.ibContent_1.setOnLongClickListener(new View.OnLongClickListener() {
+        holder.ivCover_1.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 if (itemClickListener != null) {
@@ -165,14 +165,14 @@ public class BookRackAdapter extends RefreshRecyclerViewAdapter {
             Glide.with(holder.ivCover_2.getContext()).load(books.get(index_2).getBookInfoBean().getCoverUrl()).dontAnimate().diskCacheStrategy(DiskCacheStrategy.RESULT).centerCrop().placeholder(R.drawable.img_cover_default).into(holder.ivCover_2);
             holder.tvName_2.setText(books.get(index_2).getBookInfoBean().getName());
 
-            holder.ibContent_2.setOnClickListener(new View.OnClickListener() {
+            holder.ivCover_2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (itemClickListener != null)
                         itemClickListener.onClick(books.get(index_2), index_2);
                 }
             });
-            holder.ibContent_2.setOnLongClickListener(new View.OnLongClickListener() {
+            holder.ivCover_2.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
                     if (itemClickListener != null) {
@@ -208,14 +208,14 @@ public class BookRackAdapter extends RefreshRecyclerViewAdapter {
                 Glide.with(holder.ivCover_3.getContext()).load(books.get(index_3).getBookInfoBean().getCoverUrl()).dontAnimate().diskCacheStrategy(DiskCacheStrategy.RESULT).centerCrop().placeholder(R.drawable.img_cover_default).into(holder.ivCover_3);
                 holder.tvName_3.setText(books.get(index_3).getBookInfoBean().getName());
 
-                holder.ibContent_3.setOnClickListener(new View.OnClickListener() {
+                holder.ivCover_3.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         if (itemClickListener != null)
                             itemClickListener.onClick(books.get(index_3), index_3);
                     }
                 });
-                holder.ibContent_3.setOnLongClickListener(new View.OnLongClickListener() {
+                holder.ivCover_3.setOnLongClickListener(new View.OnLongClickListener() {
                     @Override
                     public boolean onLongClick(View v) {
                         if (itemClickListener != null) {
@@ -226,12 +226,7 @@ public class BookRackAdapter extends RefreshRecyclerViewAdapter {
                             return false;
                     }
                 });
-            }else{
-                holder.flContent_3.setVisibility(View.INVISIBLE);
             }
-        }else{
-            holder.flContent_2.setVisibility(View.INVISIBLE);
-            holder.flContent_3.setVisibility(View.INVISIBLE);
         }
     }
 
@@ -345,34 +340,28 @@ public class BookRackAdapter extends RefreshRecyclerViewAdapter {
         FrameLayout flContent_1;
         ImageView ivCover_1;
         AutofitTextView tvName_1;
-        ImageButton ibContent_1;
 
         FrameLayout flContent_2;
         ImageView ivCover_2;
         AutofitTextView tvName_2;
-        ImageButton ibContent_2;
 
         FrameLayout flContent_3;
         ImageView ivCover_3;
         AutofitTextView tvName_3;
-        ImageButton ibContent_3;
 
         public OtherViewHolder(View itemView) {
             super(itemView);
             flContent_1 = (FrameLayout) itemView.findViewById(R.id.fl_content_1);
             ivCover_1 = (ImageView) itemView.findViewById(R.id.iv_cover_1);
             tvName_1 = (AutofitTextView) itemView.findViewById(R.id.tv_name_1);
-            ibContent_1 = (ImageButton) itemView.findViewById(R.id.ib_content_1);
 
             flContent_2 = (FrameLayout) itemView.findViewById(R.id.fl_content_2);
             ivCover_2 = (ImageView) itemView.findViewById(R.id.iv_cover_2);
             tvName_2 = (AutofitTextView) itemView.findViewById(R.id.tv_name_2);
-            ibContent_2 = (ImageButton) itemView.findViewById(R.id.ib_content_2);
 
             flContent_3 = (FrameLayout) itemView.findViewById(R.id.fl_content_3);
             ivCover_3 = (ImageView) itemView.findViewById(R.id.iv_cover_3);
             tvName_3 = (AutofitTextView) itemView.findViewById(R.id.tv_name_3);
-            ibContent_3 = (ImageButton) itemView.findViewById(R.id.ib_content_3);
         }
     }
 

@@ -6,14 +6,19 @@ import com.com.sky.downloader.greendao.BookInfoBeanDao;
 import com.com.sky.downloader.greendao.BookShelfBeanDao;
 import com.com.sky.downloader.greendao.ChapterListBeanDao;
 import com.example.azuredragon.cache.DbHelper;
+import com.example.azuredragon.http.base.BaseListEntry;
+import com.example.azuredragon.http.base.BaseObserver;
 import com.example.azuredragon.http.bean.BookInfoBean;
 import com.example.azuredragon.http.bean.BookShelfBean;
+import com.example.azuredragon.http.bean.ChaptersBean;
 import com.example.azuredragon.http.impl.WebBookModelImpl;
 import com.example.azuredragon.http.listener.OnGetChapterListListener;
 import com.example.azuredragon.http.observer.SimpleObserver;
 import com.example.azuredragon.http.utils.NetworkUtil;
+import com.example.azuredragon.http.utils.RetrofitUtil;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -99,6 +104,28 @@ public class BookRackPresenter implements BookRackContract.presenter {
                     }
                 });
     }
+
+    @Override
+    public void getBookListDetail(HashMap map,int index) {
+        RetrofitUtil.getInstance().initRetrofit().getShowChapterList(map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new BaseObserver<BaseListEntry<ChaptersBean>>(context,null) {
+
+
+                    @Override
+                    protected void onSuccees(BaseListEntry<ChaptersBean> mChapterListBean) throws Exception {
+                        view.bookDetailSuccess(mChapterListBean.getData(), index);
+                    }
+
+                    @Override
+                    protected void onFailure(Throwable e, boolean isNetWorkError) throws Exception {
+                        view.bookDetailFail("失败了----->"+e.getMessage());
+                    }
+                });
+
+    }
+
     public void startRefreshBook(List<BookShelfBean> value){
         if (value != null && value.size() > 0){
             view.setRecyclerMaxProgress(value.size());

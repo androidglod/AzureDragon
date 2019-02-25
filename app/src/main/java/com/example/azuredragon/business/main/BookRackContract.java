@@ -3,8 +3,10 @@ package com.example.azuredragon.business.main;
 import com.example.azuredragon.http.base.BasePresenter;
 import com.example.azuredragon.http.base.BaseView;
 import com.example.azuredragon.http.bean.BookShelfBean;
+import com.example.azuredragon.http.bean.ChaptersBean;
 import com.example.azuredragon.http.bean.LibraryBean;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -21,6 +23,12 @@ public interface BookRackContract {
         void success(LibraryBean library);
         //获取书籍列表失败
         void fail(String content);
+
+        //获取章节列表成功
+        void bookDetailSuccess(List<ChaptersBean> library,int index);
+        //获取章节列表失败
+        void bookDetailFail(String content);
+
         LinkedHashMap<String,String> getLinked();
 
         /**
@@ -60,7 +68,8 @@ public interface BookRackContract {
     interface presenter extends BasePresenter {
         //获取书籍列表
         void getBookList(final Boolean needRefresh);
-
+        //获取书籍列表
+        void getBookListDetail(HashMap map,int index);
     }
 
 

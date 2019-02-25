@@ -479,8 +479,6 @@ public class ReadBookActivity extends MBaseActivity<IBookReadPresenter> implemen
         csvBook.loadError();
     }
 
-
-
     private Boolean showCheckPremission = false;
 
     @SuppressLint("NewApi")

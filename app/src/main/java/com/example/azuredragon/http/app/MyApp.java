@@ -7,6 +7,8 @@ import android.support.multidex.MultiDex;
 import com.example.azuredragon.http.network.CookieReadInterceptor;
 import com.example.azuredragon.http.network.CookiesSaveInterceptor;
 import com.example.azuredragon.http.utils.InterceptorUtil;
+import com.facebook.stetho.Stetho;
+import com.facebook.stetho.okhttp3.StethoInterceptor;
 
 import java.util.concurrent.TimeUnit;
 
@@ -26,13 +28,18 @@ public class MyApp extends Application {
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
         MultiDex.install(this);
+
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
         myApp = this;
-
+        Stetho.initializeWithDefaults(this);
+        System.out.println("this is a debug mode");
+        new OkHttpClient.Builder()
+                .addNetworkInterceptor(new StethoInterceptor())
+                .build();
 
     }
 
