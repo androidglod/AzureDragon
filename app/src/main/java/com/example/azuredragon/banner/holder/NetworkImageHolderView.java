@@ -29,13 +29,14 @@ public class NetworkImageHolderView extends Holder<BannerBean> {
 
     @Override
     public void updateUI(BannerBean entity) {
-        Glide.with(imageView.getContext())
-                .load( entity.getAdAttUrl())
-                .diskCacheStrategy(DiskCacheStrategy.RESULT)
-                .fitCenter()
-                .dontAnimate()
-                .placeholder(R.drawable.img_cover_default)
-                .into(imageView);
-//        ImageLoader.getInstance().loadImage(imageView.getContext(), entity.getAdAttUrl(), imageView);
+        if(imageView !=null && imageView.getContext() !=null ){
+            Glide.with(imageView.getContext().getApplicationContext())
+                    .load( entity.getAdAttUrl())
+                    .diskCacheStrategy(DiskCacheStrategy.RESULT)
+                    .fitCenter()
+                    .dontAnimate()
+                    .placeholder(R.drawable.img_cover_default)
+                    .into(imageView);
+        }
     }
 }

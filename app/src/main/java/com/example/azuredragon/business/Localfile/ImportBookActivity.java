@@ -130,7 +130,7 @@ public class ImportBookActivity extends MBaseActivity<IImportBookPresenter> impl
                 //添加书籍
                 moProgressHUD.showLoading("放入书架中...");
                 mPresenter.stopSearchLocationBook();
-
+                mPresenter.importBooks(importBookAdapter.getSelectDatas());
             }
         });
     }
@@ -164,7 +164,7 @@ public class ImportBookActivity extends MBaseActivity<IImportBookPresenter> impl
         rlLoading.stop();
         rlLoading.setVisibility(View.INVISIBLE);
         importBookAdapter.setCanCheck(true);
-        mPresenter.importBooks(importBookAdapter.getSelectDatas());
+
     }
 
     @Override

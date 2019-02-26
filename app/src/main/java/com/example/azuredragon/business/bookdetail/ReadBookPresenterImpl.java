@@ -76,6 +76,7 @@ public class ReadBookPresenterImpl extends BasePresenterImpl<IBookReadView> impl
 //            }
             BitIntentDataManager.getInstance().cleanData(key);
             checkInShelf();
+            mChapterContentPresenter = new ChapterContentPresenter(activity,this);
         } else {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !PremissionCheck.checkPremission(activity,
                     Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
@@ -86,7 +87,7 @@ public class ReadBookPresenterImpl extends BasePresenterImpl<IBookReadView> impl
                 openBookFromOther(activity);
             }
         }
-        mChapterContentPresenter = new ChapterContentPresenter(activity,this);
+
     }
 
     @Override
@@ -211,7 +212,7 @@ public class ReadBookPresenterImpl extends BasePresenterImpl<IBookReadView> impl
                 Observable.create(new ObservableOnSubscribe<ReadBookContentBean>() {
                     @Override
                     public void subscribe(ObservableEmitter<ReadBookContentBean> e) throws Exception {
-                        List<BookContentBean> tempList = DbHelper.getInstance().getmDaoSession().getBookContentBeanDao().queryBuilder().where(BookContentBeanDao.Properties.DurChapterUrl.eq("www")).build().list();
+                        List<BookContentBean> tempList = DbHelper.getInstance().getmDaoSession().getBookContentBeanDao().queryBuilder().where(BookContentBeanDao.Properties.DurChapterUrl.eq(bookShelf.getBookInfoBean().getChapterlist().get(chapterIndex).getDurChapterUrl())).build().list();
                         e.onNext(new ReadBookContentBean(tempList == null ? new ArrayList<BookContentBean>() : tempList, finalPageIndex1));
                         e.onComplete();
                     }
@@ -228,7 +229,10 @@ public class ReadBookPresenterImpl extends BasePresenterImpl<IBookReadView> impl
                                     final int finalPageIndex1 = tempList.getPageIndex();
                                     HashMap map = new HashMap();
                                     map.put("chapterId", bookShelf.getBookInfoBean().getChapterlist().get(chapterIndex).getDurChapterId());
-                                    mChapterContentPresenter.getChapterContent(map);
+                                    if (null != mChapterContentPresenter){
+                                        mChapterContentPresenter.getChapterContent(map);
+                                    }
+
                                 }
                             }
 

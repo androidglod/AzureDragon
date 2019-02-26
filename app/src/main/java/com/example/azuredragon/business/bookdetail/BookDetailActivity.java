@@ -127,16 +127,29 @@ public class BookDetailActivity extends MBaseActivity<IBookDetailPresenter> impl
                 @Override
                 public void onClick(View v) {
                     //从书架移出
-                    DbHelper.getInstance().getmDaoSession().getBookShelfBeanDao().deleteByKey(mBookShelfBean.getNoteUrl());
-                    DbHelper.getInstance().getmDaoSession().getBookInfoBeanDao().deleteByKey(mBookShelfBean.getBookInfoBean().getNoteUrl());
-                    List<String> keys = new ArrayList<String>();
-                    if(mBookShelfBean.getBookInfoBean().getChapterlist().size()>0){
-                        for(int i=0;i<mBookShelfBean.getBookInfoBean().getChapterlist().size();i++){
-                            keys.add(mBookShelfBean.getBookInfoBean().getChapterlist().get(i).getDurChapterUrl());
+                    if (!isLocakBookShelf){
+                        //放入书架
+                        DbHelper.getInstance().getmDaoSession().getChapterListBeanDao().insertOrReplaceInTx(mBookShelfBean.getBookInfoBean().getChapterlist());
+                        DbHelper.getInstance().getmDaoSession().getBookInfoBeanDao().insertOrReplace(mBookShelfBean.getBookInfoBean());
+                        //网络数据获取成功  存入BookShelf表数据库
+                        DbHelper.getInstance().getmDaoSession().getBookShelfBeanDao().insertOrReplace(mBookShelfBean);
+                        tvShelf.setText("移出书架");
+                        isLocakBookShelf = true;
+                    }else{
+                        DbHelper.getInstance().getmDaoSession().getBookShelfBeanDao().deleteByKey(mBookShelfBean.getNoteUrl());
+                        DbHelper.getInstance().getmDaoSession().getBookInfoBeanDao().deleteByKey(mBookShelfBean.getBookInfoBean().getNoteUrl());
+                        List<String> keys = new ArrayList<String>();
+                        if(mBookShelfBean.getBookInfoBean().getChapterlist().size()>0){
+                            for(int i=0;i<mBookShelfBean.getBookInfoBean().getChapterlist().size();i++){
+                                keys.add(mBookShelfBean.getBookInfoBean().getChapterlist().get(i).getDurChapterUrl());
+                            }
                         }
+                        DbHelper.getInstance().getmDaoSession().getBookContentBeanDao().deleteByKeyInTx(keys);
+                        DbHelper.getInstance().getmDaoSession().getChapterListBeanDao().deleteInTx(mBookShelfBean.getBookInfoBean().getChapterlist());
+                        tvShelf.setText("放入书架");
+                        isLocakBookShelf = false;
                     }
-                    DbHelper.getInstance().getmDaoSession().getBookContentBeanDao().deleteByKeyInTx(keys);
-                    DbHelper.getInstance().getmDaoSession().getChapterListBeanDao().deleteInTx(mBookShelfBean.getBookInfoBean().getChapterlist());
+
 //                    RxBus.get().post(RxBusTag.HAD_REMOVE_BOOK, mBookShelfBean);
                 }
             });
@@ -146,13 +159,29 @@ public class BookDetailActivity extends MBaseActivity<IBookDetailPresenter> impl
             tvShelf.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //放入书架
-                    DbHelper.getInstance().getmDaoSession().getChapterListBeanDao().insertOrReplaceInTx(mBookShelfBean.getBookInfoBean().getChapterlist());
-                    DbHelper.getInstance().getmDaoSession().getBookInfoBeanDao().insertOrReplace(mBookShelfBean.getBookInfoBean());
-                    //网络数据获取成功  存入BookShelf表数据库
-                    DbHelper.getInstance().getmDaoSession().getBookShelfBeanDao().insertOrReplace(mBookShelfBean);
-
-//                    RxBus.get().post(RxBusTag.HAD_ADD_BOOK, mBookShelfBean);
+                    //从书架移出
+                    if (!isLocakBookShelf){
+                        //放入书架
+                        DbHelper.getInstance().getmDaoSession().getChapterListBeanDao().insertOrReplaceInTx(mBookShelfBean.getBookInfoBean().getChapterlist());
+                        DbHelper.getInstance().getmDaoSession().getBookInfoBeanDao().insertOrReplace(mBookShelfBean.getBookInfoBean());
+                        //网络数据获取成功  存入BookShelf表数据库
+                        DbHelper.getInstance().getmDaoSession().getBookShelfBeanDao().insertOrReplace(mBookShelfBean);
+                        tvShelf.setText("移出书架");
+                        isLocakBookShelf = true;
+                    }else{
+                        DbHelper.getInstance().getmDaoSession().getBookShelfBeanDao().deleteByKey(mBookShelfBean.getNoteUrl());
+                        DbHelper.getInstance().getmDaoSession().getBookInfoBeanDao().deleteByKey(mBookShelfBean.getBookInfoBean().getNoteUrl());
+                        List<String> keys = new ArrayList<String>();
+                        if(mBookShelfBean.getBookInfoBean().getChapterlist().size()>0){
+                            for(int i=0;i<mBookShelfBean.getBookInfoBean().getChapterlist().size();i++){
+                                keys.add(mBookShelfBean.getBookInfoBean().getChapterlist().get(i).getDurChapterUrl());
+                            }
+                        }
+                        DbHelper.getInstance().getmDaoSession().getBookContentBeanDao().deleteByKeyInTx(keys);
+                        DbHelper.getInstance().getmDaoSession().getChapterListBeanDao().deleteInTx(mBookShelfBean.getBookInfoBean().getChapterlist());
+                        tvShelf.setText("放入书架");
+                        isLocakBookShelf = false;
+                    }
 
                 }
             });

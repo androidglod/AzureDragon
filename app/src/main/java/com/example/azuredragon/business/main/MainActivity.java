@@ -34,6 +34,7 @@ import com.example.azuredragon.http.bean.LoginBean;
 import com.example.azuredragon.refreshview.OnRefreshWithProgressListener;
 import com.example.azuredragon.refreshview.RefreshRecyclerView;
 import com.example.azuredragon.residemenu.ResideMenu;
+import com.ta.utdid2.android.utils.StringUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -138,9 +139,19 @@ public class MainActivity extends MBaseActivity implements BookRackContract.View
             public void onClick(BookShelfBean bookShelfBean, int index) {
 //                presenter = new ChapterListPresenter(this,this);
 //                HashMap map = new HashMap();
-                HashMap map = new HashMap();
-                map.put("worksId",bookShelfBean.getNoteUrl());
-                presenter.getBookListDetail(map, index);
+                if (null == bookShelfBean.getNoteUrl() || StringUtils.isEmpty(bookShelfBean.getNoteUrl())||bookShelfBean.getBookInfoBean().getAuthor().equals("佚名")){
+                    Intent intent = new Intent(MainActivity.this, ReadBookActivity.class);
+                    intent.putExtra("from", ReadBookPresenterImpl.OPEN_FROM_APP);
+                    intent.putExtra("data", bookShelfBean);
+                    String key = String.valueOf(System.currentTimeMillis());
+                    intent.putExtra("data_key", key);
+                    startActivityByAnim(intent, android.R.anim.fade_in, android.R.anim.fade_out);
+                }else {
+                    HashMap map = new HashMap();
+                    map.put("worksId",bookShelfBean.getNoteUrl());
+                    presenter.getBookListDetail(map, index);
+                }
+
 
             }
 

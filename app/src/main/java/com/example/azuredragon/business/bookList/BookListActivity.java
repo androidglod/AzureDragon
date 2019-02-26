@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.azuredragon.IPresenter;
 import com.example.azuredragon.MBaseActivity;
 import com.example.azuredragon.R;
@@ -326,5 +327,11 @@ public class BookListActivity extends MBaseActivity implements BookListContract.
     @Override
     public LinkedHashMap<String, String> getLinked() {
         return null;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Glide.with(getApplicationContext()).pauseRequests();
     }
 }

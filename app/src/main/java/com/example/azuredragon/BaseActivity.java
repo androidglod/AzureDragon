@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.bumptech.glide.Glide;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import butterknife.ButterKnife;
