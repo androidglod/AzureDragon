@@ -38,6 +38,7 @@
                 android:textSize="15sp"
                 android:clickable="true"
                 android:background="@drawable/common_white_bg"/>
+
             <TextView
                 android:id="@+id/tv_addshelf"
                 android:layout_width="0dp"
@@ -48,7 +49,7 @@
                 android:textColor="#ffffff"
                 android:clickable="true"
                 android:textSize="15sp"
-                android:background="@drawable/common_bg"/>
+                android:background="@drawable/common_add_bg"/>
         </LinearLayout>
     </LinearLayout>
 </FrameLayout>

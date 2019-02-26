@@ -416,33 +416,35 @@ public class ReadBookActivity extends MBaseActivity<IBookReadPresenter> implemen
             return mo;
         else {
             if (keyCode == KeyEvent.KEYCODE_BACK) {
-                backKey();
+                if (flMenu.getVisibility() == View.VISIBLE) {
+                    llMenuTop.startAnimation(menuTopOut);
+                    llMenuBottom.startAnimation(menuBottomOut);
+                    return true;
+                } else {
+                    if (!mPresenter.getAdd() && checkAddShelfPop != null && !checkAddShelfPop.isShowing()){
+                        checkAddShelfPop.showAtLocation(flContent, Gravity.CENTER, 0, 0);
+                        return true;
+                    }else{
+                        Boolean temp2 = chapterListView.dimissChapterList();
+                        if (temp2)
+                            return true;
+                        else {
+                            finish();
+                            return true;
+                        }
+                    }
+                }
             } else {
                 Boolean temp = csvBook.onKeyDown(keyCode, event);
                 if (temp)
                     return true;
+                else{
+                    return true;
+                }
             }
-            return super.onKeyDown(keyCode, event);
         }
     }
-   public boolean backKey(){
-       if (flMenu.getVisibility() == View.VISIBLE) {
-           llMenuTop.startAnimation(menuTopOut);
-           llMenuBottom.startAnimation(menuBottomOut);
-           return true;
-       } else if (!mPresenter.getAdd() && checkAddShelfPop != null && !checkAddShelfPop.isShowing()) {
-           checkAddShelfPop.showAtLocation(flContent, Gravity.CENTER, 0, 0);
-           return true;
-       } else {
-           Boolean temp2 = chapterListView.dimissChapterList();
-           if (temp2)
-               return true;
-           else {
-               finish();
-               return true;
-           }
-       }
-   }
+
 
     public void backKey2(){
         if (!mPresenter.getAdd() && checkAddShelfPop != null && !checkAddShelfPop.isShowing()) {
@@ -456,13 +458,13 @@ public class ReadBookActivity extends MBaseActivity<IBookReadPresenter> implemen
             }
         }
     }
-    @Override
-    public boolean onKeyUp(int keyCode, KeyEvent event) {
-        Boolean temp = csvBook.onKeyUp(keyCode, event);
-        if (temp)
-            return true;
-        return super.onKeyUp(keyCode, event);
-    }
+//    @Override
+//    public boolean onKeyUp(int keyCode, KeyEvent event) {
+////        Boolean temp = csvBook.onKeyUp(keyCode, event);
+////        if (temp)
+////            return true;
+////        return super.onKeyUp(keyCode, event);
+//    }
 
     @Override
     public void showLoadBook() {
