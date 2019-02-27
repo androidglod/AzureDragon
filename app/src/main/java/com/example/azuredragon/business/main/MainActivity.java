@@ -100,8 +100,6 @@ public class MainActivity extends MBaseActivity implements BookRackContract.View
     protected void initData() {
         presenter = new BookRackPresenter(this,this);
         bindRvShelfEvent();
-
-
     }
 
     @Override
@@ -109,6 +107,7 @@ public class MainActivity extends MBaseActivity implements BookRackContract.View
         super.onResume();
         setUpMenu();
         presenter.getBookList(true);
+
     }
 
     private void setUpMenu() {
@@ -270,6 +269,9 @@ public class MainActivity extends MBaseActivity implements BookRackContract.View
     @Override
     public void bookDetailSuccess(List<ChaptersBean> library,int index) {
         Log.d("ss", "success: ");
+        if(null != temp && temp.size()<index){ }else{
+            temp = DbHelper.getInstance().getmDaoSession().getBookShelfBeanDao().queryBuilder().list();
+        }
         mBookShelfBean.setDurChapter(0);
         mBookShelfBean.setDurChapterPage(0);
         BookInfoBean mBookInfoBean = new BookInfoBean();

@@ -314,7 +314,7 @@ public class ReadBookPresenterImpl extends BasePresenterImpl<IBookReadView> impl
         Observable.create(new ObservableOnSubscribe<Boolean>() {
             @Override
             public void subscribe(ObservableEmitter<Boolean> e) throws Exception {
-                List<BookShelfBean> temp = DbHelper.getInstance().getmDaoSession().getBookShelfBeanDao().queryBuilder().where(BookShelfBeanDao.Properties.NoteUrl.eq("www")).build().list();
+                List<BookShelfBean> temp = DbHelper.getInstance().getmDaoSession().getBookShelfBeanDao().queryBuilder().where(BookShelfBeanDao.Properties.NoteUrl.eq(bookShelf.getNoteUrl())).build().list();
                 if (temp == null || temp.size() == 0) {
                     isAdd = false;
                 } else
@@ -357,7 +357,7 @@ public class ReadBookPresenterImpl extends BasePresenterImpl<IBookReadView> impl
                 mBookContentBean.setDurChapterUrl( content.substring(0,content.length()));
             }
         }else{
-            mBookContentBean.setDurChapterUrl("www");
+            mBookContentBean.setDurChapterUrl(bookShelf.getBookInfoBean().getChapterUrl());
         }
 
 
