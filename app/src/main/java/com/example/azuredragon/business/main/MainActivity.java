@@ -77,8 +77,8 @@ public class MainActivity extends MBaseActivity implements BookRackContract.View
 
     private BookRackPresenter presenter;
     private BookRackAdapter bookRackAdapter;
+    public static BookShelfBean bookShelfBeans  = new BookShelfBean();
 
-    BookShelfBean mBookShelfBean = new BookShelfBean();
     @Override
     protected void bindView() {
         super.bindView();
@@ -139,16 +139,16 @@ public class MainActivity extends MBaseActivity implements BookRackContract.View
 //                presenter = new ChapterListPresenter(this,this);
 //                HashMap map = new HashMap();
                 if (null == bookShelfBean.getNoteUrl() || StringUtils.isEmpty(bookShelfBean.getNoteUrl())||bookShelfBean.getBookInfoBean().getAuthor().equals("佚名")){
+                    bookShelfBeans = bookShelfBean;
                     Intent intent = new Intent(MainActivity.this, ReadBookActivity.class);
                     intent.putExtra("from", ReadBookPresenterImpl.OPEN_FROM_APP);
-                    intent.putExtra("data", bookShelfBean);
                     String key = String.valueOf(System.currentTimeMillis());
                     intent.putExtra("data_key", key);
                     startActivityByAnim(intent, android.R.anim.fade_in, android.R.anim.fade_out);
                 }else {
                     HashMap map = new HashMap();
                     map.put("worksId",bookShelfBean.getNoteUrl());
-                    presenter.getBookListDetail(map, index);
+                    presenter.getBookListDetail(map, bookShelfBean.getNoteUrl());
                 }
 
 
@@ -266,38 +266,44 @@ public class MainActivity extends MBaseActivity implements BookRackContract.View
 
     }
 
+
     @Override
-    public void bookDetailSuccess(List<ChaptersBean> library,int index) {
+    public void bookDetailSuccess(List<ChaptersBean> library,String tag) {
         Log.d("ss", "success: ");
-        if(null != temp && temp.size()<index){ }else{
-            temp = DbHelper.getInstance().getmDaoSession().getBookShelfBeanDao().queryBuilder().list();
-        }
-        mBookShelfBean.setDurChapter(0);
-        mBookShelfBean.setDurChapterPage(0);
+        temp = DbHelper.getInstance().getmDaoSession().getBookShelfBeanDao().queryBuilder().list();
+
         BookInfoBean mBookInfoBean = new BookInfoBean();
         List<ChapterListBean> chapterlist = new ArrayList<>();
+        BookInfoBean localBookInfoBean = new BookInfoBean();
+        for (int i = 0; i <temp.size() ; i++) {
+            if (temp.get(i).getNoteUrl().equals(tag)){
+                bookShelfBeans.setDurChapter(temp.get(i).getDurChapter());
+                bookShelfBeans.setDurChapterPage(temp.get(i).getDurChapterPage());
+                localBookInfoBean= temp.get(i).getBookInfoBean();
+                break;
+            }
+        }
         for (int i = 0; i < library.size(); i++) {
             ChapterListBean mChapterListBean = new ChapterListBean();
             mChapterListBean.setDurChapterName(library.get(i).getWorksName());
             mChapterListBean.setDurChapterId(library.get(i).getChapterId());
             mChapterListBean.setDurChapterIndex(i);
             mChapterListBean.setDurChapterUrl(library.get(i).getChapterId()+"");
-            mChapterListBean.setNoteUrl(temp.get(index).getBookInfoBean().getNoteUrl()+"");
+            mChapterListBean.setNoteUrl(localBookInfoBean.getNoteUrl()+"");
             mChapterListBean.setTag(library.get(i).getChapterId()+"");
             chapterlist.add(mChapterListBean);
         }
         mBookInfoBean.setChapterlist(chapterlist);
-        mBookInfoBean.setChapterlist(chapterlist);
-        mBookInfoBean.setAuthor(temp.get(index).getBookInfoBean().getAuthor());
-        mBookInfoBean.setName(temp.get(index).getBookInfoBean().getName());
-        mBookInfoBean.setNoteUrl(temp.get(index).getBookInfoBean().getNoteUrl()+"");
-        mBookInfoBean.setCoverUrl(temp.get(index).getBookInfoBean().getCoverUrl());
-        mBookShelfBean.setNoteUrl(temp.get(index).getBookInfoBean().getNoteUrl()+"");
-        mBookShelfBean.setTag(temp.get(index).getBookInfoBean().getNoteUrl()+"");
-        mBookShelfBean.setBookInfoBean(mBookInfoBean);
+        mBookInfoBean.setAuthor(localBookInfoBean.getAuthor());
+        mBookInfoBean.setName(localBookInfoBean.getName());
+        mBookInfoBean.setNoteUrl(localBookInfoBean.getNoteUrl()+"");
+        mBookInfoBean.setCoverUrl(localBookInfoBean.getCoverUrl());
+        bookShelfBeans.setNoteUrl(localBookInfoBean.getNoteUrl()+"");
+        bookShelfBeans.setTag(localBookInfoBean.getNoteUrl()+"");
+        bookShelfBeans.setBookInfoBean(mBookInfoBean);
+
         Intent intent = new Intent(MainActivity.this, ReadBookActivity.class);
         intent.putExtra("from", ReadBookPresenterImpl.OPEN_FROM_APP);
-        intent.putExtra("data", mBookShelfBean);
         String key = String.valueOf(System.currentTimeMillis());
         intent.putExtra("data_key", key);
         startActivityByAnim(intent, android.R.anim.fade_in, android.R.anim.fade_out);

@@ -98,7 +98,7 @@ public class ReadBookActivity extends MBaseActivity<IBookReadPresenter> implemen
     private FontPop fontPop;
     private MoreSettingPop moreSettingPop;
     private ArrayList<ChaptersBean> library;
-    private BookShelfBean bookShelf;
+//    private BookShelfBean bookShelf;
     private MoProgressHUD moProgressHUD;
     @Override
     protected IBookReadPresenter initInjector() {
@@ -112,7 +112,7 @@ public class ReadBookActivity extends MBaseActivity<IBookReadPresenter> implemen
 
     @Override
     protected void initData() {
-        bookShelf = getIntent().getParcelableExtra("data");
+//        bookShelf = getIntent().getParcelableExtra("data");
         mPresenter.saveProgress();
         menuTopIn = AnimationUtils.loadAnimation(this, R.anim.anim_readbook_top_in);
         menuTopIn.setAnimationListener(new Animation.AnimationListener() {
@@ -173,14 +173,23 @@ public class ReadBookActivity extends MBaseActivity<IBookReadPresenter> implemen
         csvBook.bookReadInit(new ContentSwitchView.OnBookReadInitListener() {
             @Override
             public void success() {
-                mPresenter.initData(ReadBookActivity.this);
+                ;
+                BookShelfBean mBookShelfBean = new  BookShelfBean();
+                mBookShelfBean.setTag(MainActivity.bookShelfBeans.getTag());
+                mBookShelfBean.setDurChapter(MainActivity.bookShelfBeans.getDurChapter());
+                mBookShelfBean.setDurChapter(MainActivity.bookShelfBeans.getDurChapter());
+                mBookShelfBean.setNoteUrl(MainActivity.bookShelfBeans.getNoteUrl());
+                mBookShelfBean.setBookInfoBean(MainActivity.bookShelfBeans.getBookInfoBean());
+                mBookShelfBean.getBookInfoBean().setChapterlist(MainActivity.bookShelfBeans.getBookInfoBean().getChapterlist());
+
+                mPresenter.initData(ReadBookActivity.this,mBookShelfBean);
             }
         });
     }
 
     @Override
     public void initPop() {
-        checkAddShelfPop = new CheckAddShelfPop(this, bookShelf.getBookInfoBean().getName(), new CheckAddShelfPop.OnItemClickListener() {
+        checkAddShelfPop = new CheckAddShelfPop(this, MainActivity.bookShelfBeans.getBookInfoBean().getName(), new CheckAddShelfPop.OnItemClickListener() {
             @Override
             public void clickExit() {
                 finish();
@@ -192,10 +201,10 @@ public class ReadBookActivity extends MBaseActivity<IBookReadPresenter> implemen
                 checkAddShelfPop.dismiss();
             }
         });
-        chapterListView.setData(bookShelf, new ChapterListView.OnItemClickListener() {
+        chapterListView.setData(MainActivity.bookShelfBeans, new ChapterListView.OnItemClickListener() {
             @Override
             public void itemClick(int index) {
-                csvBook.setInitData(index,bookShelf.getBookInfoBean().getChapterlist().size(), BookContentView.DURPAGEINDEXBEGIN);
+                csvBook.setInitData(index,MainActivity.bookShelfBeans.getBookInfoBean().getChapterlist().size(), BookContentView.DURPAGEINDEXBEGIN);
             }
         });
 
@@ -521,13 +530,13 @@ public class ReadBookActivity extends MBaseActivity<IBookReadPresenter> implemen
         }
     }
 
-    @Override
-    public void finish() {
-        if (!ActivityManager.getInstance().isExist(MainActivity.class)) {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-        }
-        super.finish();
-    }
+//    @Override
+//    public void finish() {
+//        if (!ActivityManager.getInstance().isExist(MainActivity.class)) {
+//            Intent intent = new Intent(this, MainActivity.class);
+//            startActivity(intent);
+//        }
+//        super.finish();
+//    }
 
 }

@@ -17,6 +17,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.azuredragon.MBaseActivity;
 import com.example.azuredragon.R;
 import com.example.azuredragon.R2;
+import com.example.azuredragon.business.main.MainActivity;
 import com.example.azuredragon.business.read.ReadBookActivity;
 import com.example.azuredragon.business.read.modialog.MoProgressHUD;
 import com.example.azuredragon.cache.DbHelper;
@@ -63,10 +64,8 @@ public class BookDetailActivity extends MBaseActivity<IBookDetailPresenter> impl
     private Animation animHideLoading;
     private Animation animShowInfo;
     private ChapterListPresenter presenter;
-    private ArrayList<ChaptersBean> library;
     private MoProgressHUD moProgressHUD;
     private boolean isLocakBookShelf;
-    BookShelfBean mBookShelfBean = new BookShelfBean();
     @Override
     protected IBookDetailPresenter initInjector() {
         return new BookDetailPresenterImpl(getIntent());
@@ -126,6 +125,13 @@ public class BookDetailActivity extends MBaseActivity<IBookDetailPresenter> impl
             tvShelf.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    BookShelfBean mBookShelfBean = new  BookShelfBean();
+                    mBookShelfBean.setTag(MainActivity.bookShelfBeans.getTag());
+                    mBookShelfBean.setDurChapter(MainActivity.bookShelfBeans.getDurChapter());
+                    mBookShelfBean.setDurChapter(MainActivity.bookShelfBeans.getDurChapter());
+                    mBookShelfBean.setNoteUrl(MainActivity.bookShelfBeans.getNoteUrl());
+                    mBookShelfBean.setBookInfoBean(MainActivity.bookShelfBeans.getBookInfoBean());
+                    mBookShelfBean.getBookInfoBean().setChapterlist(MainActivity.bookShelfBeans.getBookInfoBean().getChapterlist());
                     //从书架移出
                     if (!isLocakBookShelf){
                         //放入书架
@@ -160,6 +166,13 @@ public class BookDetailActivity extends MBaseActivity<IBookDetailPresenter> impl
                 @Override
                 public void onClick(View v) {
                     //从书架移出
+                    BookShelfBean mBookShelfBean = new  BookShelfBean();
+                    mBookShelfBean.setTag(MainActivity.bookShelfBeans.getTag());
+                    mBookShelfBean.setDurChapter(MainActivity.bookShelfBeans.getDurChapter());
+                    mBookShelfBean.setDurChapter(MainActivity.bookShelfBeans.getDurChapter());
+                    mBookShelfBean.setNoteUrl(MainActivity.bookShelfBeans.getNoteUrl());
+                    mBookShelfBean.setBookInfoBean(MainActivity.bookShelfBeans.getBookInfoBean());
+                    mBookShelfBean.getBookInfoBean().setChapterlist(MainActivity.bookShelfBeans.getBookInfoBean().getChapterlist());
                     if (!isLocakBookShelf){
                         //放入书架
                         DbHelper.getInstance().getmDaoSession().getChapterListBeanDao().insertOrReplaceInTx(mBookShelfBean.getBookInfoBean().getChapterlist());
@@ -284,7 +297,6 @@ public class BookDetailActivity extends MBaseActivity<IBookDetailPresenter> impl
                 intent.putExtra("from", ReadBookPresenterImpl.OPEN_FROM_APP);
                 String key = String.valueOf(System.currentTimeMillis());
                 intent.putExtra("data_key", key);
-                intent.putExtra("data", mBookShelfBean);
 //                try {
 //                    BitIntentDataManager.getInstance().putData(key, mPresenter.getBookShelf().clone());
 //                } catch (CloneNotSupportedException e) {
@@ -311,41 +323,45 @@ public class BookDetailActivity extends MBaseActivity<IBookDetailPresenter> impl
     @Override
     public void success(List<ChaptersBean> library) {
         Log.d("ss", "success: ");
-        this.library = (ArrayList<ChaptersBean>) library;
 
-        mBookShelfBean.setDurChapter(0);
-        mBookShelfBean.setDurChapterPage(0);
         BookInfoBean mBookInfoBean = new BookInfoBean();
         List<ChapterListBean> chapterlist = new ArrayList<>();
+        BookInfoBean localBookInfoBean = new BookInfoBean();
+        List<BookShelfBean> temp = DbHelper.getInstance().getmDaoSession().getBookShelfBeanDao().queryBuilder().list();
+        if (null != temp && temp.size()>0){
+            for(int i=0;i<temp.size();i++){
+                if(temp.get(i).getNoteUrl().equals(searchBook.getWorksId()+"")){
+                    MainActivity.bookShelfBeans.setDurChapter(temp.get(i).getDurChapter());
+                    MainActivity.bookShelfBeans.setDurChapterPage(temp.get(i).getDurChapterPage());
+                    localBookInfoBean= temp.get(i).getBookInfoBean();
+                    isLocakBookShelf = true;
+                    break;
+                }
+            }
+        }
+
         for (int i = 0; i < library.size(); i++) {
             ChapterListBean mChapterListBean = new ChapterListBean();
             mChapterListBean.setDurChapterName(library.get(i).getWorksName());
             mChapterListBean.setDurChapterId(library.get(i).getChapterId());
             mChapterListBean.setDurChapterIndex(i);
             mChapterListBean.setDurChapterUrl(library.get(i).getChapterId()+"");
-            mChapterListBean.setNoteUrl(searchBook.getWorksId()+"");
+            mChapterListBean.setNoteUrl(library.get(i).getChapterId()+"");
             mChapterListBean.setTag(library.get(i).getChapterId()+"");
             chapterlist.add(mChapterListBean);
         }
+
+
         mBookInfoBean.setChapterlist(chapterlist);
         mBookInfoBean.setAuthor(searchBook.getWriter());
         mBookInfoBean.setName(searchBook.getWorksName());
         mBookInfoBean.setIntroduce(searchBook.getWorksDes());
-        mBookInfoBean.setCoverUrl(searchBook.getWorksCoverPic());
         mBookInfoBean.setNoteUrl(searchBook.getWorksId()+"");
-        mBookShelfBean.setNoteUrl(searchBook.getWorksId()+"");
-        mBookShelfBean.setTag(searchBook.getWorksId()+"");
-        mBookShelfBean.setBookInfoBean(mBookInfoBean);
+        mBookInfoBean.setCoverUrl(searchBook.getWorksCoverPic()+"");
+        MainActivity.bookShelfBeans.setNoteUrl(searchBook.getWorksId()+"");
+        MainActivity.bookShelfBeans.setTag(searchBook.getWorksId()+"");
+        MainActivity.bookShelfBeans.setBookInfoBean(mBookInfoBean);
 
-        List<BookShelfBean> temp = DbHelper.getInstance().getmDaoSession().getBookShelfBeanDao().queryBuilder().list();
-        if (null != temp && temp.size()>0){
-            for(int i=0;i<temp.size();i++){
-                if(temp.get(i).getNoteUrl().equals(mBookShelfBean.getNoteUrl())){
-                    isLocakBookShelf = true;
-                    break;
-                }
-            }
-        }
         moProgressHUD.dismiss();
         updateView();
     }

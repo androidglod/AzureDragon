@@ -29,7 +29,7 @@ public interface IBookReadPresenter extends IPresenter {
 
     Boolean getAdd();
 
-    void initData(Activity activity);
+    void initData(Activity activity,BookShelfBean bookShelf);
 
     void openBookFromOther(Activity activity);
 }
