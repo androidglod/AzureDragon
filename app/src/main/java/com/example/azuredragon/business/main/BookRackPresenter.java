@@ -106,7 +106,7 @@ public class BookRackPresenter implements BookRackContract.presenter {
     }
 
     @Override
-    public void getBookListDetail(HashMap map,int index) {
+    public void getBookListDetail(HashMap map,String tag) {
         RetrofitUtil.getInstance().initRetrofit().getShowChapterList(map)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -115,7 +115,7 @@ public class BookRackPresenter implements BookRackContract.presenter {
 
                     @Override
                     protected void onSuccees(BaseListEntry<ChaptersBean> mChapterListBean) throws Exception {
-                        view.bookDetailSuccess(mChapterListBean.getData(), index);
+                        view.bookDetailSuccess(mChapterListBean.getData(), tag);
                     }
 
                     @Override

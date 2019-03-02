@@ -25,7 +25,7 @@ public interface BookRackContract {
         void fail(String content);
 
         //获取章节列表成功
-        void bookDetailSuccess(List<ChaptersBean> library,int index);
+        void bookDetailSuccess(List<ChaptersBean> library,String tag);
         //获取章节列表失败
         void bookDetailFail(String content);
 
@@ -69,7 +69,7 @@ public interface BookRackContract {
         //获取书籍列表
         void getBookList(final Boolean needRefresh);
         //获取书籍列表
-        void getBookListDetail(HashMap map,int index);
+        void getBookListDetail(HashMap map,String tag);
     }
 
 
